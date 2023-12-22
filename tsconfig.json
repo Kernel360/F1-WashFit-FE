@@ -66,6 +66,9 @@
       "@providers/*": [
         "src/providers/*"
       ],
+      "@stories/*": [
+        "src/stories/*"
+      ],
     },
   },
   "include": [
