@@ -58,8 +58,8 @@
   "rules": {
     "quotes": [
       "error",
-      "double"
-    ], // 모든 따옴표를 큰따옴표(")로 강제합니다.
+      "single"
+    ], // 모든 따옴표를 작은 따옴표(')로 강제합니다.
     "@typescript-eslint/quotes": "off", // TypeScript 코드에 대해 따옴표 규칙을 비활성화합니다.
     "@next/next/no-html-link-for-pages": "off", // 이 규칙은 HTML <a> 태그를 사용하여 내부 페이지를 링크하는 것을 금지합니다. "off"는 이 규칙을 비활성화합니다.
     "@typescript-eslint/no-use-before-define": [
