@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { Button } from "./Button";
-import "./header.css";
+import { Button } from './Button';
+import './header.css';
 
 type User = {
   name: string;
@@ -44,7 +44,7 @@ export function Header({
             <>
               <span className="welcome">
                 Welcome,
-                {" "}
+                {' '}
                 <b>{user.name}</b>
                 !
               </span>
