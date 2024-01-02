@@ -1,4 +1,5 @@
-name: Create Issue Branch
+name: Create Branch For Branch
+
 on:
   issues:
     types: [ assigned ]
@@ -9,8 +10,8 @@ jobs:
   create_issue_branch_job:
     runs-on: ubuntu-latest
     steps:
-      - name: Create Issue Branch
-        id: Create_branch_For_Issue
+      - name: Create Branch For Issue
+        id: Create_Branch_For_Issue
         uses: robvanderleek/create-issue-branch@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
