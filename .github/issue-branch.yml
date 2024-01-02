@@ -1,5 +1,0 @@
-branchName: '${issue.number}'
-branches:
-  - label: '*'
-    prefix: feature/
-autoCloseIssue: true
