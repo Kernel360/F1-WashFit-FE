@@ -1,5 +1,4 @@
 name: Create Branch For Branch
-
 on:
   issues:
     types: [ assigned ]
