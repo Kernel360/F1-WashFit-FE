@@ -1,6 +1,6 @@
 {
   "name": "washpedia",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "private": true,
   "resolutions": {
     "jackspeak": "2.1.1"
@@ -13,8 +13,7 @@
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "test": "vitest"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
@@ -22,11 +21,13 @@
     "@tanstack/query-core": "^4",
     "@tanstack/react-query": "^4",
     "@tanstack/react-query-devtools": "^4",
+    "@vitejs/plugin-react": "^4.2.1",
     "axios": "^1.6.2",
     "next": "^13",
     "react": "^18",
     "react-dom": "^18",
-    "react-redux": "^9.0.4"
+    "react-redux": "^9.0.4",
+    "vitest": "^1.1.1"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.6",
@@ -37,6 +38,7 @@
     "@storybook/nextjs": "^7.6.6",
     "@storybook/react": "^7.6.6",
     "@tanstack/eslint-plugin-query": "^5.12.1",
+    "@testing-library/react": "^14.1.2",
     "@types/jest": "^29.5.11",
     "@types/node": "^20",
     "@types/react": "^18",
@@ -51,12 +53,12 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.15",
+    "jsdom": "^23.0.1",
     "sass": "^1.69.6",
     "storybook": "^7.6.6",
     "stylelint": "^16.1.0",
     "stylelint-config-property-sort-order-smacss": "^10.0.0",
     "stylelint-config-standard-scss": "^12.0.0",
-    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
