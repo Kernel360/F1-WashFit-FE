@@ -8,11 +8,11 @@ interface SpacingProps {
   backgroundColor?: Colors
 }
 
-function Spacing({ size, direction = 'vertical', backgroundColor }: SpacingProps) {
+function Spacing({ size = 10, direction = 'horizontal', backgroundColor }: SpacingProps) {
   const styles = useMemo(() => {
     return {
-      width: direction === 'vertical' ? '100%' : `${size}px`,
-      height: direction === 'vertical' ? `${size}px` : '100%',
+      width: direction === 'horizontal' ? '100%' : `${size}px`,
+      height: direction === 'vertical' ? '100%' : `${size}px`,
       backgroundColor: backgroundColor && colors[backgroundColor],
     };
   }, [size, direction, backgroundColor]);
