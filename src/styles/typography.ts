@@ -12,7 +12,7 @@ export const typographyMap = {
     lineHeight: 1.4,
   },
   t4: {
-    fontSize: '2px',
+    fontSize: '20px',
     lineHeight: 1.45,
   },
   t5: {
