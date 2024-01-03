@@ -1,4 +1,19 @@
+:root {
+  --primary: #0075FF;
+  --secondary: #B2D6FF;
+  --red: #FF5247;
+  --gray-100: #CDCFD0;
+  --gray-200: #979C9E;
+  --gray-300: #72777A;
+  --gray-400: #404446;
+  --black: #090A0A;
+  --white: #EEE;
+}
+
 body {
+  margin: 0;
+  padding: 0;
+
   html, body, div, span, applet, object, iframe,
   h1, h2, h3, h4, h5, h6, p, blockquote, pre,
   a, abbr, acronym, address, big, cite, code,
@@ -15,58 +30,65 @@ body {
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 100%;
     font: inherit;
+    font-size: 100%;
     vertical-align: baseline;
   }
+
   /* HTML5 display-role reset for older browsers */
   article, aside, details, figcaption, figure, 
   footer, header, hgroup, menu, nav, section {
     display: block;
   }
+
   body {
     line-height: 1;
   }
+
   ol, ul {
     list-style: none;
   }
+
   blockquote, q {
     quotes: none;
   }
-  blockquote:before, blockquote:after,
-  q:before, q:after {
+
+  blockquote::before, blockquote::after,
+  q::before, q::after {
     content: '';
     content: none;
   }
+
   table {
-    border-collapse: collapse;
     border-spacing: 0;
+    border-collapse: collapse;
   }
+
   a {
     color: inherit;
     text-decoration: inherit; /* no underline */
   }
+
   button {
-    border: none;
+    width: auto;
     margin: 0;
     padding: 0;
-    width: auto;
     overflow: visible;
-  
+    border: none;
     background: transparent;
   
     /* inherit font & color from ancestor */
     color: inherit;
     font: inherit;
   
-    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
-    line-height: normal;
-  
     /* Corrects font smoothing for webkit */
     -webkit-font-smoothing: inherit;
     -moz-osx-font-smoothing: inherit;
   
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+  
     /* Corrects inability to style clickable `input` types in iOS */
-    -webkit-appearance: none;
+    appearance: none;
   }
-  }
+}
