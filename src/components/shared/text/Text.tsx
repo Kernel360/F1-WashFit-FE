@@ -23,6 +23,7 @@ function Text({
       display,
       textAlign,
       fontWeight: bold ? 'bold' : fontWeight,
+      whiteSpace: 'pre-line',
     };
   }, [typography, color, display, textAlign, fontWeight, bold]);
   return (
