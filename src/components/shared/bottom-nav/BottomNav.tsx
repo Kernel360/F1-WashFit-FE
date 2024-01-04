@@ -9,8 +9,8 @@ import classNames from 'classnames/bind';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
-import deleteFirstWord from '@/utils/deleteFirstWord';
 import Text from '@shared/text/Text';
+import deleteFirstWord from '@utils/deleteFirstWord';
 
 import styles from './BottomNav.module.scss';
 
