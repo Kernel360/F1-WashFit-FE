@@ -1,14 +1,14 @@
 'use client';
 
-import Channel from '@icons/Channel';
-import Favorite from '@icons/Favorite';
-import Home from '@icons/Home';
-import Map from '@icons/Map';
-import Profile from '@icons/Profile';
 import classNames from 'classnames/bind';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import Channel from '@components/icons/Channel';
+import Favorite from '@components/icons/Favorite';
+import Home from '@components/icons/Home';
+import Map from '@components/icons/Map';
+import Profile from '@components/icons/Profile';
 import Text from '@shared/text/Text';
 import deleteFirstWord from '@utils/deleteFirstWord';
 

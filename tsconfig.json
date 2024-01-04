@@ -36,9 +36,6 @@
       "@shared/*": [
         "src/components/shared/*"
       ],
-      "@icons/*": [
-        "src/components/icons/*"
-      ],
       "@styles/*": [
         "src/styles/*"
       ],
