@@ -1,6 +1,6 @@
 import { colors } from '@/styles/colorPalette';
 
-function User({ size = 24 }: { size: number }) {
+function Profile({ size = 24 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fillRule="evenodd" clipRule="evenodd" d="M5.36437 15.4645C6.30205 14.5268 7.57382 14 8.8999 14H16.8999C18.226 14 19.4978 14.5268 20.4354 15.4645C21.3731 16.4021 21.8999 17.6739 21.8999 19V21C21.8999 21.5523 21.4522 22 20.8999 22C20.3476 22 19.8999 21.5523 19.8999 21V19C19.8999 18.2044 19.5838 17.4413 19.0212 16.8787C18.4586 16.3161 17.6956 16 16.8999 16H8.8999C8.10425 16 7.34119 16.3161 6.77858 16.8787C6.21597 17.4413 5.8999 18.2044 5.8999 19V21C5.8999 21.5523 5.45219 22 4.8999 22C4.34762 22 3.8999 21.5523 3.8999 21V19C3.8999 17.6739 4.42669 16.4021 5.36437 15.4645Z" fill={colors.gray400} />
@@ -10,4 +10,4 @@ function User({ size = 24 }: { size: number }) {
   );
 }
 
-export default User;
+export default Profile;
