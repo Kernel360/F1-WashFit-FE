@@ -1,0 +1,21 @@
+.container {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 44px;
+  padding: 12px 20px 30px;
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+}
