@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
 
 import Link from 'next/link';
 
@@ -14,14 +16,22 @@ function RightIcon({
   displayLogo,
   displayRightIcon,
 }: RightIconProps) {
+  const [isClicked, setIsClicked] = useState(false);
+
+  const handleHeartClick = () => {
+    setIsClicked(!isClicked);
+  };
+  // TODO: 로그아웃
   if (displayLogo) {
     return (
       <li className={className}>
-        <Link href="/login">
-          <Text typography="t7" color="gray300">
-            {isLogin ? '로그인' : '로그아웃'}
-          </Text>
-        </Link>
+        {isLogin
+          ? (
+            <Link href="/login">
+              <Text typography="t7" color="gray300">로그인</Text>
+            </Link>
+          )
+          : (<Text typography="t7" color="gray300">로그아웃</Text>)}
       </li>
     );
   }
@@ -30,7 +40,7 @@ function RightIcon({
     return (
       <ul className={className}>
         <li>
-          <Heart width={20} height={18} />
+          <Heart width={20} height={18} color={isClicked ? 'pink' : 'gray400'} fillColor={isClicked ? 'pink' : 'white'} onClick={handleHeartClick} />
         </li>
         <li>
           <Share />
