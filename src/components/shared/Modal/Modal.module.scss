@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  position: fixed;
+  z-index: var(--modal-zindex);
+  top: 50%;
+  left: 50%;
+  box-sizing: border-box;
+  flex-direction: column;
+  align-items: center;
+  width: 280px;
+  height: 220px;
+  padding: 24px;
+  overflow: hidden;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  background-color: var(--white);
+}
