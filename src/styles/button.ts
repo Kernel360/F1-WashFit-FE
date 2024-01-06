@@ -6,6 +6,11 @@ export const buttonColorMap = {
     color: colors.white,
     border: `1px solid ${colors.primary}`,
   },
+  secondary: {
+    backgroundColor: colors.secondary,
+    color: colors.white,
+    border: `1px solid ${colors.secondary}`,
+  },
   gray: {
     backgroundColor: colors.tertiary,
     color: colors.white,
@@ -18,6 +23,11 @@ export const buttonWeakMap = {
     backgroundColor: colors.white,
     color: colors.primary,
     border: `1px solid ${colors.primary}`,
+  },
+  secondary: {
+    backgroundColor: colors.white,
+    color: colors.secondary,
+    border: `1px solid ${colors.secondary}`,
   },
   gray: {
     backgroundColor: colors.white,

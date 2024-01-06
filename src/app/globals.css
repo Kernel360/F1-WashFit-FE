@@ -8,11 +8,11 @@
   --gray-400: #404446;
   --tertiary: #7A7A7A;
   --black: #090A0A;
-  --white: #FFF
+  --white: #FFF;
 
-  /*-------------- z-index -------------- */
+  /* -------------- z-index -------------- */
   --dimmed-zindex: 10;
-  --alert-zindex: 11;
+  --modal-zindex: 11;
 }
 
 body {
