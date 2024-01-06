@@ -26,7 +26,7 @@ const defaultValues: ModalProps = {
   onBottomButtonClick: () => { },
 };
 
-const ModalContext = createContext<ModalContextValue | undefined>(undefined);
+export const ModalContext = createContext<ModalContextValue | undefined>(undefined);
 
 export function ModalContextProvider({ children }: { children: React.ReactNode }) {
   const [modalState, setModalState] = useState(defaultValues);
