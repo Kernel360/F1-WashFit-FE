@@ -2,11 +2,7 @@ import Link from 'next/link';
 
 import Logo from '@/components/icons/Logo';
 
-interface CenterIconProps {
-  className: string;
-}
-
-function CenterIcon({ className }:CenterIconProps) {
+function CenterIcon({ className }: { className?: string }) {
   return (
     <li className={className}>
       <Link href="/">
