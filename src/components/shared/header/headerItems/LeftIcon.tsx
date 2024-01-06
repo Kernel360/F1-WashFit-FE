@@ -1,5 +1,3 @@
-import React from 'react';
-
 import BackArrow from '@/components/icons/BackArrow';
 
 interface LeftIconProps {

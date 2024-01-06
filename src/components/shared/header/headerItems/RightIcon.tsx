@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import Link from 'next/link';
 
@@ -26,12 +26,13 @@ function RightIcon({
     return (
       <li className={className}>
         {isLogin
-          ? (
+          ? (<Text typography="t7" color="gray300">로그아웃</Text>)
+
+          : (
             <Link href="/login">
               <Text typography="t7" color="gray300">로그인</Text>
             </Link>
-          )
-          : (<Text typography="t7" color="gray300">로그아웃</Text>)}
+          )}
       </li>
     );
   }
