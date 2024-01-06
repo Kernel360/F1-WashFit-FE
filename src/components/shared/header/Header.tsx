@@ -1,4 +1,4 @@
-import React from 'react';
+import classNames from 'classnames/bind';
 
 import styles from './Header.module.scss';
 import CenterIcon from './headerItems/CenterIcon';
@@ -10,14 +10,14 @@ export default function Header({
   isLogin = false,
   displayLogo = true, isTransparent = false, displayRightIcon = false,
 }:HeaderProps) {
-  // TODO: login 상태 가져오기
+  const cx = classNames.bind(styles);
   return (
-    <nav className={`${styles.nav} ${isTransparent ? styles.transparent : ''}`}>
-      <ul className={styles.container}>
-        {!displayLogo && <LeftIcon className={styles.left} />}
-        {displayLogo && <CenterIcon className={styles.logo} />}
+    <nav className={cx('nav', { transparent: isTransparent })}>
+      <ul className={cx('container')}>
+        {!displayLogo && <LeftIcon className={cx('left')} />}
+        {displayLogo && <CenterIcon className={cx('logo')} />}
         <RightIcon
-          className={styles.right}
+          className={cx('right')}
           isLogin={isLogin}
           displayLogo={displayLogo}
           displayRightIcon={displayRightIcon}
