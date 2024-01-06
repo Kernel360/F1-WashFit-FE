@@ -10,6 +10,7 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     color: { control: 'color' },
+    fontWeight: { control: 'select', options: [100, 200, 300, 400, 500, 600, 700, 800, 900] },
   },
 } satisfies Meta<typeof Text>;
 
