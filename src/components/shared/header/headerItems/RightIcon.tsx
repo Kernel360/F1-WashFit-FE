@@ -4,8 +4,8 @@ import { useState } from 'react';
 
 import Link from 'next/link';
 
-import Heart from '@/components/icons/Heart';
-import Share from '@/components/icons/Share';
+import Heart from '@components/icons/Heart';
+import Share from '@components/icons/Share';
 import Text from '@shared/text/Text';
 
 import { RightIconProps } from '../types/headerType';
@@ -19,7 +19,7 @@ function RightIcon({
   const [isClicked, setIsClicked] = useState(false);
 
   const handleHeartClick = () => {
-    setIsClicked(!isClicked);
+    setIsClicked((prev) => { return !prev; });
   };
   // TODO: 로그아웃
   if (displayLogo) {

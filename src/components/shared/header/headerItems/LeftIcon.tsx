@@ -1,4 +1,4 @@
-import BackArrow from '@/components/icons/BackArrow';
+import BackArrow from '@components/icons/BackArrow';
 
 interface LeftIconProps {
   className: string;

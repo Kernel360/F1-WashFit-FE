@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import Logo from '@/components/icons/Logo';
+import Logo from '@components/icons/Logo';
 
 function CenterIcon({ className }: { className?: string }) {
   return (
