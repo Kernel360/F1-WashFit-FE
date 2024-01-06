@@ -5,11 +5,10 @@ interface FlexProps {
   justify?: CSSProperties['justifyContent']
   direction?: CSSProperties['flexDirection']
   children: React.ReactNode
-  className?: string
 }
 
 function Flex({
-  align, justify, direction, children, className,
+  align, justify, direction, children,
 }: FlexProps) {
   const styles = useMemo(() => {
     return {
@@ -18,7 +17,7 @@ function Flex({
   }, [align, justify, direction]);
 
   return (
-    <div style={styles} className={className}>
+    <div style={styles}>
       {children}
     </div>
   );
