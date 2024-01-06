@@ -2,13 +2,15 @@
   --primary: #0075FF;
   --secondary: #B2D6FF;
   --red: #FF5247;
+  --gray:#F5F5F5;
   --gray-100: #CDCFD0;
   --gray-200: #979C9E;
   --gray-300: #72777A;
   --gray-400: #404446;
   --tertiary: #7A7A7A;
   --black: #090A0A;
-  --white: #FFF
+  --white: #FFF;
+  --pink: #F67272;
 }
 
 body {
