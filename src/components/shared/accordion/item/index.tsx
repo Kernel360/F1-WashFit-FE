@@ -1,9 +1,8 @@
-import {
-  Children, cloneElement, isValidElement, ReactNode,
-} from 'react';
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+import { Children, cloneElement, isValidElement } from 'react';
 
 interface AccordionItemProps {
-  children: ReactNode[]
+  children: React.ReactNode[]
   label: string
   className?: string
 }
@@ -13,7 +12,8 @@ function AccordionItem({ children, label, className }: AccordionItemProps) {
 
   const accordionItemChildren = childrenArray.map((child) => {
     if (isValidElement(child)) {
-      return cloneElement(child, { ...child.props, label });
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      return cloneElement(child as any, { ...child.props, label });
     }
     return null;
   });
