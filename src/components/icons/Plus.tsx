@@ -2,7 +2,7 @@ import { Colors, colors } from '@styles/colorPalette';
 
 interface PlusProps {
   size?: number
-  color: Colors
+  color?: Colors
 }
 
 function Plus({ size = 20, color = 'black' }: PlusProps) {
