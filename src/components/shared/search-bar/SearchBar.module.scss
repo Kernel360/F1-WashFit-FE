@@ -1,0 +1,53 @@
+.container {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    width: 100%;
+    padding: 13px;
+    border-radius: 10px;
+    gap: 10px;
+    box-shadow: 1px 3px 4px 0 rgba($color: #000, $alpha: 3%);
+
+    &.dark {
+        background-color: var(--gray);
+    }
+
+    input {
+        flex-grow: 1;
+        height: 100%;
+        margin-left: 2px;
+        border: none;
+        border-radius: 0;
+        outline: inherit;
+        background-color: inherit;
+        color: var(--black);
+        font-size: 14px;
+
+        &::placeholder {
+            color: var(--gray-200);
+            font-size: 12px;
+            font-weight: 400;
+        }
+    }
+
+    button {
+        padding: 3px;
+        padding-bottom: 0;
+    }
+
+    /* input[type:search] x 버튼 없애기 */
+
+    /* IE의 경우 */
+    input::-ms-clear,
+    input::-ms-reveal {
+        display: none;
+    }
+
+    /* 크롬의 경우 */
+    input::-webkit-search-decoration,
+    input::-webkit-search-cancel-button,
+    input::-webkit-search-results-button,
+    input::-webkit-search-results-decoration {
+        display: none;
+    }
+}
