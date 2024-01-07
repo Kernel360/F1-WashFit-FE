@@ -5,7 +5,7 @@ interface FlexProps {
   justify?: CSSProperties['justifyContent']
   direction?: CSSProperties['flexDirection']
   children: React.ReactNode
-  className: string
+  className?: string
 }
 
 function Flex({
