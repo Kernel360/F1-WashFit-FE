@@ -18,7 +18,7 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(({
   return (
     <>
       <input id={label} type="radio" ref={ref} value={value} />
-      <label className={cx('input', { gender: type === 'gender', ageGroup: type === 'ageGroup' })} htmlFor={label}>{label}</label>
+      <label className={cx({ gender: type === 'gender', ageGroup: type === 'ageGroup' })} htmlFor={label}>{label}</label>
     </>
   );
 });
