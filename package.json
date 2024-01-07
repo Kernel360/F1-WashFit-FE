@@ -13,7 +13,8 @@
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "vitest"
+    "test": "vitest",
+    "chromatic": "npx chromatic --project-token=chpt_228d999e438e234"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.0.1",
@@ -48,6 +49,7 @@
     "@types/react-dom": "^18",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
+    "chromatic": "^10.2.0",
     "eslint": "^8",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.1.0",
@@ -64,5 +66,7 @@
     "stylelint-config-property-sort-order-smacss": "^10.0.0",
     "stylelint-config-standard-scss": "^12.0.0",
     "typescript": "^5"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "washpedia@0.0.1"
 }
