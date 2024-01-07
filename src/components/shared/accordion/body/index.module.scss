@@ -1,0 +1,12 @@
+.container {
+  box-sizing: border-box;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+
+  &.showItem {
+    max-height: 350px;
+    padding: 16px;
+    background-color: var(--gray);
+  }
+}
