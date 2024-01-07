@@ -10,6 +10,7 @@ export const colors = {
   tertiary: 'var(--tertiary',
   black: 'var(--black)',
   white: 'var(--white)',
+  white100: 'var(--white-100',
   pink: 'var(--pink)',
 };
 
