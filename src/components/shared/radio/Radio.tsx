@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 import styles from './Radio.module.scss';
 
 interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
-  type: 'gender' | 'ageGroup'
+  type: 'gender' | 'ageGroup' | 'additionalInfo'
   label: string
   value: string | number
 }
@@ -18,7 +18,9 @@ const Radio = forwardRef<HTMLInputElement, RadioProps>(({
   return (
     <>
       <input id={label} type="radio" ref={ref} value={value} />
-      <label className={cx({ gender: type === 'gender', ageGroup: type === 'ageGroup' })} htmlFor={label}>{label}</label>
+      <label className={cx({ [type]: true })} htmlFor={label}>
+        {label}
+      </label>
     </>
   );
 });

@@ -30,12 +30,19 @@ label.ageGroup {
   border-radius: 30px;
 }
 
-input[type="radio"] + label.ageGroup {
+label.additionalInfo {
+  height: 60px;
+  border-radius: 10px;
+}
+
+input[type="radio"] + label.ageGroup,
+input[type="radio"] + label.additionalInfo {
   background-color: var(--white-100);
   color: var(--gray-300);
 }
 
-input[type="radio"]:checked + label.ageGroup {
+input[type="radio"]:checked + label.ageGroup,
+input[type="radio"]:checked + label.additionalInfo {
   background-color: var(--primary);
   color: var(--white-100);
 }

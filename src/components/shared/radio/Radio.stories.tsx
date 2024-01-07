@@ -30,3 +30,11 @@ export const ageGroup: Story = {
     value: '10',
   },
 };
+
+export const additionalInfo: Story = {
+  args: {
+    type: 'additionalInfo',
+    label: '소형',
+    value: 'mini',
+  },
+};
