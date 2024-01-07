@@ -11,10 +11,11 @@ interface TextProps {
   fontWeight?: CSSProperties['fontWeight']
   bold?: boolean
   children: React.ReactNode
+  whiteSpace?: CSSProperties['whiteSpace']
 }
 
 function Text({
-  typography = 't5', color = 'black', display, textAlign, fontWeight, bold, children,
+  typography = 't5', color = 'black', display, textAlign, fontWeight, bold, children, whiteSpace = 'pre-line',
 }: TextProps) {
   const styles = useMemo(() => {
     return {
@@ -23,9 +24,9 @@ function Text({
       display,
       textAlign,
       fontWeight: bold ? 'bold' : fontWeight,
-      whiteSpace: 'pre-line',
+      whiteSpace,
     };
-  }, [typography, color, display, textAlign, fontWeight, bold]);
+  }, [typography, color, display, textAlign, fontWeight, bold, whiteSpace]);
   return (
     <span style={styles}>{children}</span>
   );
