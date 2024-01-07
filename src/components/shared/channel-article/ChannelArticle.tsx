@@ -5,19 +5,20 @@ import Text from '@shared/text/Text';
 
 import styles from './ChannelArticle.module.scss';
 import ChannelMoreBtn from './ChannelMoreBtn';
-import { IVideoData } from './types/ChannelArticleType';
+// import { IVideoData } from './types/ChannelArticleType';
 
-interface ChannelArticleProps {
-  data: IVideoData;
-}
+// interface ChannelArticleProps {
+//   data: IVideoData;
+// }
 /*
  * data는 백엔드에서 넘어오는 데이터를 참고해서 다시 바뀔 수 있음
  * Channel 페이지 구현시 data에 맞게 값 넣어줄 것
 */
 
-function ChannelArticle({ data }: ChannelArticleProps) {
+// function ChannelArticle({ data }: ChannelArticleProps) {
+function ChannelArticle() {
   const cx = classNames.bind(styles);
-  //
+
   return (
     <article className={cx('article')}>
       <div className={cx('videoContainer')}>

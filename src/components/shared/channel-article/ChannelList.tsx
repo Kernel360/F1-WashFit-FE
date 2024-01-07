@@ -10,7 +10,7 @@ function ChannelList({ dataList } :ChannelListProps) {
     <section>
       {dataList.map((data) => {
         return (
-          <ChannelArticle key={data.id} data={data} />
+          <ChannelArticle key={data.id} />
         );
       })}
     </section>
