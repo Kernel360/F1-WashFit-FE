@@ -1,22 +1,21 @@
 import classNames from 'classnames/bind';
 import Image from 'next/image';
 
-import More from '@components/icons/More';
 import Text from '@shared/text/Text';
 
 import styles from './ChannelArticle.module.scss';
+import ChannelMoreBtn from './ChannelMoreBtn';
 import { IVideoData } from './types/ChannelArticleType';
 
 interface ChannelArticleProps {
   data: IVideoData;
-  onClick: () => void;
 }
 /*
  * data는 백엔드에서 넘어오는 데이터를 참고해서 다시 바뀔 수 있음
  * Channel 페이지 구현시 data에 맞게 값 넣어줄 것
 */
 
-function ChannelArticle({ data, onClick }: ChannelArticleProps) {
+function ChannelArticle({ data }: ChannelArticleProps) {
   const cx = classNames.bind(styles);
   //
   return (
@@ -50,9 +49,7 @@ function ChannelArticle({ data, onClick }: ChannelArticleProps) {
           </Text> */}
           <Text typography="t7" color="gray300" whiteSpace="nowrap">description</Text>
         </div>
-        <button aria-label="더보기 버튼" onClick={onClick}>
-          <More />
-        </button>
+        <ChannelMoreBtn />
       </div>
     </article>
   );
