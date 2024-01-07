@@ -48,8 +48,8 @@
       "@constants": [
         "src/constants/index"
       ],
-      "@constants/*": [
-        "src/constants/*"
+      "@contexts/*": [
+        "src/contexts/*"
       ],
       "@models/*": [
         "src/models/*"

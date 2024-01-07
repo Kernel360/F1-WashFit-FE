@@ -1,0 +1,6 @@
+.container {
+  position: fixed;
+  z-index: var(--dimmed-zindex);
+  background-color: rgb(0 0 0 / 70%);
+  inset: 0;
+}

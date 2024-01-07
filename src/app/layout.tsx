@@ -4,6 +4,7 @@ import localFont from 'next/font/local';
 
 import './globals.css';
 
+import { ModalContextProvider } from '@contexts/ModalContext';
 import StoreProvider from '@providers/StoreProvider';
 import TanstackQueryProvider from '@providers/TanstackQueryProvider';
 
@@ -32,9 +33,12 @@ export default function RootLayout({
       <body className={pretendard.className}>
         <TanstackQueryProvider>
           <StoreProvider>
-            {children}
+            <ModalContextProvider>
+              {children}
+            </ModalContextProvider>
           </StoreProvider>
         </TanstackQueryProvider>
+        <div id="portal-root" />
       </body>
     </html>
   );
