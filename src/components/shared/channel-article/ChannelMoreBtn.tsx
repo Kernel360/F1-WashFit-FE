@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import More from '@components/icons/More';
 
-export default function ChannelMoreBtn() {
+function ChannelMoreBtn() {
   const [isClicked, setIsClicked] = useState(false);
 
   const handleClick = () => {
@@ -23,3 +23,5 @@ export default function ChannelMoreBtn() {
     </div>
   );
 }
+
+export default ChannelMoreBtn;
