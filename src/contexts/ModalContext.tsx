@@ -31,7 +31,7 @@ export const ModalContext = createContext<ModalContextValue | undefined>(undefin
 export function ModalContextProvider({ children }: { children: React.ReactNode }) {
   const [modalState, setModalState] = useState(defaultValues);
 
-  const PORTAL_ROOT = typeof window !== 'undefined' ? document.getElementById('portal-root') : null;
+  const MODAL_ROOT = typeof window !== 'undefined' ? document.getElementById('modal-root') : null;
 
   const close = useCallback(() => {
     setModalState(defaultValues);
@@ -58,7 +58,7 @@ export function ModalContextProvider({ children }: { children: React.ReactNode }
   return (
     <ModalContext.Provider value={values}>
       {children}
-      {PORTAL_ROOT != null ? createPortal(<Modal {...modalState} />, PORTAL_ROOT) : null}
+      {MODAL_ROOT != null ? createPortal(<Modal {...modalState} />, MODAL_ROOT) : null}
     </ModalContext.Provider>
   );
 }
