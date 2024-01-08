@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { within, userEvent, expect } from '@storybook/test';
 
 import { Page } from './Page';
