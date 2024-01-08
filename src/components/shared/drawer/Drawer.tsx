@@ -2,7 +2,7 @@ import { createPortal } from 'react-dom';
 
 import classNames from 'classnames/bind';
 
-import useMountTransition from '@/hooks/useMountTransition';
+import useMountTransition from '@hooks/useMountTransition';
 
 import styles from './Drawer.module.scss';
 

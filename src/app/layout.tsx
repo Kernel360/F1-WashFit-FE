@@ -39,6 +39,7 @@ export default function RootLayout({
           </StoreProvider>
         </TanstackQueryProvider>
         <div id="modal-root" />
+        <div id="drawer-root" />
       </body>
     </html>
   );
