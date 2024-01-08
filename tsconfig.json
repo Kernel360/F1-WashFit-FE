@@ -39,9 +39,6 @@
       "@styles/*": [
         "src/styles/*"
       ],
-      "@pages/*": [
-        "src/pages/*"
-      ],
       "@remote/*": [
         "src/remote/*"
       ],
