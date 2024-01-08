@@ -18,6 +18,14 @@
   --modal-zindex: 11;
 }
 
+/* 말줄임표 */
+.ellipsis {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+}
+
 body {
   margin: 0;
   padding: 0;

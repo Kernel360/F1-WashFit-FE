@@ -40,13 +40,6 @@ $img-size: 39px;
     .infoBox {
         flex-grow: 1;
         min-width: 0;
-
-        & > span {
-            display: block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            word-break: break-all;
-        }
     }
 
     button {
