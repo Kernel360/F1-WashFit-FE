@@ -2,8 +2,7 @@ import classNames from 'classnames/bind';
 import Image from 'next/image';
 
 import Heart from '@components/icons/Heart';
-
-import Text from '../text/Text';
+import Text from '@shared/text/Text';
 
 import styles from './ProductArticle.module.scss';
 import { IItemData } from './types/ProductArticleType';
