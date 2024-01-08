@@ -29,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <body className={pretendard.className}>
         <TanstackQueryProvider>
           <StoreProvider>
@@ -38,7 +38,7 @@ export default function RootLayout({
             </ModalContextProvider>
           </StoreProvider>
         </TanstackQueryProvider>
-        <div id="portal-root" />
+        <div id="modal-root" />
       </body>
     </html>
   );
