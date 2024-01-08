@@ -40,14 +40,14 @@ function ChannelArticle() {
           />
         </div>
         <div className={cx('infoBox')}>
-          {/* <Text typography="t6" whiteSpace="nowrap">
+          {/* <Text className="ellipsis" typography="t6" whiteSpace="nowrap">
           {data.title}
           </Text> */}
-          <Text typography="t6" whiteSpace="nowrap">title</Text>
-          {/* <Text typography="t7" color="gray300" whiteSpace="nowrap">
+          <Text className="ellipsis" typography="t6" whiteSpace="nowrap">title</Text>
+          {/* <Text className="ellipsis" typography="t7" color="gray300" whiteSpace="nowrap">
           {data.description}
           </Text> */}
-          <Text typography="t7" color="gray300" whiteSpace="nowrap">description</Text>
+          <Text className="ellipsis" typography="t7" color="gray300" whiteSpace="nowrap">description</Text>
         </div>
         <ChannelMoreBtn />
       </div>
