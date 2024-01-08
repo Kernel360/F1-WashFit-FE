@@ -38,8 +38,8 @@ function ProductArticle({ isRow = false, itemData }:ProductArticleProps) {
         />
       </div>
       <div className={cx('infoBox')}>
-        <Text typography="t8" whiteSpace="nowrap">{itemData.brand}</Text>
-        <Text typography="t6">{itemData.name}</Text>
+        <Text className={cx('ellipsis')} typography="t8" whiteSpace="nowrap">{itemData.brand}</Text>
+        <Text className={cx('ellipsis')} typography="t6">{itemData.name}</Text>
         <div>
           <Text typography="t7" color="gray300">{itemData.category}</Text>
           <Heart width={16} height={14} color="gray300" changeColor="pink" />
