@@ -16,14 +16,14 @@ function ProgressBar({ progressCount = 5, currentProgress = 3 }:ProgressBarProps
 
   return (
     <div className={cx('container')}>
-      <div className={cx('progress-bar')} />
+      <div className={cx('progressBar')} />
       <div className={cx('progress')} style={{ width: `${((currentProgress - 1) / (progressCount - 1)) * 100}%` }} />
       {progressCountArr.map((num, idx) => {
         const leftPosition = `${(idx / (progressCount - 1)) * 100}%`;
         return (
           <span
             key={num}
-            className={cx('progress-steps', { active: currentProgress >= num })}
+            className={cx('progressSteps', { active: currentProgress >= num })}
             style={{ left: leftPosition }}
           >
             {num}

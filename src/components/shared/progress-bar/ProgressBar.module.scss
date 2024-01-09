@@ -1,0 +1,43 @@
+.container {
+    position: relative;
+    width: 185px;
+    height: 24px;
+    margin: 0 auto;
+
+    .progressBar {
+        position: absolute;
+        top: 50%;
+        width: inherit;
+        height: 3px;
+        transform: translateY(-50%);
+        background-color: var(--gray);
+    }
+
+    .progress {
+        position: absolute;
+        top: 50%;
+        height: 3px;
+        transform: translateY(-50%);
+        transition: all 0.25s ease-in-out;
+        background-color: var(--primary);
+    }
+
+    .progressSteps {
+        display: flex;
+        position: absolute;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        transform: translateX(-50%);
+        transition: all 0.3s ease-in-out;
+        border-radius: 50%;
+        background-color: var(--gray);
+        color: var(--white);
+        font-size: 12px;
+
+        &.active {
+            background-color: var(--primary);
+        }
+    }
+}
