@@ -18,7 +18,7 @@ const meta: Meta = {
         type: 'range',
         min: 1,
         max: 5,
-        step: 1, // 조절 간격
+        step: 1,
       },
     },
   },
@@ -38,5 +38,23 @@ export const CarWashDetailInput: Story = {
   args: {
     progressCount: 3,
     currentProgress: 1,
+  },
+};
+
+// CarWashDetailInput에 대한 argTypes를 따로 설정
+CarWashDetailInput.argTypes = {
+  progressCount: {
+    type: 'number',
+    min: 1,
+    max: 5,
+    step: 1,
+  },
+  currentProgress: {
+    control: {
+      type: 'range',
+      min: 1,
+      max: 3, // 원하는 max 값으로 설정
+      step: 1,
+    },
   },
 };
