@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -10,12 +10,11 @@ const cx = classNames.bind(styles);
 
 interface ProgressBarProps {
   progressCount?:number;
-  currentProgress?:number;
+  currentStep?:number;
+  setCurrentStep: (num: number) => void;
 }
 
-function ProgressBar({ progressCount = 5, currentProgress = 1 }:ProgressBarProps) {
-  const [currentStep, setCurrentStep] = useState(currentProgress);
-
+function ProgressBar({ progressCount = 5, currentStep = 1, setCurrentStep }:ProgressBarProps) {
   // progressCountArr는 currentStep가 변경되지 않는 한 재생성 X
   const progressCountArr = useMemo(() => {
     return Array.from({ length: progressCount }, (_, i) => { return i + 1; });
@@ -26,7 +25,6 @@ function ProgressBar({ progressCount = 5, currentProgress = 1 }:ProgressBarProps
 
   const handleClick = (num: number) => {
     setCurrentStep(num);
-    // console.log(num);
   };
 
   return (
