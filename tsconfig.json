@@ -68,6 +68,9 @@
       ],
       "@stories/*": [
         "src/stories/*"
+      ],
+      "@mocks/*": [
+        "src/mocks/*"
       ]
     }
   },
@@ -75,7 +78,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts"
+    ".next/types/**/*.ts",
+    "src/mocks/server.ts"
   ],
   "exclude": [
     "node_modules"
