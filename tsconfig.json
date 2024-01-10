@@ -68,8 +68,8 @@
       ],
       "@stories/*": [
         "src/stories/*"
-      ],
-    },
+      ]
+    }
   },
   "include": [
     "next-env.d.ts",
