@@ -5,17 +5,18 @@ interface FlexProps {
   justify?: CSSProperties['justifyContent']
   direction?: CSSProperties['flexDirection']
   children: React.ReactNode
+  gap?: number
   className?: string
 }
 
 function Flex({
-  align, justify, direction, children, className,
+  align, justify, direction, children, className, gap = 0,
 }: FlexProps) {
   const styles = useMemo(() => {
     return {
-      display: 'flex', alignItems: align, justifyContent: justify, flexDirection: direction,
+      display: 'flex', alignItems: align, justifyContent: justify, flexDirection: direction, gap: `${gap}px`,
     };
-  }, [align, justify, direction]);
+  }, [align, justify, direction, gap]);
 
   return (
     <div style={styles} className={className}>
