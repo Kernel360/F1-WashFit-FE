@@ -10,7 +10,7 @@ axiosInstance.interceptors.request.use(
      * request 직전 공통으로 진행할 작업
      */
     if (config && config.headers) {
-      // TODO 인증할 때 받은 토큰을 쿠키에 저장했다면 가져옵니다.
+      // TODO: 인증할 때 받은 토큰을 쿠키에 저장했다면 가져옵니다.
 
       // const token = getCookie('token');
       // if (token) {

@@ -6,5 +6,5 @@ export const axiosInstance: Axios = axios.create({
     'Content-Type': 'application/json',
     Accept: '*/*',
   },
-  timeout: 30000,
+  timeout: 3000,
 });
