@@ -13,12 +13,12 @@ interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
 const cx = classNames.bind(styles);
 
 const Radio = forwardRef<HTMLInputElement, RadioProps>(({
-  type, label, value,
+  type, label, value, ...props
 }, ref) => {
   return (
     <>
-      <input id={label} type="radio" ref={ref} value={value} />
-      <label className={cx({ [type]: true })} htmlFor={label}>
+      <input className={cx('input')} id={label} type="radio" ref={ref} value={value} {...props} />
+      <label className={cx('label', { [type]: true })} htmlFor={label}>
         {label}
       </label>
     </>

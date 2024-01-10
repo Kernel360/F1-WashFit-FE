@@ -1,48 +1,48 @@
-input[type="radio"] {
+.input[type="radio"] {
   display: none;
 }
 
-label {
+.label {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
 }
 
-label.gender {
+.label.gender {
   height: 48px;
   border-radius: 8px;
 }
 
-input[type="radio"] + label.gender {
+.input[type="radio"] + .label.gender {
   border: 1px solid var(--gray-100);
   background-color: var(--white);
   color: var(--gray-300);
 }
 
-input[type="radio"]:checked + label.gender {
+.input[type="radio"]:checked + .label.gender {
   background-color: var(--primary);
   color: var(--white);
 }
 
-label.ageGroup {
+.label.ageGroup {
   height: 47px;
   border-radius: 30px;
 }
 
-label.additionalInfo {
+.label.additionalInfo {
   height: 60px;
   border-radius: 10px;
 }
 
-input[type="radio"] + label.ageGroup,
-input[type="radio"] + label.additionalInfo {
+.input[type="radio"] + .label.ageGroup,
+.input[type="radio"] + .label.additionalInfo {
   background-color: var(--white-100);
   color: var(--gray-300);
 }
 
-input[type="radio"]:checked + label.ageGroup,
-input[type="radio"]:checked + label.additionalInfo {
+.input[type="radio"]:checked + .label.ageGroup,
+.input[type="radio"]:checked + .label.additionalInfo {
   background-color: var(--primary);
   color: var(--white-100);
 }
