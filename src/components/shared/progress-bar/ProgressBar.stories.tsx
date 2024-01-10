@@ -13,7 +13,7 @@ const meta: Meta = {
       max: 5,
       step: 1,
     },
-    currentProgress: {
+    currentStep: {
       control: {
         type: 'range',
         min: 1,
@@ -30,14 +30,14 @@ type Story = StoryObj<typeof meta>;
 export const CarDetailInput: Story = {
   args: {
     progressCount: 5,
-    currentProgress: 3,
+    currentStep: 3,
   },
 };
 
 export const CarWashDetailInput: Story = {
   args: {
     progressCount: 3,
-    currentProgress: 1,
+    currentStep: 1,
   },
 };
 
@@ -49,7 +49,7 @@ CarWashDetailInput.argTypes = {
     max: 5,
     step: 1,
   },
-  currentProgress: {
+  currentStep: {
     control: {
       type: 'range',
       min: 1,
