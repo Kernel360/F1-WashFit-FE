@@ -5,6 +5,7 @@ import localFont from 'next/font/local';
 import './globals.css';
 
 import { ModalContextProvider } from '@contexts/ModalContext';
+import MswProviders from '@providers/MswProvider';
 import StoreProvider from '@providers/StoreProvider';
 import TanstackQueryProvider from '@providers/TanstackQueryProvider';
 
@@ -31,13 +32,15 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={pretendard.className}>
-        <TanstackQueryProvider>
-          <StoreProvider>
-            <ModalContextProvider>
-              {children}
-            </ModalContextProvider>
-          </StoreProvider>
-        </TanstackQueryProvider>
+        <MswProviders>
+          <TanstackQueryProvider>
+            <StoreProvider>
+              <ModalContextProvider>
+                {children}
+              </ModalContextProvider>
+            </StoreProvider>
+          </TanstackQueryProvider>
+        </MswProviders>
         <div id="modal-root" />
         <div id="drawer-root" />
       </body>
