@@ -1,12 +1,11 @@
 $white: var(--white);
 
 .nav {
-    position: fixed;
+    position: sticky;
     top: 0;
     box-sizing: border-box;
     width: 100%;
     height: 48px;
-    padding: 0 24px;
     background-color: $white;
 
     &.transparent {
