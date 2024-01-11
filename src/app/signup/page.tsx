@@ -1,10 +1,7 @@
-/* eslint-disable max-len */
-
 'use client';
 
 import { useForm } from 'react-hook-form';
 
-// import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
 import classNames from 'classnames/bind';
 
 import Button from '@components/shared/button/Button';
@@ -15,33 +12,11 @@ import Spacing from '@components/shared/spacing/Spacing';
 import Text from '@components/shared/text/Text';
 import TextField from '@components/shared/text-field/TextField';
 import Title from '@components/shared/title/Title';
+import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
 
 import styles from './page.module.scss';
 
 const cx = classNames.bind(styles);
-
-const VALIDATION_MESSAGE_MAP: {
-  [key: string]: {
-    value?: RegExp,
-    message: string
-  }
-} = {
-  id: {
-    value: /^(?=.*[a-z])(?=.*\d)[a-z\d]{8,}$/,
-    message: '영문 소문자, 숫자 조합 8자 이상 입력해주세요',
-  },
-  email: {
-    value: /^[_a-zA-Z0-9-.]+@[.a-zA-Z0-9-]+\.[a-zA-Z]+$/,
-    message: '이메일 형식을 확인해주세요',
-  },
-  password: {
-    value: /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/,
-    message: '8~16자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요.',
-  },
-  confirmingPassword: {
-    message: '비밀번호를 확인해주세요.',
-  },
-};
 
 function SignupPage() {
   const {
@@ -90,11 +65,11 @@ function SignupPage() {
         isPasswordType
         {...register('confirmingPassword', {
           required: true,
-          // eslint-disable-next-line consistent-return
           validate: (confirmingPassword: string) => {
             if (watch('password') !== confirmingPassword) {
               return false;
             }
+            return true;
           },
         })}
         hasError={!!errors.confirmingPassword}
