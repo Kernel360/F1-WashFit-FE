@@ -50,8 +50,8 @@ function SignupPage() {
     mode: 'onBlur',
   });
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = () => {
+    // console.log(data);
   };
 
   return (
@@ -75,6 +75,7 @@ function SignupPage() {
         label="비밀번호"
         required
         placeholder="비밀번호"
+        isPasswordType
         {...register('password', {
           required: true,
           pattern: VALIDATION_MESSAGE_MAP.password.value,
@@ -86,6 +87,7 @@ function SignupPage() {
         label="비밀번호 확인"
         required
         placeholder="비밀번호 확인"
+        isPasswordType
         {...register('confirmingPassword', {
           required: true,
           // eslint-disable-next-line consistent-return
