@@ -38,9 +38,12 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextFiel
       {required && <Text typography="t6" display="inline-block" color="red">*</Text>}
       <Spacing size={12} />
       <Input ref={ref} aria-vaild={hasError} onFocus={handleFocus} onBlur={handleBlur} {...props} />
-      <Spacing size={12} />
+      <Spacing size={6} />
       {hasError && (
-        <Text typography="t7" color={labelColor} display="inline-block">{helpMessage}</Text>
+        <>
+          <Text typography="t7" color={labelColor} display="inline-block">{helpMessage}</Text>
+          <Spacing size={6} />
+        </>
       )}
     </div>
   );
