@@ -12,11 +12,12 @@ interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   hasError?: boolean
   helpMessage?: React.ReactNode
   required?: boolean
+  isPasswordType?: boolean
 }
 
 // eslint-disable-next-line prefer-arrow-callback
 const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextField({
-  label, hasError, helpMessage, required, onFocus, onBlur, ...props
+  label, hasError, helpMessage, required, onFocus, onBlur, isPasswordType = false, ...props
 }, ref) {
   const [focused, setFocused] = useState(false);
 
@@ -37,10 +38,20 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextFiel
       {label && <Text typography="t6" display="inline-block" color={labelColor}>{label}</Text>}
       {required && <Text typography="t6" display="inline-block" color="red">*</Text>}
       <Spacing size={12} />
-      <Input ref={ref} aria-vaild={hasError} onFocus={handleFocus} onBlur={handleBlur} {...props} />
-      <Spacing size={12} />
+      <Input
+        ref={ref}
+        aria-vaild={hasError}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
+        isPasswordType={isPasswordType}
+        {...props}
+      />
+      {hasError ? <Spacing size={6} /> : <Spacing size={12} />}
       {hasError && (
-        <Text typography="t7" color={labelColor} display="inline-block">{helpMessage}</Text>
+        <>
+          <Text typography="t7" color={labelColor} display="inline-block">{helpMessage}</Text>
+          <Spacing size={6} />
+        </>
       )}
     </div>
   );

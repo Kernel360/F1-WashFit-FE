@@ -42,8 +42,8 @@
       "@remote/*": [
         "src/remote/*"
       ],
-      "@constants": [
-        "src/constants/index"
+      "@constants/*": [
+        "src/constants/*"
       ],
       "@contexts/*": [
         "src/contexts/*"
