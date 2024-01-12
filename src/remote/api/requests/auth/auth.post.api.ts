@@ -4,7 +4,7 @@ import { postRequest } from '../requests.api';
 export const signup = async ({
   id, password, email, gender, age,
 }: ISignUp) => {
-  const response = postRequest<null, ISignUp>('/member/join', {
+  const response = await postRequest<null, ISignUp>('/member/join', {
     id, password, email, gender, age,
   });
 
