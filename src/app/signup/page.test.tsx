@@ -1,6 +1,7 @@
+/* eslint-disable import/order */
+import { describe, test, expect } from 'vitest';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from '@tests/test-utils';
-import { describe, test, expect } from 'vitest';
 
 import SignupPage from './page';
 
