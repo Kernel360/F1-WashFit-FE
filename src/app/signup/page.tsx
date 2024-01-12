@@ -1,10 +1,9 @@
-/* eslint-disable max-len */
+/* eslint-disable @typescript-eslint/no-misused-promises */
 
 'use client';
 
 import { useForm } from 'react-hook-form';
 
-// import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
 import classNames from 'classnames/bind';
 
 import Button from '@components/shared/button/Button';
@@ -15,47 +14,39 @@ import Spacing from '@components/shared/spacing/Spacing';
 import Text from '@components/shared/text/Text';
 import TextField from '@components/shared/text-field/TextField';
 import Title from '@components/shared/title/Title';
+import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
+import { ISignUp } from '@remote/api/types/auth';
+import useSignup from '@remote/queries/auth/useSignup';
 
 import styles from './page.module.scss';
 
 const cx = classNames.bind(styles);
 
-const VALIDATION_MESSAGE_MAP: {
-  [key: string]: {
-    value?: RegExp,
-    message: string
-  }
-} = {
-  id: {
-    value: /^(?=.*[a-z])(?=.*\d)[a-z\d]{8,}$/,
-    message: '영문 소문자, 숫자 조합 8자 이상 입력해주세요',
-  },
-  email: {
-    value: /^[_a-zA-Z0-9-.]+@[.a-zA-Z0-9-]+\.[a-zA-Z]+$/,
-    message: '이메일 형식을 확인해주세요',
-  },
-  password: {
-    value: /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/,
-    message: '8~16자의 영문 대/소문자, 숫자, 특수문자를 사용해 주세요.',
-  },
-  confirmingPassword: {
-    message: '비밀번호를 확인해주세요.',
-  },
-};
+type SignUpFormType = {
+  confirmPassword: string
+} & ISignUp;
 
 function SignupPage() {
   const {
-    register, handleSubmit, formState: { errors }, watch,
-  } = useForm({
+    register, handleSubmit, formState: { errors, isValid }, watch,
+  } = useForm<SignUpFormType>({
     mode: 'onBlur',
   });
 
-  const onSubmit = () => {
-    // console.log(data);
+  const { mutate } = useSignup();
+
+  const onSubmit = (data: SignUpFormType) => {
+    const {
+      id, password, email, gender, age,
+    } = data;
+    mutate({
+      id, password, email, gender, age,
+    });
   };
 
+  // TODO: 아이디 textfield onBlur 시 중복된 아이디 검사
+
   return (
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     <form onSubmit={handleSubmit(onSubmit)}>
       <Header displayLogo={false} />
       <Spacing size={20} />
@@ -88,17 +79,17 @@ function SignupPage() {
         required
         placeholder="비밀번호 확인"
         isPasswordType
-        {...register('confirmingPassword', {
+        {...register('confirmPassword', {
           required: true,
-          // eslint-disable-next-line consistent-return
-          validate: (confirmingPassword: string) => {
-            if (watch('password') !== confirmingPassword) {
+          validate: (confirmPassword: string) => {
+            if (watch('password') !== confirmPassword) {
               return false;
             }
+            return true;
           },
         })}
-        hasError={!!errors.confirmingPassword}
-        helpMessage={VALIDATION_MESSAGE_MAP.confirmingPassword.message}
+        hasError={!!errors.confirmPassword}
+        helpMessage={VALIDATION_MESSAGE_MAP.confirmPassword.message}
       />
       <TextField
         label="이메일"
@@ -128,7 +119,7 @@ function SignupPage() {
         <Radio type="ageGroup" label="60대 이상" value="60" {...register('age')} />
       </div>
       <Spacing size={50} />
-      <Button type="submit" size="medium" full>약관 동의하러 가기</Button>
+      <Button type="submit" disabled={!isValid} size="medium" full>약관 동의하러 가기</Button>
       <Spacing size={20} />
     </form>
   );
