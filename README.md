@@ -2,6 +2,7 @@
 
 - 배포 URL: https://f1-wash-pedia-fe.vercel.app
 - 스토리북 URL: https://www.chromatic.com/library?appId=659a0cf1b613430cc09b3672
+- 피그마 URL: https://www.figma.com/file/B4wGiQ4M4k3mtcSyyK0ATf/washpedia?type=design&node-id=241-4547&mode=design&t=IuuBM2gGXeTFVTIW-0
 
 
 <br />
