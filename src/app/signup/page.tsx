@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
+
 'use client';
 
 import { useForm } from 'react-hook-form';
@@ -13,24 +15,38 @@ import Text from '@components/shared/text/Text';
 import TextField from '@components/shared/text-field/TextField';
 import Title from '@components/shared/title/Title';
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
+import { ISignUp } from '@remote/api/types/auth';
+import useSignup from '@remote/queries/auth/useSignup';
 
 import styles from './page.module.scss';
 
 const cx = classNames.bind(styles);
 
+type SignUpFormType = {
+  confirmPassword: string
+} & ISignUp;
+
 function SignupPage() {
   const {
-    register, handleSubmit, formState: { errors }, watch,
-  } = useForm({
+    register, handleSubmit, formState: { errors, isValid }, watch,
+  } = useForm<SignUpFormType>({
     mode: 'onBlur',
   });
 
-  const onSubmit = () => {
-    // console.log(data);
+  const { mutate } = useSignup();
+
+  const onSubmit = (data: SignUpFormType) => {
+    const {
+      id, password, email, gender, age,
+    } = data;
+    mutate({
+      id, password, email, gender, age,
+    });
   };
 
+  // TODO: 아이디 textfield onBlur 시 중복된 아이디 검사
+
   return (
-    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     <form onSubmit={handleSubmit(onSubmit)}>
       <Header displayLogo={false} />
       <Spacing size={20} />
@@ -63,17 +79,17 @@ function SignupPage() {
         required
         placeholder="비밀번호 확인"
         isPasswordType
-        {...register('confirmingPassword', {
+        {...register('confirmPassword', {
           required: true,
-          validate: (confirmingPassword: string) => {
-            if (watch('password') !== confirmingPassword) {
+          validate: (confirmPassword: string) => {
+            if (watch('password') !== confirmPassword) {
               return false;
             }
             return true;
           },
         })}
-        hasError={!!errors.confirmingPassword}
-        helpMessage={VALIDATION_MESSAGE_MAP.confirmingPassword.message}
+        hasError={!!errors.confirmPassword}
+        helpMessage={VALIDATION_MESSAGE_MAP.confirmPassword.message}
       />
       <TextField
         label="이메일"
@@ -103,7 +119,7 @@ function SignupPage() {
         <Radio type="ageGroup" label="60대 이상" value="60" {...register('age')} />
       </div>
       <Spacing size={50} />
-      <Button type="submit" size="medium" full>약관 동의하러 가기</Button>
+      <Button type="submit" disabled={!isValid} size="medium" full>약관 동의하러 가기</Button>
       <Spacing size={20} />
     </form>
   );
