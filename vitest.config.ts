@@ -22,10 +22,15 @@ export default defineConfig({
       { find: '@hooks', replacement: path.resolve(__dirname, './src/hooks') },
       { find: '@providers', replacement: path.resolve(__dirname, './src/providers') },
       { find: '@stories', replacement: path.resolve(__dirname, './src/stories') },
+      { find: '@tests', replacement: path.resolve(__dirname, './src/tests') },
+      { find: '@mocks', replacement: path.resolve(__dirname, './src/mocks') },
+      { find: '@types', replacement: path.resolve(__dirname, './src/types') },
     ],
   },
   plugins: [react()],
   test: {
+    globals: true,
     environment: 'jsdom',
+    setupFiles: './vitest.setup.ts',
   },
 });

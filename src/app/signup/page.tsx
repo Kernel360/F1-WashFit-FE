@@ -28,7 +28,7 @@ type SignUpFormType = {
 
 function SignupPage() {
   const {
-    register, handleSubmit, formState: { errors, isValid }, watch,
+    register, handleSubmit, formState: { errors, isValid, isDirty }, watch,
   } = useForm<SignUpFormType>({
     mode: 'onBlur',
   });
@@ -119,7 +119,7 @@ function SignupPage() {
         <Radio type="ageGroup" label="60대 이상" value="60" {...register('age')} />
       </div>
       <Spacing size={50} />
-      <Button type="submit" disabled={!isValid} size="medium" full>약관 동의하러 가기</Button>
+      <Button type="submit" disabled={!isValid || !isDirty} size="medium" full>약관 동의하러 가기</Button>
       <Spacing size={20} />
     </form>
   );

@@ -34,7 +34,7 @@ function Button({
     };
   }, [disabled, full, weak, color, size, css]);
   return (
-    <button style={styles} {...props}>{children}</button>
+    <button style={styles} disabled={disabled} {...props}>{children}</button>
   );
 }
 

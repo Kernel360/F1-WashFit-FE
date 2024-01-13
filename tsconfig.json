@@ -74,6 +74,9 @@
       ],
       "@types/*": [
         "src/types/*"
+      ],
+      "@tests/*": [
+        "src/tests/*"
       ]
     }
   },
