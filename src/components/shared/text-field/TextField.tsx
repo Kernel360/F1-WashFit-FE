@@ -46,7 +46,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextFiel
         isPasswordType={isPasswordType}
         {...props}
       />
-      {hasError ? <Spacing size={6} /> : <Spacing size={12} />}
+      {hasError ? <Spacing size={6} /> : <Spacing size={20} />}
       {hasError && (
         <>
           <Text typography="t7" color={labelColor} display="inline-block">{helpMessage}</Text>

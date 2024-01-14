@@ -1,0 +1,18 @@
+.linkContainer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
+    li {
+        position: relative;
+        color: var(--tertiary);
+        font-size: 12px;
+
+        &:not(:last-child)::after {
+            content: "|";
+            display: inline-block;
+            position: absolute;
+            margin-left: 9px;
+        }
+    }
+}
