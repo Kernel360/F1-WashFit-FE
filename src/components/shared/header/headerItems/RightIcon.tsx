@@ -1,28 +1,33 @@
+'use client';
+
+import { useState } from 'react';
+
 import Link from 'next/link';
 
+import FillHeart from '@components/icons/FilldHeart';
 import Heart from '@components/icons/Heart';
+import Search from '@components/icons/Search';
 import Share from '@components/icons/Share';
-import Text from '@shared/text/Text';
 
 import { RightIconProps } from '../types/headerType';
 
 function RightIcon({
   className,
-  isLogin,
   displayLogo,
   displayRightIcon,
 }: RightIconProps) {
-  // TODO: 로그아웃
+  const [isSaved, setIsSaved] = useState(false);
+
+  const handleHeartClick = () => {
+    setIsSaved((prev) => { return !prev; });
+  };
+
   if (displayLogo) {
     return (
       <li className={className}>
-        {isLogin
-          ? (<Text typography="t7" color="gray300">로그아웃</Text>)
-          : (
-            <Link href="/login">
-              <Text typography="t7" color="gray300">로그인</Text>
-            </Link>
-          )}
+        <Link href="/search">
+          <Search />
+        </Link>
       </li>
     );
   }
@@ -31,7 +36,9 @@ function RightIcon({
     return (
       <ul className={className}>
         <li>
-          <Heart width={20} height={18} />
+          {isSaved
+            ? <FillHeart onClick={handleHeartClick} />
+            : <Heart onClick={handleHeartClick} />}
         </li>
         <li>
           <Share />

@@ -7,18 +7,16 @@ import RightIcon from './headerItems/RightIcon';
 import { HeaderProps } from './types/headerType';
 
 export default function Header({
-  isLogin = false,
-  displayLogo = true, isTransparent = false, displayRightIcon = false,
+  displayLogo = false, isTransparent = false, displayRightIcon = true,
 }:HeaderProps) {
   const cx = classNames.bind(styles);
   return (
     <nav className={cx('nav', { transparent: isTransparent })}>
       <ul className={cx('container')}>
-        {!displayLogo && <LeftIcon className={cx('left')} />}
+        {!displayLogo && <LeftIcon displayRightIcon={displayRightIcon} className={cx('left')} />}
         {displayLogo && <CenterIcon className={cx('logo')} />}
         <RightIcon
           className={cx('right')}
-          isLogin={isLogin}
           displayLogo={displayLogo}
           displayRightIcon={displayRightIcon}
         />
