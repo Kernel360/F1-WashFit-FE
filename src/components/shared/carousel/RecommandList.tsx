@@ -19,6 +19,7 @@ function RecommandList({ recommandListData }: { recommandListData: IRecommandLis
       autoplay={{ delay: 2000 }}
       loop
       speed={2000}
+      loopAdditionalSlides={1}
     >
       {recommandListData.map((slide) => {
         return (

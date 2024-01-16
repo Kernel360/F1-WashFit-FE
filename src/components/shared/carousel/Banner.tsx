@@ -15,8 +15,8 @@ function Banner({ bannerData }: { bannerData: IBannerdata[] }) {
       spaceBetween={20}
       slidesPerView={1}
       pagination={{ clickable: true, type: 'bullets' }}
-      slidesOffsetBefore={30}
       slidesOffsetAfter={20}
+      slidesOffsetBefore={30}
       autoplay={{ delay: 2000 }}
       loop
       speed={2000}
