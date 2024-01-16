@@ -14,6 +14,7 @@
   --pink: #F67272;
 
   /* -------------- z-index -------------- */
+  --header-zindex: 2;
   --dimmed-zindex: 10;
   --modal-zindex: 11;
 }

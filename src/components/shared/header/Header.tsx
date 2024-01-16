@@ -8,11 +8,11 @@ import { HeaderProps } from './types/headerType';
 
 export default function Header({
   isLogin = false,
-  displayLogo = true, isTransparent = false, displayRightIcon = false,
-}:HeaderProps) {
+  displayLogo = true, isTransparent = false, displayRightIcon = false, className,
+}: HeaderProps) {
   const cx = classNames.bind(styles);
   return (
-    <nav className={cx('nav', { transparent: isTransparent })}>
+    <nav className={cx('nav', className, { transparent: isTransparent })}>
       <ul className={cx('container')}>
         {!displayLogo && <LeftIcon className={cx('left')} />}
         {displayLogo && <CenterIcon className={cx('logo')} />}
