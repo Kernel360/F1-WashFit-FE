@@ -7,13 +7,11 @@ const meta = {
   component: Header,
   tags: ['autodocs'],
   args: {
-    isLogin: false,
     displayLogo: true,
     isTransparent: false,
     displayRightIcon: false,
   },
   argTypes: {
-    isLogin: { control: 'boolean' },
     displayLogo: { control: 'boolean' },
     isTransparent: { control: 'boolean' },
     displayRightIcon: { control: 'boolean' },
@@ -23,18 +21,8 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const LoggedIn:Story = {
+export const MainPage:Story = {
   args: {
-    isLogin: true,
-    displayLogo: true,
-    isTransparent: false,
-    displayRightIcon: false,
-  },
-};
-
-export const LoggedOut:Story = {
-  args: {
-    isLogin: false,
     displayLogo: true,
     isTransparent: false,
     displayRightIcon: false,
