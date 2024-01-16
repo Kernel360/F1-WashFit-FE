@@ -8,6 +8,7 @@ export const colors = {
   gray300: 'var(--gray-300)',
   gray400: 'var(--gray-400)',
   tertiary: 'var(--tertiary)',
+  tertiary300: 'var(--tertiary-300)',
   black: 'var(--black)',
   white: 'var(--white)',
   white100: 'var(--white-100)',
