@@ -12,9 +12,7 @@ import Text from '@components/shared/text/Text';
 
 import styles from './page.module.scss';
 
-const Banner = dynamic(() => { return import('@components/shared/carousel/Banner'); }, {
-  loading: () => { return <h2>안녕핫[ㅔ요</h2>; },
-});
+const Banner = dynamic(() => { return import('@components/shared/carousel/Banner'); });
 const RecommandList = dynamic(() => { return import('@components/shared/carousel/RecommandList'); });
 
 const cx = classNames.bind(styles);
