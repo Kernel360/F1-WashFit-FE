@@ -1,0 +1,32 @@
+.headerWrapper {
+  padding: 0 24px;
+
+  .header {
+    z-index: 999;
+  }
+}
+
+.mainContainer {
+  .searchBarWrapper {
+    padding: 0 24px;
+  }
+
+  .bannerWrapper {
+    max-height: 140px;
+    overflow-y: hidden;
+  }
+
+  .recommandTextWrapper {
+    padding: 0 24px;
+  }
+
+  .productListContainer {
+    padding: 0 24px 80px;
+
+    .productArticleContainer {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+  }
+}
