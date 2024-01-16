@@ -26,6 +26,11 @@ $white: var(--white);
     .hide {
         display: none;
     }
+
+    &.home {
+        z-index: var(--header-zindex);
+        padding: 0 24px;
+    }
 }
 
 .container {

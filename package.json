@@ -28,7 +28,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.49.2",
     "react-redux": "^9.0.4",
-    "swiper": "^10"
+    "swiper": "^11"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.6",

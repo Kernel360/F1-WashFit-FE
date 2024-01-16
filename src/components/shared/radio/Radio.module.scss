@@ -46,3 +46,21 @@
   background-color: var(--primary);
   color: var(--white-100);
 }
+
+.label.filter {
+  height: 32px;
+  border: 6px;
+  border-radius: 6px;
+}
+
+.input[type="radio"] + .label.filter {
+  border: 1px solid var(--tertiary);
+  background-color: var(--white);
+  color: var(--tertiary);
+}
+
+.input[type="radio"]:checked + .label.filter {
+  border: none;
+  background-color: var(--primary);
+  color: var(--white);
+}

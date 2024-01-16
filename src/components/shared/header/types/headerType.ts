@@ -10,6 +10,7 @@ interface RightIconProps extends CommonProps {
 
 interface HeaderProps extends CommonProps {
   isTransparent?: boolean;
+  className?: string
 }
 
 export type { HeaderProps, RightIconProps };
