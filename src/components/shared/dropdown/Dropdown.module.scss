@@ -1,0 +1,56 @@
+.container {
+  position: relative;
+
+  &.favorite {
+    width: 80px;
+  }
+
+  .selectedValue {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &.favorite {
+      width: 80px;
+      padding: 4px 4px 4px 8px;
+      border-radius: 8px;
+      background-color: var(--tertiary-200);
+    }
+  }
+
+  .menu {
+    position: absolute;
+    z-index: 3;
+    top: 34px;
+    width: 80px;
+    border: 1px solid var(--tertiary-100);
+    border-radius: 8px;
+
+    &.favorite {
+      background-color: var(--tertiary-200);
+      color: var(--tertiary-400);
+    }
+
+    .item {
+      &.favorite {
+        padding: 4px 8px;
+        border-bottom: 1px solid var(--tertiary-100);
+        font-size: 14px;
+      }
+
+      &:last-child {
+        border: none;
+      }
+    }
+
+    label {
+      &.favorite {
+        font-size: inherit;
+      }
+    }
+
+    .input[type="radio"] {
+      display: none;
+    }
+  }
+}
