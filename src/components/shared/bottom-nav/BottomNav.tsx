@@ -6,6 +6,8 @@ import { usePathname } from 'next/navigation';
 
 import Channel from '@components/icons/Channel';
 import Favorite from '@components/icons/Favorite';
+import FilledFavorite from '@components/icons/FilledFavorite';
+import FilledHome from '@components/icons/FilledHome';
 import Home from '@components/icons/Home';
 import Map from '@components/icons/Map';
 import Profile from '@components/icons/Profile';
@@ -31,13 +33,13 @@ function BottomNav() {
         </li>
         <li>
           <Link href="/favorite">
-            <Favorite color={filteredPathName.startsWith('favorite') ? 'primary' : 'black'} />
+            {filteredPathName.startsWith('favorite') ? <FilledFavorite /> : <Favorite />}
             <Text typography="t7" fontWeight="200" color={filteredPathName.startsWith('favorite') ? 'primary' : 'black'}>즐겨찾기</Text>
           </Link>
         </li>
         <li>
           <Link href="/">
-            <Home color={filteredPathName === '' ? 'primary' : 'black'} />
+            {filteredPathName === '' ? <FilledHome /> : <Home />}
             <Text typography="t7" fontWeight="200" color={filteredPathName === '' ? 'primary' : 'black'}>홈</Text>
           </Link>
         </li>
