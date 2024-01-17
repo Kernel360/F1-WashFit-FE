@@ -6,4 +6,9 @@ export const authHandlers = [
   http.post(`${process.env.NEXT_PUBLIC_BASE_URL}/member/join`, () => {
     return HttpResponse.json('회원가입 성공!!');
   }),
+
+  /* ----- 로그인 api ----- */
+  http.post(`${process.env.NEXT_PUBLIC_BASE_URL}/member/login`, () => {
+    return HttpResponse.json('로그인 성공!!');
+  }),
 ];
