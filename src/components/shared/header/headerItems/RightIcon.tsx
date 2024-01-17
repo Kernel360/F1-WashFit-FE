@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import Link from 'next/link';
 
-import FillHeart from '@components/icons/FilldHeart';
+import FilledHeart from '@/components/icons/FilledHeart';
 import Heart from '@components/icons/Heart';
 import Search from '@components/icons/Search';
 import Share from '@components/icons/Share';
@@ -13,8 +13,7 @@ import { RightIconProps } from '../types/headerType';
 
 function RightIcon({
   className,
-  displayLogo,
-  displayRightIcon,
+  displayRightIconType,
 }: RightIconProps) {
   const [isSaved, setIsSaved] = useState(false);
 
@@ -22,7 +21,7 @@ function RightIcon({
     setIsSaved((prev) => { return !prev; });
   };
 
-  if (displayLogo) {
+  if (displayRightIconType === 'search') {
     return (
       <li className={className}>
         <Link href="/search">
@@ -32,12 +31,12 @@ function RightIcon({
     );
   }
 
-  if (displayRightIcon) {
+  if (displayRightIconType === 'heartShare') {
     return (
       <ul className={className}>
         <li>
           {isSaved
-            ? <FillHeart onClick={handleHeartClick} />
+            ? <FilledHeart onClick={handleHeartClick} />
             : <Heart onClick={handleHeartClick} />}
         </li>
         <li>
