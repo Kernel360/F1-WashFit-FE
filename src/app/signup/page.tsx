@@ -48,7 +48,7 @@ function SignupPage() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Header displayLogo={false} />
+      <Header isDisplayLogo={false} />
       <Spacing size={20} />
       <Title title="회원가입" />
       <TextField
