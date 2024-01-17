@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 import styles from './Radio.module.scss';
 
 interface RadioProps extends InputHTMLAttributes<HTMLInputElement> {
-  type: 'gender' | 'ageGroup' | 'additionalInfo'
+  type: 'gender' | 'ageGroup' | 'additionalInfo' | 'filter'
   label: string
   value: string | number
 }

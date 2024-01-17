@@ -9,14 +9,14 @@ import { IItemData } from './types/ProductArticleType';
 
 interface ProductArticleProps {
   isRow?: boolean;
-  itemData:IItemData
+  itemData: IItemData
 }
 
 const cx = classNames.bind(styles);
 const safeIcon = '/assets/icons/safe.png';
 const warningIcon = '/assets/icons/warning.png';
 
-function ProductArticle({ isRow = false, itemData }:ProductArticleProps) {
+function ProductArticle({ isRow = false, itemData }: ProductArticleProps) {
   return (
     <article className={cx('container', { row: isRow })}>
       <div className={cx('imgBox')}>
@@ -37,7 +37,7 @@ function ProductArticle({ isRow = false, itemData }:ProductArticleProps) {
         />
       </div>
       <div className={cx('infoBox')}>
-        <Text className={cx('ellipsis')} typography="t8" whiteSpace="nowrap">{itemData.brand}</Text>
+        <Text className={cx('ellipsis')} typography="t8" whiteSpace="nowrap" color="primary">{itemData.brand}</Text>
         <Text className={cx('ellipsis')} typography="t6">{itemData.name}</Text>
         <div>
           <Text typography="t7" color="gray300">{itemData.category}</Text>
