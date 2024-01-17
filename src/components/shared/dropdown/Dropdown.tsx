@@ -46,8 +46,8 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>(({
   return (
     <div className={cx('container', { [type]: true })} ref={containerRef}>
       <button onClick={openDropdownMenu} className={cx('selectedValue', { [type]: true })}>
-        <Text typography="t6" color="tertiary200">{label}</Text>
-        <Expand isRotate={isOpen} color="tertiary200" />
+        <Text typography="t6" color="tertiary400">{label}</Text>
+        <Expand isRotate={isOpen} color="tertiary400" />
       </button>
       {isOpen && (
         <ul className={cx('menu', { [type]: true })}>

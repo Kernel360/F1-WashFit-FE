@@ -14,7 +14,7 @@
       width: 80px;
       padding: 4px 4px 4px 8px;
       border-radius: 8px;
-      background-color: var(--tertiary-400);
+      background-color: var(--tertiary-200);
     }
   }
 
@@ -27,8 +27,8 @@
     border-radius: 8px;
 
     &.favorite {
-      background-color: var(--tertiary-400);
-      color: var(--tertiary-200);
+      background-color: var(--tertiary-200);
+      color: var(--tertiary-400);
     }
 
     .item {
