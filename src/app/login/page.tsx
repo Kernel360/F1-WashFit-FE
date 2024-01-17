@@ -27,7 +27,7 @@ function LoginPage() {
   };
   return (
     <main>
-      <Header displayLogo={false} />
+      <Header isDisplayLogo={false} />
       <Spacing size={30} />
       <form onSubmit={handleSubmit(onSubmit)}>
         <Title title="로그인" size={20} />

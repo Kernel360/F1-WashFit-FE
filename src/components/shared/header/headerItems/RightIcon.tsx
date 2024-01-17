@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import Link from 'next/link';
 
-import FilledHeart from '@/components/icons/FilledHeart';
+import FilledHeart from '@components/icons/FilledHeart';
 import Heart from '@components/icons/Heart';
 import Search from '@components/icons/Search';
 import Share from '@components/icons/Share';
