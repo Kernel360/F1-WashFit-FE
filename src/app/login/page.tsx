@@ -12,22 +12,31 @@ import Header from '@components/shared/header/Header';
 import Spacing from '@components/shared/spacing/Spacing';
 import TextField from '@components/shared/text-field/TextField';
 import Title from '@components/shared/title/Title';
+import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
 import { ISignIn } from '@remote/api/types/auth';
+import useLogin from '@remote/queries/auth/useLogin';
 
 import styles from './page.module.scss';
 
 const cx = classNames.bind(styles);
 
 function LoginPage() {
-  const { register, handleSubmit } = useForm<ISignIn>();
+  const { register, handleSubmit, formState: { isValid } } = useForm<ISignIn>();
+  const { mutate } = useLogin();
 
-  // eslint-disable-next-line @typescript-eslint/require-await
-  const onSubmit = async () => {
-    // console.log(data);
+  const onSubmit = (data: ISignIn) => {
+    const {
+      id, password,
+    } = data;
+    mutate({
+      id, password,
+    });
   };
+
+  // TODO: api return 값에 따라 error처리
   return (
     <main>
-      <Header displayLogo={false} />
+      <Header isDisplayLogo={false} />
       <Spacing size={30} />
       <form onSubmit={handleSubmit(onSubmit)}>
         <Title title="로그인" size={20} />
@@ -35,16 +44,17 @@ function LoginPage() {
           label="아이디"
           required
           placeholder="아이디"
-          {...register('id')}
+          {...register('id', { required: true })}
         />
         <TextField
           label="비밀번호"
           required
           placeholder="비밀번호"
-          {...register('password')}
+          {...register('password', { required: true })}
+          helpMessage={VALIDATION_MESSAGE_MAP.failedLogin.message}
         />
         <Spacing size={30} />
-        <Button type="submit" size="medium" full>
+        <Button type="submit" disabled={!isValid} size="medium" full>
           로그인
         </Button>
         <Spacing size={20} />
