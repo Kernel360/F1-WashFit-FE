@@ -7,58 +7,69 @@ const meta = {
   component: Header,
   tags: ['autodocs'],
   args: {
-    isLogin: false,
-    displayLogo: true,
-    isTransparent: false,
-    displayRightIcon: false,
   },
   argTypes: {
-    isLogin: { control: 'boolean' },
-    displayLogo: { control: 'boolean' },
+    isDisplayLogo: { control: 'boolean' },
     isTransparent: { control: 'boolean' },
-    displayRightIcon: { control: 'boolean' },
+    children: { control: 'string' },
+    displayRightIconType: { control: 'string' },
   },
 }satisfies Meta<typeof Header>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const LoggedIn:Story = {
+export const MainPage:Story = {
   args: {
-    isLogin: true,
-    displayLogo: true,
+    isDisplayLogo: true,
     isTransparent: false,
-    displayRightIcon: false,
+    displayRightIconType: 'search',
   },
 };
 
-export const LoggedOut:Story = {
+export const OtherPage:Story = {
   args: {
-    isLogin: false,
-    displayLogo: true,
+    isDisplayLogo: false,
     isTransparent: false,
-    displayRightIcon: false,
   },
 };
 
-export const NotMainPage:Story = {
+export const FavoritePage:Story = {
   args: {
-    displayLogo: false,
+    isDisplayLogo: false,
     isTransparent: false,
-    displayRightIcon: false,
+    children: '즐겨찾기',
+  },
+};
+
+export const CarInfoPage:Story = {
+  args: {
+    isDisplayLogo: false,
+    isTransparent: false,
+    children: '나의 차량 정보',
+  },
+};
+
+export const CarWashInfoPage:Story = {
+  args: {
+    isDisplayLogo: false,
+    isTransparent: false,
+    children: '나의 세차 정보',
   },
 };
 
 export const MapPage:Story = {
   args: {
-    displayLogo: false,
+    isDisplayLogo: false,
     isTransparent: true,
   },
 };
 
 export const ProductPage:Story = {
   args: {
-    displayLogo: false,
-    displayRightIcon: true,
+    isDisplayLogo: false,
+    isTransparent: false,
+    children: '홈',
+    displayRightIconType: 'heartShare',
   },
 };

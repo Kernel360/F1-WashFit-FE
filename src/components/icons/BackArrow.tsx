@@ -8,7 +8,7 @@ interface BackProps {
 }
 
 function BackArrow({
-  width = 9, height = 16, color = 'black', onClick,
+  width = 7, height = 14, color = 'black', onClick,
 }:BackProps) {
   return (
     <svg width={width} height={height} viewBox="0 0 9 16" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>

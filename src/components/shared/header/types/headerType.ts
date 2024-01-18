@@ -1,16 +1,17 @@
-interface CommonProps {
-  isLogin?: boolean;
-  displayLogo?: boolean;
-  displayRightIcon?: boolean;
-}
-
-interface RightIconProps extends CommonProps {
+interface LeftIconProps {
   className?: string;
+  children?: React.ReactNode;
+  isDisplayLogo?:boolean
+}
+interface RightIconProps {
+  className?: string;
+  displayRightIconType?:string;
+
 }
 
-interface HeaderProps extends CommonProps {
+interface HeaderProps extends LeftIconProps {
   isTransparent?: boolean;
-  className?: string
+  displayRightIconType?:string;
 }
 
-export type { HeaderProps, RightIconProps };
+export type { HeaderProps, LeftIconProps, RightIconProps };

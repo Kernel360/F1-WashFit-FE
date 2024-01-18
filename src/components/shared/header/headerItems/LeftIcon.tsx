@@ -1,14 +1,33 @@
+import Link from 'next/link';
+
 import BackArrow from '@components/icons/BackArrow';
+import Logo from '@components/icons/Logo';
+import Text from '@components/shared/text/Text';
 
-interface LeftIconProps {
-  className: string;
-}
+import { LeftIconProps } from '../types/headerType';
 
-function LeftIcon({ className }: LeftIconProps) {
+function LeftIcon({ className, children, isDisplayLogo }: LeftIconProps) {
+  if (isDisplayLogo) {
+    return (
+      <li className={className}>
+        <Link href="/">
+          <Logo />
+        </Link>
+      </li>
+    );
+  }
+
   return (
-    <li className={className}>
-      <BackArrow />
-    </li>
+    <ul className={className}>
+      <li>
+        <BackArrow />
+      </li>
+      {children && (
+      <li>
+        <Text>{children}</Text>
+      </li>
+      )}
+    </ul>
   );
 }
 export default LeftIcon;

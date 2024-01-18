@@ -41,7 +41,7 @@ function ProductArticle({ isRow = false, itemData }: ProductArticleProps) {
         <Text className={cx('ellipsis')} typography="t6">{itemData.name}</Text>
         <div>
           <Text typography="t7" color="gray300">{itemData.category}</Text>
-          <Heart width={16} height={14} color="gray300" changeColor="pink" />
+          <Heart width={16} height={14} color="gray300" />
         </div>
       </div>
     </article>
