@@ -5,9 +5,9 @@ import localFont from 'next/font/local';
 import './globals.css';
 
 import { ModalContextProvider } from '@contexts/ModalContext';
-import MswProviders from '@providers/MswProvider';
+import MockProvider from '@providers/MockProvider';
+import QueryProvider from '@providers/QueryProvider';
 import StoreProvider from '@providers/StoreProvider';
-import TanstackQueryProvider from '@providers/TanstackQueryProvider';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -32,16 +32,16 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={pretendard.className}>
-        <MswProviders>
-          <TanstackQueryProvider>
+        <MockProvider>
+          <QueryProvider>
             <StoreProvider>
               <ModalContextProvider>
                 {children}
               </ModalContextProvider>
             </StoreProvider>
-          </TanstackQueryProvider>
-        </MswProviders>
-        <div id="modal-root" />
+          </QueryProvider>
+        </MockProvider>
+        <div id="portal-root" />
         <div id="drawer-root" />
       </body>
     </html>
