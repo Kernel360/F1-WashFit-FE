@@ -9,12 +9,12 @@ import styles from './ProgressBar.module.scss';
 const cx = classNames.bind(styles);
 
 interface ProgressBarProps {
-  progressCount?:number;
-  currentStep?:number;
-  setCurrentStep: (num: number) => void;
+  progressCount?: number;
+  currentStep?: number;
+  setCurrentStep?: (num: number) => void;
 }
 
-function ProgressBar({ progressCount = 5, currentStep = 1, setCurrentStep }:ProgressBarProps) {
+function ProgressBar({ progressCount = 5, currentStep = 1, setCurrentStep }: ProgressBarProps) {
   // progressCountArr는 currentStep가 변경되지 않는 한 재생성 X
   const progressCountArr = useMemo(() => {
     return Array.from({ length: progressCount }, (_, i) => { return i + 1; });
@@ -24,7 +24,7 @@ function ProgressBar({ progressCount = 5, currentStep = 1, setCurrentStep }:Prog
   const progressBarWidth = useMemo(() => { return `${((currentStep - 1) / (progressCount - 1)) * 100}%`; }, [currentStep, progressCount]);
 
   const handleClick = (num: number) => {
-    setCurrentStep(num);
+    setCurrentStep?.(num);
   };
 
   return (
