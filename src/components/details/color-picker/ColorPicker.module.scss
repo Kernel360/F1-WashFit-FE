@@ -1,0 +1,12 @@
+.colorPickerContainer {
+  .input[type="radio"] {
+    display: none;
+  }
+
+  .label {
+    width: 80px;
+    height: 80px;
+    border: 1px solid var(--gray-100);
+    border-radius: 50%;
+  }
+}
