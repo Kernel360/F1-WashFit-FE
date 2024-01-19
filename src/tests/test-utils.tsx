@@ -4,21 +4,21 @@ import { PropsWithChildren, ReactElement } from 'react';
 import { render } from '@testing-library/react';
 
 import { ModalContextProvider } from '@contexts/ModalContext';
-import MswProviders from '@providers/MswProvider';
+import MockProvider from '@providers/MockProvider';
+import QueryProvider from '@providers/QueryProvider';
 import StoreProvider from '@providers/StoreProvider';
-import TanstackQueryProvider from '@providers/TanstackQueryProvider';
 
 function AllProviders({ children }: PropsWithChildren) {
   return (
-    <MswProviders>
-      <TanstackQueryProvider>
+    <MockProvider>
+      <QueryProvider>
         <StoreProvider>
           <ModalContextProvider>
             {children}
           </ModalContextProvider>
         </StoreProvider>
-      </TanstackQueryProvider>
-    </MswProviders>
+      </QueryProvider>
+    </MockProvider>
   );
 }
 
