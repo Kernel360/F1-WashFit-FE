@@ -16,7 +16,7 @@ interface FixedBottomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>
 }
 
 function FixedBottomButton({ children, onClick, disabled }: FixedBottomButtonProps) {
-  const portalRoot = document.getElementById('modal-root');
+  const portalRoot = document.getElementById('portal-root');
   if (portalRoot == null) {
     return null;
   }
