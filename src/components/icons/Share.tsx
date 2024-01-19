@@ -8,7 +8,7 @@ interface ShareProps {
 }
 
 function Share({
-  width = 18, height = 20, color = 'black', onClick,
+  width = 16, height = 18, color = 'black', onClick,
 }: ShareProps) {
   return (
     <svg width={width} height={height} viewBox="0 0 18 20" fill="none" xmlns="http://www.w3.org/2000/svg" onClick={onClick}>
