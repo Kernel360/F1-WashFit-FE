@@ -1,8 +1,7 @@
 import { FieldValues, UseFormRegister } from 'react-hook-form';
 
-import Description from '@additional-info/description/Description';
-
-import { IAdditionalInfo } from '@/remote/api/types/additional-info';
+import Description from '@components/additional-info/description/Description';
+import { IAdditionalInfo } from '@remote/api/types/additional-info';
 import FixedBottomButton from '@shared/fixedBottomButton/FixedBottomButton';
 import Flex from '@shared/flex/Flex';
 import Radio from '@shared/radio/Radio';

@@ -1,10 +1,10 @@
 import { FieldValues, UseFormRegister } from 'react-hook-form';
 
-import ColorPicker from '@additional-info/car-details/color-picker/ColorPicker';
-import Description from '@additional-info/description/Description';
 import classNames from 'classnames/bind';
 
-import { IAdditionalInfo } from '@/remote/api/types/additional-info';
+import ColorPicker from '@components/additional-info/car-details/color-picker/ColorPicker';
+import Description from '@components/additional-info/description/Description';
+import { IAdditionalInfo } from '@remote/api/types/additional-info';
 import FixedBottomButton from '@shared/fixedBottomButton/FixedBottomButton';
 import Spacing from '@shared/spacing/Spacing';
 

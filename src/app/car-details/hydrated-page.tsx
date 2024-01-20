@@ -5,10 +5,9 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import CarColorPicker from '@additional-info/car-details/CarColorPicker';
-import CarDetails from '@additional-info/car-details/CarDetails';
-import DetailsLoading from '@additional-info/details-loading/DetailsLoading';
-
+import CarColorPicker from '@components/additional-info/car-details/CarColorPicker';
+import CarDetails from '@components/additional-info/car-details/CarDetails';
+import DetailsLoading from '@components/additional-info/details-loading/DetailsLoading';
 import useCarColor from '@remote/queries/additional-info/car-details/useCarColor';
 import useCarDriving from '@remote/queries/additional-info/car-details/useCarDriving';
 import useCarParking from '@remote/queries/additional-info/car-details/useCarParking';

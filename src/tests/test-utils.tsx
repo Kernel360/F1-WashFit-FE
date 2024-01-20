@@ -1,4 +1,3 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import { PropsWithChildren, ReactElement } from 'react';
 
 import { render } from '@testing-library/react';
