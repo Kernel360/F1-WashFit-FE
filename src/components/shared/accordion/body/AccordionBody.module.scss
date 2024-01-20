@@ -1,0 +1,9 @@
+.container {
+  width: 100%;
+  overflow: hidden;
+  transition: height 0.3s ease;
+
+  & > div[data-name="body-inner"] {
+    padding: 16px;
+  }
+}

@@ -1,13 +1,13 @@
 import { createContext, useContext } from 'react';
 
 interface AccordionContextValue {
-  activeItem: string
-  changeSelectedItem: (item: string) => void
+  activeItems: string[]
+  setActiveItem: (item: string) => void
 }
 
 const AccordionContext = createContext<AccordionContextValue>({
-  activeItem: '',
-  changeSelectedItem: () => { },
+  activeItems: [],
+  setActiveItem: () => { },
 });
 
 export function useAccordion() {
