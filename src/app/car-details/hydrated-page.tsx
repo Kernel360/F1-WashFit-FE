@@ -5,14 +5,15 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import CarColorPicker from '@details/car-details/CarColorPicker';
-import CarDetails from '@details/car-details/CarDetails';
-import DetailsLoading from '@details/details-loading/DetailsLoading';
-import useCarColor from '@remote/queries/details/useCarColor';
-import useCarDriving from '@remote/queries/details/useCarDriving';
-import useCarParking from '@remote/queries/details/useCarParking';
-import useCarSegment from '@remote/queries/details/useCarSegment';
-import useCarType from '@remote/queries/details/useCarType';
+import CarColorPicker from '@additional-info/car-details/CarColorPicker';
+import CarDetails from '@additional-info/car-details/CarDetails';
+import DetailsLoading from '@additional-info/details-loading/DetailsLoading';
+
+import useCarColor from '@remote/queries/additional-info/car-details/useCarColor';
+import useCarDriving from '@remote/queries/additional-info/car-details/useCarDriving';
+import useCarParking from '@remote/queries/additional-info/car-details/useCarParking';
+import useCarSegment from '@remote/queries/additional-info/car-details/useCarSegment';
+import useCarType from '@remote/queries/additional-info/car-details/useCarType';
 import Header from '@shared/header/Header';
 import ProgressBar from '@shared/progress-bar/ProgressBar';
 import Spacing from '@shared/spacing/Spacing';

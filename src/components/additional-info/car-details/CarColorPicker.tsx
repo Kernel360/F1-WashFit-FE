@@ -1,10 +1,10 @@
 import { FieldValues, UseFormRegister } from 'react-hook-form';
 
+import ColorPicker from '@additional-info/car-details/color-picker/ColorPicker';
+import Description from '@additional-info/description/Description';
 import classNames from 'classnames/bind';
 
-import ColorPicker from '@details/color-picker/ColorPicker';
-import Description from '@details/description/Description';
-import { IDetails } from '@remote/api/types/details';
+import { IAdditionalInfo } from '@/remote/api/types/additional-info';
 import FixedBottomButton from '@shared/fixedBottomButton/FixedBottomButton';
 import Spacing from '@shared/spacing/Spacing';
 
@@ -16,7 +16,7 @@ interface CarColorPickerProps {
   onClick: () => void
   main: string
   sub: string
-  options: IDetails[]
+  options: IAdditionalInfo[]
   register: UseFormRegister<FieldValues>;
   dirtyFields: Record<string, boolean>
 }

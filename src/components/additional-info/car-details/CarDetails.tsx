@@ -1,7 +1,8 @@
 import { FieldValues, UseFormRegister } from 'react-hook-form';
 
-import Description from '@details/description/Description';
-import { IDetails } from '@remote/api/types/details';
+import Description from '@additional-info/description/Description';
+
+import { IAdditionalInfo } from '@/remote/api/types/additional-info';
 import FixedBottomButton from '@shared/fixedBottomButton/FixedBottomButton';
 import Flex from '@shared/flex/Flex';
 import Radio from '@shared/radio/Radio';
@@ -11,7 +12,7 @@ interface CarDetailsProps {
   onClick: () => void
   main: string
   sub: string
-  options: IDetails[]
+  options: IAdditionalInfo[]
   register: UseFormRegister<FieldValues>
   dirtyFields: Record<string, boolean>
 }

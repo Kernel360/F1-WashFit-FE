@@ -4,7 +4,7 @@ import { dehydrate, Hydrate } from '@tanstack/react-query';
 import getQueryClient from '@lib/getQueryClient';
 import {
   getCarColor, getCarDriving, getCarParking, getCarSegment, getCarType,
-} from '@remote/api/requests/details/details.get.api';
+} from '@remote/api/requests/additional-info/additional-info.get.api';
 
 import CarDetailsPage from './hydrated-page';
 

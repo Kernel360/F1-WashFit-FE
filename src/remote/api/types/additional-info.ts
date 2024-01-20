@@ -1,4 +1,4 @@
-export interface IDetails {
+export interface IAdditionalInfo {
   codeNo: number
   codeName: string
   upperNo: number

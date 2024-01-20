@@ -1,4 +1,4 @@
-import Flex from '@components/shared/flex/Flex';
+import Flex from '@shared/flex/Flex';
 import Spacing from '@shared/spacing/Spacing';
 import Text from '@shared/text/Text';
 

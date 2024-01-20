@@ -1,0 +1,1 @@
+export const ADDITIONAL_INFO_DELAY_TIME = 2000;
