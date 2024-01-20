@@ -7,11 +7,11 @@ import { useState } from 'react';
 import classNames from 'classnames/bind';
 
 import Checkbox from '@components/icons/Checkbox';
-import Button from '@components/shared/button/Button';
-import Header from '@components/shared/header/Header';
-import Spacing from '@components/shared/spacing/Spacing';
-import Title from '@components/shared/title/Title';
 import useModal from '@contexts/ModalContext';
+import Button from '@shared/button/Button';
+import Header from '@shared/header/Header';
+import Spacing from '@shared/spacing/Spacing';
+import Title from '@shared/title/Title';
 
 import styles from './page.module.scss';
 

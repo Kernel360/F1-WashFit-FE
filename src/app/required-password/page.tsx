@@ -6,12 +6,12 @@ import { FieldValues, useForm } from 'react-hook-form';
 
 import { useRouter } from 'next/navigation';
 
-import Button from '@components/shared/button/Button';
-import Header from '@components/shared/header/Header';
-import Spacing from '@components/shared/spacing/Spacing';
-import TextField from '@components/shared/text-field/TextField';
-import Title from '@components/shared/title/Title';
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
+import Button from '@shared/button/Button';
+import Header from '@shared/header/Header';
+import Spacing from '@shared/spacing/Spacing';
+import TextField from '@shared/text-field/TextField';
+import Title from '@shared/title/Title';
 
 function RequiredPasswordPage() {
   const router = useRouter();
