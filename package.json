@@ -14,6 +14,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest",
+    "test:ui": "vitest --ui",
     "chromatic": "npx chromatic --project-token=chpt_228d999e438e234"
   },
   "dependencies": {
@@ -50,6 +51,7 @@
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
     "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/ui": "^1.2.1",
     "chromatic": "^10.2.0",
     "eslint": "^8",
     "eslint-config-airbnb": "^19.0.4",
