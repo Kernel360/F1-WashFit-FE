@@ -6,7 +6,7 @@ import {
 import { createPortal } from 'react-dom';
 
 // eslint-disable-next-line import/no-cycle
-import Modal from '@shared/Modal/Modal';
+import Modal from '@shared/modal/Modal';
 
 type ModalProps = ComponentProps<typeof Modal>;
 type ModalOptions = Omit<ModalProps, 'open'>;
