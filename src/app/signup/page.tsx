@@ -112,7 +112,7 @@ function SignupPage() {
       <Text typography="t6">연령층</Text>
       <Spacing size={20} />
       <div className={cx('ageGroupContainer')}>
-        <Radio type="ageGroup" label="20대 이상" value="20" {...register('age')} />
+        <Radio type="ageGroup" label="20대 이하" value="20" {...register('age')} />
         <Radio type="ageGroup" label="30대" value="30" {...register('age')} />
         <Radio type="ageGroup" label="40대" value="40" {...register('age')} />
         <Radio type="ageGroup" label="50대" value="50" {...register('age')} />

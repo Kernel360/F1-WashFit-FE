@@ -6,7 +6,7 @@ import {
 import { createPortal } from 'react-dom';
 
 // eslint-disable-next-line import/no-cycle
-import Modal from '@shared/Modal/Modal';
+import Modal from '@shared/modal/Modal';
 
 type ModalProps = ComponentProps<typeof Modal>;
 type ModalOptions = Omit<ModalProps, 'open'>;
@@ -31,7 +31,7 @@ export const ModalContext = createContext<ModalContextValue | undefined>(undefin
 export function ModalContextProvider({ children }: { children: React.ReactNode }) {
   const [modalState, setModalState] = useState(defaultValues);
 
-  const MODAL_ROOT = typeof window !== 'undefined' ? document.getElementById('modal-root') : null;
+  const MODAL_ROOT = typeof window !== 'undefined' ? document.getElementById('portal-root') : null;
 
   const close = useCallback(() => {
     setModalState(defaultValues);

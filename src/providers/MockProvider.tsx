@@ -7,8 +7,8 @@ if (process.env.NEXT_PUBLIC_API_MOCKING === 'enable') {
   initMocks();
 }
 
-function MswProviders({ children }: { children: React.ReactNode }) {
+function MockProvider({ children }: { children: React.ReactNode }) {
   return <div>{children}</div>;
 }
 
-export default MswProviders;
+export default MockProvider;

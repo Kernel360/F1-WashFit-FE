@@ -19,4 +19,12 @@ export const defaultComponent: Story = {
   args: {
 
   },
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+      navigation: {
+        pathname: '/',
+      },
+    },
+  },
 };

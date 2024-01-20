@@ -1,0 +1,18 @@
+.label {
+  width: 80px;
+  height: 80px;
+  border: 1px solid var(--gray-100);
+  border-radius: 50%;
+}
+
+.input[type="radio"] {
+  display: none;
+
+  &:checked + .label {
+    border: 1px solid var(--primary);
+  }
+
+  &:checked ~ span {
+    color: var(--primary) !important;
+  }
+}
