@@ -64,3 +64,11 @@
   background-color: var(--primary);
   color: var(--white);
 }
+
+.label.product {
+  height: 36px;
+}
+
+.input[type="radio"]:checked + .label.product {
+  border-bottom: 1px solid var(--black);
+}
