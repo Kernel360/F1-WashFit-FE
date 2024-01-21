@@ -23,7 +23,6 @@ export const YoutubeVideo: Story = {
       { label: '최신순', value: 'latest' },
       { label: '오래된순', value: 'oldest' },
     ],
-    placeholder: '최신순',
     value: 'latest',
   },
 };
