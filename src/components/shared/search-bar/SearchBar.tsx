@@ -5,26 +5,29 @@ import { useState } from 'react';
 import classNames from 'classnames/bind';
 
 import Delete from '@components/icons/Delete';
-import Filter from '@components/icons/Filter';
+// import Filter from '@components/icons/Filter';
 import Search from '@components/icons/Search';
 
 import styles from './SearchBar.module.scss';
 
 const cx = classNames.bind(styles);
 
-function SearchBar({ isMainPage = true }: { isMainPage?: boolean }) {
+function SearchBar() {
   const [keyword, setKeyword] = useState<string>('');
 
   const handleSearch = () => {
-    // console.log('검색완료');
-  };
-
-  const handleFilterDrawer = () => {
-    // console.log('FilterDrawer 열기');
+    // eslint-disable-next-line no-console
+    console.log('검색완료');
   };
 
   return (
-    <form className={cx('container', { dark: isMainPage })} onSubmit={(e) => { return e.preventDefault(); }}>
+    <form
+      className={cx('container')}
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSearch();
+      }}
+    >
       <Search />
       <input
         type="search"
@@ -39,9 +42,6 @@ function SearchBar({ isMainPage = true }: { isMainPage?: boolean }) {
         <Delete />
       </button>
       )}
-      <button aria-label="필터 버튼" onClick={handleFilterDrawer}>
-        <Filter />
-      </button>
     </form>
   );
 }

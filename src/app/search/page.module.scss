@@ -1,0 +1,14 @@
+.mainContainer {
+    .filterWrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 13px 0 24px;
+    }
+
+    .productArticleContainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}

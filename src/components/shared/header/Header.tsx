@@ -7,7 +7,7 @@ import { HeaderProps } from './types/headerType';
 
 export default function Header({
   isDisplayLogo = true, className,
-  children, isTransparent = false, displayRightIconType,
+  children, isTransparent = false, displayRightIconType, onFilterClick,
 }:HeaderProps) {
   const cx = classNames.bind(styles);
 
@@ -18,6 +18,7 @@ export default function Header({
         <RightIcon
           className={cx('right')}
           displayRightIconType={displayRightIconType}
+          onFilterClick={onFilterClick}
         />
       </ul>
     </nav>
