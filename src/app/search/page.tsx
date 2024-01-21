@@ -4,10 +4,11 @@ import { useState, useRef } from 'react';
 
 import classNames from 'classnames/bind';
 
-import ProductArticle from '@/components/shared/product-article/ProductArticle';
+import Text from '@/components/shared/text/Text';
 import Drawer from '@shared/drawer/Drawer';
 import Dropdown from '@shared/dropdown/Dropdown';
 import Header from '@shared/header/Header';
+import ProductArticle from '@shared/product-article/ProductArticle';
 import SearchBar from '@shared/search-bar/SearchBar';
 import Spacing from '@shared/spacing/Spacing';
 
@@ -60,10 +61,10 @@ function SearchPage() {
   const dropdownRef = useRef<HTMLInputElement>(null);
 
   const [selectedLabel, setSelectedLabel] = useState(options[0].label);
-  const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
+  const [isOpenFilterDrawer, setIsOpenFilterDrawer] = useState(false);
 
   const handleFilterClick = () => {
-    setIsFilterDrawerOpen((prev) => { return !prev; });
+    setIsOpenFilterDrawer((prev) => { return !prev; });
   };
 
   return (
@@ -73,7 +74,7 @@ function SearchPage() {
       <main className={cx('mainContainer')}>
         <SearchBar />
         <div className={cx('filterWrapper')}>
-          <span>{`총 ${productArticleData.length}개`}</span>
+          <Text typography="t6" color="gray300">{`총 ${productArticleData.length}개`}</Text>
           <Dropdown
             options={options}
             selectedLabel={selectedLabel}
@@ -88,7 +89,7 @@ function SearchPage() {
           })}
         </div>
       </main>
-      <Drawer isOpen={isFilterDrawerOpen} onClose={() => { setIsFilterDrawerOpen(false); }}>
+      <Drawer isOpen={isOpenFilterDrawer} onClose={() => { setIsOpenFilterDrawer(false); }}>
         {/* 필터 내용 아코디언 */}
         <p>Filter Content</p>
       </Drawer>
