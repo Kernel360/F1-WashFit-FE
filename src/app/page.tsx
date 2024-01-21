@@ -6,7 +6,6 @@ import Flex from '@components/shared/flex/Flex';
 import Header from '@components/shared/header/Header';
 import ProductArticle from '@components/shared/product-article/ProductArticle';
 import Radio from '@components/shared/radio/Radio';
-import SearchBar from '@components/shared/search-bar/SearchBar';
 import Spacing from '@components/shared/spacing/Spacing';
 import Text from '@components/shared/text/Text';
 
@@ -136,7 +135,6 @@ export default function Home() {
       <main className={cx('mainContainer')}>
         <div className={cx('searchBarWrapper')}>
           <Spacing size={16} />
-          <SearchBar />
           <Spacing size={24} />
         </div>
         <div className={cx('bannerWrapper')}>
