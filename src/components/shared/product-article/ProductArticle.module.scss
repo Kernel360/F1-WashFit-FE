@@ -4,8 +4,9 @@
     flex-direction: column;
     width: 100%;
     overflow: hidden;
+    border: 1px solid var(--gray);
     border-radius: 15px;
-    box-shadow: 0 0 0 1px var(--gray);
+    box-shadow: 0 4px 7px 1px rgba($color: #000, $alpha: 5%);
 
     .imgBox {
         height: 100px;
