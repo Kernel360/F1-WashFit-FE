@@ -9,6 +9,17 @@
   background-color: var(--white);
 }
 
+.accordionItem {
+  .container {
+    width: 100%;
+    border-top: 1px solid var(--gray);
+
+    &:last-of-type {
+      border-bottom: 1px solid var(--gray);
+    }
+  }
+}
+
 .accordionHeader {
   display: flex;
   align-items: center;

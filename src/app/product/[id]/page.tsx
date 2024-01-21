@@ -98,7 +98,7 @@ function ProductDetailsPage() {
             </Flex>
           </AccordionBody>
         </AccordionItem>
-        <AccordionItem itemName="productDetails">
+        <AccordionItem itemName="productDetails" className={cx('accordionItem')}>
           <AccordionHeader
             className={cx('accordionHeader')}
             openIcon={<DropdownArrow isRotate={false} color="gray200" />}
