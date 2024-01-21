@@ -7,7 +7,6 @@ import Flex from '@shared/flex/Flex';
 import Header from '@shared/header/Header';
 import ProductArticle from '@shared/product-article/ProductArticle';
 import Radio from '@shared/radio/Radio';
-import SearchBar from '@shared/search-bar/SearchBar';
 import Spacing from '@shared/spacing/Spacing';
 import Text from '@shared/text/Text';
 
