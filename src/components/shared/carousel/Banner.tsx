@@ -22,7 +22,6 @@ const settings = {
 
 function Banner({ bannerData }: { bannerData: IBannerData[] }) {
   return (
-    // <div className={cx('container')}>
     <div className="container">
       <Slider {...settings} dotsClass="dotsCustom">
         {bannerData.map((slide) => {
