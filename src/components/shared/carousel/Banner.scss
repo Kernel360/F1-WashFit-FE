@@ -1,0 +1,38 @@
+.container {
+  position: relative;
+
+  img {
+    width: auto;
+    margin: 0 auto;
+  }
+
+  .dotsCustom {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .dotsCustom li {
+    display: inline-block;
+    margin: 0 6px;
+    cursor: pointer;
+  }
+
+  .dotsCustom li button {
+    display: block;
+    width: 16px;
+    height: 8px;
+    border-radius: 8px;
+    background: var(--gray-100);
+    color: transparent;
+    cursor: pointer;
+  }
+
+  /* stylelint-disable-next-line selector-class-pattern */
+  .dotsCustom li.slick-active button {
+    width: 24px;
+    border-radius: 8px;
+    background-color: var(--primary);
+  }
+}

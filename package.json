@@ -14,6 +14,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "vitest",
+    "test:ui": "vitest --ui",
     "chromatic": "npx chromatic --project-token=chpt_228d999e438e234"
   },
   "dependencies": {
@@ -28,7 +29,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.49.2",
     "react-redux": "^9.0.4",
-    "swiper": "^11"
+    "react-slick": "^0.29.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.6",
@@ -47,9 +48,11 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-slick": "^0.23.13",
     "@typescript-eslint/eslint-plugin": "^6.15.0",
     "@typescript-eslint/parser": "^6.15.0",
     "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/ui": "^1.2.1",
     "chromatic": "^10.2.0",
     "eslint": "^8",
     "eslint-config-airbnb": "^19.0.4",
@@ -62,6 +65,7 @@
     "jsdom": "^23.2.0",
     "msw": "^2.0.13",
     "sass": "^1.69.6",
+    "slick-carousel": "^1.8.1",
     "storybook": "^7.6.6",
     "storybook-react-context": "^0.6.0",
     "stylelint": "^16.1.0",

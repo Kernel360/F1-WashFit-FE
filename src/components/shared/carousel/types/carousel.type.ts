@@ -1,10 +1,10 @@
-export interface IBannerdata {
+export interface IBannerData {
   id: number
   link: string
   src: string
   alt: string
 }
 
-export interface IRecommandList extends IBannerdata {
+export interface IRecommendList extends IBannerData {
   productName: string
 }

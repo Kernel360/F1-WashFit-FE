@@ -1,44 +1,44 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import RecommandList from './RecommandList';
+import RecommendList from './RecommendList';
 
 const meta = {
-  title: 'Shared/RecommandList',
-  component: RecommandList,
+  title: 'Shared/RecommendList',
+  component: RecommendList,
   parameters: {
   },
   tags: ['autodocs'],
   argTypes: {
-    recommandListData: {
+    recommendListData: {
       control: 'object',
     },
   },
-} satisfies Meta<typeof RecommandList>;
+} satisfies Meta<typeof RecommendList>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const AdBanner: Story = {
   args: {
-    recommandListData: [
+    recommendListData: [
       {
         id: 1,
         link: '/',
-        src: '/assets/recommandItem1.png',
+        src: '/assets/recommendItem1.png',
         alt: '그림',
         productName: '카샴푸',
       },
       {
         id: 2,
         link: '/',
-        src: '/assets/recommandItem2.png',
+        src: '/assets/recommendItem2.png',
         alt: '그림',
         productName: '휠 클리너',
       },
       {
         id: 3,
         link: '/',
-        src: '/assets/recommandItem3.png',
+        src: '/assets/recommendItem3.png',
         alt: '그림',
         productName: '타올',
 
@@ -46,7 +46,7 @@ export const AdBanner: Story = {
       {
         id: 4,
         link: '/',
-        src: '/assets/recommandItem4.png',
+        src: '/assets/recommendItem4.png',
         alt: '그림',
         productName: '먼지털이개',
 
@@ -54,7 +54,7 @@ export const AdBanner: Story = {
       {
         id: 5,
         link: '/',
-        src: '/assets/recommandItem4.png',
+        src: '/assets/recommendItem4.png',
         alt: '그림',
         productName: '먼지털이개',
 
@@ -62,7 +62,7 @@ export const AdBanner: Story = {
       {
         id: 6,
         link: '/',
-        src: '/assets/recommandItem4.png',
+        src: '/assets/recommendItem4.png',
         alt: '그림',
         productName: '먼지털이개',
 
