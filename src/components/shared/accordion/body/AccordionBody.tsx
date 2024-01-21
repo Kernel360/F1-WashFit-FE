@@ -4,7 +4,7 @@ import {
 
 import classNames from 'classnames/bind';
 
-import { useAccordion } from '@/contexts/AccordionContext';
+import { useAccordion } from '@contexts/AccordionContext';
 
 import { AccordionBodyProps } from '../type/accordion.type';
 
@@ -32,7 +32,7 @@ const AccordionBody = forwardRef<HTMLDivElement, AccordionBodyProps>(({
     <div
       ref={ref}
       {...props}
-      className={cx('container', className)}
+      className={cx(className)}
       data-action-item={isActive}
       style={{ height: currentBodyHeight ?? `${innerRef?.current?.clientHeight}px` }}
     >
