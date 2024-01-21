@@ -1,35 +1,37 @@
-import { useCallback, useMemo, useState } from 'react';
+import {
+  forwardRef, useCallback, useMemo, useState,
+} from 'react';
 
-import AccordionContext from '@contexts/AccordionContext';
+import AccordionContext from '@/contexts/AccordionContext';
 
-import AccordionBody from './body';
-import AccordionHeader from './header';
-import AccordionItem from './item';
+import { AccordionProps } from './type/accordion.type';
 
-function Accordion({ children }: { children: React.ReactNode | React.ReactNode[] }) {
-  const [activeItem, setActiveItem] = useState('');
+// eslint-disable-next-line max-len
+const Accordion = forwardRef<HTMLDivElement, AccordionProps>(({ defaultActiveItems = [], children, ...props }, ref) => {
+  const [activeItems, setActiveItems] = useState<string[]>(defaultActiveItems);
 
-  const changeActiveItem = useCallback((value: string) => {
-    if (activeItem !== value) setActiveItem(value);
-    if (activeItem === value) setActiveItem('');
-  }, [setActiveItem, activeItem]);
+  const handleSetActiveItem = useCallback((item: string) => {
+    if (activeItems?.includes(item)) {
+      setActiveItems(activeItems.filter((activeItem) => { return activeItem !== item; }));
+    } else {
+      setActiveItems([...activeItems, item]);
+    }
+  }, [activeItems]);
 
   const values = useMemo(() => {
     return {
-      activeItem,
-      changeSelectedItem: changeActiveItem,
+      activeItems,
+      setActiveItem: handleSetActiveItem,
     };
-  }, [activeItem, changeActiveItem]);
+  }, [activeItems, handleSetActiveItem]);
 
   return (
     <AccordionContext.Provider value={values}>
-      {children}
+      <div ref={ref} {...props}>
+        {children}
+      </div>
     </AccordionContext.Provider>
   );
-}
-
-Accordion.Item = AccordionItem;
-Accordion.Header = AccordionHeader;
-Accordion.Body = AccordionBody;
+});
 
 export default Accordion;
