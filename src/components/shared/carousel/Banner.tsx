@@ -1,32 +1,33 @@
 'use client';
 
+import Slider from 'react-slick';
+
 import Image from 'next/image';
 import Link from 'next/link';
-import { Autoplay, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
 
-import 'swiper/scss';
-import 'swiper/scss/autoplay';
-import 'swiper/scss/pagination';
-import { IBannerdata } from './types/carousel.type';
+import './Banner.scss';
+import { IBannerData } from './types/carousel.type';
 
-function Banner({ bannerData }: { bannerData: IBannerdata[] }) {
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 2000,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  adaptiveHeight: true,
+  autoplaySpeed: 5000,
+  arrows: false,
+};
+
+function Banner({ bannerData }: { bannerData: IBannerData[] }) {
   return (
-    <Swiper
-      modules={[Autoplay, Pagination]}
-      spaceBetween={20}
-      slidesPerView={1}
-      pagination={{ clickable: true, type: 'bullets' }}
-      slidesOffsetAfter={20}
-      slidesOffsetBefore={30}
-      autoplay={{ delay: 2000 }}
-      loop
-      speed={2000}
-    >
-      {bannerData.map((slide) => {
-        return (
-          <SwiperSlide key={slide.id}>
-            <Link href={slide.link}>
+    // <div className={cx('container')}>
+    <div className="container">
+      <Slider {...settings} dotsClass="dotsCustom">
+        {bannerData.map((slide) => {
+          return (
+            <Link href={slide.link} key={slide.id}>
               <Image
                 src={slide.src}
                 alt={slide.alt}
@@ -34,10 +35,10 @@ function Banner({ bannerData }: { bannerData: IBannerdata[] }) {
                 height={140}
               />
             </Link>
-          </SwiperSlide>
-        );
-      })}
-    </Swiper>
+          );
+        })}
+      </Slider>
+    </div>
   );
 }
 
