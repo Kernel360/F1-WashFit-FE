@@ -19,16 +19,18 @@ interface Option {
 
 interface DropdownProps extends InputHTMLAttributes<HTMLInputElement> {
   options: Option[]
-  label: string | number
-  value: string | number
+  selectedLabel: string | number
+  value?: string | number
   type: 'favorite'
+  setSelectedLabel: React.Dispatch<React.SetStateAction<string>>
 }
 
 const Dropdown = forwardRef<HTMLInputElement, DropdownProps>(({
-  label,
+  selectedLabel,
   type,
   options,
   value,
+  setSelectedLabel,
   ...props
 }, ref) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -41,12 +43,17 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>(({
     setIsOpen(false);
   };
 
+  const handleLabelClick = (newLabel: string) => {
+    setSelectedLabel(() => { return newLabel; });
+    closeDropdownMenu();
+  };
+
   const containerRef = useOutsideClick(closeDropdownMenu);
 
   return (
     <div className={cx('container', { [type]: true })} ref={containerRef}>
       <button onClick={openDropdownMenu} className={cx('selectedValue', { [type]: true })}>
-        <Text typography="t6" color="tertiary400">{label}</Text>
+        <Text typography="t6" color="tertiary400">{selectedLabel}</Text>
         <Expand isRotate={isOpen} color="tertiary400" />
       </button>
       {isOpen && (
@@ -54,8 +61,21 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>(({
           {options.map((option) => {
             return (
               <li key={option.value} className={cx('item', { [type]: true })}>
-                <input className={cx('input')} id={option.label} type="radio" ref={ref} value={value} {...props} />
-                <label className={cx('label', { [type]: true })} htmlFor={option.label} onClick={closeDropdownMenu} role="presentation">
+                <input
+                  className={cx('input')}
+                  id={option.label}
+                  type="radio"
+                  ref={ref}
+                  value={option.value}
+                  checked={selectedLabel === option.label}
+                  {...props}
+                />
+                <label
+                  className={cx('label', { [type]: true })}
+                  htmlFor={option.label}
+                  onClick={() => { return handleLabelClick(option.label); }}
+                  role="presentation"
+                >
                   {option.label}
                 </label>
               </li>
