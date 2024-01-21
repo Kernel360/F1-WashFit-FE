@@ -1,3 +1,6 @@
+@import "~slick-carousel/slick/slick.css"; 
+@import "~slick-carousel/slick/slick-theme.css";
+
 :root {
   --primary: #0075FF;
   --secondary: #B2D6FF;
