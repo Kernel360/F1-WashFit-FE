@@ -3,14 +3,10 @@
     box-sizing: border-box;
     align-items: center;
     width: 100%;
-    padding: 13px;
+    padding: 15px 19px;
     border-radius: 10px;
-    gap: 10px;
-    box-shadow: 1px 3px 4px 0 rgba($color: #000, $alpha: 3%);
-
-    &.dark {
-        background-color: var(--gray);
-    }
+    gap: 11.5px;
+    background-color: var(--tertiary-200);
 
     input {
         flex-grow: 1;
@@ -21,18 +17,17 @@
         outline: inherit;
         background-color: inherit;
         color: var(--black);
-        font-size: 14px;
+        font-size: 16px;
 
         &::placeholder {
-            color: var(--gray-200);
-            font-size: 12px;
-            font-weight: 400;
+            color: var(--tertiary-400);
         }
     }
 
     button {
-        padding: 3px;
-        padding-bottom: 0;
+        svg {
+            vertical-align: top;
+        }
     }
 
     /* input[type:search] x 버튼 없애기 */
