@@ -105,18 +105,18 @@ function SignupPage() {
       <Text typography="t6"> 성별</Text>
       <Spacing size={20} />
       <Flex justify="space-between" gap={10}>
-        <Radio type="gender" label="남성" value="male" {...register('gender')} />
-        <Radio type="gender" label="여성" value="female" {...register('gender')} />
+        <Radio type="gender" label="남성" value="man" {...register('gender')} />
+        <Radio type="gender" label="여성" value="woman" {...register('gender')} />
       </Flex>
       <Spacing size={20} />
       <Text typography="t6">연령층</Text>
       <Spacing size={20} />
       <div className={cx('ageGroupContainer')}>
-        <Radio type="ageGroup" label="20대 이하" value="20" {...register('age')} />
-        <Radio type="ageGroup" label="30대" value="30" {...register('age')} />
-        <Radio type="ageGroup" label="40대" value="40" {...register('age')} />
-        <Radio type="ageGroup" label="50대" value="50" {...register('age')} />
-        <Radio type="ageGroup" label="60대 이상" value="60" {...register('age')} />
+        <Radio type="ageGroup" label="20대 이하" value="AGE_20" {...register('age')} />
+        <Radio type="ageGroup" label="30대" value="AGE_30" {...register('age')} />
+        <Radio type="ageGroup" label="40대" value="AGE_40" {...register('age')} />
+        <Radio type="ageGroup" label="50대" value="AGE_50" {...register('age')} />
+        <Radio type="ageGroup" label="60대 이상" value="AGE_60" {...register('age')} />
       </div>
       <Spacing size={50} />
       <Button type="submit" disabled={!isValid || !isDirty} size="medium" full>약관 동의하러 가기</Button>
