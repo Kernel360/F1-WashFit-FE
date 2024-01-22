@@ -45,4 +45,9 @@ export const getCarWashCost = async () => {
   return response;
 };
 
-// 주요관심사 :
+// 주요관심사 : interest
+export const getCarWashInterest = async () => {
+  const response = await getRequest<IAdditionalInfo[]>('/commoncode/interest');
+
+  return response;
+};
