@@ -7,10 +7,10 @@ const meta = {
   component: SearchBar,
   tags: ['autodocs'],
   args: {
-    isMainPage: false,
+    isWhite: false,
   },
   argTypes: {
-    isMainPage: { control: 'boolean' },
+    isWhite: { control: 'boolean' },
   },
 }satisfies Meta<typeof SearchBar>;
 
@@ -19,12 +19,18 @@ type Story = StoryObj<typeof meta>;
 
 export const MainPage:Story = {
   args: {
-    isMainPage: true,
+    isWhite: false,
   },
 };
 
 export const SearchPage:Story = {
   args: {
-    isMainPage: false,
+    isWhite: false,
+  },
+};
+
+export const MapPage:Story = {
+  args: {
+    isWhite: true,
   },
 };
