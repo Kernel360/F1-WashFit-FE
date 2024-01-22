@@ -13,10 +13,11 @@ interface TextProps {
   children: React.ReactNode
   whiteSpace?: CSSProperties['whiteSpace']
   className?: string
+  wordBreak?:CSSProperties['wordBreak']
 }
 
 function Text({
-  typography = 't5', color = 'black', display, textAlign, fontWeight, bold, children, whiteSpace = 'pre-line', className,
+  typography = 't5', color = 'black', display, textAlign, fontWeight, bold, children, whiteSpace = 'pre-line', wordBreak = 'normal', className,
 }: TextProps) {
   const styles = useMemo(() => {
     return {
@@ -26,8 +27,9 @@ function Text({
       textAlign,
       fontWeight: bold ? 'bold' : fontWeight,
       whiteSpace,
+      wordBreak,
     };
-  }, [typography, color, display, textAlign, fontWeight, bold, whiteSpace]);
+  }, [typography, color, display, textAlign, fontWeight, bold, whiteSpace, wordBreak]);
   return (
     <span className={className} style={styles}>{children}</span>
   );

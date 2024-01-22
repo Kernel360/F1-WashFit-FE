@@ -30,3 +30,24 @@ export const getCarParking = async () => {
 
   return response;
 };
+
+// 세차빈도 : frequency
+export const getCarWashFrequency = async () => {
+  const response = await getRequest<IAdditionalInfo[]>('/commoncode/frequency');
+
+  return response;
+};
+
+// 지출비용 : cost
+export const getCarWashCost = async () => {
+  const response = await getRequest<IAdditionalInfo[]>('/commoncode/cost');
+
+  return response;
+};
+
+// 주요관심사 : interest
+export const getCarWashInterest = async () => {
+  const response = await getRequest<IAdditionalInfo[]>('/commoncode/interest');
+
+  return response;
+};
