@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 // app/hydratedPosts.jsx
 import { dehydrate, Hydrate } from '@tanstack/react-query';
 

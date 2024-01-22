@@ -28,7 +28,7 @@ function ProgressBar({ progressCount = 5, currentStep = 1, setCurrentStep }: Pro
   };
 
   return (
-    <div className={cx('container')} style={{ width: progressCount * 42 }}>
+    <div className={cx('container')} style={{ width: progressCount * 40 }}>
       <div className={cx('progressBar')} />
       <div className={cx('progress')} style={{ width: progressBarWidth }} />
       <div>
