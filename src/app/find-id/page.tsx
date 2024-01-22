@@ -5,14 +5,19 @@
 
 import { useForm } from 'react-hook-form';
 
+import dynamic from 'next/dynamic';
+
 import VALIDATION_MESSAGE_MAP from '@/constants/validationMessage';
 import { IFindId } from '@/remote/api/types/auth';
 import useFindId from '@/remote/queries/auth/useFindId';
-import FixedBottomButton from '@shared/fixedBottomButton/FixedBottomButton';
 import Header from '@shared/header/Header';
 import Spacing from '@shared/spacing/Spacing';
 import TextField from '@shared/text-field/TextField';
 import Title from '@shared/title/Title';
+
+const FixedBottomButton = dynamic(() => { return import('@shared/fixedBottomButton/FixedBottomButton'); }, {
+  ssr: false,
+});
 
 function FindUsernamePage() {
   const { register, handleSubmit, formState: { isValid, errors, isDirty } } = useForm<IFindId>({
