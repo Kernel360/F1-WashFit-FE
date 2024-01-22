@@ -42,7 +42,7 @@ export const buttonSizeMap = {
     padding: '8px 9px',
   },
   medium: {
-    fontSize: '15px',
+    fontSize: '16px',
     padding: '10px 15px',
   },
   large: {
