@@ -24,7 +24,7 @@ const AccordionItem = forwardRef<HTMLDivElement, AccordionItemProps>(({
     return null;
   });
   return (
-    <div ref={ref} {...props} className={cx('container', className)}>
+    <div ref={ref} {...props} className={cx(className)}>
       {accordionItemChildren}
     </div>
   );

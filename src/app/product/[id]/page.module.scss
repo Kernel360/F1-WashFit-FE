@@ -3,5 +3,54 @@
 }
 
 .productInfo {
+  position: sticky;
+  top: 44px;
   padding: 16px 24px;
+  background-color: var(--white);
+}
+
+.accordionItem {
+  .container {
+    width: 100%;
+    border-top: 1px solid var(--gray);
+
+    &:last-of-type {
+      border-bottom: 1px solid var(--gray);
+    }
+  }
+}
+
+.accordionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px;
+  border-bottom: 1px solid var(--gray-100);
+}
+
+.accordionBody {
+  width: 100%;
+  overflow: hidden;
+  transition: height 0.3s ease;
+
+  & > div[data-name="body-inner"] {
+    padding: 16px 24px;
+  }
+
+  .infoTitle {
+    display: flex;
+    align-items: center;
+    max-height: 20px;
+
+    &::after {
+      content: "|";
+      padding-left: 8px;
+      color: var(--gray-100);
+    }
+  }
+
+  .infoDescription {
+    flex: 1;
+  }
 }

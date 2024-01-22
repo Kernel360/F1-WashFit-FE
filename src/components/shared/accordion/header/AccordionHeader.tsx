@@ -25,7 +25,7 @@ const AccordionHeader = forwardRef<HTMLButtonElement, AccordionHeaderProps>(({
   const isActive = activeItems.includes(itemName);
 
   return (
-    <button onClick={handleClick} ref={ref} {...props} className={cx('container', className)}>
+    <button onClick={handleClick} ref={ref} {...props} className={cx(className)}>
       {children}
       {isActive ? closeIcon : openIcon}
     </button>
