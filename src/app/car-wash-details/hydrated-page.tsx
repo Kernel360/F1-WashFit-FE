@@ -59,7 +59,7 @@ function CarWashDetailsPage() {
         <CarDetails
           onClick={onNext}
           main="세차 빈도는 어떤가요?"
-          sub="차량 유형을 선택해주세요."
+          sub="월 평균 세차 빈도를 선택해주세요."
           options={carWashFrequencyData}
           register={register}
           dirtyFields={dirtyFields}
