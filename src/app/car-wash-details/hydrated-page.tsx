@@ -9,13 +9,15 @@ import CarDetails from '@components/additional-info/car-details/CarDetails';
 import DetailsLoading from '@components/additional-info/details-loading/DetailsLoading';
 import useCarWashCost from '@remote/queries/additional-info/car-wash-details/useCarWashCost';
 import useCarWashFrequency from '@remote/queries/additional-info/car-wash-details/useCarWashFrequency';
+import useCarWashInterest from '@remote/queries/additional-info/car-wash-details/useCarWashInterest';
 import Header from '@shared/header/Header';
 import ProgressBar from '@shared/progress-bar/ProgressBar';
 import Spacing from '@shared/spacing/Spacing';
 
-function CarDetailsPage() {
+function CarWashDetailsPage() {
   const { data: carWashFrequencyData } = useCarWashFrequency();
   const { data: carWashCostData } = useCarWashCost();
+  const { data: carWashInterestData } = useCarWashInterest();
 
   const [step, setStep] = useState(1);
 
@@ -38,6 +40,7 @@ function CarDetailsPage() {
   // TODO: Loader 컴포넌트 제작
   if (carWashFrequencyData == null
     || carWashCostData == null
+    || carWashInterestData == null
   ) {
     return <div>로딩중 입니다..</div>;
   }
@@ -73,21 +76,19 @@ function CarDetailsPage() {
         />
       )}
       {step === 3 && (
-        // <CarDetails
-        //   onClick={onSubmit}
-        //   main="주요 관심사는 무엇인가요?"
-        //   sub="주요 관심사를 선택해주세요."
-        //   options={}
-        //   register={register}
-        //   dirtyFields={dirtyFields}
-        // />
-        <div>
-          <button onClick={onSubmit}>주요관심사 api 추가 예정</button>
-        </div>
+        <CarDetails
+          onClick={onSubmit}
+          main="주요 관심사는 무엇인가요?"
+          sub="주요 관심사를 선택해주세요."
+          options={carWashInterestData}
+          register={register}
+          dirtyFields={dirtyFields}
+        />
+
       )}
       {step === 4 && <DetailsLoading />}
     </>
   );
 }
 
-export default CarDetailsPage;
+export default CarWashDetailsPage;
