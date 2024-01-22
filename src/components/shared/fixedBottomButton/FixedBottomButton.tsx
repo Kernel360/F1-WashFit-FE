@@ -10,14 +10,14 @@ import styles from './FixedBottomButton.module.scss';
 const cx = classNames.bind(styles);
 
 interface FixedBottomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  onClick: () => void
-  disabled?: boolean
   children: React.ReactNode
+  disabled?: boolean
+  onClick: () => void
 }
 
-function FixedBottomButton({ children, onClick, disabled }: FixedBottomButtonProps) {
-  const portalRoot = document.getElementById('portal-root');
-  if (portalRoot == null) {
+function FixedBottomButton({ children, disabled, onClick }: FixedBottomButtonProps) {
+  const PORTAL_ROOT = document.getElementById('portal-root');
+  if (PORTAL_ROOT == null) {
     return null;
   }
 
@@ -27,7 +27,7 @@ function FixedBottomButton({ children, onClick, disabled }: FixedBottomButtonPro
         {children}
       </Button>
     </div>,
-    portalRoot,
+    PORTAL_ROOT,
   );
 }
 
