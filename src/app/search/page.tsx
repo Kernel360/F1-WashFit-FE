@@ -1,16 +1,17 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 
 import classNames from 'classnames/bind';
 
-import Text from '@/components/shared/text/Text';
+import { SEARCH_FILTER_MAP } from '@constants/searchByMap';
 import Drawer from '@shared/drawer/Drawer';
 import Dropdown from '@shared/dropdown/Dropdown';
 import Header from '@shared/header/Header';
 import ProductArticle from '@shared/product-article/ProductArticle';
 import SearchBar from '@shared/search-bar/SearchBar';
 import Spacing from '@shared/spacing/Spacing';
+import Text from '@shared/text/Text';
 
 import styles from './page.module.scss';
 
@@ -51,21 +52,30 @@ const productArticleData = [
 ];
 
 const options = [
-  { label: '조회순', value: '1' },
-  { label: '위반제품순', value: '2' },
-  { label: '최신순', value: '3' },
-  { label: '추천순', value: '4' },
+  { label: '조회순', value: 'view' },
+  { label: '위반제품순', value: 'violations' },
+  { label: '최신순', value: 'latest' },
+  { label: '추천순', value: 'recommended' },
 ];
 
 function SearchPage() {
-  const dropdownRef = useRef<HTMLInputElement>(null);
-
-  const [selectedLabel, setSelectedLabel] = useState(options[0].label);
+  // TODO: 쿼리스트링을 필터 값 받아오기 ex. view, violations, latest, recommended
+  const query = '';
+  const initialLabel = query === '' ? '조회순' : SEARCH_FILTER_MAP[query];
+  const [selectedLabel, setSelectedLabel] = useState<string | number>(initialLabel);
   const [isOpenFilterDrawer, setIsOpenFilterDrawer] = useState(false);
 
   const handleFilterClick = () => {
     setIsOpenFilterDrawer((prev) => { return !prev; });
   };
+
+  const handleSelectedValue = (value: string | number) => {
+    setSelectedLabel(value);
+  };
+
+  // TODO: 분류 옵션에 따른 데이터 패칭 작업
+  // const sortOption = options.find((option) => { return option.label === selectedLabel; })
+  // console.log(options.find((option) => { return option.label === selectedLabel; }));
 
   return (
     <>
@@ -79,8 +89,7 @@ function SearchPage() {
             options={options}
             selectedLabel={selectedLabel}
             type="favorite"
-            ref={dropdownRef}
-            setSelectedLabel={setSelectedLabel}
+            handleSelectedValue={handleSelectedValue}
           />
         </div>
         <div className={cx('productArticleContainer')}>

@@ -1,38 +1,36 @@
 'use client';
 
-import { InputHTMLAttributes, forwardRef, useState } from 'react';
+import { ButtonHTMLAttributes, useState } from 'react';
 
 import classNames from 'classnames/bind';
 
-import useOutsideClick from '@/hooks/useOutsideClick';
 import Expand from '@components/icons/Expand';
+import useOutsideClick from '@hooks/useOutsideClick';
 import Text from '@shared/text/Text';
 
 import styles from './Dropdown.module.scss';
 
 const cx = classNames.bind(styles);
 
-interface Option {
+interface IOption {
   label: string
   value: string | number | undefined
 }
 
-interface DropdownProps extends InputHTMLAttributes<HTMLInputElement> {
-  options: Option[]
+interface DropdownProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
+  options: IOption[]
   selectedLabel: string | number
-  value?: string | number
-  type: 'favorite'
-  setSelectedLabel: React.Dispatch<React.SetStateAction<string>>
+  type: 'favorite' | 'profile'
+  handleSelectedValue: (value: string | number) => void
 }
 
-const Dropdown = forwardRef<HTMLInputElement, DropdownProps>(({
+function Dropdown({
   selectedLabel,
   type,
   options,
-  value,
-  setSelectedLabel,
+  handleSelectedValue,
   ...props
-}, ref) => {
+}: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const openDropdownMenu = () => {
@@ -43,12 +41,12 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>(({
     setIsOpen(false);
   };
 
-  const handleLabelClick = (newLabel: string) => {
-    setSelectedLabel(() => { return newLabel; });
+  const containerRef = useOutsideClick(closeDropdownMenu);
+
+  const onClickDropdownItem = (value: string | number) => {
+    handleSelectedValue(value);
     closeDropdownMenu();
   };
-
-  const containerRef = useOutsideClick(closeDropdownMenu);
 
   return (
     <div className={cx('container', { [type]: true })} ref={containerRef}>
@@ -61,23 +59,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>(({
           {options.map((option) => {
             return (
               <li key={option.value} className={cx('item', { [type]: true })}>
-                <input
-                  className={cx('input')}
-                  id={option.label}
-                  type="radio"
-                  ref={ref}
-                  value={option.value}
-                  checked={selectedLabel === option.label}
-                  {...props}
-                />
-                <label
-                  className={cx('label', { [type]: true })}
-                  htmlFor={option.label}
-                  onClick={() => { return handleLabelClick(option.label); }}
-                  role="presentation"
-                >
-                  {option.label}
-                </label>
+                <button type="button" onClick={() => { return onClickDropdownItem(option.label); }} {...props}>{option.label}</button>
               </li>
             );
           })}
@@ -85,6 +67,6 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>(({
       )}
     </div>
   );
-});
+}
 
 export default Dropdown;
