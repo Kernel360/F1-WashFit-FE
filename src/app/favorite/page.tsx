@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 
 import classNames from 'classnames/bind';
 
+import useScroll from '@/hooks/useScroll';
 import { SEARCH_FILTER_MAP, SearchFilterType } from '@constants/searchByMap';
 import BottomNav from '@shared/bottom-nav/BottomNav';
 import Dropdown from '@shared/dropdown/Dropdown';
@@ -81,15 +82,17 @@ function FavoritePage() {
   });
 
   // 스크롤 시 SearchBar 숨기기
+  const isScrolled = useScroll();
+  // TODO: 스크롤 시 헤더에 검색버튼 보이기
 
   return (
     <>
       <Header isDisplayLogo={false}>즐겨찾기</Header>
       <Spacing size={8} />
       <main className={cx('mainContainer')}>
-        <div className={cx('hideWrapper')}>
+        <div className={cx('hideWrapper', { scrolled: isScrolled })}>
           <SearchBar />
-          <div className={cx('filterBox')}>
+          <div className={cx('filterBox', { scrolled: isScrolled })}>
             <Text typography="t6" color="gray300">{`총 ${productArticleData.length}개`}</Text>
             <Dropdown
               options={options}
@@ -99,7 +102,7 @@ function FavoritePage() {
             />
           </div>
         </div>
-        <div className={cx('productArticleContainer')}>
+        <div className={cx('productArticleContainer', { scrolled: isScrolled })}>
           {productArticleData.map((item) => {
             return <ProductArticle key={item.id} itemData={item} />;
           })}
