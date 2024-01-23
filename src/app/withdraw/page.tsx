@@ -26,12 +26,12 @@ function WithdrawPage() {
     open({
       title: '회원 탈퇴',
       description: '회원을 탈퇴하면 차량용품 추천 서비스를 제공받을 수 없습니다. 정말로 탈퇴하시겠습니까?',
-      topButtonLabel: '예',
-      bottomButtonLabel: '아니오',
-      onTopButtonClick: () => {
+      leftButtonLabel: '예',
+      rightButtonLabel: '아니오',
+      onLeftButtonClick: () => {
         // 회원탈퇴
       },
-      onBottomButtonClick: () => {
+      onRightButtonClick: () => {
         // 모달닫기
       },
     });
