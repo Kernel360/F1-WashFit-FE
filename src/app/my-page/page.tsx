@@ -28,7 +28,7 @@ function MyProfilePage() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-  if (isLoggedIn === true) {
+  if (isLoggedIn === false) {
     return (
       <>
         <Spacing size={96} />
