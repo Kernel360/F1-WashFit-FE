@@ -4,7 +4,7 @@
 
 import classNames from 'classnames/bind';
 
-import Expand from '@/components/icons/Expand';
+import Expand from '@components/icons/Expand';
 import useScrollToTop from '@hooks/useScrollToTop';
 
 import styles from './ScrollToTop.module.scss';
