@@ -1,0 +1,13 @@
+.wrapper {
+  position: fixed;
+  z-index: 1;
+  right: 8%;
+  bottom: 10%;
+
+  button {
+    padding: 5px;
+    border: 1px solid var(--tertiary);
+    background-color: var(--white);
+    cursor: pointer;
+  }
+}
