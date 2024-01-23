@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 import classNames from 'classnames/bind';
 import dynamic from 'next/dynamic';
 import Link from 'next/link';
@@ -23,18 +25,25 @@ function MyProfilePage() {
   const router = useRouter();
   // TODO: 회원 이름 가져오기
   const name = 'washpedia';
-  const isLoggedIn = false;
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-  if (isLoggedIn === false) {
+  if (isLoggedIn === true) {
     return (
       <>
         <Spacing size={96} />
         <div className={cx('loginDescriptionWrapper')}>
-          <Text typography="t1" bold display="block" whiteSpace="pre-wrap">로그인 후</Text>
-          <Text typography="t1" bold display="block" whiteSpace="pre-wrap">이용해주세요</Text>
+          <Text typography="t1" bold display="block">
+            로그인 후
+            <br />
+            이용해주세요
+          </Text>
           <Spacing size={8} />
-          <Text display="block" typography="t6" color="tertiary">로그인 후 내 차량 정보와</Text>
-          <Text display="block" typography="t6" color="tertiary">세차 정보를 등록해 보세요.</Text>
+          <Text display="block" typography="t6" color="tertiary">
+            로그인 후 내 차량 정보와
+            <br />
+            세차 정보를 등록해 보세요.
+          </Text>
         </div>
         <FixedBottomButton onClick={() => { return router.push('/login'); }}>로그인 하기</FixedBottomButton>
       </>
