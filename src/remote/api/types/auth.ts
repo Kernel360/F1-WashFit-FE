@@ -1,3 +1,7 @@
+export interface IFindId {
+  email:string
+}
+
 export interface ISignIn {
   id: string
   password: string

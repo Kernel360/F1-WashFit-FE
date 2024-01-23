@@ -10,7 +10,7 @@ interface DescriptionProps {
 function Description({ main, sub }: DescriptionProps) {
   return (
     <Flex direction="column" justify="center" align="center">
-      <Text typography="t3" bold>{main}</Text>
+      <Text typography="t3" wordBreak="keep-all" textAlign="center" fontWeight={600}>{main}</Text>
       <Spacing size={10} />
       <Text typography="t6" color="tertiary">{sub}</Text>
     </Flex>

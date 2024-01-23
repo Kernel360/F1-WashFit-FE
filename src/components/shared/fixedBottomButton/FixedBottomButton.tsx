@@ -13,9 +13,12 @@ interface FixedBottomButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>
   children: React.ReactNode
   disabled?: boolean
   onClick: () => void
+  size?: 'large' | 'small' | 'medium'
 }
 
-function FixedBottomButton({ children, disabled, onClick }: FixedBottomButtonProps) {
+function FixedBottomButton({
+  children, onClick, disabled, size = 'large',
+}: FixedBottomButtonProps) {
   const PORTAL_ROOT = document.getElementById('portal-root');
   if (PORTAL_ROOT == null) {
     return null;
@@ -23,7 +26,7 @@ function FixedBottomButton({ children, disabled, onClick }: FixedBottomButtonPro
 
   return createPortal(
     <div className={cx('container')}>
-      <Button size="large" full disabled={disabled} onClick={onClick}>
+      <Button size={size} full disabled={disabled} onClick={onClick}>
         {children}
       </Button>
     </div>,

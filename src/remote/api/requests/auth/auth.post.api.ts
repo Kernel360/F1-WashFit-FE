@@ -1,4 +1,4 @@
-import { ISignIn, ISignUp } from '../../types/auth';
+import { IFindId, ISignIn, ISignUp } from '../../types/auth';
 import { postRequest } from '../requests.api';
 
 export const signup = async ({
@@ -16,6 +16,16 @@ export const login = async ({
 }: ISignIn) => {
   const response = await postRequest<null, ISignIn>('/member/login', {
     id, password,
+  });
+
+  return response;
+};
+
+export const findId = async ({
+  email,
+}: IFindId) => {
+  const response = await postRequest<null, IFindId>('/member/find-id', {
+    email,
   });
 
   return response;

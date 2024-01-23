@@ -28,21 +28,23 @@ function CarDetails({
     <>
       <Description main={main} sub={sub} />
       <Spacing size={40} />
-      <Flex direction="column" gap={10}>
-        {options?.map((option) => {
-          return (
-            <Radio
-              key={option.codeNo}
-              type="additionalInfo"
-              label={option.description}
-              value={option.codeName}
-              {...register(option.upperName, {
-                required: true,
-              })}
-            />
-          );
-        })}
-      </Flex>
+      <div style={{ margin: '0 20px' }}>
+        <Flex direction="column" gap={10}>
+          {options?.map((option) => {
+            return (
+              <Radio
+                key={option.codeNo}
+                type="additionalInfo"
+                label={option.description}
+                value={option.codeName}
+                {...register(option.upperName, {
+                  required: true,
+                })}
+              />
+            );
+          })}
+        </Flex>
+      </div>
       <FixedBottomButton
         disabled={!dirtyFields[options[0].upperName] ?? false}
         onClick={onClick}

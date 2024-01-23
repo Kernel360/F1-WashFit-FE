@@ -20,6 +20,7 @@ const VALIDATION_MESSAGE_MAP: {
     message: '비밀번호를 확인해주세요.',
   },
   failedLogin: { message: '아이디 또는 비밀번호를 확인해주세요.' },
+  failedFindId: { message: '잘못된 이메일입니다.' },
 } as const;
 
 export default VALIDATION_MESSAGE_MAP;
