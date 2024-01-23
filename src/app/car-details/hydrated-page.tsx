@@ -14,6 +14,7 @@ import useCarParking from '@remote/queries/additional-info/car-details/useCarPar
 import useCarSegment from '@remote/queries/additional-info/car-details/useCarSegment';
 import useCarType from '@remote/queries/additional-info/car-details/useCarType';
 import Header from '@shared/header/Header';
+import Loader from '@shared/loader/Loader';
 import ProgressBar from '@shared/progress-bar/ProgressBar';
 import Spacing from '@shared/spacing/Spacing';
 
@@ -48,7 +49,7 @@ function CarDetailsPage() {
     || carColorData == null
     || carDrivingData == null
     || carParkingData == null) {
-    return <div>로딩 중..</div>;
+    return <Loader />;
   }
   // TODO: 헤더 아이콘 클릭 시 뒤로가기 기능 추가
 
