@@ -50,9 +50,9 @@ function BottomNav() {
           </Link>
         </li>
         <li>
-          <Link href="/profile">
-            <Profile color={filteredPathName.startsWith('profile') ? 'primary' : 'black'} />
-            <Text typography="t8" fontWeight="200" color={filteredPathName.startsWith('profile') ? 'primary' : 'black'}>프로필</Text>
+          <Link href="/my-page">
+            <Profile color={filteredPathName.startsWith('my-page') ? 'primary' : 'black'} />
+            <Text typography="t8" fontWeight="200" color={filteredPathName.startsWith('my-page') ? 'primary' : 'black'}>프로필</Text>
           </Link>
         </li>
       </ul>

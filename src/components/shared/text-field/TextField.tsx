@@ -40,7 +40,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextFiel
       <Spacing size={4} />
       <Input
         ref={ref}
-        aria-vaild={hasError}
+        aria-invalid={hasError}
         onFocus={handleFocus}
         onBlur={handleBlur}
         isPasswordType={isPasswordType}

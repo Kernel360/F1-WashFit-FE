@@ -1,6 +1,8 @@
 'use client';
 
-import { ButtonHTMLAttributes, useState } from 'react';
+import {
+  InputHTMLAttributes, forwardRef, useState,
+} from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -12,25 +14,23 @@ import styles from './Dropdown.module.scss';
 
 const cx = classNames.bind(styles);
 
-interface IOption {
+interface Option {
   label: string
   value: string | number | undefined
 }
 
-interface DropdownProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement>, 'type'> {
-  options: IOption[]
+interface DropdownProps extends InputHTMLAttributes<HTMLInputElement> {
+  options: Option[]
   selectedLabel: string | number
   type: 'favorite' | 'profile'
-  handleSelectedValue: (value: string | number) => void
 }
 
-function Dropdown({
-  selectedLabel,
+const Dropdown = forwardRef<HTMLInputElement, DropdownProps>(({
   type,
   options,
-  handleSelectedValue,
+  selectedLabel,
   ...props
-}: DropdownProps) {
+}, ref) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const openDropdownMenu = () => {
@@ -43,30 +43,41 @@ function Dropdown({
 
   const containerRef = useOutsideClick(closeDropdownMenu);
 
-  const onClickDropdownItem = (value: string | number) => {
-    handleSelectedValue(value);
-    closeDropdownMenu();
-  };
-
   return (
     <div className={cx('container', { [type]: true })} ref={containerRef}>
       <button onClick={openDropdownMenu} className={cx('selectedValue', { [type]: true })}>
         <Text typography="t6" color="tertiary400">{selectedLabel}</Text>
         <Expand isRotate={isOpen} color="tertiary400" />
       </button>
-      {isOpen && (
-        <ul className={cx('menu', { [type]: true })}>
-          {options.map((option) => {
-            return (
-              <li key={option.value} className={cx('item', { [type]: true })}>
-                <button type="button" onClick={() => { return onClickDropdownItem(option.label); }} {...props}>{option.label}</button>
-              </li>
-            );
-          })}
-        </ul>
-      )}
+      {isOpen
+        && (
+          <ul className={cx('menu', { [type]: true })}>
+            {options.map((option) => {
+              return (
+                <li key={option.value} className={cx('item', { [type]: true })}>
+                  <input
+                    className={cx('input')}
+                    id={option.label}
+                    type="radio"
+                    ref={ref}
+                    value={option.value}
+                    onClick={closeDropdownMenu}
+                    {...props}
+                  />
+                  <label
+                    className={cx('label', { [type]: true })}
+                    htmlFor={option.label}
+                    role="presentation"
+                  >
+                    {option.label}
+                  </label>
+                </li>
+              );
+            })}
+          </ul>
+        )}
     </div>
   );
-}
+});
 
 export default Dropdown;

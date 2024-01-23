@@ -23,7 +23,7 @@ const ColorPicker = forwardRef<HTMLInputElement, ColorPickerProps>(({
   return (
     <Flex direction="column" justify="center" align="center">
       <input className={cx('input')} id={label} type="radio" ref={ref} value={value} {...props} />
-      <label className={cx('label')} htmlFor={label} style={{ backgroundColor: color }} />
+      <label className={cx('label')} htmlFor={label} style={{ backgroundColor: `#${color}` }} />
       <Spacing size={6} />
       <Text typography="t7" color="gray200" className={cx('text')}>{label}</Text>
     </Flex>

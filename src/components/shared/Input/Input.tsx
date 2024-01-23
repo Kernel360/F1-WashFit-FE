@@ -23,6 +23,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(({ isPasswordType, ...pro
   const handleEyeIcon = () => {
     setIsOpen((prev) => { return !prev; });
   };
+
   return (
     <div className={cx('container')}>
       <input className={cx('input')} {...props} ref={ref} type={isPasswordType === false ? 'text' : isOpen ? 'password' : 'text'} />

@@ -16,8 +16,9 @@
       outline: none;
     }
 
-    &[aria-invaild="true"] {
+    &[aria-invalid="true"] {
       border-color: var(--red);
+      color: var(--red);
     }
 
     &::placeholder {

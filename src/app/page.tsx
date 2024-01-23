@@ -150,7 +150,7 @@ export default function Home() {
             <Radio label="조회순" name="filter" type="filter" value="view" defaultChecked />
             <Radio label="위반제품" name="filter" type="filter" value="violatingProduct" />
             <Radio label="추천순" name="filter" type="filter" value="recommend" />
-            <Radio label="최신제품" name="filter" type="filter" value="latest" />
+            <Radio label="최신순" name="filter" type="filter" value="latest" />
           </Flex>
           <Spacing size={16} />
           <div className={cx('productArticleContainer')}>
