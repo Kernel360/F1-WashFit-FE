@@ -13,13 +13,13 @@ const meta = {
     withReactContext({
       Context: ModalContext,
       initialState: {
-        open: true,
-        title: '탈퇴하시겠습니까?',
-        description: '회원을 탈퇴하면 차량용품 추천 서비스를 제공받을 수 없습니다. 정말로 탈퇴하시겠습니까?',
-        topButtonLabel: '예',
-        bottomButtonLabel: '아니오',
-        onTopButtonClick: () => { },
-        onBottomButtonClick: () => { },
+        open: false,
+        title: null,
+        description: null,
+        leftButtonLabel: null,
+        rightButtonLabel: null,
+        onLeftButtonClick: () => { },
+        onRightButtonClick: () => { },
       },
     }),
   ],
@@ -37,11 +37,23 @@ type Story = StoryObj<typeof meta>;
 export const normal: Story = {
   args: {
     open: true,
-    title: '탈퇴하시겠습니까?',
-    description: '회원을 탈퇴하면 차량용품 추천 서비스를 제공받을 수 없습니다. 정말로 탈퇴하시겠습니까?',
-    topButtonLabel: '예',
-    bottomButtonLabel: '아니오',
-    onTopButtonClick: () => { },
-    onBottomButtonClick: () => { },
+    title: '정말 탈퇴하시겠습니까?',
+    description: '탈퇴하시면 차량용품 추천 서비스를 제공받을 수 없습니다. 정말로 탈퇴하시겠습니까?',
+    leftButtonLabel: '예',
+    rightButtonLabel: '아니오',
+    onLeftButtonClick: () => { },
+    onRightButtonClick: () => { },
+  },
+};
+
+export const oneButtonModal = {
+  args: {
+    open: true,
+    title: '정말 탈퇴하시겠습니까?',
+    description: '탈퇴하시면 차량용품 추천 서비스를 제공받을 수 없습니다. 정말로 탈퇴하시겠습니까?',
+    leftButtonLabel: '예',
+    rightButtonLabel: null,
+    onLeftButtonClick: () => { },
+    onRightButtonClick: () => { },
   },
 };
