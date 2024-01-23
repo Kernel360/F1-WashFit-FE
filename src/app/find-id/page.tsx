@@ -7,9 +7,9 @@ import { useForm } from 'react-hook-form';
 
 import dynamic from 'next/dynamic';
 
-import VALIDATION_MESSAGE_MAP from '@/constants/validationMessage';
-import { IFindId } from '@/remote/api/types/auth';
-import useFindId from '@/remote/queries/auth/useFindId';
+import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
+import { IFindId } from '@remote/api/types/auth';
+import useFindId from '@remote/queries/auth/useFindId';
 import Header from '@shared/header/Header';
 import Spacing from '@shared/spacing/Spacing';
 import TextField from '@shared/text-field/TextField';
@@ -19,7 +19,7 @@ const FixedBottomButton = dynamic(() => { return import('@shared/fixedBottomButt
   ssr: false,
 });
 
-function FindUsernamePage() {
+function FindIdPage() {
   const { register, handleSubmit, formState: { isValid, errors, isDirty } } = useForm<IFindId>({
     mode: 'onBlur',
   });
@@ -72,4 +72,4 @@ function FindUsernamePage() {
   );
 }
 
-export default FindUsernamePage;
+export default FindIdPage;
