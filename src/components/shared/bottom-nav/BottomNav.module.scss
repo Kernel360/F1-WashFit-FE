@@ -3,8 +3,8 @@
   right: 0;
   bottom: 0;
   left: 0;
-  height: 44px;
-  padding: 12px 20px 10px;
+  box-sizing: border-box;
+  padding: 18px 35px;
   background-color: var(--white);
 
   ul {
@@ -17,7 +17,8 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      height: 42px;
+      width: 45px;
+      gap: 4.5px;
     }
   }
 }

@@ -16,9 +16,9 @@ function ChannelMoreBtn() {
       <button aria-label="더보기 버튼" onClick={handleClick}>
         <More />
       </button>
-
+      {/* TODO: 더보기 버튼 클릭시 보여질 내용 */}
       {isClicked && (
-      <div>더보기 클릭</div>
+      <div style={{ fontSize: '10px' }}>더보기 클릭</div>
       )}
     </div>
   );

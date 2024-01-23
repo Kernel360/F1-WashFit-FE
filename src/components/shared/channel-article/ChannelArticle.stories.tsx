@@ -20,7 +20,6 @@ export const YoutubeVideo: Story = {
   args: {
     data: {
       id: 1,
-      link: '/',
       src: 'https://www.youtube.com/embed/TLPnEZFN3Z8?si=yGhuR7gYK8vZSJWv',
       alt: '유튜브 영상',
       profile: '/assets/profile.JPG',
