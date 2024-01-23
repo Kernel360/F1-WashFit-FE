@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-import ScrollToTop from '@/components/shared/scroll-to-top/ScrollToTop';
+import ScrollToTop from '@components/shared/scroll-to-top/ScrollToTop';
 import BottomNav from '@shared/bottom-nav/BottomNav';
 import Banner from '@shared/carousel/Banner';
 import RecommendList from '@shared/carousel/RecommendList';
