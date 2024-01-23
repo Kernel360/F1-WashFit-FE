@@ -23,7 +23,7 @@ function Title({
         {titleIcon}
       </Flex>
       <Spacing size={size} />
-      <Text color={descriptionColor}>{description}</Text>
+      <Text typography="t6" color={descriptionColor}>{description}</Text>
     </Flex>
   );
 }

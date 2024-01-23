@@ -37,7 +37,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextFiel
     <div>
       {label && <Text typography="t6" display="inline-block" color={labelColor}>{label}</Text>}
       {required && <Text typography="t6" display="inline-block" color="red">*</Text>}
-      <Spacing size={12} />
+      <Spacing size={4} />
       <Input
         ref={ref}
         aria-vaild={hasError}
@@ -46,10 +46,10 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextFiel
         isPasswordType={isPasswordType}
         {...props}
       />
-      {hasError ? <Spacing size={6} /> : <Spacing size={20} />}
+      {hasError ? <Spacing size={4} /> : <Spacing size={20} />}
       {hasError && (
         <>
-          <Text typography="t7" color={labelColor} display="inline-block">{helpMessage}</Text>
+          <Text typography="t8" color={labelColor} display="inline-block">{helpMessage}</Text>
           <Spacing size={6} />
         </>
       )}
