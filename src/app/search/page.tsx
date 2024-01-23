@@ -1,10 +1,11 @@
 'use client';
 
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 import classNames from 'classnames/bind';
 
-import { SEARCH_FILTER_MAP } from '@constants/searchByMap';
+import { SEARCH_FILTER_MAP, SearchFilterType } from '@constants/searchByMap';
 import Drawer from '@shared/drawer/Drawer';
 import Dropdown from '@shared/dropdown/Dropdown';
 import Header from '@shared/header/Header';
@@ -59,23 +60,18 @@ const options = [
 ];
 
 function SearchPage() {
-  // TODO: 쿼리스트링을 필터 값 받아오기 ex. view, violations, latest, recommended
-  const query = '';
-  const initialLabel = query === '' ? '조회순' : SEARCH_FILTER_MAP[query];
-  const [selectedLabel, setSelectedLabel] = useState<string | number>(initialLabel);
+  // TODO: 쿼리스트링을 필터 값 받아와서 default value 설정하기 ex. view, violations, latest, recommended
+  const { register, watch } = useForm({
+    defaultValues: {
+      filter: 'view',
+    },
+  });
+
   const [isOpenFilterDrawer, setIsOpenFilterDrawer] = useState(false);
 
   const handleFilterClick = () => {
     setIsOpenFilterDrawer((prev) => { return !prev; });
   };
-
-  const handleSelectedValue = (value: string | number) => {
-    setSelectedLabel(value);
-  };
-
-  // TODO: 분류 옵션에 따른 데이터 패칭 작업
-  // const sortOption = options.find((option) => { return option.label === selectedLabel; })
-  // console.log(options.find((option) => { return option.label === selectedLabel; }));
 
   return (
     <>
@@ -87,9 +83,9 @@ function SearchPage() {
           <Text typography="t6" color="gray300">{`총 ${productArticleData.length}개`}</Text>
           <Dropdown
             options={options}
-            selectedLabel={selectedLabel}
+            selectedLabel={(SEARCH_FILTER_MAP[watch('filter') as SearchFilterType])}
             type="favorite"
-            handleSelectedValue={handleSelectedValue}
+            {...register('filter')}
           />
         </div>
         <div className={cx('productArticleContainer')}>

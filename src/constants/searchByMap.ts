@@ -4,3 +4,5 @@ export const SEARCH_FILTER_MAP = {
   latest: '최신순',
   recommended: '추천순',
 } as const;
+
+export type SearchFilterType = keyof typeof SEARCH_FILTER_MAP;
