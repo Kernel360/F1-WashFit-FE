@@ -25,7 +25,7 @@ function KakaoMap() {
     setIsOpen(true);
   };
 
-  // TODO: 주소를 받아서 좌표로 변환후 뿌려주기
+  // TODO: 주소를 받아서 좌표로 변환후 뿌려주기!
   // TODO: CustomOverlayMap 컴포넌트 UI
 
   return (
