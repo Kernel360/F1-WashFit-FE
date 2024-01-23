@@ -11,6 +11,7 @@ import useCarWashCost from '@remote/queries/additional-info/car-wash-details/use
 import useCarWashFrequency from '@remote/queries/additional-info/car-wash-details/useCarWashFrequency';
 import useCarWashInterest from '@remote/queries/additional-info/car-wash-details/useCarWashInterest';
 import Header from '@shared/header/Header';
+import Loader from '@shared/loader/Loader';
 import ProgressBar from '@shared/progress-bar/ProgressBar';
 import Spacing from '@shared/spacing/Spacing';
 
@@ -42,7 +43,7 @@ function CarWashDetailsPage() {
     || carWashCostData == null
     || carWashInterestData == null
   ) {
-    return <div>로딩중 입니다..</div>;
+    return <Loader />;
   }
 
   return (
