@@ -1,54 +1,45 @@
-/* eslint-disable @next/next/no-before-interactive-script-outside-document */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 'use client';
 
 import { useState } from 'react';
-import {
-  Map, MapMarker, CustomOverlayMap,
-} from 'react-kakao-maps-sdk';
 
 import Script from 'next/script';
 
-interface IMarkerPosition {
-  lat: number;
-  lng: number;
+declare global {
+  interface Window {
+    kakao: any
+  }
 }
 
-const KAKAO_SDK_URL = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY}&autoload=false`;
-
 function KakaoMap() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [clickedMarkerPosition, setClickedMarkerPosition] = useState({ lat: 0, lng: 0 });
-
-  const handleMarkerClick = (position:IMarkerPosition) => {
-    setClickedMarkerPosition(position);
-    setIsOpen(true);
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const [_, setMap] = useState(null);
+  const loadKakaoMap = () => {
+    window.kakao.maps.load(() => {
+      const mapContainer = document.getElementById('map');
+      const mapOption = {
+        center: new window.kakao.maps.LatLng(37.514417066172385, 127.06132898292525),
+        level: 3,
+      };
+      const map = new window.kakao.maps.Map(mapContainer, mapOption);
+      setMap(map);
+    });
   };
-
-  // TODO: 주소를 받아서 좌표로 변환후 뿌려주기!
-  // TODO: CustomOverlayMap 컴포넌트 UI
-
   return (
     <>
-      <Script src={KAKAO_SDK_URL} strategy="beforeInteractive" />
-      <Map center={{ lat: 33.450701, lng: 126.795841 }} style={{ width: '100vw', height: '100vh' }} level={3}>
-        <MapMarker
-          position={{ lat: 33.450701, lng: 126.795841 }}
-          onClick={() => { return handleMarkerClick({ lat: 33.450701, lng: 126.795841 }); }}
-        />
-        <MapMarker
-          position={{ lat: 33.450701, lng: 126.570667 }}
-          onClick={() => { return handleMarkerClick({ lat: 33.450701, lng: 126.570667 }); }}
-        />
-
-        {isOpen && (
-          <CustomOverlayMap position={clickedMarkerPosition}>
-            <button onClick={() => { return setIsOpen(false); }}>
-              닫기
-            </button>
-          </CustomOverlayMap>
-        )}
-      </Map>
+      <Script
+        strategy="afterInteractive"
+        type="text/javascript"
+        src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY}&autoload=false`}
+        onReady={loadKakaoMap}
+      />
+      <div id="map" style={{ width: '100vw', height: '100vh' }} />
     </>
   );
 }
