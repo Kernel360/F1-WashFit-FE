@@ -1,8 +1,8 @@
 import classNames from 'classnames/bind';
 
-import ChannelArticle from '@/components/shared/channel-article/ChannelArticle';
-import Header from '@/components/shared/header/Header';
 import BottomNav from '@shared/bottom-nav/BottomNav';
+import ChannelArticle from '@shared/channel-article/ChannelArticle';
+import Header from '@shared/header/Header';
 
 import styles from './page.module.scss';
 
