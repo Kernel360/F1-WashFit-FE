@@ -1,6 +1,5 @@
 import classNames from 'classnames/bind';
 
-import ScrollToTop from '@components/shared/scroll-to-top/ScrollToTop';
 import BottomNav from '@shared/bottom-nav/BottomNav';
 import Banner from '@shared/carousel/Banner';
 import RecommendList from '@shared/carousel/RecommendList';
@@ -8,6 +7,7 @@ import Flex from '@shared/flex/Flex';
 import Header from '@shared/header/Header';
 import ProductArticle from '@shared/product-article/ProductArticle';
 import Radio from '@shared/radio/Radio';
+import ScrollToTop from '@shared/scroll-to-top/ScrollToTop';
 import Spacing from '@shared/spacing/Spacing';
 import Text from '@shared/text/Text';
 
