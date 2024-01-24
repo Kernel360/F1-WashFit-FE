@@ -10,6 +10,8 @@ import Dimmed from '@shared/dimmed/Dimmed';
 import Spacing from '@shared/spacing/Spacing';
 import Text from '@shared/text/Text';
 
+import Flex from '../flex/Flex';
+
 import styles from './Modal.module.scss';
 
 const cx = classNames.bind(styles);
@@ -18,15 +20,15 @@ interface ModalProps {
   open: boolean
   title: React.ReactNode
   description: React.ReactNode
-  topButtonLabel: React.ReactNode
-  bottomButtonLabel: React.ReactNode
-  onTopButtonClick: () => void
-  onBottomButtonClick: () => void
+  leftButtonLabel: React.ReactNode
+  rightButtonLabel: React.ReactNode
+  onLeftButtonClick: () => void
+  onRightButtonClick: () => void
 }
 
 function Modal({
   // eslint-disable-next-line max-len
-  open, title, description, topButtonLabel, bottomButtonLabel, onTopButtonClick, onBottomButtonClick,
+  open, title, description, leftButtonLabel, rightButtonLabel, onLeftButtonClick, onRightButtonClick,
 }: ModalProps) {
   const { close } = useModal();
   const modalRef = useOutsideClick(close);
@@ -38,13 +40,14 @@ function Modal({
   return (
     <Dimmed>
       <div className={cx('container')} ref={modalRef}>
-        <Text bold>{title}</Text>
+        <Text typography="t4" bold>{title}</Text>
         <Spacing size={8} />
-        <Text typography="t7" color="gray200">{description}</Text>
-        <Spacing size={24} />
-        <Button onClick={onTopButtonClick} full color="secondary">{topButtonLabel}</Button>
-        <Spacing size={12} />
-        <Button onClick={onBottomButtonClick} full>{bottomButtonLabel}</Button>
+        <Text typography="t6" color="gray200" textAlign="center" wordBreak="keep-all" className={cx('description')}>{description}</Text>
+        <Spacing size={32} />
+        <Flex justify="space-between" align="center" gap={8} className={cx('buttonContainer')}>
+          <Button onClick={onLeftButtonClick} full color="primary" size="large">{leftButtonLabel}</Button>
+          {rightButtonLabel && <Button onClick={onRightButtonClick} full size="large" color="gray" weak>{rightButtonLabel}</Button>}
+        </Flex>
       </div>
     </Dimmed>
   );

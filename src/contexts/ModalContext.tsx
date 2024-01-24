@@ -20,10 +20,10 @@ const defaultValues: ModalProps = {
   open: false,
   title: null,
   description: null,
-  topButtonLabel: null,
-  bottomButtonLabel: null,
-  onTopButtonClick: () => { },
-  onBottomButtonClick: () => { },
+  leftButtonLabel: null,
+  rightButtonLabel: null,
+  onLeftButtonClick: () => { },
+  onRightButtonClick: () => { },
 };
 
 export const ModalContext = createContext<ModalContextValue | undefined>(undefined);
@@ -38,16 +38,16 @@ export function ModalContextProvider({ children }: { children: React.ReactNode }
   }, []);
 
   // eslint-disable-next-line max-len
-  const open = useCallback(({ onTopButtonClick, onBottomButtonClick, ...options }: ModalOptions) => {
+  const open = useCallback(({ onLeftButtonClick, onRightButtonClick, ...options }: ModalOptions) => {
     setModalState({
       ...options,
-      onTopButtonClick: () => {
+      onLeftButtonClick: () => {
         close();
-        onTopButtonClick();
+        onLeftButtonClick();
       },
-      onBottomButtonClick: () => {
+      onRightButtonClick: () => {
         close();
-        onBottomButtonClick();
+        onRightButtonClick();
       },
       open: true,
     });
