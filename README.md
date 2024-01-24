@@ -32,7 +32,7 @@
 
 | **임병욱** | **백서영** |
 | :------: |  :------: |
-| [<img src="https://avatars.githubusercontent.com/u/103362820?v=4" height=150 width=150> <br/> @wookki](https://github.com/wookki) | [<img src="https://avatars.githubusercontent.com/u/101791501?v=4" height=150 width=150> <br/> @seoye0ng](https://github.com/seoye0ng) 
+| [<img src="https://avatars.githubusercontent.com/u/103362820?v=4" height=150 width=150> <br/> @bottlewook](https://github.com/bottlewook) | [<img src="https://avatars.githubusercontent.com/u/101791501?v=4" height=150 width=150> <br/> @seoye0ng](https://github.com/seoye0ng) 
 
 </div>
 
