@@ -42,7 +42,7 @@ function Modal({
       <div className={cx('container')} ref={modalRef}>
         <Text typography="t4" bold>{title}</Text>
         <Spacing size={8} />
-        <Text typography="t6" color="gray200" className={cx('description')}>{description}</Text>
+        <Text typography="t6" color="gray200" textAlign="center" wordBreak="keep-all" className={cx('description')}>{description}</Text>
         <Spacing size={32} />
         <Flex justify="space-between" align="center" gap={8} className={cx('buttonContainer')}>
           <Button onClick={onLeftButtonClick} full color="primary" size="large">{leftButtonLabel}</Button>
