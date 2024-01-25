@@ -1,5 +1,5 @@
 @mixin set-animation($name) {
-    animation: $name 0.25s;
+    animation: $name 0.2s;
     animation-fill-mode: forwards;
 }
 
@@ -60,7 +60,7 @@
 
     @keyframes fade-in-list {
         from {
-            transform: translateY(-100px);
+            transform: translateY(-50px);
         }
 
         to {
@@ -74,7 +74,7 @@
         }
 
         to {
-            transform: translateY(-100px);
+            transform: translateY(-50px);
         }
     }
 }
