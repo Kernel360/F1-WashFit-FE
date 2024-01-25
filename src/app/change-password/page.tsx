@@ -1,3 +1,5 @@
+/* eslint-disable no-nested-ternary */
+/* eslint-disable no-console */
 /* eslint-disable no-alert */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
@@ -8,6 +10,7 @@ import { useForm } from 'react-hook-form';
 import classNames from 'classnames/bind';
 import dynamic from 'next/dynamic';
 
+import useChangePassword from '@/remote/queries/auth/useChangePassword';
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
 import { ChangePassword } from '@remote/api/types/auth';
 import Header from '@shared/header/Header';
@@ -35,9 +38,18 @@ function ChangePasswordPage() {
     mode: 'onBlur',
   });
 
+  const { mutate, isError } = useChangePassword();
+
   const onSubmit = (data: ChangePasswordType) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
+    const { password } = data;
+    mutate({ password }, {
+      onSuccess: () => {
+        alert('비밀번호 변경 완료');
+        // TODO: 비밀번호 변경 페이지 로드하기
+      },
+    });
+
+    console.log(password);
   };
 
   return (
@@ -68,8 +80,14 @@ function ChangePasswordPage() {
             required: true,
             validate: (value) => { return value === watch('password') || false; },
           })}
-          hasError={!!errors.confirmPassword}
-          helpMessage={VALIDATION_MESSAGE_MAP.confirmPassword.message}
+          hasError={!!errors.confirmPassword || isError}
+          helpMessage={
+            isError
+              ? VALIDATION_MESSAGE_MAP.failedChangePassword.message
+              : (errors.confirmPassword
+                ? VALIDATION_MESSAGE_MAP.confirmPassword.message
+                : undefined)
+          }
         />
         <div>
           <FixedBottomButton
