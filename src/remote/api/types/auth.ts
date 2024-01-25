@@ -9,6 +9,6 @@ export interface ISignUp extends ISignIn {
   age: string | null
 }
 
-export type FindPassword = Pick<ISignIn, 'id'>;
+export type FindPassword = Pick<ISignUp, 'id'>;
 
 export type FindId = Pick<ISignUp, 'email'>;

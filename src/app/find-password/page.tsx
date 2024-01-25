@@ -9,6 +9,7 @@ import dynamic from 'next/dynamic';
 
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
 import { FindPassword } from '@remote/api/types/auth';
+import useFindPassword from '@remote/queries/auth/useFindPassword';
 import Header from '@shared/header/Header';
 import Spacing from '@shared/spacing/Spacing';
 import TextField from '@shared/text-field/TextField';
@@ -25,20 +26,16 @@ function FindPasswordPage() {
   } = useForm<FindPassword>({
     mode: 'onBlur',
   });
+  const { mutate, isError } = useFindPassword();
 
   const onSubmit = (data: FindPassword) => {
     const { id } = data;
-    // mutate({ id }, {
-    //   onError: (error) => {
-    //     console.error('Error:', error);
-    //     alert('아이디가 존재하지 않습니다.');
-    //     // TODO: 실패 시 알림 메세지 바로 출력
-    //   },
-    //   onSuccess: () => {
-    //     alert('사용하실 비밀번호를 입력해주세요.');
-    //     // TODO: 비밀번호 변경 페이지 로드하기
-    //   },
-    // });
+    mutate({ id }, {
+      onSuccess: () => {
+        alert('비밀번호 변경 페이지로 이동');
+        // TODO: 비밀번호 변경 페이지 로드하기
+      },
+    });
 
     console.log(id);
   };
@@ -58,6 +55,7 @@ function FindPasswordPage() {
             required: true,
             pattern: VALIDATION_MESSAGE_MAP.id.value,
           })}
+          hasError={isError}
           helpMessage={VALIDATION_MESSAGE_MAP.failedFindPassword.message}
         />
         <div>
