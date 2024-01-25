@@ -28,7 +28,6 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.49.2",
-    "react-kakao-maps-sdk": "^1.1.26",
     "react-redux": "^9.0.4",
     "react-slick": "^0.29.0"
   },
