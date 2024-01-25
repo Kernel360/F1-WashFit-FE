@@ -1,11 +1,16 @@
 import { FieldValues, UseFormRegister } from 'react-hook-form';
 
+import dynamic from 'next/dynamic';
+
 import Description from '@components/additional-info/description/Description';
 import { IAdditionalInfo } from '@remote/api/types/additional-info';
-import FixedBottomButton from '@shared/fixedBottomButton/FixedBottomButton';
 import Flex from '@shared/flex/Flex';
 import Radio from '@shared/radio/Radio';
 import Spacing from '@shared/spacing/Spacing';
+
+const FixedBottomButton = dynamic(() => { return import('@shared/fixedBottomButton/FixedBottomButton'); }, {
+  ssr: false,
+});
 
 interface CarDetailsProps {
   onClick: () => void

@@ -1,14 +1,18 @@
 import { FieldValues, UseFormRegister } from 'react-hook-form';
 
 import classNames from 'classnames/bind';
+import dynamic from 'next/dynamic';
 
 import ColorPicker from '@components/additional-info/car-details/color-picker/ColorPicker';
 import Description from '@components/additional-info/description/Description';
 import { IAdditionalInfo } from '@remote/api/types/additional-info';
-import FixedBottomButton from '@shared/fixedBottomButton/FixedBottomButton';
 import Spacing from '@shared/spacing/Spacing';
 
 import styles from './CarColorPicker.module.scss';
+
+const FixedBottomButton = dynamic(() => { return import('@shared/fixedBottomButton/FixedBottomButton'); }, {
+  ssr: false,
+});
 
 const cx = classNames.bind(styles);
 
