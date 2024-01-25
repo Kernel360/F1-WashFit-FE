@@ -39,7 +39,7 @@ function CarDetailsPage() {
   // eslint-disable-next-line @typescript-eslint/require-await
   const onSubmit = async () => {
     onNext();
-    // TODO: 쿼리훅 제작
+    // TODO: 쿼리훅 제작 및 테스트
     // console.log(getValues());
   };
 
