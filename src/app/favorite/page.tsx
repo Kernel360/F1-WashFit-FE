@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form';
 
 import classNames from 'classnames/bind';
 
-import useScroll from '@/hooks/useScroll';
 import { SEARCH_FILTER_MAP, SearchFilterType } from '@constants/searchByMap';
+import useScroll from '@hooks/useScroll';
 import BottomNav from '@shared/bottom-nav/BottomNav';
 import Dropdown from '@shared/dropdown/Dropdown';
 import Header from '@shared/header/Header';
@@ -88,7 +88,7 @@ function FavoritePage() {
   return (
     <>
       <Header isDisplayLogo={false}>즐겨찾기</Header>
-      <Spacing size={8} />
+      <Spacing size={12} />
       <main className={cx('mainContainer')}>
         <div className={cx('hideWrapper', { scrolled: isScrolled })}>
           <SearchBar />
