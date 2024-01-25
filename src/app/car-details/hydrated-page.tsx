@@ -19,11 +19,11 @@ import ProgressBar from '@shared/progress-bar/ProgressBar';
 import Spacing from '@shared/spacing/Spacing';
 
 function CarDetailsPage() {
-  const { data: carSegmentData } = useCarSegment();
-  const { data: carTypeData } = useCarType();
-  const { data: carColorData } = useCarColor();
-  const { data: carDrivingData } = useCarDriving();
-  const { data: carParkingData } = useCarParking();
+  const { data: carSegmentData, isLoading: isCarSegmentLoading } = useCarSegment();
+  const { data: carTypeData, isLoading: isCarTypeLoading } = useCarType();
+  const { data: carColorData, isLoading: isCarColorLoading } = useCarColor();
+  const { data: carDrivingData, isLoading: isCarDrivingLoading } = useCarDriving();
+  const { data: carParkingData, isLoading: isCarParkingLoading } = useCarParking();
 
   const [step, setStep] = useState(1);
 
@@ -44,15 +44,23 @@ function CarDetailsPage() {
   };
 
   // TODO: Loader 컴포넌트 제작
+  if (isCarSegmentLoading === true
+    || isCarTypeLoading === true
+    || isCarColorLoading === true
+    || isCarDrivingLoading === true
+    || isCarParkingLoading === true) {
+    return <Loader />;
+  }
+
   if (carSegmentData == null
     || carTypeData == null
     || carColorData == null
     || carDrivingData == null
     || carParkingData == null) {
-    return <Loader />;
+    return null;
   }
-  // TODO: 헤더 아이콘 클릭 시 뒤로가기 기능 추가
 
+  // TODO: 헤더 아이콘 클릭 시 뒤로가기 기능 추가
   return (
     <>
       {step <= 5 && (
