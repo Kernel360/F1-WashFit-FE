@@ -1,0 +1,80 @@
+@mixin set-animation($name) {
+    animation: $name 0.2s;
+    animation-fill-mode: forwards;
+}
+
+.mainContainer {
+    margin-bottom: 76px;
+    padding: 0 24px;
+
+    .hideWrapper {
+        position: relative;
+        z-index: 1;
+
+        @include set-animation(fade-in);
+
+        &.scrolled {
+            @include set-animation(fade-out);
+        }
+    }
+
+    @keyframes fade-in {
+        from {
+            transform: translateY(-200px);
+        }
+
+        to {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fade-out {
+        from {
+            transform: translateY(0);
+        }
+
+        to {
+            display: hidden;
+            transform: translateY(-200px);
+        }
+    }
+
+    .filterBox {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 13px 0 24px;
+    }
+
+    .productArticleContainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+
+        @include set-animation(fade-in-list);
+
+        &.scrolled {
+            @include set-animation(fade-out-list);
+        }
+    }
+
+    @keyframes fade-in-list {
+        from {
+            transform: translateY(-50px);
+        }
+
+        to {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fade-out-list {
+        from {
+            transform: translateY(0);
+        }
+
+        to {
+            transform: translateY(-50px);
+        }
+    }
+}
