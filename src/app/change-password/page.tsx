@@ -10,9 +10,9 @@ import { useForm } from 'react-hook-form';
 import classNames from 'classnames/bind';
 import dynamic from 'next/dynamic';
 
-import useChangePassword from '@/remote/queries/auth/useChangePassword';
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
 import { ChangePassword } from '@remote/api/types/auth';
+import useChangePassword from '@remote/queries/auth/useChangePassword';
 import Header from '@shared/header/Header';
 import Spacing from '@shared/spacing/Spacing';
 import TextField from '@shared/text-field/TextField';

@@ -67,7 +67,7 @@ function LoginPage() {
           <Link href="/find-id">아이디 찾기</Link>
         </li>
         <li>
-          <Link href="find-password">비밀번호 찾기</Link>
+          <Link href="/find-password">비밀번호 찾기</Link>
         </li>
       </ul>
     </main>
