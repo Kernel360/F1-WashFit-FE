@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form';
 import dynamic from 'next/dynamic';
 
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
-import { IFindId } from '@remote/api/types/auth';
+import { FindId } from '@remote/api/types/auth';
 import useFindId from '@remote/queries/auth/useFindId';
 import Header from '@shared/header/Header';
 import Spacing from '@shared/spacing/Spacing';
@@ -20,12 +20,12 @@ const FixedBottomButton = dynamic(() => { return import('@shared/fixedBottomButt
 });
 
 function FindIdPage() {
-  const { register, handleSubmit, formState: { isValid, errors, isDirty } } = useForm<IFindId>({
+  const { register, handleSubmit, formState: { isValid, errors, isDirty } } = useForm<FindId>({
     mode: 'onBlur',
   });
   const { mutate } = useFindId();
 
-  const onSubmit = (data: IFindId) => {
+  const onSubmit = (data: FindId) => {
     const { email } = data;
     mutate({ email }, {
       onError: (error) => {
