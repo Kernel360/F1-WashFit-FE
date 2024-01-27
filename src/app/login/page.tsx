@@ -61,13 +61,13 @@ function LoginPage() {
       </form>
       <ul className={cx('linkContainer')}>
         <li>
-          <Link href="/">회원가입</Link>
+          <Link href="/signup">회원가입</Link>
         </li>
         <li>
-          <Link href="/">아이디 찾기</Link>
+          <Link href="/find-id">아이디 찾기</Link>
         </li>
         <li>
-          <Link href="/">비밀번호 찾기</Link>
+          <Link href="/find-password">비밀번호 찾기</Link>
         </li>
       </ul>
     </main>

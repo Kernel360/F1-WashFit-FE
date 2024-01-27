@@ -1,7 +1,8 @@
 import {
+  ChangePassword,
   FindId, FindPassword, ISignIn, ISignUp,
 } from '../../types/auth';
-import { postRequest } from '../requests.api';
+import { postRequest, putRequest } from '../requests.api';
 
 export const signup = async ({
   id, password, email, gender, age,
@@ -38,6 +39,16 @@ export const findPassword = async ({
 }: FindPassword) => {
   const response = await postRequest<null, FindPassword>('/member/find-password', {
     id,
+  });
+
+  return response;
+};
+
+export const changePassword = async ({
+  password,
+}: ChangePassword) => {
+  const response = await putRequest<null, ChangePassword>('/member/change-password', {
+    password,
   });
 
   return response;

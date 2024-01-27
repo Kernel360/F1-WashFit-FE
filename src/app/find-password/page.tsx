@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 /* eslint-disable no-console */
 
@@ -7,6 +8,7 @@ import { useForm } from 'react-hook-form';
 
 import classNames from 'classnames/bind';
 import dynamic from 'next/dynamic';
+import { useRouter } from 'next/navigation';
 
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
 import { FindPassword } from '@remote/api/types/auth';
@@ -31,14 +33,15 @@ function FindPasswordPage() {
   } = useForm<FindPassword>({
     mode: 'onBlur',
   });
+
+  const router = useRouter();
   const { mutate, isError } = useFindPassword();
 
   const onSubmit = (data: FindPassword) => {
     const { id } = data;
     mutate({ id }, {
       onSuccess: () => {
-        alert('비밀번호 변경 페이지로 이동');
-        // TODO: 비밀번호 변경 페이지 로드하기
+        router.push('/change-password');
       },
     });
 
