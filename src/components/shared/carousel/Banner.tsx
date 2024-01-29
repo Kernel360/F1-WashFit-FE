@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import './Banner.scss';
-import { IBannerData } from './types/carousel.type';
+import { BannerType } from '@remote/api/types/home';
 
 const settings = {
   dots: true,
@@ -20,11 +20,13 @@ const settings = {
   arrows: false,
 };
 
-function Banner({ bannerData }: { bannerData: IBannerData[] }) {
+function Banner({ bannerData }: { bannerData: BannerType }) {
+  const bannerList = bannerData.value;
+
   return (
     <div className="container">
       <Slider {...settings} dotsClass="dotsCustom">
-        {bannerData.map((slide) => {
+        {bannerList.map((slide) => {
           return (
             <Link href={slide.link} key={slide.id}>
               <Image
