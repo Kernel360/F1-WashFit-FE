@@ -1,5 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { MOCK_BANNER_DATA } from '@mocks/homeHandler/mocks';
+
 import Banner from './Banner';
 
 const meta = {
@@ -20,17 +22,6 @@ type Story = StoryObj<typeof meta>;
 
 export const AdBanner: Story = {
   args: {
-    bannerData: [{
-      id: 1, link: '/', src: '/assets/banner.png', alt: '그림',
-    },
-    {
-      id: 2, link: '/', src: '/assets/banner.png', alt: '그림',
-    },
-    {
-      id: 3, link: '/', src: '/assets/banner.png', alt: '그림',
-    },
-    {
-      id: 4, link: '/', src: '/assets/banner.png', alt: '그림',
-    }],
+    bannerData: MOCK_BANNER_DATA,
   },
 };
