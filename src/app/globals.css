@@ -2,22 +2,26 @@
 @import "~slick-carousel/slick/slick-theme.css";
 
 :root {
-  --primary: #0075FF;
-  --secondary: #B2D6FF;
-  --red: #FF5247;
-  --gray:#F5F5F5;
-  --gray-100: #CDCFD0;
-  --gray-200: #979C9E;
-  --gray-300: #72777A;
-  --gray-400: #404446;
-  --tertiary: #7A7A7A;
-  --tertiary-100: #EAEAEA;
-  --tertiary-200: #F6F6F6;
-  --tertiary-300: #F5F5F5;
-  --tertiary-400: #7C7A7A;
-  --black: #090A0A;
+  --primary100: #CCEDFF;
+  --primary200: #9AD5FF;
+  --primary300: #66BAFF;
+  --primary400: #3FA0FF;
+  --primary500: #0075FF;
+  --primary600: #015ADC;
+  --primary700: #0043B6;
+  --primary800: #002F93;
+  --gray100: #F3F5F9;
+  --gray200: #D2D4DB;
+  --gray300: #B4B5BF;
+  --gray400: #9296A1;
+  --gray500: #767A87;
+  --gray600: #5A5E6B;
+  --gray700: #404253;
+  --gray800: #282A3A;
+  --gray900: #111225;
+  --black: #000;
   --white: #FFF;
-  --white-100: #F3F5F8;
+  --red: #FF5247;
   --pink: #F67272;
 
   /* -------------- z-index -------------- */
