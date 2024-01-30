@@ -1,11 +1,16 @@
-/* eslint-disable import/order */
-import { describe, test, expect } from 'vitest';
+/* eslint-disable global-require */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import userEvent from '@testing-library/user-event';
+import {
+  describe, test, expect, vi,
+} from 'vitest';
+
 import { render, screen } from '@tests/test-utils';
 
 import SignupPage from './page';
 
 describe('회원가입 페이지 로직', () => {
+  vi.mock('next/navigation', () => { return require('next-router-mock'); });
   test('유효성 검사를 통과하지 못한 아이디는 영문 소문자, 숫자 조합 8자 이상 입력해주세요 문구 표시', async () => {
     const user = userEvent.setup();
 
