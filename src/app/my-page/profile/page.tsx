@@ -2,24 +2,18 @@
 
 import { useForm } from 'react-hook-form';
 
-import classNames from 'classnames/bind';
 import dynamic from 'next/dynamic';
 
 import { AGE_OPTIONS, GENDER_OPTIONS } from '@constants/myPage';
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
-import Dropdown from '@shared/dropdown/Dropdown';
-import Flex from '@shared/flex/Flex';
+import DropdownField from '@shared/dropdown-field/DropdownField';
 import Header from '@shared/header/Header';
 import Spacing from '@shared/spacing/Spacing';
-import Text from '@shared/text/Text';
-
-import styles from './page.module.scss';
+import TextField from '@shared/text-field/TextField';
 
 const FixedBottomButton = dynamic(() => { return import('@shared/fixedBottomButton/FixedBottomButton'); }, {
   ssr: false,
 });
-
-const cx = classNames.bind(styles);
 
 function ProfilePage() {
   // TODO: api or store를 통해 defaultValue 설정하기
@@ -46,46 +40,45 @@ function ProfilePage() {
     <>
       <Header isDisplayLogo={false} />
       <Spacing size={24} />
-      <Flex direction="column" gap={4}>
-        <Text color="tertiary" typography="t6" className={cx('title')}>아이디</Text>
-        <input
-          className={cx('field')}
-          {...register('id', {
-            required: true,
-            pattern: VALIDATION_MESSAGE_MAP.id.value,
-          })}
-        />
-        {!!errors.id && <Text typography="t6" color="red">{VALIDATION_MESSAGE_MAP.id.message}</Text>}
-      </Flex>
+      <TextField
+        label="아이디"
+        required
+        placeholder="아이디"
+        {...register('id', {
+          required: true,
+          pattern: VALIDATION_MESSAGE_MAP.id.value,
+        })}
+        hasError={!!errors.id}
+        helpMessage={VALIDATION_MESSAGE_MAP.id.message}
+      />
+      <TextField
+        label="이메일"
+        required
+        placeholder="이메일"
+        {...register('email', {
+          required: true,
+          pattern: VALIDATION_MESSAGE_MAP.email.value,
+        })}
+        hasError={!!errors.email}
+        helpMessage={VALIDATION_MESSAGE_MAP.email.message}
+        readOnly
+      />
       <Spacing size={12} />
-      <Flex direction="column" gap={4}>
-        <Text color="tertiary" typography="t6" className={cx('title')}>이메일</Text>
-        <input
-          className={cx('field')}
-          readOnly
-          {...register('email')}
-        />
-      </Flex>
+      <DropdownField
+        label="성별"
+        selectedLabel={watch('gender')}
+        type="profile"
+        options={GENDER_OPTIONS}
+        {...register('gender')}
+      />
       <Spacing size={12} />
-      <Flex direction="column" gap={4}>
-        <Text color="tertiary" typography="t6" className={cx('title')}>성별</Text>
-        <Dropdown
-          selectedLabel={watch('gender')}
-          type="profile"
-          options={GENDER_OPTIONS}
-          {...register('gender')}
-        />
-      </Flex>
-      <Spacing size={12} />
-      <Flex direction="column" gap={4}>
-        <Text color="tertiary" typography="t6" className={cx('title')}>연령대</Text>
-        <Dropdown
-          selectedLabel={watch('age')}
-          type="profile"
-          options={AGE_OPTIONS}
-          {...register('age')}
-        />
-      </Flex>
+      <DropdownField
+        label="연령대"
+        selectedLabel={watch('age')}
+        type="profile"
+        options={AGE_OPTIONS}
+        {...register('age')}
+      />
       <FixedBottomButton onClick={onSubmit} type="submit" disabled={!isDirty || !isValid}>변경 사항 저장하기</FixedBottomButton>
     </>
   );
