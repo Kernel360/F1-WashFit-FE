@@ -9,24 +9,13 @@
   background-color: var(--white);
 }
 
-.accordionItem {
-  .container {
-    width: 100%;
-    border-top: 1px solid var(--gray);
-
-    &:last-of-type {
-      border-bottom: 1px solid var(--gray);
-    }
-  }
-}
-
 .accordionHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
   padding: 16px;
-  border-bottom: 1px solid var(--gray-100);
+  border-bottom: 1px solid var(--gray100);
 }
 
 .accordionBody {
@@ -46,7 +35,7 @@
     &::after {
       content: "|";
       padding-left: 8px;
-      color: var(--gray-100);
+      color: var(--gray200);
     }
   }
 

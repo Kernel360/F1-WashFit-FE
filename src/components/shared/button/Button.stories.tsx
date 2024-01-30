@@ -34,7 +34,6 @@ export const weakPrimary: Story = {
   args: {
     children: '로그인 하기',
     size: 'large',
-    weak: true,
   },
 };
 
@@ -47,14 +46,5 @@ export const filter: Story = {
 export const gray: Story = {
   args: {
     children: '조회순',
-    color: 'gray',
-  },
-};
-
-export const Weakgray: Story = {
-  args: {
-    children: '조회순',
-    color: 'gray',
-    weak: true,
   },
 };

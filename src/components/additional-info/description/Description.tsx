@@ -12,7 +12,7 @@ function Description({ main, sub }: DescriptionProps) {
     <Flex direction="column" justify="center" align="center">
       <Text typography="t3" wordBreak="keep-all" textAlign="center" fontWeight={600}>{main}</Text>
       <Spacing size={10} />
-      <Text typography="t6" color="tertiary">{sub}</Text>
+      <Text typography="t6" color="gray400">{sub}</Text>
     </Flex>
   );
 }

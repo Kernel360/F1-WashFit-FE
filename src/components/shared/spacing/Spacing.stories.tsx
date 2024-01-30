@@ -19,7 +19,7 @@ type Story = StoryObj<typeof meta>;
 export const Horizontal: Story = {
   args: {
     size: 10,
-    backgroundColor: 'primary',
+    backgroundColor: 'primary500',
   },
 };
 
@@ -27,6 +27,6 @@ export const Vertical: Story = {
   args: {
     size: 100,
     direction: 'vertical',
-    backgroundColor: 'secondary',
+    backgroundColor: 'gray400',
   },
 };

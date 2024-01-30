@@ -5,7 +5,7 @@
 
     li {
         position: relative;
-        color: var(--tertiary);
+        color: var(--gray600);
         font-size: 12px;
 
         &:not(:last-child)::after {

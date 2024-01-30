@@ -80,7 +80,7 @@ function SearchPage() {
       <main className={cx('mainContainer')}>
         <SearchBar />
         <div className={cx('filterWrapper')}>
-          <Text typography="t6" color="gray300">{`총 ${productArticleData.length}개`}</Text>
+          <Text typography="t6" color="gray400">{`총 ${productArticleData.length}개`}</Text>
           <Dropdown
             options={options}
             selectedLabel={(SEARCH_FILTER_MAP[watch('filter') as SearchFilterType])}

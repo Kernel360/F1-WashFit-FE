@@ -5,7 +5,7 @@ interface SearchProps {
   color?: Colors
 }
 
-function Search({ size = 17.5, color = 'tertiary400' }: SearchProps) {
+function Search({ size = 17.5, color = 'gray400' }: SearchProps) {
   return (
 
     <svg width={size} height={size} viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">

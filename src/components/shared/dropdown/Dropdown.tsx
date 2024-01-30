@@ -46,10 +46,11 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>(({
   return (
     <div className={cx('container', { [type]: true })} ref={containerRef}>
       <button onClick={openDropdownMenu} className={cx('selectedValue', { [type]: true })}>
-        <Text typography="t6" color="tertiary400">{selectedLabel}</Text>
-        <Expand isRotate={isOpen} color="tertiary400" />
+        <Text typography={type === 'profile' ? 't5' : 't6'} color="gray600">{selectedLabel}</Text>
+        <Expand isRotate={isOpen} color="gray400" />
       </button>
-      {isOpen
+      {
+        isOpen
         && (
           <ul className={cx('menu', { [type]: true })}>
             {options.map((option) => {
@@ -75,7 +76,8 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>(({
               );
             })}
           </ul>
-        )}
+        )
+      }
     </div>
   );
 });

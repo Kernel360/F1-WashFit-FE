@@ -2,7 +2,7 @@
   position: relative;
 
   &.favorite {
-    width: 80px;
+    width: 93px;
   }
 
   &.profile {
@@ -15,17 +15,20 @@
     justify-content: space-between;
 
     &.favorite {
-      width: 80px;
+      width: 93px;
       padding: 4px 8px;
       border-radius: 8px;
-      background-color: var(--tertiary-200);
+      background-color: var(--gray100);
+      font-size: 14px;
     }
 
     &.profile {
+      box-sizing: border-box;
       width: 100%;
       max-width: 327px;
+      height: 48px;
       padding: 8px 16px;
-      border: 1px solid var(--gray-100);
+      border: 1px solid var(--gray300);
       border-radius: 8px;
     }
   }
@@ -37,17 +40,17 @@
 
     &.favorite {
       top: 34px;
-      width: 80px;
-      border: 1px solid var(--tertiary-100);
-      background-color: var(--tertiary-200);
+      width: 93px;
+      border: 1px solid var(--gray200);
+      background-color: var(--gray100);
       color: var(--tertiary-400);
     }
 
     &.profile {
-      top: 45px;
+      top: 53px;
       width: 100%;
       max-width: 327px;
-      border: 1px solid var(--gray-100);
+      border: 1px solid var(--gray200);
       border-radius: 8px;
       background-color: var(--white);
     }
@@ -55,15 +58,16 @@
     .item {
       &.favorite {
         padding: 4px 8px;
-        border-bottom: 1px solid var(--tertiary-100);
+        border-bottom: 1px solid var(--gray200);
         font-size: 14px;
       }
 
       &.profile {
         padding: 14.5px 16px;
+        border-bottom: 1px solid var(--gray200);
 
         &:hover {
-          background-color: var(--gray);
+          background-color: var(--gray100);
         }
       }
 
@@ -76,7 +80,8 @@
       display: block;
       width: 100%;
       height: 100%;
-      color: var(--gray-200);
+      color: var(--gray400);
+      font-size: 16px;
 
       &.favorite {
         font-size: inherit;

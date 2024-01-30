@@ -1,38 +1,17 @@
 import { colors } from './colorPalette';
 
 export const buttonColorMap = {
-  primary: {
-    backgroundColor: colors.primary,
+  active: {
+    backgroundColor: colors.primary500,
     color: colors.white,
-    border: `1px solid ${colors.primary}`,
   },
-  secondary: {
-    backgroundColor: colors.secondary,
-    color: colors.white,
-    border: `1px solid ${colors.secondary}`,
+  inActive: {
+    backgroundColor: colors.gray100,
+    color: colors.gray500,
   },
-  gray: {
-    backgroundColor: colors.tertiary,
-    color: colors.white,
-    border: `1px solid ${colors.tertiary}`,
-  },
-};
-
-export const buttonWeakMap = {
-  primary: {
-    backgroundColor: colors.white,
-    color: colors.primary,
-    border: `1px solid ${colors.primary}`,
-  },
-  secondary: {
-    backgroundColor: colors.white,
-    color: colors.secondary,
-    border: `1px solid ${colors.secondary}`,
-  },
-  gray: {
-    backgroundColor: colors.white,
-    color: colors.tertiary,
-    border: `1px solid ${colors.tertiary}`,
+  line: {
+    backgroundColor: colors.gray200,
+    color: colors.gray500,
   },
 };
 

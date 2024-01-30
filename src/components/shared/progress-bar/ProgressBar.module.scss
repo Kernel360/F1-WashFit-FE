@@ -9,7 +9,7 @@
         width: inherit;
         height: 3px;
         transform: translateY(-50%);
-        background-color: var(--gray);
+        background-color: var(--gray200);
     }
 
     .progress {
@@ -18,7 +18,7 @@
         height: 3px;
         transform: translateY(-50%);
         transition: all 0.25s ease-in-out;
-        background-color: var(--primary);
+        background-color: var(--primary500);
     }
 
     .progressSteps {
@@ -31,12 +31,12 @@
         transform: translateX(-50%);
         transition: all 0.3s ease-in-out;
         border-radius: 50%;
-        background-color: var(--gray);
+        background-color: var(--gray200);
         color: var(--white);
         font-size: 12px;
 
         &.active {
-            background-color: var(--primary);
+            background-color: var(--primary500);
         }
     }
 }

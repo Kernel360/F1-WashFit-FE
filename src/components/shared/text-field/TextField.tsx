@@ -6,6 +6,7 @@ import {
 import Input from '@shared/Input/Input';
 import Spacing from '@shared/spacing/Spacing';
 import Text from '@shared/text/Text';
+import { COMMON_FIELD_MARGIN } from '@styles/variable';
 
 interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: React.ReactNode
@@ -15,10 +16,10 @@ interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   isPasswordType?: boolean
 }
 
-// eslint-disable-next-line prefer-arrow-callback
-const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextField({
+const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({
   label, hasError, helpMessage, required, onFocus, onBlur, isPasswordType = false, ...props
-}, ref) {
+}, ref) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [focused, setFocused] = useState(false);
 
   const handleFocus: FocusEventHandler<HTMLInputElement> = (event) => {
@@ -32,10 +33,9 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextFiel
   };
 
   // eslint-disable-next-line no-nested-ternary
-  const labelColor = hasError ? 'red' : focused ? 'primary' : undefined;
   return (
     <div>
-      {label && <Text typography="t6" display="inline-block" color={labelColor}>{label}</Text>}
+      {label && <Text typography="t6" display="inline-block" color="gray500" css={{ marginLeft: COMMON_FIELD_MARGIN }}>{label}</Text>}
       {required && <Text typography="t6" display="inline-block" color="red">*</Text>}
       <Spacing size={4} />
       <Input
@@ -46,11 +46,11 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(function TextFiel
         isPasswordType={isPasswordType}
         {...props}
       />
-      {hasError ? <Spacing size={4} /> : <Spacing size={20} />}
+      {hasError ? <Spacing size={5} /> : <Spacing size={24} />}
       {hasError && (
         <>
-          <Text typography="t8" color={labelColor} display="inline-block">{helpMessage}</Text>
-          <Spacing size={6} />
+          <Text typography="t8" color="red" display="inline-block" css={{ marginLeft: '15px' }}>{helpMessage}</Text>
+          <Spacing size={7} />
         </>
       )}
     </div>

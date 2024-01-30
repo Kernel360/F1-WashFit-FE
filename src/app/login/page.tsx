@@ -7,14 +7,14 @@ import { useForm } from 'react-hook-form';
 import classNames from 'classnames/bind';
 import Link from 'next/link';
 
-import Button from '@components/shared/button/Button';
-import Header from '@components/shared/header/Header';
-import Spacing from '@components/shared/spacing/Spacing';
-import TextField from '@components/shared/text-field/TextField';
-import Title from '@components/shared/title/Title';
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
 import { ISignIn } from '@remote/api/types/auth';
 import useLogin from '@remote/queries/auth/useLogin';
+import Button from '@shared/button/Button';
+import Header from '@shared/header/Header';
+import Spacing from '@shared/spacing/Spacing';
+import TextField from '@shared/text-field/TextField';
+import Title from '@shared/title/Title';
 
 import styles from './page.module.scss';
 

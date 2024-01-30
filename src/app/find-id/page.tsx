@@ -49,7 +49,7 @@ function FindIdPage() {
       <Header isDisplayLogo={false} />
       <Spacing size={16} />
       <main className={cx('mainContainer')}>
-        <Title title="아이디 찾기" description="가입할 때 입력한 이메일을 입력해주세요." size={4} descriptionColor="tertiary" />
+        <Title title="아이디 찾기" description="가입할 때 입력한 이메일을 입력해주세요." size={4} descriptionColor="gray400" />
         <Spacing size={40} />
         <TextField
           label="이메일"

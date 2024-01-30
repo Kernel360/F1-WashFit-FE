@@ -45,8 +45,8 @@ function Modal({
         <Text typography="t6" color="gray200" textAlign="center" wordBreak="keep-all" className={cx('description')}>{description}</Text>
         <Spacing size={32} />
         <Flex justify="space-between" align="center" gap={8} className={cx('buttonContainer')}>
-          <Button onClick={onLeftButtonClick} full color="primary" size="large">{leftButtonLabel}</Button>
-          {rightButtonLabel && <Button onClick={onRightButtonClick} full size="large" color="gray" weak>{rightButtonLabel}</Button>}
+          <Button onClick={onLeftButtonClick} full color="active" size="large">{leftButtonLabel}</Button>
+          {rightButtonLabel && <Button onClick={onRightButtonClick} full size="large" color="inActive">{rightButtonLabel}</Button>}
         </Flex>
       </div>
     </Dimmed>

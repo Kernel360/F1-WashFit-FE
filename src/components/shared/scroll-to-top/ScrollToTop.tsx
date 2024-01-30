@@ -17,7 +17,7 @@ function ScrollToTop() {
   return showButton && (
     <div className={cx('wrapper')}>
       <button onClick={scrollToTop} className={cx('scroll')}>
-        <Expand width={18} height={10} isRotate color="tertiary" />
+        <Expand width={18} height={10} isRotate color="gray200" />
       </button>
     </div>
   );
