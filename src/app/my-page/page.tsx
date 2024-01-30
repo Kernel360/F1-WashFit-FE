@@ -26,7 +26,7 @@ function MyProfilePage() {
   // TODO: 회원 이름 가져오기
   const name = 'washpedia';
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   if (isLoggedIn === false) {
     return (
@@ -39,7 +39,7 @@ function MyProfilePage() {
             이용해주세요
           </Text>
           <Spacing size={8} />
-          <Text display="block" typography="t6" color="tertiary">
+          <Text display="block" typography="t6" color="gray500">
             로그인 후 내 차량 정보와
             <br />
             세차 정보를 등록해 보세요.
@@ -59,7 +59,7 @@ function MyProfilePage() {
         <Text display="block" typography="t4">{`${name}님 안녕하세요!`}</Text>
         <Text display="block" typography="t4">오늘도 즐거운 하루 보내세요.</Text>
       </div>
-      <Spacing size={8} backgroundColor="tertiary300" />
+      <Spacing size={8} backgroundColor="gray100" />
       <ul>
         <li className={cx('linkInfoContainer')}>
           <Link href="/my-page/profile">

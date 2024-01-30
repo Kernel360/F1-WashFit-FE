@@ -9,7 +9,7 @@
 
 .container {
   height: 100vh;
-  background-color: var(--tertiary-300);
+  background-color: var(--gray100);
 
   .titleWrapper {
     padding: 12px 24px 8px;
@@ -33,7 +33,7 @@
     }
 
     padding: 20.5px 24px;
-    border-bottom: 1px solid var(--gray-100);
+    border-bottom: 1px solid var(--gray200);
     background-color: var(--white);
   }
 }
