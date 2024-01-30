@@ -28,8 +28,8 @@ function DetailsLoading() {
       <Spacing size={243} />
       <Image src="/assets/loading.png" alt="로딩 중.." width={242} height={200} />
       <Spacing size={16} />
-      <Text typography="t3" color="primary" bold>잠시만 기다려 주세요.</Text>
-      <Text typography="t6" color="tertiary">해당 페이지로 이동 중입니다.</Text>
+      <Text typography="t3" color="primary500" bold>잠시만 기다려 주세요.</Text>
+      <Text typography="t6" color="gray500">해당 페이지로 이동 중입니다.</Text>
     </div>
   );
 }
