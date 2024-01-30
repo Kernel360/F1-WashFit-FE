@@ -50,7 +50,7 @@ function CarWashDetailsPage() {
     <>
       {step <= 3 && (
         <>
-          <Header isDisplayLogo={false} />
+          <Header />
           <Spacing size={16} />
           <ProgressBar progressCount={3} currentStep={step} />
           <Spacing size={32} />
