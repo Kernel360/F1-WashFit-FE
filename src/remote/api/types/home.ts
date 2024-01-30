@@ -11,7 +11,7 @@ export interface IRecommendProducts extends IBanner {
   productName: string
 }
 
-export interface IProductList {
+export interface IProduct {
   id: number
   img: string
   name: string
@@ -22,4 +22,4 @@ export interface IProductList {
 
 export type BannerType = ICommon<IBanner>;
 export type RecommendProductsType = ICommon<IRecommendProducts>;
-export type ProductListType = ICommon<IProductList>;
+export type ProductType = ICommon<IProduct[]>;

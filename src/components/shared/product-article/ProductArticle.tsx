@@ -2,14 +2,14 @@ import classNames from 'classnames/bind';
 import Image from 'next/image';
 
 import Heart from '@components/icons/Heart';
-import { IProductList } from '@remote/api/types/home';
+import { IProduct } from '@remote/api/types/home';
 import Text from '@shared/text/Text';
 
 import styles from './ProductArticle.module.scss';
 
 interface ProductArticleProps {
   isRow?: boolean;
-  itemData: IProductList
+  itemData: IProduct
 }
 
 const cx = classNames.bind(styles);
