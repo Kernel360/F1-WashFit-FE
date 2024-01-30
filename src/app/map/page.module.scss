@@ -1,0 +1,19 @@
+$padding: 24px;
+
+.mainLayout {
+    position: relative;
+
+    & nav {
+        z-index: 10;
+        padding: 0 $padding;
+    }
+
+    .searchWrapper {
+        position: absolute;
+        z-index: 10;
+        top: 57px;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0 $padding;
+    }
+}

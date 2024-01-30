@@ -8,6 +8,10 @@
     gap: 11.5px;
     background-color: var(--tertiary-200);
 
+    &.white {
+        background-color: var(--white);
+    }
+
     input {
         flex-grow: 1;
         height: 100%;

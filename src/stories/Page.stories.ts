@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import type { Meta, StoryObj } from '@storybook/react';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
