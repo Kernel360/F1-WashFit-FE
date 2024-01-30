@@ -53,7 +53,7 @@ function FindPasswordPage() {
       <Header isDisplayLogo={false} />
       <Spacing size={16} />
       <main className={cx('mainContainer')}>
-        <Title title="비밀번호 찾기" description="비밀번호를 찾으실 아이디를 입력해주세요." size={4} descriptionColor="tertiary" />
+        <Title title="비밀번호 찾기" description="비밀번호를 찾으실 아이디를 입력해주세요." size={4} descriptionColor="gray400" />
         <Spacing size={40} />
         <TextField
           label="아이디"

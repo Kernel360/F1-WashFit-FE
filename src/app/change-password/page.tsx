@@ -57,7 +57,7 @@ function ChangePasswordPage() {
       <Header isDisplayLogo={false} />
       <Spacing size={16} />
       <main className={cx('mainContainer')}>
-        <Title title="비밀번호 변경" description="사용하실 새 비밀번호를 입력해주세요." size={4} descriptionColor="tertiary" />
+        <Title title="비밀번호 변경" description="사용하실 새 비밀번호를 입력해주세요." size={4} descriptionColor="gray400" />
         <Spacing size={40} />
         <TextField
           label="새 비밀번호"

@@ -93,7 +93,7 @@ function FavoritePage() {
         <div className={cx('hideWrapper', { scrolled: isScrolled })}>
           <SearchBar />
           <div className={cx('filterBox', { scrolled: isScrolled })}>
-            <Text typography="t6" color="gray300">{`총 ${productListData.length}개`}</Text>
+            <Text typography="t6" color="gray400">{`총 ${productListData.length}개`}</Text>
             <Dropdown
               options={options}
               selectedLabel={(SEARCH_FILTER_MAP[watch('filter') as SearchFilterType])}
