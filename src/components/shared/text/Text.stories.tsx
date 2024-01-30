@@ -20,7 +20,7 @@ type Story = StoryObj<typeof meta>;
 export const t1: Story = {
   args: {
     typography: 't1',
-    color: 'primary',
+    color: 'primary500',
     children: '안녕하세요',
   },
 };
@@ -28,7 +28,7 @@ export const t1: Story = {
 export const t3: Story = {
   args: {
     typography: 't3',
-    color: 'secondary',
+    color: 'gray400',
     children: '워시피디아',
   },
 };
