@@ -12,7 +12,7 @@ import styles from './SearchBar.module.scss';
 
 const cx = classNames.bind(styles);
 
-function SearchBar({ isWhite = false }:{ isWhite?:boolean }) {
+function SearchBar() {
   const [keyword, setKeyword] = useState<string>('');
 
   const handleSearch = () => {
@@ -22,7 +22,7 @@ function SearchBar({ isWhite = false }:{ isWhite?:boolean }) {
 
   return (
     <form
-      className={cx('container', { white: isWhite })}
+      className={cx('container')}
       onSubmit={(e) => {
         e.preventDefault();
         handleSearch();
