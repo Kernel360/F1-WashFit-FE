@@ -26,16 +26,16 @@ const cx = classNames.bind(styles);
 
 function Home() {
   // TODO: 비로그인 회원과 부가정보를 입력하지 않은 회원은 부가정보 입력 배너 보이도록 UI 추가
-  const { data: bannerData, isLoading: bannerLoading } = useBanner();
-  const {
-    data: recommendProductsData, isLoading:
-    recommendProductsLoading,
-  } = useRecommendProducts();
-  const { data: productListData, isLoading: productListLoading } = useProductList();
+  // const { data: bannerData, isLoading: bannerLoading } = useBanner();
+  // const {
+  //   data: recommendProductsData, isLoading:
+  //   recommendProductsLoading,
+  // } = useRecommendProducts();
+  // const { data: productListData, isLoading: productListLoading } = useProductList();
 
-  if (bannerLoading || recommendProductsLoading || productListLoading) {
-    return <Loader />;
-  }
+  // if (bannerLoading || recommendProductsLoading || productListLoading) {
+  //   return <Loader />;
+  // }
 
   return (
     <>
