@@ -24,7 +24,7 @@
     width: 16px;
     height: 8px;
     border-radius: 8px;
-    background: var(--gray-100);
+    background: var(--gray200);
     color: transparent;
     cursor: pointer;
   }
@@ -33,6 +33,6 @@
   .dotsCustom li.slick-active button {
     width: 24px;
     border-radius: 8px;
-    background-color: var(--primary);
+    background-color: var(--primary500);
   }
 }
