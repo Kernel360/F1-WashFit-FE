@@ -30,17 +30,18 @@ function GlobalError({
           <Spacing size={155} />
           <Image src="/assets/error.png" alt="에러페이지" width={250} height={180} />
           <Text typography="t4">잠시 후 다시 확인해 주세요.</Text>
-          <Text typography="t5" color="tertiary">{error.message}</Text>
+          <Text typography="t5" color="gray400">{error.message}</Text>
           <Spacing size={16} />
           <Flex align="center" gap={10}>
             <Button
-              weak
+              color="line"
               size="medium"
               onClick={() => { backToHome(); }}
               css={{
                 display: 'block',
                 width: '100px',
                 height: '40px',
+                border: '1px solid var(--primary500)',
               }}
             >
               홈
