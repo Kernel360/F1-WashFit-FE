@@ -1,17 +1,18 @@
-interface LeftIconProps {
+interface IconProps {
   className?: string;
-  children?: React.ReactNode;
-  isDisplayLogo?:boolean
+  type?: 'search' | 'home' | 'favorite' | 'product';
 }
-interface RightIconProps {
-  className?: string;
-  displayRightIconType?:string;
+
+interface LeftIconProps extends IconProps {
+  title?: React.ReactNode;
+}
+
+interface RightIconProps extends IconProps {
   onFilterClick?: () => void;
 }
 
 interface HeaderProps extends LeftIconProps {
   isTransparent?: boolean;
-  displayRightIconType?:string;
   onFilterClick?: () => void;
 }
 

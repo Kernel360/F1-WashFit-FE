@@ -14,7 +14,7 @@ import { RightIconProps } from '../types/headerType';
 
 function RightIcon({
   className,
-  displayRightIconType, onFilterClick,
+  type, onFilterClick,
 }: RightIconProps) {
   const [isSaved, setIsSaved] = useState(false);
 
@@ -22,7 +22,7 @@ function RightIcon({
     setIsSaved((prev) => { return !prev; });
   };
 
-  if (displayRightIconType === 'filter') {
+  if (type === 'search') {
     return (
       <li className={className}>
         {/* 필터가 적용됐을 때만 필터 아이콘이 바뀜 */}
@@ -31,7 +31,7 @@ function RightIcon({
     );
   }
 
-  if (displayRightIconType === 'search') {
+  if (type === 'home' || type === 'favorite') {
     return (
       <li className={className}>
         <Link href="/search">
@@ -41,7 +41,7 @@ function RightIcon({
     );
   }
 
-  if (displayRightIconType === 'heartShare') {
+  if (type === 'product') {
     return (
       <ul className={className}>
         <li>

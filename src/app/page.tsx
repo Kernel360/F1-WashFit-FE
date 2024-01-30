@@ -39,7 +39,7 @@ function Home() {
 
   return (
     <>
-      <Header className={cx('home')} />
+      <Header className={cx('home')} type="home" />
       <main className={cx('mainContainer')}>
         <div className={cx('searchBarWrapper')}>
           <Spacing size={16} />

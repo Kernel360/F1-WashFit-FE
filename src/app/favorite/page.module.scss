@@ -3,9 +3,13 @@
     animation-fill-mode: forwards;
 }
 
+.headerTitleContainer,
+.mainContainer {
+    padding: 0 24px;
+}
+
 .mainContainer {
     margin-bottom: 76px;
-    padding: 0 24px;
 
     .hideWrapper {
         position: relative;

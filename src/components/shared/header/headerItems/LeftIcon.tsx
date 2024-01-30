@@ -1,13 +1,18 @@
+'use client';
+
 import Link from 'next/link';
 
 import BackArrow from '@components/icons/BackArrow';
 import Logo from '@components/icons/Logo';
-import Text from '@components/shared/text/Text';
+import useNavigation from '@hooks/useNavigation';
+import Text from '@shared/text/Text';
 
 import { LeftIconProps } from '../types/headerType';
 
-function LeftIcon({ className, children, isDisplayLogo }: LeftIconProps) {
-  if (isDisplayLogo) {
+function LeftIcon({ className, title, type }: LeftIconProps) {
+  const { goBack } = useNavigation();
+
+  if (type === 'home') {
     return (
       <li className={className}>
         <Link href="/">
@@ -20,11 +25,11 @@ function LeftIcon({ className, children, isDisplayLogo }: LeftIconProps) {
   return (
     <ul className={className}>
       <li>
-        <BackArrow />
+        <BackArrow onClick={goBack} />
       </li>
-      {children && (
+      {title && (
       <li>
-        <Text>{children}</Text>
+        <Text>{title}</Text>
       </li>
       )}
     </ul>

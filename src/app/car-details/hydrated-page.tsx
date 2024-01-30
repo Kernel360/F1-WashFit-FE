@@ -65,7 +65,7 @@ function CarDetailsPage() {
     <>
       {step <= 5 && (
         <>
-          <Header isDisplayLogo={false} />
+          <Header />
           <Spacing size={16} />
           <ProgressBar progressCount={5} currentStep={step} />
           <Spacing size={32} />

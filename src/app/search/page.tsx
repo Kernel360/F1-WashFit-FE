@@ -75,7 +75,7 @@ function SearchPage() {
 
   return (
     <>
-      <Header isDisplayLogo={false} displayRightIconType="filter" onFilterClick={handleFilterClick} />
+      <Header type="search" onFilterClick={handleFilterClick} title="검색" />
       <Spacing size={8} />
       <main className={cx('mainContainer')}>
         <SearchBar />

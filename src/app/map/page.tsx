@@ -1,4 +1,4 @@
-import BottomNav from '@/components/shared/bottom-nav/BottomNav';
+import BottomNav from '@shared/bottom-nav/BottomNav';
 
 function MapPage() {
   return (
