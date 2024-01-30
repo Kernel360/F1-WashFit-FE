@@ -39,7 +39,7 @@ function MyCarDetailsPage() {
 
   return (
     <>
-      <Header isDisplayLogo={false} />
+      <Header />
       <Spacing size={24} />
       <DropdownField
         label="차량 유형"

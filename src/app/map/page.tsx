@@ -12,7 +12,7 @@ const cx = classNames.bind(styles);
 function MapPage() {
   return (
     <div className={cx('mainLayout')}>
-      <Header isTransparent isDisplayLogo={false} />
+      <Header isTransparent />
       <div className={cx('searchWrapper')}>
         <SearchBar isWhite />
       </div>

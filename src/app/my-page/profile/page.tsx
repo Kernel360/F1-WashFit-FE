@@ -38,7 +38,7 @@ function ProfilePage() {
 
   return (
     <>
-      <Header isDisplayLogo={false} />
+      <Header />
       <Spacing size={24} />
       <TextField
         label="아이디"

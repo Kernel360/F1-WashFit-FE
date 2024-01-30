@@ -39,7 +39,7 @@ function WithdrawPage() {
 
   return (
     <>
-      <Header isDisplayLogo={false} />
+      <Header />
       <Spacing size={30} />
       <main className={cx('mainContainer')}>
         <Title title="회원탈퇴" />
