@@ -68,7 +68,7 @@ function WithdrawPage() {
         </div>
         <input type="checkbox" id="agree" onClick={() => { return setIsChecked((prev) => { return !prev; }); }} />
         <label htmlFor="agree">
-          <Checkbox color={isChecked ? 'primary' : 'gray100'} />
+          <Checkbox color={isChecked ? 'primary500' : 'gray100'} />
           약관을 모두 확인하였으며 이에 동의합니다.
         </label>
         <Spacing size={110} />

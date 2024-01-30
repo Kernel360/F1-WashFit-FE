@@ -27,32 +27,32 @@ function BottomNav() {
       <ul>
         <li>
           <Link href="/map">
-            <Map color={filteredPathName.startsWith('map') ? 'primary' : 'black'} />
-            <Text typography="t8" fontWeight="200" color={filteredPathName.startsWith('map') ? 'primary' : 'black'}>지도</Text>
+            <Map color={filteredPathName.startsWith('map') ? 'primary500' : 'black'} />
+            <Text typography="t8" fontWeight="200" color={filteredPathName.startsWith('map') ? 'primary500' : 'black'}>지도</Text>
           </Link>
         </li>
         <li>
           <Link href="/favorite">
             {filteredPathName.startsWith('favorite') ? <FilledFavorite /> : <Favorite />}
-            <Text typography="t8" fontWeight="200" color={filteredPathName.startsWith('favorite') ? 'primary' : 'black'}>즐겨찾기</Text>
+            <Text typography="t8" fontWeight="200" color={filteredPathName.startsWith('favorite') ? 'primary500' : 'black'}>즐겨찾기</Text>
           </Link>
         </li>
         <li>
           <Link href="/">
             {filteredPathName === '' ? <FilledHome /> : <Home />}
-            <Text typography="t8" fontWeight="200" color={filteredPathName === '' ? 'primary' : 'black'}>홈</Text>
+            <Text typography="t8" fontWeight="200" color={filteredPathName === '' ? 'primary500' : 'black'}>홈</Text>
           </Link>
         </li>
         <li>
           <Link href="/channel">
-            <Channel color={filteredPathName.startsWith('channel') ? 'primary' : 'black'} />
-            <Text typography="t8" fontWeight="200" color={filteredPathName.startsWith('channel') ? 'primary' : 'black'}>채널</Text>
+            <Channel color={filteredPathName.startsWith('channel') ? 'primary500' : 'black'} />
+            <Text typography="t8" fontWeight="200" color={filteredPathName.startsWith('channel') ? 'primary500' : 'black'}>채널</Text>
           </Link>
         </li>
         <li>
           <Link href="/my-page">
-            <Profile color={filteredPathName.startsWith('my-page') ? 'primary' : 'black'} />
-            <Text typography="t8" fontWeight="200" color={filteredPathName.startsWith('my-page') ? 'primary' : 'black'}>프로필</Text>
+            <Profile color={filteredPathName.startsWith('my-page') ? 'primary500' : 'black'} />
+            <Text typography="t8" fontWeight="200" color={filteredPathName.startsWith('my-page') ? 'primary500' : 'black'}>프로필</Text>
           </Link>
         </li>
       </ul>

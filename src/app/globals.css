@@ -28,6 +28,7 @@
   --header-zindex: 2;
   --dimmed-zindex: 10;
   --modal-zindex: 11;
+  --loader-zindex: 12;
 }
 
 /* 말줄임표 */
