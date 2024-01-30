@@ -3,6 +3,7 @@ import { InputHTMLAttributes, forwardRef } from 'react';
 import Dropdown from '@shared/dropdown/Dropdown';
 import Spacing from '@shared/spacing/Spacing';
 import Text from '@shared/text/Text';
+import { COMMON_FIELD_MARGIN } from '@styles/variable';
 
 interface Option {
   label: string
@@ -22,7 +23,7 @@ const DropdownField = forwardRef<HTMLInputElement, DropdownFieldProps>(({
 }, ref) => {
   return (
     <div>
-      <Text typography="t6" display="block" color="gray500" css={{ marginLeft: '15px' }}>{label}</Text>
+      <Text typography="t6" display="block" color="gray500" css={{ marginLeft: COMMON_FIELD_MARGIN }}>{label}</Text>
       <Spacing size={4} />
       <Dropdown
         selectedLabel={selectedLabel}

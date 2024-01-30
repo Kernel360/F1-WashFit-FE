@@ -6,6 +6,7 @@ import {
 import Input from '@shared/Input/Input';
 import Spacing from '@shared/spacing/Spacing';
 import Text from '@shared/text/Text';
+import { COMMON_FIELD_MARGIN } from '@styles/variable';
 
 interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: React.ReactNode
@@ -34,7 +35,7 @@ const TextField = forwardRef<HTMLInputElement, TextFieldProps>(({
   // eslint-disable-next-line no-nested-ternary
   return (
     <div>
-      {label && <Text typography="t6" display="inline-block" color="gray500" css={{ marginLeft: '15px' }}>{label}</Text>}
+      {label && <Text typography="t6" display="inline-block" color="gray500" css={{ marginLeft: COMMON_FIELD_MARGIN }}>{label}</Text>}
       {required && <Text typography="t6" display="inline-block" color="red">*</Text>}
       <Spacing size={4} />
       <Input
