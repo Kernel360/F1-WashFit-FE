@@ -37,7 +37,7 @@ function MyCarWashDetailsPage() {
 
   return (
     <>
-      <Header isDisplayLogo={false} />
+      <Header />
       <Spacing size={24} />
       <DropdownField
         label="세차 횟수"

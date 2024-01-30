@@ -13,6 +13,7 @@ import ProductArticle from '@shared/product-article/ProductArticle';
 import SearchBar from '@shared/search-bar/SearchBar';
 import Spacing from '@shared/spacing/Spacing';
 import Text from '@shared/text/Text';
+import Title from '@shared/title/Title';
 
 import styles from './page.module.scss';
 
@@ -87,7 +88,13 @@ function FavoritePage() {
 
   return (
     <>
-      <Header isDisplayLogo={false}>즐겨찾기</Header>
+      {!isScrolled && (
+      <div className={cx('headerTitleContainer')}>
+        <Spacing size={12} />
+        <Title title="즐겨찾기" titleSize="t3" />
+      </div>
+      )}
+      {isScrolled && <Header title="즐겨찾기" type="favorite" />}
       <Spacing size={12} />
       <main className={cx('mainContainer')}>
         <div className={cx('hideWrapper', { scrolled: isScrolled })}>

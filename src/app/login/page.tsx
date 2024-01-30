@@ -36,7 +36,7 @@ function LoginPage() {
   // TODO: api return 값에 따라 error처리
   return (
     <main>
-      <Header isDisplayLogo={false} />
+      <Header />
       <Spacing size={30} />
       <form onSubmit={handleSubmit(onSubmit)}>
         <Title title="로그인" size={20} />

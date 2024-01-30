@@ -23,7 +23,7 @@ function ProductDetailsPage() {
   // TODO: 리뷰 기능 추가
   return (
     <>
-      <Header isDisplayLogo={false} displayRightIconType="heartShare" className={cx('product')} />
+      <Header type="product" className={cx('product')} />
       <Image src="/assets/product.png" alt="상품 이미지" width={375} height={375} />
       <Flex direction="column" className={cx('productInfo')}>
         <Text color="primary500" typography="t6">카믹스</Text>

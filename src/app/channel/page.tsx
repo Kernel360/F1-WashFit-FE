@@ -34,7 +34,7 @@ const dataList = [{
 function ChannelPage() {
   return (
     <div>
-      <Header className={cx('header')} isDisplayLogo={false} />
+      <Header className={cx('header')} />
       <main className={cx('mainContainer')}>
         {dataList.map((data) => {
           return (
