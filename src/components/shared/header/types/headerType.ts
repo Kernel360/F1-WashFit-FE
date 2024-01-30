@@ -1,6 +1,6 @@
 interface IconProps {
   className?: string;
-  type?: string;
+  type?: 'search' | 'home' | 'favorite' | 'product';
 }
 
 interface LeftIconProps extends IconProps {

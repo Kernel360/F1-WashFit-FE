@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 
-import useNavigation from '@/hooks/useNavigation';
 import BackArrow from '@components/icons/BackArrow';
 import Logo from '@components/icons/Logo';
+import useNavigation from '@hooks/useNavigation';
 import Text from '@shared/text/Text';
 
 import { LeftIconProps } from '../types/headerType';
