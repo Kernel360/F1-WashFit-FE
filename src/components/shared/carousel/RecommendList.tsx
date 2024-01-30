@@ -5,10 +5,9 @@ import Slider from 'react-slick';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { RecommendProductsType } from '@remote/api/types/home';
 import Flex from '@shared/flex/Flex';
 import Text from '@shared/text/Text';
-
-import { IRecommendList } from './types/carousel.type';
 
 const settings = {
   dots: false,
@@ -22,10 +21,13 @@ const settings = {
   arrows: false,
 };
 
-function RecommendList({ recommendListData }: { recommendListData: IRecommendList[] }) {
+// eslint-disable-next-line max-len
+function RecommendList({ recommendProductsData }: { recommendProductsData: RecommendProductsType }) {
+  const recommendList = recommendProductsData.value;
+
   return (
     <Slider {...settings}>
-      {recommendListData?.map((slide) => {
+      {recommendList?.map((slide) => {
         return (
           <Flex justify="center" align="center" direction="column" key={slide.id}>
             <Link href={slide.link}>
