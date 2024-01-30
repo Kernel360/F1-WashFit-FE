@@ -6,17 +6,17 @@ import { useForm } from 'react-hook-form';
 
 import classNames from 'classnames/bind';
 
-import Button from '@components/shared/button/Button';
-import Flex from '@components/shared/flex/Flex';
-import Header from '@components/shared/header/Header';
-import Radio from '@components/shared/radio/Radio';
-import Spacing from '@components/shared/spacing/Spacing';
-import Text from '@components/shared/text/Text';
-import TextField from '@components/shared/text-field/TextField';
-import Title from '@components/shared/title/Title';
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
 import { ISignUp } from '@remote/api/types/auth';
 import useSignup from '@remote/queries/auth/useSignup';
+import Button from '@shared/button/Button';
+import Flex from '@shared/flex/Flex';
+import Header from '@shared/header/Header';
+import Radio from '@shared/radio/Radio';
+import Spacing from '@shared/spacing/Spacing';
+import Text from '@shared/text/Text';
+import TextField from '@shared/text-field/TextField';
+import Title from '@shared/title/Title';
 
 import styles from './page.module.scss';
 
