@@ -7,24 +7,24 @@ const meta = {
   component: SearchBar,
   tags: ['autodocs'],
   args: {
-    isMainPage: false,
+    isShadow: false,
   },
   argTypes: {
-    isMainPage: { control: 'boolean' },
+    isShadow: { control: 'boolean' },
   },
 }satisfies Meta<typeof SearchBar>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const MainPage:Story = {
+export const MapPage:Story = {
   args: {
-    isMainPage: true,
+    isShadow: true,
   },
 };
 
 export const SearchPage:Story = {
   args: {
-    isMainPage: false,
+    isShadow: false,
   },
 };
