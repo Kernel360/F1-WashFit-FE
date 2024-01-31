@@ -11,28 +11,73 @@ import { useState } from 'react';
 
 import Script from 'next/script';
 
+import CurrentLocationButton from './CurrentLocationButton';
+
 declare global {
   interface Window {
     kakao: any
   }
 }
+const location = { lat: 37.514417066172385, lng: 127.06132898292525 };
+
+interface Location {
+  lat: number;
+  lng: number;
+}
 
 function KakaoMap() {
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  const [_, setMap] = useState(null);
+  const [map, setMap] = useState<any>(null);
+  const [currentLocation, setCurrentLocation] = useState<Location>(location);
+
+  if (navigator.geolocation) {
+    // GeoLocation을 이용해서 현재 위치 가져오기
+    navigator.geolocation.getCurrentPosition((position) => {
+      setCurrentLocation((prev) => {
+        return {
+          ...prev,
+          lat: position.coords.latitude,
+          lng: position.coords.longitude,
+        };
+      });
+    });
+  }
+
   const loadKakaoMap = () => {
     window.kakao.maps.load(() => {
       const mapContainer = document.getElementById('map');
       const mapOption = {
-        center: new window.kakao.maps.LatLng(37.514417066172385, 127.06132898292525),
+        center: new window.kakao.maps.LatLng(location.lat, location.lng),
         level: 3,
       };
-      const map = new window.kakao.maps.Map(mapContainer, mapOption);
-      setMap(map);
+      const newMap = new window.kakao.maps.Map(mapContainer, mapOption);
+      setMap(newMap);
     });
   };
+
+  const displayMarker = (locPosition: Location) => {
+    const marker = new window.kakao.maps.Marker({
+      map,
+      position: locPosition,
+    });
+
+    // 지도 중심좌표를 현 위치로 변경
+    map.setCenter(locPosition);
+  };
+
+  const handleCurrentLocationClick = () => {
+    if (navigator.geolocation) {
+      // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성
+      const locPosition = new window.kakao.maps.LatLng(currentLocation.lat, currentLocation.lng);
+      displayMarker(locPosition);
+    } else {
+      // GeoLocation을 사용할 수 없을 때 마커 표시 위치 설정
+      const locPosition = new window.kakao.maps.LatLng(location.lat, location.lng);
+      displayMarker(locPosition);
+    }
+  };
   return (
-    <>
+    <div>
       <Script
         strategy="afterInteractive"
         type="text/javascript"
@@ -40,7 +85,8 @@ function KakaoMap() {
         onReady={loadKakaoMap}
       />
       <div id="map" style={{ width: '100vw', height: '100vh' }} />
-    </>
+      <CurrentLocationButton onClick={handleCurrentLocationClick} />
+    </div>
   );
 }
 
