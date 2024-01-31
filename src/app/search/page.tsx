@@ -77,7 +77,7 @@ function SearchPage() {
     <>
       <Header type="search" onFilterClick={handleFilterClick} title="검색" />
       <Spacing size={8} />
-      <main className={cx('mainContainer')}>
+      <main className={cx('mainContainer', 'main')}>
         <SearchBar />
         <div className={cx('filterWrapper')}>
           <Text typography="t6" color="gray400">{`총 ${productArticleData.length}개`}</Text>

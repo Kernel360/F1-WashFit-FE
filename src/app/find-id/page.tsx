@@ -5,7 +5,6 @@
 
 import { useForm } from 'react-hook-form';
 
-import classNames from 'classnames/bind';
 import dynamic from 'next/dynamic';
 
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
@@ -16,9 +15,6 @@ import Spacing from '@shared/spacing/Spacing';
 import TextField from '@shared/text-field/TextField';
 import Title from '@shared/title/Title';
 
-import styles from './page.module.scss';
-
-const cx = classNames.bind(styles);
 const FixedBottomButton = dynamic(() => { return import('@shared/fixedBottomButton/FixedBottomButton'); }, {
   ssr: false,
 });
@@ -48,7 +44,7 @@ function FindIdPage() {
     <>
       <Header />
       <Spacing size={16} />
-      <main className={cx('mainContainer')}>
+      <main className="mainContainer">
         <Title title="아이디 찾기" description="가입할 때 입력한 이메일을 입력해주세요." size={4} descriptionColor="gray400" />
         <Spacing size={40} />
         <TextField

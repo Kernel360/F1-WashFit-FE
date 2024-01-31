@@ -41,7 +41,7 @@ function WithdrawPage() {
     <>
       <Header />
       <Spacing size={30} />
-      <main className={cx('mainContainer')}>
+      <main className={cx('mainContainer', 'main')}>
         <Title title="회원탈퇴" />
         <Spacing size={70} />
         <div className={cx('withdrawalAgreement')}>

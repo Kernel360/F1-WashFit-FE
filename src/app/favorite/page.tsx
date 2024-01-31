@@ -96,7 +96,7 @@ function FavoritePage() {
       )}
       {isScrolled && <Header title="즐겨찾기" type="favorite" />}
       <Spacing size={12} />
-      <main className={cx('mainContainer')}>
+      <main className={cx('mainContainer', 'main')}>
         <div className={cx('hideWrapper', { scrolled: isScrolled })}>
           <SearchBar />
           <div className={cx('filterBox', { scrolled: isScrolled })}>

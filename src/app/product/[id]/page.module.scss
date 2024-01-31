@@ -1,11 +1,11 @@
 .product {
-  padding: 0 24px;
+  padding: 0 var(--default-padding);
 }
 
 .productInfo {
   position: sticky;
   top: 44px;
-  padding: 16px 24px;
+  padding: 16px var(--default-padding);
   background-color: var(--white);
 }
 
@@ -24,7 +24,7 @@
   transition: height 0.3s ease;
 
   & > div[data-name="body-inner"] {
-    padding: 16px 24px;
+    padding: 16px var(--default-padding);
   }
 
   .infoTitle {

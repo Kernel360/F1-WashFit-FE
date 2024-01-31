@@ -32,14 +32,14 @@ function MyProfilePage() {
     return (
       <>
         <Spacing size={96} />
-        <div className={cx('loginDescriptionWrapper')}>
-          <Text typography="t1" bold display="block">
+        <div className={cx('loginDescriptionWrapper', 'mainContainer')}>
+          <Text typography="t1" bold display="block" textAlign="start">
             로그인 후
             <br />
-            이용해주세요
+            이용해주세요.
           </Text>
           <Spacing size={8} />
-          <Text display="block" typography="t6" color="gray500">
+          <Text display="block" typography="t6" color="gray500" textAlign="start">
             로그인 후 내 차량 정보와
             <br />
             세차 정보를 등록해 보세요.

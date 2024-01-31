@@ -50,59 +50,60 @@ function SignupPage() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Header />
       <Spacing size={20} />
-      <Title title="회원가입" />
-      <TextField
-        label="아이디"
-        required
-        placeholder="아이디"
-        {...register('id', {
-          required: true,
-          pattern: VALIDATION_MESSAGE_MAP.id.value,
-        })}
-        hasError={!!errors.id}
-        helpMessage={VALIDATION_MESSAGE_MAP.id.message}
-      />
-      <TextField
-        label="비밀번호"
-        required
-        placeholder="비밀번호"
-        isPasswordType
-        {...register('password', {
-          required: true,
-          pattern: VALIDATION_MESSAGE_MAP.password.value,
-        })}
-        hasError={!!errors.password}
-        helpMessage={VALIDATION_MESSAGE_MAP.password.message}
-      />
-      <TextField
-        label="비밀번호 확인"
-        required
-        placeholder="비밀번호 확인"
-        isPasswordType
-        {...register('confirmPassword', {
-          required: true,
-          validate: (confirmPassword: string) => {
-            if (watch('password') !== confirmPassword) {
-              return false;
-            }
-            return true;
-          },
-        })}
-        hasError={!!errors.confirmPassword}
-        helpMessage={VALIDATION_MESSAGE_MAP.confirmPassword.message}
-      />
-      <TextField
-        label="이메일"
-        required
-        placeholder="이메일"
-        {...register('email', {
-          required: true,
-          pattern: VALIDATION_MESSAGE_MAP.email.value,
-        })}
-        hasError={!!errors.email}
-        helpMessage={VALIDATION_MESSAGE_MAP.email.message}
-      />
-      <DropdownField
+      <main className="mainContainer">
+        <Title title="회원가입" />
+        <TextField
+          label="아이디"
+          required
+          placeholder="아이디"
+          {...register('id', {
+            required: true,
+            pattern: VALIDATION_MESSAGE_MAP.id.value,
+          })}
+          hasError={!!errors.id}
+          helpMessage={VALIDATION_MESSAGE_MAP.id.message}
+        />
+        <TextField
+          label="비밀번호"
+          required
+          placeholder="비밀번호"
+          isPasswordType
+          {...register('password', {
+            required: true,
+            pattern: VALIDATION_MESSAGE_MAP.password.value,
+          })}
+          hasError={!!errors.password}
+          helpMessage={VALIDATION_MESSAGE_MAP.password.message}
+        />
+        <TextField
+          label="비밀번호 확인"
+          required
+          placeholder="비밀번호 확인"
+          isPasswordType
+          {...register('confirmPassword', {
+            required: true,
+            validate: (confirmPassword: string) => {
+              if (watch('password') !== confirmPassword) {
+                return false;
+              }
+              return true;
+            },
+          })}
+          hasError={!!errors.confirmPassword}
+          helpMessage={VALIDATION_MESSAGE_MAP.confirmPassword.message}
+        />
+        <TextField
+          label="이메일"
+          required
+          placeholder="이메일"
+          {...register('email', {
+            required: true,
+            pattern: VALIDATION_MESSAGE_MAP.email.value,
+          })}
+          hasError={!!errors.email}
+          helpMessage={VALIDATION_MESSAGE_MAP.email.message}
+        />
+        <DropdownField
         label="성별"
         required
         selectedLabel={watch('gender')}
