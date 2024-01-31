@@ -5,8 +5,8 @@ export interface ISignIn {
 
 export interface ISignUp extends ISignIn {
   email: string
-  gender: string | null
-  age: string | null
+  gender: string
+  age: string
 }
 
 export type FindId = Pick<ISignUp, 'email'>;
