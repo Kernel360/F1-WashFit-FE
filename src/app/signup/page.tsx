@@ -104,28 +104,29 @@ function SignupPage() {
           helpMessage={VALIDATION_MESSAGE_MAP.email.message}
         />
         <DropdownField
-        label="성별"
-        required
-        selectedLabel={watch('gender')}
-        type="profile"
-        options={GENDER_OPTIONS}
-        {...register('gender', {
-          required: true,
-        })}
-      />
-      <Spacing size={12} />
-      <DropdownField
-        required
-        label="연령대"
-        selectedLabel={watch('age')}
-        type="profile"
-        options={AGE_OPTIONS}
-        {...register('age', {
-          required: true,
-        })}
-      />
-      <Spacing size={120} />
-      <Button type="submit" disabled={!isValid || !isDirty} size="medium" full>약관 동의하러 가기</Button>
+          label="성별"
+          required
+          selectedLabel={watch('gender')}
+          type="profile"
+          options={GENDER_OPTIONS}
+          {...register('gender', {
+            required: true,
+          })}
+        />
+        <Spacing size={12} />
+        <DropdownField
+          required
+          label="연령대"
+          selectedLabel={watch('age')}
+          type="profile"
+          options={AGE_OPTIONS}
+          {...register('age', {
+            required: true,
+          })}
+        />
+        <Spacing size={120} />
+        <Button type="submit" disabled={!isValid || !isDirty} size="medium" full>약관 동의하러 가기</Button>
+      </main>
       <Spacing size={42.5} />
     </form>
   );
