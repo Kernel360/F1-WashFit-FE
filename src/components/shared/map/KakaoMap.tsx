@@ -7,7 +7,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import Script from 'next/script';
 
@@ -28,20 +28,6 @@ interface Location {
 function KakaoMap() {
   // eslint-disable-next-line @typescript-eslint/naming-convention
   const [map, setMap] = useState<any>(null);
-  const [currentLocation, setCurrentLocation] = useState<Location>(location);
-
-  if (navigator.geolocation) {
-    // GeoLocation을 이용해서 현재 위치 가져오기
-    navigator.geolocation.getCurrentPosition((position) => {
-      setCurrentLocation((prev) => {
-        return {
-          ...prev,
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-        };
-      });
-    });
-  }
 
   const loadKakaoMap = () => {
     window.kakao.maps.load(() => {
@@ -67,15 +53,21 @@ function KakaoMap() {
 
   const handleCurrentLocationClick = () => {
     if (navigator.geolocation) {
-      // 마커가 표시될 위치를 geolocation으로 얻어온 좌표로 생성
-      const locPosition = new window.kakao.maps.LatLng(currentLocation.lat, currentLocation.lng);
-      displayMarker(locPosition);
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          // eslint-disable-next-line max-len
+          const locPosition = new window.kakao.maps.LatLng(position.coords.latitude, position.coords.longitude);
+          displayMarker(locPosition);
+        },
+        (error) => {
+          console.error('현재 위치를 가져오는 중 오류 발생', error);
+        },
+      );
     } else {
-      // GeoLocation을 사용할 수 없을 때 마커 표시 위치 설정
-      const locPosition = new window.kakao.maps.LatLng(location.lat, location.lng);
-      displayMarker(locPosition);
+      console.error('GeoLocation을 사용할 수 없음');
     }
   };
+
   return (
     <div>
       <Script
