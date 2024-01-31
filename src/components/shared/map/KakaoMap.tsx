@@ -20,7 +20,7 @@ declare global {
 }
 const location = { lat: 37.514417066172385, lng: 127.06132898292525 };
 
-interface Location {
+interface ILocation {
   lat: number;
   lng: number;
 }
@@ -41,7 +41,7 @@ function KakaoMap() {
     });
   };
 
-  const displayMarker = (locPosition: Location) => {
+  const displayMarker = (locPosition: ILocation) => {
     const marker = new window.kakao.maps.Marker({
       map,
       position: locPosition,

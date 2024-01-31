@@ -1,6 +1,6 @@
 import classNames from 'classnames/bind';
 
-import CurrentLocation from '@/components/icons/CurrentLocation';
+import CurrentLocation from '@components/icons/CurrentLocation';
 
 import styles from './CurrentLocationButton.module.scss';
 
