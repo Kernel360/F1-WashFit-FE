@@ -3,12 +3,11 @@
     animation-fill-mode: forwards;
 }
 
-.headerTitleContainer,
-.mainContainer {
-    padding: 0 24px;
+.headerTitleContainer {
+    padding: 0 var(--default-padding);
 }
 
-.mainContainer {
+.main {
     margin-bottom: 76px;
 
     .hideWrapper {

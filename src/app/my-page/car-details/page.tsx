@@ -41,46 +41,48 @@ function MyCarDetailsPage() {
     <>
       <Header />
       <Spacing size={24} />
-      <DropdownField
-        label="차량 유형"
-        selectedLabel={watch('segment')}
-        type="profile"
-        options={SEGMENT_OPTIONS}
-        {...register('segment')}
-      />
-      <Spacing size={12} />
-      <DropdownField
-        label="차량 크기"
-        selectedLabel={watch('cartype')}
-        type="profile"
-        options={CARTYPE_OPTIONS}
-        {...register('cartype')}
-      />
-      <Spacing size={12} />
-      <DropdownField
-        label="차량 색상"
-        selectedLabel={watch('color')}
-        type="profile"
-        options={COLOR_OPTIONS}
-        {...register('color')}
-      />
-      <Spacing size={12} />
-      <DropdownField
-        label="주행 환경"
-        selectedLabel={watch('driving')}
-        type="profile"
-        options={DRIVING_OPTIONS}
-        {...register('driving')}
-      />
-      <Spacing size={12} />
-      <DropdownField
-        label="주차 환경"
-        selectedLabel={watch('parking')}
-        type="profile"
-        options={PARKING_OPTIONS}
-        {...register('parking')}
-      />
-      <FixedBottomButton onClick={onSubmit} type="submit" disabled={!isDirty || !isValid}>변경 사항 저장하기</FixedBottomButton>
+      <main className="mainContainer">
+        <DropdownField
+          label="차량 유형"
+          selectedLabel={watch('segment')}
+          type="profile"
+          options={SEGMENT_OPTIONS}
+          {...register('segment')}
+        />
+        <Spacing size={12} />
+        <DropdownField
+          label="차량 크기"
+          selectedLabel={watch('cartype')}
+          type="profile"
+          options={CARTYPE_OPTIONS}
+          {...register('cartype')}
+        />
+        <Spacing size={12} />
+        <DropdownField
+          label="차량 색상"
+          selectedLabel={watch('color')}
+          type="profile"
+          options={COLOR_OPTIONS}
+          {...register('color')}
+        />
+        <Spacing size={12} />
+        <DropdownField
+          label="주행 환경"
+          selectedLabel={watch('driving')}
+          type="profile"
+          options={DRIVING_OPTIONS}
+          {...register('driving')}
+        />
+        <Spacing size={12} />
+        <DropdownField
+          label="주차 환경"
+          selectedLabel={watch('parking')}
+          type="profile"
+          options={PARKING_OPTIONS}
+          {...register('parking')}
+        />
+        <FixedBottomButton onClick={onSubmit} type="submit" disabled={!isDirty || !isValid}>변경 사항 저장하기</FixedBottomButton>
+      </main>
     </>
   );
 }

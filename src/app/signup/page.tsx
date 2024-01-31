@@ -50,76 +50,78 @@ function SignupPage() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Header />
       <Spacing size={20} />
-      <Title title="회원가입" />
-      <TextField
-        label="아이디"
-        required
-        placeholder="아이디"
-        {...register('id', {
-          required: true,
-          pattern: VALIDATION_MESSAGE_MAP.id.value,
-        })}
-        hasError={!!errors.id}
-        helpMessage={VALIDATION_MESSAGE_MAP.id.message}
-      />
-      <TextField
-        label="비밀번호"
-        required
-        placeholder="비밀번호"
-        isPasswordType
-        {...register('password', {
-          required: true,
-          pattern: VALIDATION_MESSAGE_MAP.password.value,
-        })}
-        hasError={!!errors.password}
-        helpMessage={VALIDATION_MESSAGE_MAP.password.message}
-      />
-      <TextField
-        label="비밀번호 확인"
-        required
-        placeholder="비밀번호 확인"
-        isPasswordType
-        {...register('confirmPassword', {
-          required: true,
-          validate: (confirmPassword: string) => {
-            if (watch('password') !== confirmPassword) {
-              return false;
-            }
-            return true;
-          },
-        })}
-        hasError={!!errors.confirmPassword}
-        helpMessage={VALIDATION_MESSAGE_MAP.confirmPassword.message}
-      />
-      <TextField
-        label="이메일"
-        required
-        placeholder="이메일"
-        {...register('email', {
-          required: true,
-          pattern: VALIDATION_MESSAGE_MAP.email.value,
-        })}
-        hasError={!!errors.email}
-        helpMessage={VALIDATION_MESSAGE_MAP.email.message}
-      />
-      <Text typography="t6"> 성별</Text>
-      <Spacing size={20} />
-      <Flex justify="space-between" gap={10}>
-        <Radio type="gender" label="남성" value="man" {...register('gender')} />
-        <Radio type="gender" label="여성" value="woman" {...register('gender')} />
-      </Flex>
-      <Spacing size={20} />
-      <Text typography="t6">연령층</Text>
-      <Spacing size={20} />
-      <div className={cx('ageGroupContainer')}>
-        <Radio type="ageGroup" label="20대 이하" value="AGE_20" {...register('age')} />
-        <Radio type="ageGroup" label="30대" value="AGE_30" {...register('age')} />
-        <Radio type="ageGroup" label="40대" value="AGE_40" {...register('age')} />
-        <Radio type="ageGroup" label="50대" value="AGE_50" {...register('age')} />
-        <Radio type="ageGroup" label="60대 이상" value="AGE_60" {...register('age')} />
-      </div>
-      <Spacing size={50} />
-      <Button type="submit" disabled={!isValid || !isDirty} size="medium" full>약관 동의하러 가기</Button>
+      <main className="mainContainer">
+        <Title title="회원가입" />
+        <TextField
+          label="아이디"
+          required
+          placeholder="아이디"
+          {...register('id', {
+            required: true,
+            pattern: VALIDATION_MESSAGE_MAP.id.value,
+          })}
+          hasError={!!errors.id}
+          helpMessage={VALIDATION_MESSAGE_MAP.id.message}
+        />
+        <TextField
+          label="비밀번호"
+          required
+          placeholder="비밀번호"
+          isPasswordType
+          {...register('password', {
+            required: true,
+            pattern: VALIDATION_MESSAGE_MAP.password.value,
+          })}
+          hasError={!!errors.password}
+          helpMessage={VALIDATION_MESSAGE_MAP.password.message}
+        />
+        <TextField
+          label="비밀번호 확인"
+          required
+          placeholder="비밀번호 확인"
+          isPasswordType
+          {...register('confirmPassword', {
+            required: true,
+            validate: (confirmPassword: string) => {
+              if (watch('password') !== confirmPassword) {
+                return false;
+              }
+              return true;
+            },
+          })}
+          hasError={!!errors.confirmPassword}
+          helpMessage={VALIDATION_MESSAGE_MAP.confirmPassword.message}
+        />
+        <TextField
+          label="이메일"
+          required
+          placeholder="이메일"
+          {...register('email', {
+            required: true,
+            pattern: VALIDATION_MESSAGE_MAP.email.value,
+          })}
+          hasError={!!errors.email}
+          helpMessage={VALIDATION_MESSAGE_MAP.email.message}
+        />
+        <Text typography="t6"> 성별</Text>
+        <Spacing size={20} />
+        <Flex justify="space-between" gap={10}>
+          <Radio type="gender" label="남성" value="man" {...register('gender')} />
+          <Radio type="gender" label="여성" value="woman" {...register('gender')} />
+        </Flex>
+        <Spacing size={20} />
+        <Text typography="t6">연령층</Text>
+        <Spacing size={20} />
+        <div className={cx('ageGroupContainer')}>
+          <Radio type="ageGroup" label="20대 이하" value="AGE_20" {...register('age')} />
+          <Radio type="ageGroup" label="30대" value="AGE_30" {...register('age')} />
+          <Radio type="ageGroup" label="40대" value="AGE_40" {...register('age')} />
+          <Radio type="ageGroup" label="50대" value="AGE_50" {...register('age')} />
+          <Radio type="ageGroup" label="60대 이상" value="AGE_60" {...register('age')} />
+        </div>
+        <Spacing size={50} />
+        <Button type="submit" disabled={!isValid || !isDirty} size="medium" full>약관 동의하러 가기</Button>
+      </main>
       <Spacing size={20} />
     </form>
   );

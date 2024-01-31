@@ -29,6 +29,14 @@
   --dimmed-zindex: 10;
   --modal-zindex: 11;
   --loader-zindex: 12;
+
+  /* --- default padding --- */
+  --default-padding : 24px
+}
+
+/* 내부 컨텐츠 패딩 */
+.mainContainer{
+  padding: 0 var(--default-padding);
 }
 
 /* 말줄임표 */
