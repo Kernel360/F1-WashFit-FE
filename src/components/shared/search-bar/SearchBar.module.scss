@@ -1,17 +1,37 @@
+$default-color: var(--gray100);
+$shadow: 0 4px 7px 1px rgb(0 0 0 / 5%);
+
+@mixin border($color) {
+    border: 1px solid $color;
+}
+
 .container {
+    @include border($default-color);
+
     display: flex;
     box-sizing: border-box;
     align-items: center;
     width: 100%;
-    padding: 15px 19px;
+    padding: 0 16px;
     border-radius: 10px;
-    gap: 11.5px;
-    background-color: var(--gray100);
+    background-color: $default-color;
+    gap: 11.4px;
+
+    &.shadow {
+        box-shadow: $shadow;
+    }
+
+    &:focus-within {
+        @include border(var(--primary200));
+
+        box-shadow: $shadow;
+    }
 
     input {
         flex-grow: 1;
         height: 100%;
         margin-left: 2px;
+        padding: 12px 0;
         border: none;
         border-radius: 0;
         outline: inherit;
@@ -20,7 +40,7 @@
         font-size: 16px;
 
         &::placeholder {
-            color: var(--gray400);
+            color: var(--gray500);
         }
     }
 
