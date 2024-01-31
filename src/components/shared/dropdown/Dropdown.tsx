@@ -45,7 +45,7 @@ const Dropdown = forwardRef<HTMLInputElement, DropdownProps>(({
 
   return (
     <div className={cx('container', { [type]: true })} ref={containerRef}>
-      <button onClick={openDropdownMenu} className={cx('selectedValue', { [type]: true })}>
+      <button onClick={openDropdownMenu} className={cx('selectedValue', { [type]: true })} type="button">
         <Text typography={type === 'profile' ? 't5' : 't6'} color="gray600">{selectedLabel}</Text>
         <Expand isRotate={isOpen} color="gray400" />
       </button>
