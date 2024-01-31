@@ -1,9 +1,9 @@
-.mainContainer {
+.main {
     .filterWrapper {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin: 13px 0 24px;
+        margin: 13px 0 var(--default-padding);
     }
 
     .productArticleContainer {

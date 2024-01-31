@@ -39,30 +39,32 @@ function MyCarWashDetailsPage() {
     <>
       <Header />
       <Spacing size={24} />
-      <DropdownField
-        label="세차 횟수"
-        selectedLabel={watch('frequency')}
-        type="profile"
-        options={FREQUENCY_OPTIONS}
-        {...register('frequency')}
-      />
-      <Spacing size={12} />
-      <DropdownField
-        label="지출 비용"
-        selectedLabel={watch('cost')}
-        type="profile"
-        options={COST_OPTIONS}
-        {...register('cost')}
-      />
-      <Spacing size={12} />
-      <DropdownField
-        label="주요 관심사"
-        selectedLabel={watch('interest')}
-        type="profile"
-        options={INTEREST_OPTIONS}
-        {...register('interest')}
-      />
-      <FixedBottomButton onClick={onSubmit} type="submit" disabled={!isDirty || !isValid}>변경 사항 저장하기</FixedBottomButton>
+      <main className="mainContainer">
+        <DropdownField
+          label="세차 횟수"
+          selectedLabel={watch('frequency')}
+          type="profile"
+          options={FREQUENCY_OPTIONS}
+          {...register('frequency')}
+        />
+        <Spacing size={12} />
+        <DropdownField
+          label="지출 비용"
+          selectedLabel={watch('cost')}
+          type="profile"
+          options={COST_OPTIONS}
+          {...register('cost')}
+        />
+        <Spacing size={12} />
+        <DropdownField
+          label="주요 관심사"
+          selectedLabel={watch('interest')}
+          type="profile"
+          options={INTEREST_OPTIONS}
+          {...register('interest')}
+        />
+        <FixedBottomButton onClick={onSubmit} type="submit" disabled={!isDirty || !isValid}>변경 사항 저장하기</FixedBottomButton>
+      </main>
     </>
   );
 }

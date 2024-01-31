@@ -31,7 +31,7 @@ function RequiredPasswordPage() {
     <>
       <Header />
       <Spacing size={30} />
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)} className="mainContainer">
         <Title title="비밀번호 입력" description="탈퇴하시려면 비밀번호를 입력해주세요." size={7} descriptionColor="gray400" />
         <Spacing size={30} />
         <TextField

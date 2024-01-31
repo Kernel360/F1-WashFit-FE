@@ -30,7 +30,7 @@ function CarDetails({
   dirtyFields,
 }: CarDetailsProps) {
   return (
-    <>
+    <section className="mainContainer">
       <Description main={main} sub={sub} />
       <Spacing size={40} />
       <div style={{ margin: '0 20px' }}>
@@ -56,7 +56,7 @@ function CarDetails({
       >
         계속하기
       </FixedBottomButton>
-    </>
+    </section>
   );
 }
 
