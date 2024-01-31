@@ -4,3 +4,10 @@ export interface ICommon<T> {
   message: string,
   value: T[]
 }
+
+export interface ICommonType<T> {
+  status: number
+  code: string,
+  message: string,
+  value: T
+}

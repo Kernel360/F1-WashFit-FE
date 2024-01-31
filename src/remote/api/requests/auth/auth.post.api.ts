@@ -1,6 +1,6 @@
 import {
   ChangePassword,
-  FindId, FindPassword, ISignIn, ISignUp,
+  FindId, FindPassword, ISignIn, ISignUp, UserInfoType,
 } from '../../types/auth';
 import { postRequest, putRequest } from '../requests.api';
 
@@ -17,7 +17,7 @@ export const signup = async ({
 export const login = async ({
   id, password,
 }: ISignIn) => {
-  const response = await postRequest<null, ISignIn>('/member/login', {
+  const response = await postRequest<UserInfoType, ISignIn>('/member/login', {
     id, password,
   });
 
