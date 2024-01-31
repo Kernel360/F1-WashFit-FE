@@ -1,0 +1,16 @@
+.button {
+    position: absolute;
+    z-index: var(--header-zindex);
+    bottom: 13%;
+    box-sizing: border-box;
+    margin-left: 24px;
+    padding: 8px;
+    border: 1px solid var(--gray100);
+    border-radius: 999px;
+    background: var(--white);
+    box-shadow: 2px 3px 12px 1px rgb(0 0 0 / 10%);
+
+    & svg {
+        vertical-align: top;
+    }
+}
