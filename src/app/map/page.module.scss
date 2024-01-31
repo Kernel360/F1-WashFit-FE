@@ -1,0 +1,18 @@
+$padding: 24px;
+
+.layout {
+    position: relative;
+
+    & nav,
+    .searchWrapper {
+        z-index: var(--header-zindex);
+    }
+
+    .searchWrapper {
+        position: absolute;
+        top: 8px;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0 $padding;
+    }
+}
