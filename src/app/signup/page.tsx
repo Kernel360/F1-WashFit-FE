@@ -4,23 +4,16 @@
 
 import { useForm } from 'react-hook-form';
 
-import classNames from 'classnames/bind';
-
+import { GENDER_OPTIONS, AGE_OPTIONS } from '@constants/myPage';
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
 import { ISignUp } from '@remote/api/types/auth';
 import useSignup from '@remote/queries/auth/useSignup';
 import Button from '@shared/button/Button';
-import Flex from '@shared/flex/Flex';
+import DropdownField from '@shared/dropdown-field/DropdownField';
 import Header from '@shared/header/Header';
-import Radio from '@shared/radio/Radio';
 import Spacing from '@shared/spacing/Spacing';
-import Text from '@shared/text/Text';
 import TextField from '@shared/text-field/TextField';
 import Title from '@shared/title/Title';
-
-import styles from './page.module.scss';
-
-const cx = classNames.bind(styles);
 
 type SignUpFormType = {
   confirmPassword: string
@@ -30,6 +23,13 @@ function SignupPage() {
   const {
     register, handleSubmit, formState: { errors, isValid, isDirty }, watch,
   } = useForm<SignUpFormType>({
+    defaultValues: {
+      id: '',
+      password: '',
+      confirmPassword: '',
+      gender: '남성',
+      age: '20대 이하',
+    },
     mode: 'onBlur',
   });
 
@@ -102,25 +102,30 @@ function SignupPage() {
         hasError={!!errors.email}
         helpMessage={VALIDATION_MESSAGE_MAP.email.message}
       />
-      <Text typography="t6"> 성별</Text>
-      <Spacing size={20} />
-      <Flex justify="space-between" gap={10}>
-        <Radio type="gender" label="남성" value="man" {...register('gender')} />
-        <Radio type="gender" label="여성" value="woman" {...register('gender')} />
-      </Flex>
-      <Spacing size={20} />
-      <Text typography="t6">연령층</Text>
-      <Spacing size={20} />
-      <div className={cx('ageGroupContainer')}>
-        <Radio type="ageGroup" label="20대 이하" value="AGE_20" {...register('age')} />
-        <Radio type="ageGroup" label="30대" value="AGE_30" {...register('age')} />
-        <Radio type="ageGroup" label="40대" value="AGE_40" {...register('age')} />
-        <Radio type="ageGroup" label="50대" value="AGE_50" {...register('age')} />
-        <Radio type="ageGroup" label="60대 이상" value="AGE_60" {...register('age')} />
-      </div>
-      <Spacing size={50} />
+      <DropdownField
+        label="성별"
+        required
+        selectedLabel={watch('gender')}
+        type="profile"
+        options={GENDER_OPTIONS}
+        {...register('gender', {
+          required: true,
+        })}
+      />
+      <Spacing size={12} />
+      <DropdownField
+        required
+        label="연령대"
+        selectedLabel={watch('age')}
+        type="profile"
+        options={AGE_OPTIONS}
+        {...register('age', {
+          required: true,
+        })}
+      />
+      <Spacing size={120} />
       <Button type="submit" disabled={!isValid || !isDirty} size="medium" full>약관 동의하러 가기</Button>
-      <Spacing size={20} />
+      <Spacing size={42.5} />
     </form>
   );
 }
