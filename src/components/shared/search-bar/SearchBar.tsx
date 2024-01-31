@@ -12,9 +12,8 @@ import styles from './SearchBar.module.scss';
 
 const cx = classNames.bind(styles);
 
-function SearchBar() {
+function SearchBar({ isShadow = false }:{ isShadow?:boolean }) {
   const [keyword, setKeyword] = useState<string>('');
-
   const handleSearch = () => {
     // eslint-disable-next-line no-console
     console.log('검색완료');
@@ -22,7 +21,7 @@ function SearchBar() {
 
   return (
     <form
-      className={cx('container')}
+      className={cx('container', { shadow: isShadow })}
       onSubmit={(e) => {
         e.preventDefault();
         handleSearch();
