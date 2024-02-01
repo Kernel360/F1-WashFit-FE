@@ -1,4 +1,4 @@
-import { ICommonType } from './common';
+import { ICommon } from './common';
 
 export interface ISignIn {
   id: string
@@ -32,4 +32,4 @@ export interface IUserInfo {
   password: null
 }
 
-export type UserInfoType = ICommonType<IUserInfo>;
+export type UserInfoType = ICommon<IUserInfo>;
