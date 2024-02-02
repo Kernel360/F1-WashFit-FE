@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
 'use client';
@@ -15,6 +16,7 @@ import Header from '@shared/header/Header';
 import Spacing from '@shared/spacing/Spacing';
 import TextField from '@shared/text-field/TextField';
 import Title from '@shared/title/Title';
+import { useAppSelector } from '@stores/hooks';
 
 import styles from './page.module.scss';
 
@@ -22,7 +24,7 @@ const cx = classNames.bind(styles);
 
 function LoginPage() {
   const { register, handleSubmit, formState: { isValid } } = useForm<ISignIn>();
-  const { mutate } = useLogin();
+  const { mutate, isError, isSuccess } = useLogin();
 
   const onSubmit = (data: ISignIn) => {
     const {
@@ -33,7 +35,14 @@ function LoginPage() {
     });
   };
 
-  // TODO: api return 값에 따라 error처리
+  /* -- redux test -- */
+  const userId = useAppSelector((state) => { return state.user.id; });
+  console.log(userId);
+
+  if (isSuccess) {
+    console.log(userId);
+  }
+
   return (
     <>
       <Header />
@@ -53,6 +62,7 @@ function LoginPage() {
             placeholder="비밀번호"
             {...register('password', { required: true })}
             helpMessage={VALIDATION_MESSAGE_MAP.failedLogin.message}
+            hasError={isError}
           />
           <Spacing size={30} />
           <Button type="submit" disabled={!isValid} size="medium" full>
