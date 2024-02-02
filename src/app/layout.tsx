@@ -4,8 +4,8 @@ import localFont from 'next/font/local';
 
 import './globals.css';
 
-import { CookieProvider } from '@/providers/CookieProvider';
 import { ModalContextProvider } from '@contexts/ModalContext';
+import { CookieProvider } from '@providers/CookieProvider';
 import MockProvider from '@providers/MockProvider';
 import QueryProvider from '@providers/QueryProvider';
 import StoreProvider from '@providers/StoreProvider';
