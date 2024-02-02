@@ -1,5 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable no-console */
+import { useCookies } from 'react-cookie';
 
 import { useMutation } from '@tanstack/react-query';
 
@@ -9,14 +8,15 @@ import { setUserId } from '@stores/slices/userSlice';
 
 function useLogin() {
   const dispatch = useAppDispatch();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [cookies, setCookie] = useCookies(['token']);
 
   return useMutation({
     mutationFn: login,
     onSuccess: (data) => {
       const { id, jwtToken } = data.value;
-      console.log(jwtToken); // TODO: cookie에 저장
+      setCookie('token', jwtToken, { path: '/', maxAge: 60 * 15 });
       dispatch(setUserId(id));
-      // TODO: 메인페이지로 이동
     },
   });
 }
