@@ -5,9 +5,12 @@ import localFont from 'next/font/local';
 import './globals.css';
 
 import { ModalContextProvider } from '@contexts/ModalContext';
+import { CookieProvider } from '@providers/CookieProvider';
 import MockProvider from '@providers/MockProvider';
 import QueryProvider from '@providers/QueryProvider';
 import StoreProvider from '@providers/StoreProvider';
+// eslint-disable-next-line import/order
+// import { CookiesProvider } from 'react-cookie';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -33,13 +36,15 @@ export default function RootLayout({
     <html lang="ko">
       <body className={pretendard.className}>
         <MockProvider>
-          <QueryProvider>
-            <StoreProvider>
-              <ModalContextProvider>
-                {children}
-              </ModalContextProvider>
-            </StoreProvider>
-          </QueryProvider>
+          <CookieProvider>
+            <QueryProvider>
+              <StoreProvider>
+                <ModalContextProvider>
+                  {children}
+                </ModalContextProvider>
+              </StoreProvider>
+            </QueryProvider>
+          </CookieProvider>
         </MockProvider>
         <div id="portal-root" />
         <div id="drawer-root" />
