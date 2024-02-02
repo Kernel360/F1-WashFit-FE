@@ -20,6 +20,6 @@ export interface IProduct {
   warningLevel: string
 }
 
-export type BannerType = ICommon<IBanner>;
-export type RecommendProductsType = ICommon<IRecommendProducts>;
+export type BannerType = ICommon<IBanner[]>;
+export type RecommendProductsType = ICommon<IRecommendProducts[]>;
 export type ProductType = ICommon<IProduct[]>;

@@ -30,7 +30,8 @@
     "react-dom": "^18",
     "react-hook-form": "^7.49.2",
     "react-redux": "^9.0.4",
-    "react-slick": "^0.29.0"
+    "react-slick": "^0.29.0",
+    "redux-persist": "^6.0.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.6",

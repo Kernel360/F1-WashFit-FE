@@ -1,15 +1,23 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable no-console */
+
 import { useMutation } from '@tanstack/react-query';
 
 import { login } from '@remote/api/requests/auth/auth.post.api';
+import { useAppDispatch } from '@stores/hooks';
+import { setUserId } from '@stores/slices/userSlice';
 
 function useLogin() {
+  const dispatch = useAppDispatch();
+
   return useMutation({
     mutationFn: login,
-    // eslint-disable-next-line no-console
-    onSuccess: () => { console.log('요청 성공'); },
-    onError: () => { console.error('에러 발생'); },
-    // eslint-disable-next-line no-console
-    onSettled: () => { console.log('결과에 관계 없이 무언가 실행됨'); },
+    onSuccess: (data) => {
+      const { id, jwtToken } = data.value;
+      console.log(jwtToken); // TODO: cookie에 저장
+      dispatch(setUserId(id));
+      // TODO: 메인페이지로 이동
+    },
   });
 }
 
