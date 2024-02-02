@@ -4,6 +4,9 @@
 
 import { useForm } from 'react-hook-form';
 
+import {
+  AGE_MAP, AgeType, GENDER_MAP, GenderType,
+} from '@constants/dropdownMap';
 import { GENDER_OPTIONS, AGE_OPTIONS } from '@constants/myPage';
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
 import { ISignUp } from '@remote/api/types/auth';
@@ -27,8 +30,8 @@ function SignupPage() {
       id: '',
       password: '',
       confirmPassword: '',
-      gender: '남성',
-      age: '20대 이하',
+      gender: 'man',
+      age: 'AGE_20',
     },
     mode: 'onBlur',
   });
@@ -106,7 +109,7 @@ function SignupPage() {
         <DropdownField
           label="성별"
           required
-          selectedLabel={watch('gender')}
+          selectedLabel={GENDER_MAP[watch('gender') as GenderType]}
           type="profile"
           options={GENDER_OPTIONS}
           {...register('gender', {
@@ -117,7 +120,7 @@ function SignupPage() {
         <DropdownField
           required
           label="연령대"
-          selectedLabel={watch('age')}
+          selectedLabel={AGE_MAP[watch('age') as AgeType]}
           type="profile"
           options={AGE_OPTIONS}
           {...register('age', {
