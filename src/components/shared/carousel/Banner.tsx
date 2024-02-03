@@ -18,6 +18,7 @@ const settings = {
   adaptiveHeight: true,
   autoplaySpeed: 5000,
   arrows: false,
+  centerPadding: '100px',
 };
 
 function Banner({ bannerData }: { bannerData: BannerType }) {
@@ -29,12 +30,13 @@ function Banner({ bannerData }: { bannerData: BannerType }) {
         {bannerList.map((slide) => {
           return (
             <Link href={slide.link} key={slide.id}>
-              <Image
-                src={slide.src}
-                alt={slide.alt}
-                width={315}
-                height={140}
-              />
+              <div className="imageContainer">
+                <Image
+                  src={slide.imageSource}
+                  alt={slide.alt}
+                  fill
+                />
+              </div>
             </Link>
           );
         })}

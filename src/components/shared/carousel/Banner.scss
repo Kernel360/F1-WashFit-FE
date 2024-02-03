@@ -1,10 +1,6 @@
+/* stylelint-disable selector-class-pattern */
 .container {
   position: relative;
-
-  img {
-    width: auto;
-    margin: 0 auto;
-  }
 
   .dotsCustom {
     position: absolute;
@@ -29,10 +25,23 @@
     cursor: pointer;
   }
 
-  /* stylelint-disable-next-line selector-class-pattern */
   .dotsCustom li.slick-active button {
     width: 24px;
     border-radius: 8px;
     background-color: var(--primary500);
   }
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.slick-slide > div {
+  margin: 0 10px;
+}
+
+.slick-list {
+  margin: 0 -10px;
 }
