@@ -32,7 +32,7 @@ function Banner({ bannerData }: { bannerData: BannerType }) {
             <Link href={slide.link} key={slide.id}>
               <div className="imageContainer">
                 <Image
-                  src={slide.src}
+                  src={slide.imageSource}
                   alt={slide.alt}
                   fill
                 />

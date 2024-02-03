@@ -65,7 +65,7 @@ function Home() {
           <Spacing size={16} />
           <div className={cx('productArticleContainer')}>
             {MOCK_PRODUCT_LIST?.value.map((item) => {
-              return <ProductArticle key={item.id} itemData={item} />;
+              return <ProductArticle key={item.productNo} itemData={item} />;
             })}
           </div>
         </div>

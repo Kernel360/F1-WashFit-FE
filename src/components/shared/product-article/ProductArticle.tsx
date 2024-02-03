@@ -9,8 +9,8 @@ import Text from '@shared/text/Text';
 import styles from './ProductArticle.module.scss';
 
 interface ProductArticleProps {
-  isRow?: boolean;
-  itemData: IProduct
+  isRow?: boolean
+  itemData: Partial<IProduct>
 }
 
 const cx = classNames.bind(styles);
@@ -23,7 +23,7 @@ function ProductArticle({ isRow = false, itemData }: ProductArticleProps) {
       <article className={cx('container', { row: isRow })}>
         <div className={cx('imgBox')}>
           <Image
-            src={itemData.imageSource}
+            src={itemData.imageSource!}
             alt="제품 이미지"
             width={0}
             height={0}

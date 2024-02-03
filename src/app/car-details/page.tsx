@@ -1,4 +1,3 @@
-// app/hydratedPosts.jsx
 import { dehydrate, Hydrate } from '@tanstack/react-query';
 
 import getQueryClient from '@lib/getQueryClient';

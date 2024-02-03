@@ -32,7 +32,7 @@ function RecommendList({ recommendProductsData }: { recommendProductsData: Recom
           <Flex justify="center" align="center" direction="column" key={slide.id}>
             <Link href={slide.link}>
               <Image
-                src={slide.src}
+                src={slide.imageSource}
                 alt={slide.alt}
                 width={85}
                 height={85}
