@@ -3,7 +3,7 @@ import { ICommon } from './common';
 export interface IBanner {
   id: number
   link: string
-  src: string
+  imageSource: string
   alt: string
 }
 
@@ -12,19 +12,19 @@ export interface IRecommendProducts extends IBanner {
 }
 
 export interface IProduct {
+  brand: string
+  upperItem: string
   productNo: number
-  productName: string
-  barcode: string
   imageSource: string
-  reportNumber: string
+  productName: string
   safetyStatus: string
+  barcode: string
+  reportNumber: string
   viewCount: number
   createdAt: string
   createdBy: string
   modifiedAt: string
   modifiedBy: string
-  brand: string
-  upperItem: string
 }
 
 export interface IProductDetails extends IProduct {
@@ -37,9 +37,12 @@ export interface IProductDetails extends IProduct {
   grade: number
   reviewCnt: number
   viewCount: number
+  usage: string
+  usagePrecaution: string
+  firstAid: string
 }
 
 export type BannerType = ICommon<IBanner[]>;
 export type RecommendProductsType = ICommon<IRecommendProducts[]>;
 export type ProductType = ICommon<IProduct[]>;
-export type ProductDetailsType = ICommon<IProductDetails[]>;
+export type ProductDetailsType = ICommon<IProductDetails>;
