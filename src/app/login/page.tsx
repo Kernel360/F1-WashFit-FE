@@ -60,6 +60,7 @@ function LoginPage() {
             label="비밀번호"
             required
             placeholder="비밀번호"
+            isPasswordType
             {...register('password', { required: true })}
             helpMessage={VALIDATION_MESSAGE_MAP.failedLogin.message}
             hasError={isError}
