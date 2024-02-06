@@ -14,7 +14,7 @@ interface TitleProps {
 }
 
 function Title({
-  title, titleSize = 't1', description, descriptionColor, titleIcon, size = 10,
+  title, titleSize = 't1', description, descriptionColor, titleIcon, size = 8,
 }: TitleProps) {
   return (
     <Flex direction="column">
