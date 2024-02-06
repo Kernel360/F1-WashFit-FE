@@ -86,6 +86,12 @@ function MyProfilePage() {
           </Link>
         </li>
         <li className={cx('linkInfoContainer')}>
+          <Link href="https://forms.gle/ty3EwK1Qmwe5FW1w6">
+            문의하기
+            <LinkArrow />
+          </Link>
+        </li>
+        <li className={cx('linkInfoContainer')}>
           <Link className={cx('logout')} href="/">로그아웃</Link>
         </li>
       </ul>
