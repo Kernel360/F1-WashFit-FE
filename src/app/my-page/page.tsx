@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import classNames from 'classnames/bind';
 import dynamic from 'next/dynamic';
@@ -12,6 +12,7 @@ import BottomNav from '@shared/bottom-nav/BottomNav';
 import Spacing from '@shared/spacing/Spacing';
 import Text from '@shared/text/Text';
 import Title from '@shared/title/Title';
+import { useAppSelector } from '@stores/hooks';
 
 import styles from './page.module.scss';
 
@@ -23,10 +24,15 @@ const cx = classNames.bind(styles);
 
 function MyProfilePage() {
   const router = useRouter();
-  // TODO: 회원 이름 가져오기
-  const name = 'washpedia';
+  // eslint-disable-next-line max-len
+  const userId = useAppSelector((state) => { return state.user.id; }, (prev, curr) => { return prev === curr; });
+
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  useEffect(() => {
+    setIsLoggedIn(userId !== null);
+  }, [userId]);
 
   if (isLoggedIn === false) {
     return (
@@ -56,7 +62,7 @@ function MyProfilePage() {
         <Title title="프로필" titleSize="t3" />
       </div>
       <div className={cx('nameWrapper')}>
-        <Text display="block" typography="t4">{`${name}님 안녕하세요!`}</Text>
+        <Text display="block" typography="t4">{`${userId}님 안녕하세요!`}</Text>
         <Text display="block" typography="t4">오늘도 즐거운 하루 보내세요.</Text>
       </div>
       <Spacing size={8} backgroundColor="gray100" />
