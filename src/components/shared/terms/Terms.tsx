@@ -17,9 +17,10 @@ const cx = classNames.bind(styles);
 interface TermsProps {
   type: string;
   onClick?: () => void;
+  stepBack?: () => void | undefined;
 }
 
-function Terms({ type, onClick } : TermsProps) {
+function Terms({ type, onClick, stepBack } : TermsProps) {
   const termsType: { [key: string]: { title: string; description: string } } = useMemo(() => {
     return {
       withdraw: { title: '회원탈퇴', description: '회원을 탈퇴하시려면 탈퇴 약관을 동의해 주세요.' },
@@ -31,7 +32,7 @@ function Terms({ type, onClick } : TermsProps) {
 
   return (
     <>
-      <Header />
+      <Header stepBack={stepBack} />
       <main className={cx('mainContainer', 'main')}>
         <div className={cx('contentsWrapper')}>
           <Spacing size={30} />
