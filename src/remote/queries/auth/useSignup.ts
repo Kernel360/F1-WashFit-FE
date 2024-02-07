@@ -7,7 +7,7 @@ function useSignup() {
   const router = useRouter();
 
   const onSuccess = () => {
-    router.push('/login');
+    router.push('/signup/complete');
   };
 
   return useMutation({ mutationFn: signup, onSuccess });
