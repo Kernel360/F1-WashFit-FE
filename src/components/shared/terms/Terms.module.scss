@@ -1,0 +1,46 @@
+.main {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100vh - 44px);
+
+    .contentsWrapper {
+        .subTitle {
+            margin-bottom: 8px;
+            color: var(--gray900);
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .agreementContents {
+            height: calc(100vh - 480px);
+            overflow: scroll;
+            color: var(--gray600);
+            font-size: 14px;
+            text-align: justify;
+            text-justify: auto;
+        }
+    }
+
+    .buttonWrapper {
+        padding: 0 0 68px;
+
+        input {
+            display: none;
+        }
+
+        label {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            gap: 7px;
+        }
+
+        .button {
+            box-sizing: border-box;
+            width: 100%;
+            margin-top: 22px;
+        }
+    }
+}
