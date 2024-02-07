@@ -5,7 +5,6 @@ import { useState } from 'react';
 import classNames from 'classnames/bind';
 
 import Checkbox from '@components/icons/Checkbox';
-import useModal from '@contexts/ModalContext';
 import Button from '@shared/button/Button';
 import Header from '@shared/header/Header';
 import Spacing from '@shared/spacing/Spacing';
@@ -27,23 +26,6 @@ function Terms({ type, onClick } : TermsProps) {
   };
 
   const [isChecked, setIsChecked] = useState(false);
-  const { open } = useModal();
-
-  //   모달에서는 회원탈퇴 로직 처리
-  const handleWithdrawal = () => {
-    open({
-      title: '회원 탈퇴',
-      description: '회원을 탈퇴하면 차량용품 추천 서비스를 제공받을 수 없습니다. 정말로 탈퇴하시겠습니까?',
-      leftButtonLabel: '예',
-      rightButtonLabel: '아니오',
-      onLeftButtonClick: () => {
-        // 회원탈퇴
-      },
-      onRightButtonClick: () => {
-        // 모달닫기
-      },
-    });
-  };
 
   return (
     <>
@@ -98,7 +80,7 @@ function Terms({ type, onClick } : TermsProps) {
             </Button>
             )}
             {type === 'withdraw' && (
-            <Button size="large" disabled={!isChecked} onClick={handleWithdrawal} full>
+            <Button size="large" disabled={!isChecked} onClick={onClick} full>
               회원 탈퇴하기
             </Button>
             )}
