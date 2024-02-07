@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -20,10 +20,12 @@ interface TermsProps {
 }
 
 function Terms({ type, onClick } : TermsProps) {
-  const termsType: { [key: string]: { title: string; description: string } } = {
-    withdraw: { title: '회원탈퇴', description: '회원을 탈퇴하시려면 탈퇴 약관을 동의해 주세요.' },
-    signup: { title: '회원가입', description: '회원 가입하시려면 가입 약관을 동의해 주세요.' },
-  };
+  const termsType: { [key: string]: { title: string; description: string } } = useMemo(() => {
+    return {
+      withdraw: { title: '회원탈퇴', description: '회원을 탈퇴하시려면 탈퇴 약관을 동의해 주세요.' },
+      signup: { title: '회원가입', description: '회원 가입하시려면 가입 약관을 동의해 주세요.' },
+    };
+  }, []);
 
   const [isChecked, setIsChecked] = useState(false);
 
