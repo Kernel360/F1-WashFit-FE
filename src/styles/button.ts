@@ -25,8 +25,8 @@ export const buttonSizeMap = {
     padding: '10px 15px',
   },
   large: {
-    fontSize: '18px',
-    padding: '12px 10px',
+    fontSize: '16px',
+    padding: '14.5px 10px',
   },
 };
 
