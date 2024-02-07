@@ -9,7 +9,9 @@ import Text from '@shared/text/Text';
 
 import { LeftIconProps } from '../types/headerType';
 
-function LeftIcon({ className, title, type }: LeftIconProps) {
+function LeftIcon({
+  className, title, type, stepBack,
+}: LeftIconProps) {
   const { goBack } = useNavigation();
 
   if (type === 'home') {
@@ -25,7 +27,7 @@ function LeftIcon({ className, title, type }: LeftIconProps) {
   return (
     <ul className={className}>
       <li>
-        <BackArrow onClick={goBack} />
+        <BackArrow onClick={stepBack ?? goBack} />
       </li>
       {title && (
       <li>
