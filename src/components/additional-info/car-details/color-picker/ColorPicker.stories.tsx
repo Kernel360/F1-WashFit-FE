@@ -19,7 +19,7 @@ export const black: Story = {
   args: {
     label: '검은색',
     value: '37383C',
-    color: '37383C',
+    color: 'black',
   },
 };
 
@@ -27,6 +27,6 @@ export const green: Story = {
   args: {
     label: '초록',
     value: '2F4F4F',
-    color: '2F4F4F',
+    color: 'green',
   },
 };
