@@ -1,6 +1,8 @@
+import { ColorMapType } from '@components/additional-info/car-details/color-picker/colorPicker.type';
+
 export interface IAdditionalInfo {
   codeNo: number
-  codeName: string
+  codeName: ColorMapType
   upperNo: number
   upperName: string
   sortOrder: number
