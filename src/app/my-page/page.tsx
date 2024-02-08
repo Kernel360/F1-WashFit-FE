@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useCookies } from 'react-cookie';
 
 import classNames from 'classnames/bind';
 import dynamic from 'next/dynamic';
@@ -12,7 +13,8 @@ import BottomNav from '@shared/bottom-nav/BottomNav';
 import Spacing from '@shared/spacing/Spacing';
 import Text from '@shared/text/Text';
 import Title from '@shared/title/Title';
-import { useAppSelector } from '@stores/hooks';
+import { useAppSelector, useAppDispatch } from '@stores/hooks';
+import { clearUserId } from '@stores/slices/userSlice';
 
 import styles from './page.module.scss';
 
@@ -24,6 +26,10 @@ const cx = classNames.bind(styles);
 
 function MyProfilePage() {
   const router = useRouter();
+  const dispatch = useAppDispatch();
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [cookies, removeCookie] = useCookies(['token']);
+
   // eslint-disable-next-line max-len
   const userId = useAppSelector((state) => { return state.user.id; }, (prev, curr) => { return prev === curr; });
 
@@ -33,6 +39,14 @@ function MyProfilePage() {
   useEffect(() => {
     setIsLoggedIn(userId !== null);
   }, [userId]);
+
+  // 로그아웃
+  const handleLoggedOut = () => {
+    // TODO: 먼저 로그아웃 모달이 뜨도록 할지 논의필요
+    dispatch(clearUserId());
+    removeCookie('token', { path: '/' });
+    router.push('/');
+  };
 
   if (isLoggedIn === false) {
     return (
@@ -98,7 +112,9 @@ function MyProfilePage() {
           </Link>
         </li>
         <li className={cx('linkInfoContainer')}>
-          <Link className={cx('logout')} href="/">로그아웃</Link>
+          <button className={cx('logout')} onClick={handleLoggedOut}>
+            로그아웃
+          </button>
         </li>
       </ul>
       <BottomNav />
