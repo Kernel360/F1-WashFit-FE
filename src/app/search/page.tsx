@@ -21,34 +21,34 @@ const productArticleData = [
   {
     brand: '카믹스',
     category: '코팅제',
-    id: 1,
-    img: '/assets/profile.JPG',
-    name: '아머올 세차용품 스피드 왁스 스프레이 500ml스피드 왁스 스프레이 500ml',
-    warningLevel: 'warning',
+    productNo: 1,
+    imageSource: '/assets/profile.JPG',
+    productName: '아머올 세차용품 스피드 왁스 스프레이 500ml스피드 왁스 스프레이 500ml',
+    safetyStatus: 'warning',
   },
   {
     brand: '카믹스',
     category: '코팅제',
-    id: 2,
-    img: '/assets/profile.JPG',
-    name: '아머올 세차용품 스피드 왁스 스프레이 500ml스피드 왁스 스프레이 500ml',
-    warningLevel: 'warning',
+    productNo: 2,
+    imageSource: '/assets/profile.JPG',
+    productName: '아머올 세차용품 스피드 왁스 스프레이 500ml스피드 왁스 스프레이 500ml',
+    safetyStatus: 'warning',
   },
   {
     brand: '카믹스',
     category: '코팅제',
-    id: 3,
-    img: '/assets/profile.JPG',
-    name: '아머올 세차용품 스피드 왁스 스프레이 500ml스피드 왁스 스프레이 500ml',
-    warningLevel: 'warning',
+    productNo: 3,
+    imageSource: '/assets/profile.JPG',
+    productName: '아머올 세차용품 스피드 왁스 스프레이 500ml스피드 왁스 스프레이 500ml',
+    safetyStatus: 'warning',
   },
   {
     brand: '카믹스',
     category: '코팅제',
-    id: 4,
-    img: '/assets/profile.JPG',
-    name: '아머올 세차용품 스피드 왁스 스프레이 500ml스피드 왁스 스프레이 500ml',
-    warningLevel: 'warning',
+    productNo: 4,
+    imageSource: '/assets/profile.JPG',
+    productName: '아머올 세차용품 스피드 왁스 스프레이 500ml스피드 왁스 스프레이 500ml',
+    safetyStatus: 'warning',
   },
 ];
 
@@ -90,7 +90,7 @@ function SearchPage() {
         </div>
         <div className={cx('productArticleContainer')}>
           {productArticleData.map((item) => {
-            return <ProductArticle key={item.id} itemData={item} />;
+            return <ProductArticle key={item.productNo} itemData={item} />;
           })}
         </div>
       </main>
