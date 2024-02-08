@@ -88,13 +88,13 @@ function MyProfilePage() {
           </Link>
         </li>
         <li className={cx('linkInfoContainer')}>
-          <Link href="/my-page/car-details">
+          <Link href="/car-details">
             나의 차량 정보
             <LinkArrow />
           </Link>
         </li>
         <li className={cx('linkInfoContainer')}>
-          <Link href="/my-page/car-wash-details">
+          <Link href="/car-wash-details">
             나의 세차 정보
             <LinkArrow />
           </Link>
