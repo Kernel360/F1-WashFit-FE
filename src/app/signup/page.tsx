@@ -50,9 +50,12 @@ function SignupPage() {
   };
 
   const [step, setStep] = useState(1);
-
   const onNext = () => {
     setStep((currentStep) => { return currentStep + 1; });
+  };
+
+  const onBack = () => {
+    setStep((currentStep) => { return currentStep - 1; });
   };
 
   // TODO: 아이디 textfield onBlur 시 중복된 아이디 검사
@@ -145,7 +148,7 @@ function SignupPage() {
       )}
 
       {step === 2 && (
-      <Terms type="signup" onClick={() => { return onSubmit(watch()); }} />
+      <Terms type="signup" stepBack={step > 1 ? onBack : undefined} onClick={() => { return onSubmit(watch()); }} />
       )}
     </form>
   );

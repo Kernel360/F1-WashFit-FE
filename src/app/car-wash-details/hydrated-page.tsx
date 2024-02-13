@@ -31,6 +31,10 @@ function CarWashDetailsPage() {
     setStep((currentStep) => { return currentStep + 1; });
   };
 
+  const onBack = () => {
+    setStep((currentStep) => { return currentStep - 1; });
+  };
+
   // eslint-disable-next-line @typescript-eslint/require-await
   const onSubmit = async () => {
     onNext();
@@ -50,7 +54,7 @@ function CarWashDetailsPage() {
     <>
       {step <= 3 && (
         <>
-          <Header />
+          <Header stepBack={step > 1 ? onBack : undefined} />
           <Spacing size={16} />
           <ProgressBar progressCount={3} currentStep={step} />
           <Spacing size={32} />

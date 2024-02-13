@@ -5,6 +5,7 @@ interface IconProps {
 
 interface LeftIconProps extends IconProps {
   title?: React.ReactNode;
+  stepBack?:() => void | undefined;
 }
 
 interface RightIconProps extends IconProps {

@@ -42,10 +42,7 @@ function Home() {
     <>
       <Header className={cx('home')} type="home" />
       <main className={cx('mainContainer')}>
-        <div className={cx('searchBarWrapper')}>
-          <Spacing size={16} />
-          <Spacing size={24} />
-        </div>
+        <Spacing size={8} />
         <Banner bannerData={MOCK_BANNER_DATA} />
         <Spacing size={32} />
         <div className={cx('recommendTextWrapper')}>
@@ -66,6 +63,7 @@ function Home() {
           <Spacing size={16} />
           <div className={cx('productArticleContainer')}>
             {MOCK_PRODUCT_LIST?.value.map((item) => {
+              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
               return <ProductArticle key={item.productNo} itemData={item} />;
             })}
           </div>
