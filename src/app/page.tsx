@@ -47,10 +47,12 @@ function Home() {
         <Spacing size={32} />
         <div className={cx('recommendTextWrapper')}>
           <Text bold>추천 세차용품</Text>
+          <Spacing size={16} />
+          <div className={cx('recommendListWrapper')}>
+            <RecommendList recommendProductsData={MOCK_RECOMMEND_PRODUCTS} />
+          </div>
         </div>
-        <Spacing size={16} />
-        <RecommendList recommendProductsData={MOCK_RECOMMEND_PRODUCTS} />
-        <Spacing size={32} />
+        <Spacing size={35} />
         <div className={cx('productListContainer')}>
           <Text bold>WashPedia 랭킹</Text>
           <Spacing size={16} />

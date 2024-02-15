@@ -1,6 +1,8 @@
 .mainContainer {
   .recommendTextWrapper {
-    padding: 0 var(--default-padding);
+    & > span {
+      padding: 0 var(--default-padding);
+    }
   }
 
   .productListContainer {
