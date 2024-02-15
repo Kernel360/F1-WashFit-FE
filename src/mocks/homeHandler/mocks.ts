@@ -35,7 +35,7 @@ export const MOCK_BANNER_DATA = {
 export const MOCK_RECOMMEND_PRODUCTS = {
   status: 200,
   code: 'BMB001',
-  message: '배너정보 조회 성공',
+  message: '추천 제품 조회 성공',
   value: [
     {
       id: 1,
@@ -78,9 +78,38 @@ export const MOCK_RECOMMEND_PRODUCTS = {
     {
       id: 6,
       link: '/',
+      imageSource: '/assets/recommendItem1.png',
+      alt: '그림',
+      productName: '카샴푸',
+    },
+    {
+      id: 7,
+      link: '/',
+      imageSource: '/assets/recommendItem1.png',
+      alt: '그림',
+      productName: '카샴푸',
+    },
+    {
+      id: 8,
+      link: '/',
+      imageSource: '/assets/recommendItem2.png',
+      alt: '그림',
+      productName: '휠 클리너',
+    },
+    {
+      id: 9,
+      link: '/',
       imageSource: '/assets/recommendItem4.png',
       alt: '그림',
       productName: '먼지털이개',
+
+    },
+    {
+      id: 10,
+      link: '/',
+      imageSource: '/assets/recommendItem3.png',
+      alt: '그림',
+      productName: '타올',
 
     },
   ],
