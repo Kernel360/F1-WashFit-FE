@@ -1,0 +1,31 @@
+/* stylelint-disable selector-class-pattern */
+
+.recommend-slide {
+    .slick-list {
+        div[data-index="0"] {
+            padding-left: 17px;
+        }
+    }
+
+    .slick-slide {
+        a {
+            box-sizing: border-box;
+            text-align: center;
+
+            .img-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 85px;
+                height: 85px;
+                margin: 0 auto 2px;
+                border-radius: 16px;
+                background-color: #eff9ff;
+
+                img {
+                    vertical-align: top;
+                }
+            }
+        }
+    }
+}
