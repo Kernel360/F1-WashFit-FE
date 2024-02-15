@@ -25,7 +25,7 @@ function Banner({ bannerData }: { bannerData: BannerType }) {
   const bannerList:IBanner[] = bannerData.value;
 
   return (
-    <Slider {...settings} className="slider">
+    <Slider {...settings} className="banner-slide">
       {bannerList.map((slide) => {
         return (
           <Link href={slide.link} key={slide.id}>
