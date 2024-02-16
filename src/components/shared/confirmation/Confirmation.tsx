@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 
-import { CompleteType } from '@constants/completeMessage';
+import { ConfirmationType } from '@constants/completeMessage';
 import Button from '@shared/button/Button';
 import Flex from '@shared/flex/Flex';
 import Spacing from '@shared/spacing/Spacing';
@@ -10,7 +10,7 @@ import Text from '@shared/text/Text';
 
 import './Confirmation.scss';
 
-interface ConfirmationProps extends CompleteType {}
+interface ConfirmationProps extends ConfirmationType {}
 
 function Confirmation({ options, title, description }:ConfirmationProps) {
   const router = useRouter();
