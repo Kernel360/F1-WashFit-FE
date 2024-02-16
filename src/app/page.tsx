@@ -45,15 +45,13 @@ function Home() {
         <Spacing size={8} />
         <Banner bannerData={MOCK_BANNER_DATA} />
         <Spacing size={32} />
-        <div className={cx('recommendTextWrapper')}>
+        <div className={cx('recommendWrapper')}>
           <Text bold>추천 세차용품</Text>
           <Spacing size={16} />
-          <div className={cx('recommendListWrapper')}>
-            <RecommendList recommendProductsData={MOCK_RECOMMEND_PRODUCTS} />
-          </div>
+          <RecommendList recommendProductsData={MOCK_RECOMMEND_PRODUCTS} />
         </div>
         <Spacing size={35} />
-        <div className={cx('productListContainer')}>
+        <div className={cx('productListWrapper')}>
           <Text bold>WashPedia 랭킹</Text>
           <Spacing size={16} />
           <Flex justify="space-between" align="center" gap={8}>
@@ -63,7 +61,7 @@ function Home() {
             <Radio label="최신순" name="filter" type="filter" value="latest" />
           </Flex>
           <Spacing size={16} />
-          <div className={cx('productArticleContainer')}>
+          <div className={cx('productArticleWrapper')}>
             {MOCK_PRODUCT_LIST?.value.map((item) => {
               // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
               return <ProductArticle key={item.productNo} itemData={item} />;

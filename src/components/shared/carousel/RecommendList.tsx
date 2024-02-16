@@ -11,10 +11,9 @@ import Text from '@shared/text/Text';
 
 const settings = {
   dots: false,
-  infinite: true,
+  infinite: false,
   slidesToShow: 4,
-  swipeToSlide: true,
-  slidesToScroll: 1,
+  slidesToScroll: 2,
   adaptiveHeight: true,
   arrows: false,
 };
