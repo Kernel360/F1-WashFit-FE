@@ -47,21 +47,16 @@ function MyProfilePage() {
   const topMargin = 96;
   const bottomMargin = 97;
 
-  const mainContainerStyle = {
-    height: `calc(100vh - ${topMargin + bottomMargin}px)`,
-  };
-
   if (isLoggedIn === false) {
     return (
       <>
-        <Spacing size={96} />
-        <main className="mainContainer" style={mainContainerStyle}>
-          <Confirmation
-            title={REQUIRED_LOGIN.title}
-            description={REQUIRED_LOGIN.description}
-            options={REQUIRED_LOGIN.options}
-          />
-        </main>
+        <Confirmation
+          title={REQUIRED_LOGIN.title}
+          description={REQUIRED_LOGIN.description}
+          options={REQUIRED_LOGIN.options}
+          topMargin={topMargin}
+          bottomMargin={bottomMargin}
+        />
         <BottomNav />
       </>
     );
