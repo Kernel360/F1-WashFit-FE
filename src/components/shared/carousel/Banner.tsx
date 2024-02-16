@@ -29,13 +29,12 @@ function Banner({ bannerData }: { bannerData: BannerType }) {
       {bannerList.map((slide) => {
         return (
           <Link href={slide.link} key={slide.id}>
-            {/* <div className="imageContainer"> */}
             <Image
               src={slide.imageSource}
               alt={slide.alt}
-              layout="fill"
+              objectFit="cover"
+              fill
             />
-            {/* </div> */}
           </Link>
         );
       })}

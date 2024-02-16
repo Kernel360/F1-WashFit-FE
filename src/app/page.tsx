@@ -46,13 +46,13 @@ function Home() {
         <Banner bannerData={MOCK_BANNER_DATA} />
         <Spacing size={32} />
         <div className={cx('recommendWrapper')}>
-          <Text bold>추천 세차용품</Text>
+          <Text typography="t4" bold>추천 세차용품</Text>
           <Spacing size={16} />
           <RecommendList recommendProductsData={MOCK_RECOMMEND_PRODUCTS} />
         </div>
         <Spacing size={35} />
         <div className={cx('productListWrapper')}>
-          <Text bold>WashPedia 랭킹</Text>
+          <Text typography="t4" bold>WashPedia 랭킹</Text>
           <Spacing size={16} />
           <Flex justify="space-between" align="center" gap={8}>
             <Radio label="조회순" name="filter" type="filter" value="view" defaultChecked />

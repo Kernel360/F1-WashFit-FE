@@ -35,7 +35,7 @@ function RecommendList({ recommendProductsData }: { recommendProductsData: Recom
                 height={60}
               />
             </div>
-            <Text typography="t7">{slide.productName}</Text>
+            <Text color="gray800" typography="t7">{slide.productName}</Text>
           </Link>
         );
       })}
