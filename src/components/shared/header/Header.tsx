@@ -5,12 +5,12 @@ import LeftIcon from './headerItems/LeftIcon';
 import RightIcon from './headerItems/RightIcon';
 import { HeaderProps } from './types/headerType';
 
+const cx = classNames.bind(styles);
+
 export default function Header({
   className, type, stepBack,
   title, isTransparent = false, onFilterClick,
 }:HeaderProps) {
-  const cx = classNames.bind(styles);
-
   return (
     <nav className={cx('nav', className, { transparent: isTransparent })}>
       <ul className={cx('container')}>

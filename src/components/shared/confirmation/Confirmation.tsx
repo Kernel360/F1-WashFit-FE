@@ -13,14 +13,15 @@ import './Confirmation.scss';
 interface ConfirmationProps extends ConfirmationType {
   topMargin:number
   bottomMargin:number
+  isHeader?:boolean
 }
 
 function Confirmation({
-  options, title, description, topMargin, bottomMargin,
+  options, title, description, topMargin, bottomMargin, isHeader = false,
 }:ConfirmationProps) {
   const router = useRouter();
   const mainContainerStyle = {
-    height: `calc(100vh - ${topMargin + bottomMargin}px)`,
+    height: `calc(100vh - ${topMargin + bottomMargin + (isHeader ? 44 : 0)}px)`,
   };
 
   return (

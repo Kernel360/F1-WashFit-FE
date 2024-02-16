@@ -15,6 +15,7 @@ function CompleteChangePasswordPage() {
         description={COMPLETE_CHANGE_PW.description}
         topMargin={topMargin}
         bottomMargin={bottomMargin}
+        isHeader
       />
     </>
   );

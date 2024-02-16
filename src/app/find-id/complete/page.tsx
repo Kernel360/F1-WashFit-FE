@@ -15,6 +15,7 @@ function CompleteFindIdPage() {
         description={COMPLETE_FIND_ID.description}
         topMargin={topMargin}
         bottomMargin={bottomMargin}
+        isHeader
       />
     </>
   );
