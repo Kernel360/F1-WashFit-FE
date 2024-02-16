@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import './Banner.scss';
-import { BannerType } from '@remote/api/types/home';
+import { BannerType, IBanner } from '@remote/api/types/home';
 
 const settings = {
   dots: true,
@@ -22,26 +22,23 @@ const settings = {
 };
 
 function Banner({ bannerData }: { bannerData: BannerType }) {
-  const bannerList = bannerData.value;
+  const bannerList:IBanner[] = bannerData.value;
 
   return (
-    <div className="container">
-      <Slider {...settings} dotsClass="dotsCustom">
-        {bannerList.map((slide) => {
-          return (
-            <Link href={slide.link} key={slide.id}>
-              <div className="imageContainer">
-                <Image
-                  src={slide.imageSource}
-                  alt={slide.alt}
-                  fill
-                />
-              </div>
-            </Link>
-          );
-        })}
-      </Slider>
-    </div>
+    <Slider {...settings} className="banner-slide">
+      {bannerList.map((slide) => {
+        return (
+          <Link href={slide.link} key={slide.id}>
+            <Image
+              src={slide.imageSource}
+              alt={slide.alt}
+              objectFit="cover"
+              fill
+            />
+          </Link>
+        );
+      })}
+    </Slider>
   );
 }
 

@@ -1,12 +1,14 @@
 .mainContainer {
-  .recommendTextWrapper {
-    padding: 0 var(--default-padding);
+  .recommendWrapper {
+    & > span {
+      padding: 0 var(--default-padding);
+    }
   }
 
-  .productListContainer {
+  .productListWrapper {
     padding: 0 var(--default-padding) 80px;
 
-    .productArticleContainer {
+    .productArticleWrapper {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;

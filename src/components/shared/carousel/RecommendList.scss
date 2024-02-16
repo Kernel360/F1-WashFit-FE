@@ -1,0 +1,37 @@
+/* stylelint-disable selector-class-pattern */
+
+.recommend-slide {
+    .slick-list {
+        box-sizing: border-box;
+        padding: 0 var(--default-padding);
+
+        .slick-track {
+            .slick-slide {
+                width: 85px !important;
+                margin-right: 8px;
+
+                & > div {
+                    a {
+                        box-sizing: border-box;
+                        text-align: center;
+
+                        .img-container {
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            width: 100%;
+                            height: 85px;
+                            margin: 0 auto 3px;
+                            border-radius: 16px;
+                            background-color: #eff9ff;
+
+                            img {
+                                vertical-align: top;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

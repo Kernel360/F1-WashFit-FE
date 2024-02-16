@@ -1,23 +1,20 @@
 'use client';
 
+import './RecommendList.scss';
 import Slider from 'react-slick';
 
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { RecommendProductsType } from '@remote/api/types/home';
-import Flex from '@shared/flex/Flex';
 import Text from '@shared/text/Text';
 
 const settings = {
   dots: false,
-  infinite: true,
-  speed: 2000,
+  infinite: false,
   slidesToShow: 4,
-  slidesToScroll: 1,
-  autoplay: true,
+  slidesToScroll: 2,
   adaptiveHeight: true,
-  autoplaySpeed: 5000,
   arrows: false,
 };
 
@@ -26,20 +23,20 @@ function RecommendList({ recommendProductsData }: { recommendProductsData: Recom
   const recommendList = recommendProductsData.value;
 
   return (
-    <Slider {...settings}>
+    <Slider {...settings} className="recommend-slide">
       {recommendList?.map((slide) => {
         return (
-          <Flex justify="center" align="center" direction="column" key={slide.id}>
-            <Link href={slide.link}>
+          <Link href={slide.link} key={slide.id}>
+            <div className="img-container">
               <Image
                 src={slide.imageSource}
                 alt={slide.alt}
-                width={85}
-                height={85}
+                width={60}
+                height={60}
               />
-            </Link>
-            <Text typography="t7">{slide.productName}</Text>
-          </Flex>
+            </div>
+            <Text color="gray800" typography="t7">{slide.productName}</Text>
+          </Link>
         );
       })}
     </Slider>
