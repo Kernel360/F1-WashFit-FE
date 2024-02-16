@@ -7,6 +7,8 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  transition: all 0.15s ease-in-out;
+  cursor: pointer;
 }
 
 .label.gender {
@@ -49,18 +51,17 @@
 
 .label.filter {
   height: 32px;
-  border: 6px;
   border-radius: 6px;
 }
 
 .input[type="radio"] + .label.filter {
-  border: 1px solid var(--gray200);
+  border: 1px solid var(--gray400);
   background-color: var(--white);
-  color: var(--tertiary);
+  color: var(--gray400);
 }
 
 .input[type="radio"]:checked + .label.filter {
-  border: none;
+  border-color: var(--primary500);
   background-color: var(--primary500);
   color: var(--white);
 }
