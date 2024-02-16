@@ -1,40 +1,26 @@
-'use client';
-
-import dynamic from 'next/dynamic';
-import { useRouter } from 'next/navigation';
-
+import { COMPLETE_SIGNUP } from '@constants/completeMessage';
+import Confirmation from '@shared/confirmation/Confirmation';
 import Spacing from '@shared/spacing/Spacing';
-import Text from '@shared/text/Text';
 
-const FixedBottomButton = dynamic(() => { return import('@shared/fixedBottomButton/FixedBottomButton'); }, {
-  ssr: false,
-});
+export default function page() {
+  const topMargin = 80;
+  const bottomMargin = 66;
 
-function CompleteSignupPage() {
-  const router = useRouter();
+  const mainContainerStyle = {
+    height: `calc(100vh - ${topMargin + bottomMargin}px)`,
+  };
 
   return (
-    <main className="mainContainer">
-      <Spacing size={80} />
-      <Text typography="t1" bold display="block" textAlign="start">
-        회원가입이
-        <br />
-        완료되었습니다.
-      </Text>
-      <Spacing size={8} />
-      <Text display="block" typography="t6" color="gray500" textAlign="start">
-        부가정보를 입력하시면, 차량별 맞춤
-        <br />
-        차량용품 추천 서비스를 제공받을 수 있습니다.
-      </Text>
-      {/* TODO: 부가정보 입력하러 가기 넣을지 논의해보기 */}
-      <FixedBottomButton onClick={() => {
-        router.push('/login');
-      }}
-      >
-        로그인 하기
-      </FixedBottomButton>
-    </main>
+    <>
+      <Spacing size={topMargin} />
+      <main className="mainContainer" style={mainContainerStyle}>
+        <Confirmation
+          options={COMPLETE_SIGNUP.options}
+          title={COMPLETE_SIGNUP.title}
+          description={COMPLETE_SIGNUP.description}
+        />
+      </main>
+      <Spacing size={bottomMargin} />
+    </>
   );
 }
-export default CompleteSignupPage;
