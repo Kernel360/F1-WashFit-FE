@@ -33,8 +33,7 @@ function Banner({ bannerData }: { bannerData: BannerType }) {
             <Image
               src={slide.imageSource}
               alt={slide.alt}
-              objectFit="cover"
-              fill
+              layout="fill"
             />
             {/* </div> */}
           </Link>

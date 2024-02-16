@@ -33,7 +33,6 @@ function RecommendList({ recommendProductsData }: { recommendProductsData: Recom
                 alt={slide.alt}
                 width={60}
                 height={60}
-                objectFit="cover"
               />
             </div>
             <Text typography="t7">{slide.productName}</Text>
