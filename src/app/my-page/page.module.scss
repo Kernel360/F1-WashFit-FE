@@ -20,6 +20,11 @@
   }
 
   .linkInfoContainer {
+    padding: 20.5px 24px;
+    border-bottom: 1px solid var(--gray200);
+    background-color: var(--white);
+    cursor: pointer;
+
     a {
       display: flex;
       align-items: center;
@@ -31,9 +36,5 @@
       color: var(--red);
       text-align: left;
     }
-
-    padding: 20.5px 24px;
-    border-bottom: 1px solid var(--gray200);
-    background-color: var(--white);
   }
 }
