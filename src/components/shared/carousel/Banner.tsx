@@ -9,7 +9,6 @@ import './Banner.scss';
 import { BannerType, IBanner } from '@remote/api/types/home';
 
 const settings = {
-  dots: true,
   infinite: true,
   speed: 2000,
   slidesToShow: 1,
@@ -22,7 +21,7 @@ const settings = {
 };
 
 function Banner({ bannerData }: { bannerData: BannerType }) {
-  const bannerList:IBanner[] = bannerData.value;
+  const bannerList: IBanner[] = bannerData.value;
 
   return (
     <Slider {...settings} className="banner-slide">
