@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 
+import { useQueryClient } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -24,6 +25,7 @@ const cx = classNames.bind(styles);
 function MyProfilePage() {
   const router = useRouter();
   const dispatch = useAppDispatch();
+  const query = useQueryClient();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, removeCookie] = useCookies(['token']);
 
@@ -41,6 +43,7 @@ function MyProfilePage() {
     // TODO: 먼저 로그아웃 모달이 뜨도록 할지 논의필요
     dispatch(clearUserId());
     removeCookie('token', { path: '/' });
+    query.clear();
     router.push('/');
   };
 
