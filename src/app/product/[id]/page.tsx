@@ -57,7 +57,9 @@ function ProductDetailsPage() {
   return (
     <>
       <Header type="product" className={cx('product')} />
-      <Image src="/assets/product.png" alt="상품 이미지" width={375} height={375} />
+      <div style={{ aspectRatio: 1, position: 'relative' }}>
+        <Image src="/assets/product.png" alt="상품 이미지" fill />
+      </div>
       <Flex direction="column" className={cx('productInfo')}>
         <Text color="primary500" typography="t6">{brand}</Text>
         <Text typography="t4" bold>{productName}</Text>
