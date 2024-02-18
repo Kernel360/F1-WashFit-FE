@@ -8,6 +8,7 @@ import { useForm } from 'react-hook-form';
 import classNames from 'classnames/bind';
 import Link from 'next/link';
 
+import KakaoLoginButton from '@components/home/kakao-login-button/KakaoLoginButton';
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
 import { ISignIn } from '@remote/api/types/auth';
 import useLogin from '@remote/queries/auth/useLogin';
@@ -37,7 +38,7 @@ function LoginPage() {
 
   /* -- redux test -- */
   const userId = useAppSelector((state) => { return state.user.id; });
-  console.log(userId);
+  // console.log(userId);
 
   if (isSuccess) {
     console.log(userId);
@@ -82,6 +83,8 @@ function LoginPage() {
             <Link href="/find-password">비밀번호 찾기</Link>
           </li>
         </ul>
+        <Spacing size={24} />
+        <KakaoLoginButton />
       </main>
     </>
   );
