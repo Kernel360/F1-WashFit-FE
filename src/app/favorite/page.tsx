@@ -5,10 +5,8 @@ import { useForm } from 'react-hook-form';
 import classNames from 'classnames/bind';
 
 import { SEARCH_FILTER_MAP, SearchFilterType } from '@constants/searchByMap';
-import useScroll from '@hooks/useScroll';
 import BottomNav from '@shared/bottom-nav/BottomNav';
 import Dropdown from '@shared/dropdown/Dropdown';
-import Header from '@shared/header/Header';
 import ProductArticle from '@shared/product-article/ProductArticle';
 import SearchBar from '@shared/search-bar/SearchBar';
 import Spacing from '@shared/spacing/Spacing';
@@ -82,24 +80,17 @@ function FavoritePage() {
     },
   });
 
-  // 스크롤 시 SearchBar 숨기기
-  const isScrolled = useScroll();
-  // TODO: 스크롤 시 헤더에 검색버튼 보이기
-
   return (
     <>
-      {!isScrolled && (
-        <div className={cx('headerTitleContainer')}>
-          <Spacing size={12} />
-          <Title title="즐겨찾기" titleSize="t3" />
-        </div>
-      )}
-      {isScrolled && <Header title="즐겨찾기" type="favorite" />}
+      <div className={cx('headerTitleContainer')}>
+        <Spacing size={12} />
+        <Title title="즐겨찾기" titleSize="t3" />
+      </div>
       <Spacing size={12} />
       <main className={cx('mainContainer', 'main')}>
-        <div className={cx('hideWrapper', { scrolled: isScrolled })}>
+        <div>
           <SearchBar />
-          <div className={cx('filterBox', { scrolled: isScrolled })}>
+          <div className={cx('filterBox')}>
             <Text typography="t6" color="gray400">{`총 ${productListData.length}개`}</Text>
             <Dropdown
               options={options}
@@ -109,7 +100,7 @@ function FavoritePage() {
             />
           </div>
         </div>
-        <div className={cx('productArticleContainer', { scrolled: isScrolled })}>
+        <div className={cx('productArticleContainer')}>
           {productListData.map((item) => {
             return <ProductArticle key={item.productNo} itemData={item} />;
           })}
