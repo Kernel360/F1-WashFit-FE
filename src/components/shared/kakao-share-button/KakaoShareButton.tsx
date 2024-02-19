@@ -2,7 +2,7 @@
 
 import Script from 'next/script';
 
-import Share from '@/components/icons/Share';
+import Share from '@components/icons/Share';
 import useKakaoShare from '@hooks/useKakaoShare';
 
 function KakaoShareButton() {
