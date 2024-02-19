@@ -33,3 +33,10 @@ export interface IUserInfo {
 }
 
 export type UserInfoType = ICommon<IUserInfo>;
+
+// refreshToken res
+export interface IRefreshToken {
+  jwtToken: string
+}
+
+export type RefreshTokenType = ICommon<IRefreshToken>;
