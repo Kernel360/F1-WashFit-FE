@@ -1,6 +1,6 @@
 import {
   ChangePassword,
-  FindId, FindPassword, ISignIn, ISignUp, UserInfoType,
+  FindId, FindPassword, RefreshTokenType, ISignIn, ISignUp, UserInfoType,
 } from '../../types/auth';
 import { postRequest, putRequest } from '../requests.api';
 
@@ -20,6 +20,12 @@ export const login = async ({
   const response = await postRequest<UserInfoType, ISignIn>('/member/login', {
     id, password,
   });
+
+  return response;
+};
+
+export const refreshToken = async () => {
+  const response = await postRequest<RefreshTokenType, null>('/auth/validToken');
 
   return response;
 };
