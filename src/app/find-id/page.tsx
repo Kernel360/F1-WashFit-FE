@@ -3,6 +3,7 @@
 
 'use client';
 
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import dynamic from 'next/dynamic';
@@ -15,6 +16,8 @@ import Spacing from '@shared/spacing/Spacing';
 import TextField from '@shared/text-field/TextField';
 import Title from '@shared/title/Title';
 
+import CompleteFindIdPage from './complete/page';
+
 const FixedBottomButton = dynamic(() => { return import('@shared/fixedBottomButton/FixedBottomButton'); }, {
   ssr: false,
 });
@@ -24,50 +27,50 @@ function FindIdPage() {
     mode: 'onBlur',
   });
   const { mutate } = useFindId();
+  const [step, setStep] = useState(1);
 
   const onSubmit = (data: FindId) => {
     const { email } = data;
     mutate({ email }, {
-      onError: (error) => {
-        console.error('Error:', error);
-        alert('다시 입력해주세요');
-        // TODO: 아이디 찾기 실패 시 알림 메세지 바로 출력
-      },
       onSuccess: () => {
-        alert('회원님의 이메일로 아이디 전송완료');
-        // TODO: 아이디 전송완료 페이지 로드하기
+        setStep((currentStep) => { return currentStep + 1; });
       },
     });
   };
 
   return (
     <>
-      <Header />
-      <Spacing size={16} />
-      <main className="mainContainer">
-        <Title title="아이디 찾기" description="가입할 때 입력한 이메일을 입력해주세요." size={4} descriptionColor="gray400" />
-        <Spacing size={40} />
-        <TextField
-          label="이메일"
-          required
-          placeholder="이메일"
-          {...register('email', {
-            required: true,
-            pattern: VALIDATION_MESSAGE_MAP.email.value,
-          })}
-          hasError={!!errors.email}
-          helpMessage={VALIDATION_MESSAGE_MAP.failedFindId.message}
-        />
-        <div>
-          <FixedBottomButton
-            disabled={!isValid || !isDirty}
-            onClick={handleSubmit(onSubmit)}
-            size="medium"
-          >
-            다음
-          </FixedBottomButton>
-        </div>
-      </main>
+      {step === 1 && (
+        <>
+          <Header />
+          <Spacing size={16} />
+          <main className="mainContainer">
+            <Title title="아이디 찾기" description="가입할 때 입력한 이메일을 입력해주세요." size={4} descriptionColor="gray400" />
+            <Spacing size={40} />
+            <TextField
+              label="이메일"
+              required
+              placeholder="이메일"
+              {...register('email', {
+                required: true,
+                pattern: VALIDATION_MESSAGE_MAP.email.value,
+              })}
+              hasError={!!errors.email}
+              helpMessage={VALIDATION_MESSAGE_MAP.failedFindId.message}
+            />
+            <div>
+              <FixedBottomButton
+                disabled={!isValid || !isDirty}
+                onClick={handleSubmit(onSubmit)}
+                size="medium"
+              >
+                다음
+              </FixedBottomButton>
+            </div>
+          </main>
+        </>
+      )}
+      {step === 2 && <CompleteFindIdPage />}
     </>
   );
 }

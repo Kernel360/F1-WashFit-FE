@@ -21,9 +21,9 @@ interface ModalProps {
   title: React.ReactNode
   description: React.ReactNode
   leftButtonLabel: React.ReactNode
-  rightButtonLabel: React.ReactNode
+  rightButtonLabel?: React.ReactNode
   onLeftButtonClick: () => void
-  onRightButtonClick: () => void
+  onRightButtonClick?: () => void
 }
 
 function Modal({

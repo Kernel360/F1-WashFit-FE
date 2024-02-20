@@ -47,7 +47,7 @@ export function ModalContextProvider({ children }: { children: React.ReactNode }
       },
       onRightButtonClick: () => {
         close();
-        onRightButtonClick();
+        onRightButtonClick?.();
       },
       open: true,
     });

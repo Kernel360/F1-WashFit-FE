@@ -14,7 +14,9 @@ declare global {
 
 function KakaoLoginScript() {
   const onLoad = () => {
-    window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY);
+    if (!window.Kakao.isInitialized()) {
+      window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY);
+    }
   };
 
   return (
