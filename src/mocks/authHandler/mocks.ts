@@ -21,7 +21,7 @@ export const MOCK_LOGIN_DATA = {
 /* ----- 토큰 MOCK DATA ----- */
 export const MOCK_TOKEN_DATA = {
   status: 202,
-  code: 'BMC002',
+  code: 'success',
   message: '토큰 인증 성공',
   value: {
     jwtToken: 'success-test-abcdefg1234--abc',
