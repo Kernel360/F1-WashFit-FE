@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable no-console */
 
