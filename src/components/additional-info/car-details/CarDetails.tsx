@@ -3,7 +3,7 @@ import { FieldValues, UseFormRegister } from 'react-hook-form';
 import dynamic from 'next/dynamic';
 
 import Description from '@components/additional-info/description/Description';
-import { IAdditionalInfo } from '@remote/api/types/additional-info';
+import { AdditionalInfoType } from '@remote/api/types/additional-info';
 import Flex from '@shared/flex/Flex';
 import Radio from '@shared/radio/Radio';
 import Spacing from '@shared/spacing/Spacing';
@@ -16,7 +16,7 @@ interface CarDetailsProps {
   onClick: () => void
   main: string
   sub: string
-  options: IAdditionalInfo[]
+  options: AdditionalInfoType
   register: UseFormRegister<FieldValues>
   dirtyFields: Record<string, boolean>
 }
@@ -35,7 +35,7 @@ function CarDetails({
       <Spacing size={40} />
       <div style={{ margin: '0 20px' }}>
         <Flex direction="column" gap={10}>
-          {options?.map((option) => {
+          {options.value.map((option) => {
             return (
               <Radio
                 key={option.codeNo}
@@ -51,7 +51,7 @@ function CarDetails({
         </Flex>
       </div>
       <FixedBottomButton
-        disabled={!dirtyFields[options[0].upperName] ?? false}
+        disabled={!dirtyFields[options.value[0].upperName] ?? false}
         onClick={onClick}
       >
         계속하기

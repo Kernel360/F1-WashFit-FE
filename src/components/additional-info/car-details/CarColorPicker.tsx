@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 
 import ColorPicker from '@components/additional-info/car-details/color-picker/ColorPicker';
 import Description from '@components/additional-info/description/Description';
-import { IAdditionalInfo } from '@remote/api/types/additional-info';
+import { AdditionalInfoType } from '@remote/api/types/additional-info';
 import Spacing from '@shared/spacing/Spacing';
 
 import styles from './CarColorPicker.module.scss';
@@ -20,7 +20,7 @@ interface CarColorPickerProps {
   onClick: () => void
   main: string
   sub: string
-  options: IAdditionalInfo[]
+  options: AdditionalInfoType
   register: UseFormRegister<FieldValues>;
   dirtyFields: Record<string, boolean>
 }
@@ -38,7 +38,7 @@ function CarColorPicker({
       <Description main={main} sub={sub} />
       <Spacing size={40} />
       <div className={cx('colorPickerContainer')}>
-        {options?.map((option) => {
+        {options.value.map((option) => {
           return (
             <ColorPicker
               key={option.codeNo}
@@ -54,7 +54,7 @@ function CarColorPicker({
       </div>
       <Spacing size={190} />
       <FixedBottomButton
-        disabled={!dirtyFields[options[0].upperName] ?? false}
+        disabled={!dirtyFields[options.value[0].upperName] ?? false}
         onClick={onClick}
       >
         계속하기
