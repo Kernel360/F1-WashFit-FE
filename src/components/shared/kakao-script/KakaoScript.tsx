@@ -12,7 +12,7 @@ declare global {
   }
 }
 
-function KakaoLoginScript() {
+function KakaoScript() {
   const onLoad = () => {
     if (!window.Kakao.isInitialized()) {
       window.Kakao.init(process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY);
@@ -29,4 +29,4 @@ function KakaoLoginScript() {
   );
 }
 
-export default KakaoLoginScript;
+export default KakaoScript;
