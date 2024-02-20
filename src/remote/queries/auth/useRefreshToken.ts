@@ -10,7 +10,7 @@ import { RefreshTokenType } from '@remote/api/types/auth';
 function useRefreshToken() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, setCookie, removeCookie] = useCookies(['token']);
-  const handleLogout = useLoggedOut('/login');
+  const handleLogout = useLoggedOut();
 
   const onSuccess = (data: RefreshTokenType) => {
     const { jwtToken } = data.value;
