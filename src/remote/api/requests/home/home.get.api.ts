@@ -1,5 +1,5 @@
 import {
-  BannerType, ProductType, RecommendProductsType,
+  BannerType, ProductListInfoType, RecommendProductsType,
 } from '../../types/home';
 import { getRequest } from '../requests.api';
 
@@ -18,8 +18,8 @@ export const getRecommendProducts = async () => {
 };
 
 /* ----- 제품 목록 정보 api ----- */
-export const getProductList = async () => {
-  const response = await getRequest<ProductType>('/products?sortType=viewcnt_order');
+export const getProductList = async (pageNum: number, size: number) => {
+  const response = await getRequest<ProductListInfoType>(`/products/rank?sortType=recent-order&page=${pageNum}&size=${size}`);
 
   return response;
 };

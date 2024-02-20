@@ -1,10 +1,13 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 'use client';
 
+import InfiniteScroll from 'react-infinite-scroll-component';
+
 import classNames from 'classnames/bind';
 
-import { MOCK_BANNER_DATA, MOCK_PRODUCT_LIST, MOCK_RECOMMEND_PRODUCTS } from '@mocks/homeHandler/mocks';
+import { MOCK_BANNER_DATA, MOCK_RECOMMEND_PRODUCTS } from '@mocks/homeHandler/mocks';
 import useBanner from '@remote/queries/home/useBanner';
 import useProductList from '@remote/queries/home/useProductList';
 import useRecommendProducts from '@remote/queries/home/useRecommendProducts';
@@ -38,6 +41,10 @@ function Home() {
   //   return <Loader />;
   // }
 
+  const {
+    data: productList, isLoading, hasNextPage, loadMore, isFetching,
+  } = useProductList();
+
   return (
     <>
       <Header className={cx('home')} type="home" />
@@ -52,7 +59,7 @@ function Home() {
         </div>
         <Spacing size={35} />
         <div className={cx('productListWrapper')}>
-          <Text typography="t4" bold>WashPedia 랭킹</Text>
+          <Text typography="t4" bold>WashFit 랭킹</Text>
           <Spacing size={16} />
           <Flex justify="space-between" align="center" gap={8}>
             <Radio label="조회순" name="filter" type="filter" value="view" defaultChecked />
@@ -61,12 +68,19 @@ function Home() {
             <Radio label="최신순" name="filter" type="filter" value="latest" />
           </Flex>
           <Spacing size={16} />
-          <div className={cx('productArticleWrapper')}>
-            {MOCK_PRODUCT_LIST?.value.map((item) => {
-              // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-              return <ProductArticle key={item.productNo} itemData={item} />;
-            })}
-          </div>
+          <InfiniteScroll
+            dataLength={productList?.length ?? 0}
+            next={loadMore}
+            hasMore={hasNextPage}
+            loader={<div className="loader" key={0}>Loading ...</div>}
+            inverse={false}
+          >
+            <div className={cx('productArticleWrapper')}>
+              {productList?.map((item, index) => {
+                return <ProductArticle key={index} itemData={item} />;
+              })}
+            </div>
+          </InfiniteScroll>
         </div>
         <ScrollToTop />
       </main>
