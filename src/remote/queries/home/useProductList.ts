@@ -2,14 +2,15 @@ import { useCallback } from 'react';
 
 import { useInfiniteQuery } from '@tanstack/react-query';
 
+import { HomeSortType } from '@components/home/filer-group/types/filterGroup.type';
 import { getProductList } from '@remote/api/requests/home/home.get.api';
 
-function useProductList() {
+function useProductList(sortType: HomeSortType = 'recent-order') {
   const {
     data: productList, isLoading, fetchNextPage, isFetching, hasNextPage = false,
   } = useInfiniteQuery({
-    queryKey: ['productList'],
-    queryFn: ({ pageParam }) => { return getProductList(pageParam as number, 10); },
+    queryKey: ['productList', sortType],
+    queryFn: ({ pageParam = 0 }) => { return getProductList(Number(pageParam), 10, sortType); },
     getNextPageParam: (lastPage) => {
       return (
         lastPage.value.last

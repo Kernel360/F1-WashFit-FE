@@ -7,6 +7,8 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 import classNames from 'classnames/bind';
 
+import FilterGroup from '@components/home/filer-group/FilterGroup';
+import { HomeSortType } from '@components/home/filer-group/types/filterGroup.type';
 import { MOCK_BANNER_DATA, MOCK_RECOMMEND_PRODUCTS } from '@mocks/homeHandler/mocks';
 import useBanner from '@remote/queries/home/useBanner';
 import useProductList from '@remote/queries/home/useProductList';
@@ -14,11 +16,9 @@ import useRecommendProducts from '@remote/queries/home/useRecommendProducts';
 import BottomNav from '@shared/bottom-nav/BottomNav';
 import Banner from '@shared/carousel/Banner';
 import RecommendList from '@shared/carousel/RecommendList';
-import Flex from '@shared/flex/Flex';
 import Header from '@shared/header/Header';
 import Loader from '@shared/loader/Loader';
 import ProductArticle from '@shared/product-article/ProductArticle';
-import Radio from '@shared/radio/Radio';
 import ScrollToTop from '@shared/scroll-to-top/ScrollToTop';
 import Spacing from '@shared/spacing/Spacing';
 import Text from '@shared/text/Text';
@@ -27,7 +27,7 @@ import styles from './page.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Home() {
+function Home({ searchParams }: { searchParams: { filter: HomeSortType } }) {
   // 테스트
   // TODO: 비로그인 회원과 부가정보를 입력하지 않은 회원은 부가정보 입력 배너 보이도록 UI 추가
   // const { data: bannerData, isLoading: bannerLoading } = useBanner();
@@ -42,8 +42,8 @@ function Home() {
   // }
 
   const {
-    data: productList, isLoading, hasNextPage, loadMore, isFetching,
-  } = useProductList();
+    data: productList, hasNextPage, loadMore,
+  } = useProductList(searchParams.filter);
 
   return (
     <>
@@ -61,12 +61,7 @@ function Home() {
         <div className={cx('productListWrapper')}>
           <Text typography="t4" bold>WashFit 랭킹</Text>
           <Spacing size={16} />
-          <Flex justify="space-between" align="center" gap={8}>
-            <Radio label="조회순" name="filter" type="filter" value="view" defaultChecked />
-            <Radio label="위반제품" name="filter" type="filter" value="violatingProduct" />
-            <Radio label="추천순" name="filter" type="filter" value="recommend" />
-            <Radio label="최신순" name="filter" type="filter" value="latest" />
-          </Flex>
+          <FilterGroup />
           <Spacing size={16} />
           <InfiniteScroll
             dataLength={productList?.length ?? 0}

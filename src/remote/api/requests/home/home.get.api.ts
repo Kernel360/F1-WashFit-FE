@@ -1,3 +1,5 @@
+import { HomeSortType } from '@components/home/filer-group/types/filterGroup.type';
+
 import {
   BannerType, ProductListInfoType, RecommendProductsType,
 } from '../../types/home';
@@ -18,8 +20,8 @@ export const getRecommendProducts = async () => {
 };
 
 /* ----- 제품 목록 정보 api ----- */
-export const getProductList = async (pageNum: number, size: number) => {
-  const response = await getRequest<ProductListInfoType>(`/products/rank?sortType=recent-order&page=${pageNum}&size=${size}`);
+export const getProductList = async (pageNum: number, size: number, sortType: HomeSortType) => {
+  const response = await getRequest<ProductListInfoType>(`/products/rank?sortType=${sortType}&page=${pageNum}&size=${size}`);
 
   return response;
 };
