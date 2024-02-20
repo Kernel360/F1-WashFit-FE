@@ -23,7 +23,7 @@ function ProductArticle({ isRow = false, itemData }: ProductArticleProps) {
       <article className={cx('container', { row: isRow })}>
         <div className={cx('imgBox')}>
           <Image
-            src={itemData.imageSource ?? '/assets/profile.JPG'}
+            src={itemData.imageSource ?? '/assets/productList.webp'}
             alt="제품 이미지"
             width={0}
             height={0}
@@ -39,7 +39,7 @@ function ProductArticle({ isRow = false, itemData }: ProductArticleProps) {
           />
         </div>
         <div className={cx('infoBox')}>
-          <Text className={cx('ellipsis')} typography="t8" whiteSpace="nowrap" color="primary500">{itemData.brand}</Text>
+          <Text className={cx('ellipsis')} typography="t8" color="primary500">{itemData.brand}</Text>
           <Text className={cx('ellipsis')} typography="t6" color="gray900">{itemData.productName}</Text>
           <div>
             <Text typography="t7" color="gray500">{itemData.upperItem}</Text>
