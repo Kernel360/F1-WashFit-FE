@@ -8,7 +8,9 @@ import { useForm } from 'react-hook-form';
 import classNames from 'classnames/bind';
 import Link from 'next/link';
 
+import Flex from '@/components/shared/flex/Flex';
 import KakaoLoginButton from '@components/home/kakao-login-button/KakaoLoginButton';
+import NaverLoginButton from '@components/home/naver-login-button/NaverLoginButton';
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
 import { ISignIn } from '@remote/api/types/auth';
 import useLogin from '@remote/queries/auth/useLogin';
@@ -84,7 +86,10 @@ function LoginPage() {
           </li>
         </ul>
         <Spacing size={24} />
-        <KakaoLoginButton />
+        <Flex gap={12} justify="center" align="center">
+          <NaverLoginButton />
+          <KakaoLoginButton />
+        </Flex>
       </main>
     </>
   );
