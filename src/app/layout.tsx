@@ -8,6 +8,7 @@ import { ModalContextProvider } from '@contexts/ModalContext';
 import { CookieProvider } from '@providers/CookieProvider';
 import MockProvider from '@providers/MockProvider';
 import QueryProvider from '@providers/QueryProvider';
+import RefreshTokenProvider from '@providers/RefreshTokenProvider';
 import StoreProvider from '@providers/StoreProvider';
 // eslint-disable-next-line import/order
 // import { CookiesProvider } from 'react-cookie';
@@ -40,7 +41,9 @@ export default function RootLayout({
             <QueryProvider>
               <StoreProvider>
                 <ModalContextProvider>
-                  {children}
+                  <RefreshTokenProvider>
+                    {children}
+                  </RefreshTokenProvider>
                 </ModalContextProvider>
               </StoreProvider>
             </QueryProvider>
