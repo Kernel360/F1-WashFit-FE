@@ -1,4 +1,6 @@
 /* eslint-disable no-param-reassign */
+import { useCookies } from 'react-cookie';
+
 import axios, { InternalAxiosRequestConfig, AxiosError, AxiosResponse } from 'axios';
 
 import { axiosInstance } from '@remote/api/instance.api';
@@ -10,13 +12,14 @@ axiosInstance.interceptors.request.use(
      * request 직전 공통으로 진행할 작업
      */
     if (config && config.headers) {
-      // TODO: 인증할 때 받은 토큰을 쿠키에 저장했다면 가져옵니다.
+      // 인증할 때 받은 토큰을 쿠키에 저장했다면 가져옵니다.
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const [cookies, setCookie] = useCookies(['token']);
 
-      // const token = getCookie('token');
-      // if (token) {
-      //   config.headers.Authorization = `Bearer ${token}`;
-      //   config.headers['Content-Type'] = 'application/json';
-      // }
+      if (cookies.token) {
+        config.headers.Authorization = `Bearer ${cookies.token}`;
+        config.headers['Content-Type'] = 'application/json';
+      }
     }
     if (process.env.NODE_ENV === 'development') {
       const { method, url } = config;
