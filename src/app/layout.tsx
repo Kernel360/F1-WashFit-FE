@@ -41,13 +41,13 @@ export default function RootLayout({
           <CookieProvider>
             <QueryProvider>
               <StoreProvider>
-               <ToastProvider>
-                <ModalContextProvider>
-                  <RefreshTokenProvider>
-                    {children}
-                  </RefreshTokenProvider>
-                </ModalContextProvider>
-               </ToastProvider>
+                <ToastProvider>
+                  <ModalContextProvider>
+                    <RefreshTokenProvider>
+                      {children}
+                    </RefreshTokenProvider>
+                  </ModalContextProvider>
+                </ToastProvider>
               </StoreProvider>
             </QueryProvider>
           </CookieProvider>
