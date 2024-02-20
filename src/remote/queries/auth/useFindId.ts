@@ -1,20 +1,21 @@
-/* eslint-disable no-console */
-import { useMutation } from '@tanstack/react-query';
+/* eslint-disable @typescript-eslint/no-floating-promises */
+import { toast } from 'react-toastify';
 
-import useModal from '@contexts/ModalContext';
+import { useMutation } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
+import { useRouter } from 'next/router';
+
 import { findId } from '@remote/api/requests/auth/auth.post.api';
 
 function useFindId() {
-  const { open } = useModal();
+  const router = useRouter();
   return useMutation({
     mutationFn: findId,
-    onError: () => {
-      open({
-        title: '아이디 찾기',
-        description: '다시 입력해주세요',
-        leftButtonLabel: '닫기',
-        onLeftButtonClick: () => { },
-      });
+    onSuccess: () => {
+      router.push('/find-id/complete');
+    },
+    onError: (error: AxiosError) => {
+      toast.error(error.message);
     },
   });
 }

@@ -1,4 +1,7 @@
+import { toast } from 'react-toastify';
+
 import { useMutation } from '@tanstack/react-query';
+import { AxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 
 import { signup } from '@remote/api/requests/auth/auth.post.api';
@@ -10,7 +13,11 @@ function useSignup() {
     router.push('/signup/complete');
   };
 
-  return useMutation({ mutationFn: signup, onSuccess });
+  const onError = (error: AxiosError) => {
+    toast.error(error.message);
+  };
+
+  return useMutation({ mutationFn: signup, onSuccess, onError });
 }
 
 export default useSignup;
