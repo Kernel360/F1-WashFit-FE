@@ -3,31 +3,27 @@
 import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 
-import { useQueryClient } from '@tanstack/react-query';
 import classNames from 'classnames/bind';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 
 import LinkArrow from '@components/icons/LinkArrow';
 import { REQUIRED_LOGIN } from '@constants/requiredUser';
+import useLoggedOut from '@hooks/useLoggedOut';
 import BottomNav from '@shared/bottom-nav/BottomNav';
 import Confirmation from '@shared/confirmation/Confirmation';
 import Spacing from '@shared/spacing/Spacing';
 import Text from '@shared/text/Text';
 import Title from '@shared/title/Title';
-import { useAppSelector, useAppDispatch } from '@stores/hooks';
-import { clearUserId } from '@stores/slices/userSlice';
+import { useAppSelector } from '@stores/hooks';
 
 import styles from './page.module.scss';
 
 const cx = classNames.bind(styles);
 
 function MyProfilePage() {
-  const router = useRouter();
-  const dispatch = useAppDispatch();
-  const query = useQueryClient();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, removeCookie] = useCookies(['token']);
+  const logout = useLoggedOut();
 
   // eslint-disable-next-line max-len
   const userId = useAppSelector((state) => { return state.user.id; }, (prev, curr) => { return prev === curr; });
@@ -41,10 +37,7 @@ function MyProfilePage() {
   // 로그아웃
   const handleLoggedOut = () => {
     // TODO: 먼저 로그아웃 모달이 뜨도록 할지 논의필요
-    dispatch(clearUserId());
-    removeCookie('token', { path: '/' });
-    query.clear();
-    router.push('/');
+    logout();
   };
 
   const topMargin = 96;

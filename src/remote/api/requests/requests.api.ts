@@ -18,7 +18,7 @@ export const getRequest = async <T>(
 /* post 요청 */
 export const postRequest = async <T, D>(
   url: string,
-  data: D,
+  data?: D,
   config?: AxiosRequestConfig,
 ): Promise<T> => {
   const response = await axiosInstance.post<T>(

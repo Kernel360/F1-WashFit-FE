@@ -8,6 +8,7 @@ import { ModalContextProvider } from '@contexts/ModalContext';
 import { CookieProvider } from '@providers/CookieProvider';
 import MockProvider from '@providers/MockProvider';
 import QueryProvider from '@providers/QueryProvider';
+import RefreshTokenProvider from '@providers/RefreshTokenProvider';
 import StoreProvider from '@providers/StoreProvider';
 import ToastProvider from '@providers/ToastProvider';
 
@@ -42,7 +43,9 @@ export default function RootLayout({
               <StoreProvider>
                 <ToastProvider>
                   <ModalContextProvider>
-                    {children}
+                    <RefreshTokenProvider>
+                      {children}
+                    </RefreshTokenProvider>
                   </ModalContextProvider>
                 </ToastProvider>
               </StoreProvider>

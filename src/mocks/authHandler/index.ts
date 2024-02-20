@@ -1,6 +1,8 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { http, HttpResponse } from 'msw';
 
+import { MOCK_LOGIN_DATA, MOCK_TOKEN_DATA } from './mocks';
+
 export const authHandlers = [
   /* ----- 회원가입 api ----- */
   http.post(`${process.env.NEXT_PUBLIC_BASE_URL}/member/join`, () => {
@@ -9,6 +11,17 @@ export const authHandlers = [
 
   /* ----- 로그인 api ----- */
   http.post(`${process.env.NEXT_PUBLIC_BASE_URL}/member/login`, () => {
-    return HttpResponse.json('로그인 성공!!');
+    return HttpResponse.json(MOCK_LOGIN_DATA);
   }),
+
+  /* ----- refresh token api success ----- */
+  http.post(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/validToken`, () => {
+    return HttpResponse.json(MOCK_TOKEN_DATA);
+  }),
+
+  /* ----- refresh token api error ----- */
+  http.post(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/validToken`, () => {
+    return HttpResponse.json(Error);
+  }),
+
 ];
