@@ -26,7 +26,7 @@ export const login = async ({
 };
 
 export const refreshToken = async () => {
-  const response = await postRequest<RefreshTokenType, null>('/auth/validToken');
+  const response = await postRequest<RefreshTokenType, null>('/auth/reissuanceJWT');
 
   return response;
 };
