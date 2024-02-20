@@ -14,14 +14,13 @@ export const authHandlers = [
     return HttpResponse.json(MOCK_LOGIN_DATA);
   }),
 
-  /* ----- refresh token api success ----- */
-  http.post(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/validToken`, () => {
-    return HttpResponse.json(MOCK_TOKEN_DATA);
-  }),
+  /* ----- 토큰 재발급 api  ----- */
+  http.post(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/reissuanceJWT`, ({ cookies }) => {
+    if (cookies.token !== MOCK_TOKEN_DATA.value.jwtToken) {
+      return HttpResponse.error();
+    }
 
-  /* ----- refresh token api error ----- */
-  http.post(`${process.env.NEXT_PUBLIC_BASE_URL}/auth/validToken`, () => {
-    return HttpResponse.json(Error);
+    return HttpResponse.json(MOCK_TOKEN_DATA);
   }),
 
 ];

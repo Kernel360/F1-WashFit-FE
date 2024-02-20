@@ -20,10 +20,10 @@ export const MOCK_LOGIN_DATA = {
 
 /* ----- 토큰 MOCK DATA ----- */
 export const MOCK_TOKEN_DATA = {
-  status: 202,
-  code: 'success',
-  message: '토큰 인증 성공',
+  status: 201,
+  code: 'BAC001',
+  message: 'JWT 토큰 재발급 성공',
   value: {
-    jwtToken: 'success-test-abcdefg1234--abc',
+    jwtToken: 'test-abcdefg1234--abc',
   },
 };
