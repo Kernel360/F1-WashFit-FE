@@ -2,6 +2,7 @@ import {
   ChangePassword,
   FindId, FindPassword, ISignIn, ISignUp, UserInfoType,
 } from '../../types/auth';
+import { ICommon } from '../../types/common';
 import { postRequest, putRequest } from '../requests.api';
 
 export const signup = async ({
@@ -27,7 +28,7 @@ export const login = async ({
 export const findId = async ({
   email,
 }: FindId) => {
-  const response = await postRequest<null, FindId>('/member/find-id', {
+  const response = await postRequest<ICommon<null>, FindId>('/member/find/memberId', {
     email,
   });
 
