@@ -1,5 +1,7 @@
 import { ColorMapType } from '@components/additional-info/car-details/color-picker/colorPicker.type';
 
+import { ICommon } from './common';
+
 export interface IAdditionalInfo {
   codeNo: number
   codeName: ColorMapType
@@ -13,3 +15,5 @@ export interface IAdditionalInfo {
   modifiedAt: Date | null
   modifiedBy: string | null
 }
+
+export type AdditionalInfoType = ICommon<IAdditionalInfo[]>;
