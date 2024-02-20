@@ -1,6 +1,6 @@
 import useRefreshToken from '@remote/queries/auth/useRefreshToken';
 
-const JWT_EXPIRY_TIME = 15 * 60 * 1000;
+const JWT_EXPIRY_TIME = 14 * 60 * 1000;
 
 function useIntervalRefreshToken() {
   const { mutate: refresh } = useRefreshToken();

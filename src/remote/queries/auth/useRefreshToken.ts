@@ -3,7 +3,7 @@ import { useCookies } from 'react-cookie';
 
 import { useMutation } from '@tanstack/react-query';
 
-import useLoggedOut from '@/hooks/useLoggedOut';
+import useLoggedOut from '@hooks/useLoggedOut';
 import { refreshToken } from '@remote/api/requests/auth/auth.post.api';
 import { RefreshTokenType } from '@remote/api/types/auth';
 
