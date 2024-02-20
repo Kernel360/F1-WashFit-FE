@@ -3,14 +3,15 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
 import './globals.css';
-
+import 'react-toastify/dist/ReactToastify.min.css';
 import { ModalContextProvider } from '@contexts/ModalContext';
 import { CookieProvider } from '@providers/CookieProvider';
 import MockProvider from '@providers/MockProvider';
 import QueryProvider from '@providers/QueryProvider';
 import RefreshTokenProvider from '@providers/RefreshTokenProvider';
 import StoreProvider from '@providers/StoreProvider';
-// eslint-disable-next-line import/order
+import ToastProvider from '@providers/ToastProvider';
+
 // import { CookiesProvider } from 'react-cookie';
 
 export const metadata: Metadata = {
@@ -40,11 +41,13 @@ export default function RootLayout({
           <CookieProvider>
             <QueryProvider>
               <StoreProvider>
+               <ToastProvider>
                 <ModalContextProvider>
                   <RefreshTokenProvider>
                     {children}
                   </RefreshTokenProvider>
                 </ModalContextProvider>
+               </ToastProvider>
               </StoreProvider>
             </QueryProvider>
           </CookieProvider>

@@ -8,7 +8,7 @@ import FilledHeart from '@components/icons/FilledHeart';
 import Filter from '@components/icons/Filter';
 import Heart from '@components/icons/Heart';
 import Search from '@components/icons/Search';
-import Share from '@components/icons/Share';
+import KakaoShareButton from '@shared/kakao-share-button/KakaoShareButton';
 
 import { RightIconProps } from '../types/headerType';
 
@@ -50,7 +50,7 @@ function RightIcon({
             : <Heart onClick={handleHeartClick} />}
         </li>
         <li>
-          <Share />
+          <KakaoShareButton />
         </li>
       </ul>
     );

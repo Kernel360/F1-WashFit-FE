@@ -23,7 +23,7 @@ function ProductArticle({ isRow = false, itemData }: ProductArticleProps) {
       <article className={cx('container', { row: isRow })}>
         <div className={cx('imgBox')}>
           <Image
-            src={itemData.imageSource!}
+            src={itemData.imageSource ?? '/assets/profile.JPG'}
             alt="제품 이미지"
             width={0}
             height={0}

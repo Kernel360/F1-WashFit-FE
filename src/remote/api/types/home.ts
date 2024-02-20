@@ -12,19 +12,51 @@ export interface IRecommendProducts extends IBanner {
 }
 
 export interface IProduct {
+  productNo: number
+  productName: string
+  barcode: string
+  imageSource: string
+  reportNumber: string
+  safetyStatus: string
+  viewCount: number
   brand: string
   upperItem: string
-  productNo: number
-  imageSource: string
-  productName: string
-  safetyStatus: string
-  barcode: string
-  reportNumber: string
-  viewCount: number
   createdAt: string
   createdBy: string
   modifiedAt: string
   modifiedBy: string
+}
+
+export interface IProductContent {
+  content: IProduct[]
+}
+
+export interface IProductPageInfo {
+  pageable: {
+    pageNumber: number
+    pageSize: number
+    sort: {
+      empty: boolean
+      sorted: boolean
+      unsorted: boolean
+    }
+    offset: number
+    paged: boolean
+    unpaged: boolean
+  }
+  totalPages: number
+  totalElements: number
+  last: boolean
+  size: number
+  number: number
+  sort: {
+    empty: boolean
+    sorted: boolean
+    unsorted: boolean
+  }
+  numberOfElements: number
+  first: boolean
+  empty: boolean
 }
 
 export interface IProductDetails extends IProduct {
@@ -44,5 +76,5 @@ export interface IProductDetails extends IProduct {
 
 export type BannerType = ICommon<IBanner[]>;
 export type RecommendProductsType = ICommon<IRecommendProducts[]>;
-export type ProductType = ICommon<IProduct[]>;
+export type ProductListInfoType = ICommon<IProductContent & IProductPageInfo>;
 export type ProductDetailsType = ICommon<IProductDetails>;
