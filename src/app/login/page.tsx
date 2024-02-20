@@ -8,13 +8,13 @@ import { useForm } from 'react-hook-form';
 import classNames from 'classnames/bind';
 import Link from 'next/link';
 
-import Flex from '@/components/shared/flex/Flex';
 import KakaoLoginButton from '@components/home/kakao-login-button/KakaoLoginButton';
 import NaverLoginButton from '@components/home/naver-login-button/NaverLoginButton';
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
 import { ISignIn } from '@remote/api/types/auth';
 import useLogin from '@remote/queries/auth/useLogin';
 import Button from '@shared/button/Button';
+import Flex from '@shared/flex/Flex';
 import Header from '@shared/header/Header';
 import Spacing from '@shared/spacing/Spacing';
 import TextField from '@shared/text-field/TextField';
