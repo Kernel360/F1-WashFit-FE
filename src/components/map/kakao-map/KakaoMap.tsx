@@ -7,7 +7,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 
 import Script from 'next/script';
 
@@ -25,10 +25,12 @@ interface ILocation {
   lng: number;
 }
 
-function KakaoMap() {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  const [map, setMap] = useState<any>(null);
+interface IKakaoProps {
+  map: any
+  setMap: React.Dispatch<SetStateAction<any>>
+}
 
+function KakaoMap({ map, setMap }: IKakaoProps) {
   const loadKakaoMap = () => {
     window.kakao.maps.load(() => {
       const mapContainer = document.getElementById('map');
