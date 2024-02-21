@@ -36,10 +36,10 @@ function Home({ searchParams }: { searchParams: { filter: HomeSortType } }) {
   //   recommendProductsLoading,
   // } = useRecommendProducts();
   // const { data: productListData, isLoading: productListLoading } = useProductList();
-
+  // asd
   // if (bannerLoading || recommendProductsLoading || productListLoading) {
   //   return <Loader />;
-  // cons;
+  // asd
   // }
 
   const {
