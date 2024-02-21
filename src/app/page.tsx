@@ -39,6 +39,7 @@ function Home({ searchParams }: { searchParams: { filter: HomeSortType } }) {
 
   // if (bannerLoading || recommendProductsLoading || productListLoading) {
   //   return <Loader />;
+  // cons;
   // }
 
   const {
