@@ -14,7 +14,7 @@ function KakaoLoginButton() {
 
   return (
     <>
-      <button type="button" onClick={handleLoginKakao}>
+      <button type="button" onClick={handleLoginKakao} style={{ cursor: 'pointer' }}>
         <Image src="/assets/kakaoLoginButton.png" alt="카카오 로그인 버튼" width={40} height={40} />
       </button>
       <KakaoScript />
