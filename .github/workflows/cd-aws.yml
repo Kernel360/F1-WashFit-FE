@@ -1,4 +1,4 @@
-name: CD-AWS
+name: CD-AWS Test
 
 on:
   push:
@@ -8,7 +8,25 @@ on:
 jobs:
   Deploy-Production:
     runs-on: ubuntu-latest
+    
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+          
+      - run: |
+          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env.local
+        env:
+          SECRETS_CONTEXT: ${{ toJson(secrets) }}
+          
+      - run: yarn install
+      
+      - run: CI='false' yarn build    
+      
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
@@ -26,7 +44,6 @@ jobs:
           REPOSITORY: washfit-client
           IMAGE_TAG: latest
         run: |
-          cd washfit
           docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
