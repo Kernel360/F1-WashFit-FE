@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import classNames from 'classnames/bind';
 
 import { SEARCH_FILTER_MAP, SearchFilterType } from '@constants/searchByMap';
+import useFavoriteList from '@remote/queries/favorite/useFavoriteList';
 import BottomNav from '@shared/bottom-nav/BottomNav';
 import Dropdown from '@shared/dropdown/Dropdown';
 import ProductArticle from '@shared/product-article/ProductArticle';
@@ -16,55 +17,6 @@ import Title from '@shared/title/Title';
 import styles from './page.module.scss';
 
 const cx = classNames.bind(styles);
-
-const productListData = [
-  {
-    brand: '카믹스',
-    category: '코팅제',
-    productNo: 1,
-    imageSource: '/assets/productList.webp',
-    productName: '아머올 세차용품 스피드 왁스 스프레이 500ml스피드 왁스 스프레이 500ml',
-    safetyStatus: 'warning',
-  },
-  {
-    brand: '카믹스',
-    category: '코팅제',
-    productNo: 2,
-    imageSource: '/assets/productList.webp',
-    productName: '아머올 세차용품 스피드 왁스 스프레이 500ml스피드 왁스 스프레이 500ml',
-    safetyStatus: 'warning',
-  },
-  {
-    brand: '카믹스',
-    category: '코팅제',
-    productNo: 3,
-    imageSource: '/assets/productList.webp',
-    productName: '아머올 세차용품 스피드 왁스 스프레이 500ml스피드 왁스 스프레이 500ml',
-    safetyStatus: 'warning',
-  },
-  {
-    brand: '카믹스',
-    category: '코팅제',
-    productNo: 4,
-    imageSource: '/assets/productList.webp',
-    productName: '아머올 세차용품 스피드 왁스 스프레이 500ml스피드 왁스 스프레이 500ml',
-    safetyStatus: 'warning',
-  }, {
-    brand: '카믹스',
-    category: '코팅제',
-    productNo: 5,
-    imageSource: '/assets/productList.webp',
-    productName: '아머올 세차용품 스피드 왁스 스프레이 500ml스피드 왁스 스프레이 500ml',
-    safetyStatus: 'warning',
-  }, {
-    brand: '카믹스',
-    category: '코팅제',
-    productNo: 6,
-    imageSource: '/assets/productList.webp',
-    productName: '아머올 세차용품 스피드 왁스 스프레이 500ml스피드 왁스 스프레이 500ml',
-    safetyStatus: 'warning',
-  },
-];
 
 const options = [
   { label: '조회순', value: 'view' },
@@ -80,6 +32,9 @@ function FavoritePage() {
     },
   });
 
+  const { data: productData, isSuccess } = useFavoriteList();
+  const favoriteList = isSuccess ? productData?.value?.content ?? [] : [];
+
   return (
     <>
       <div className={cx('headerTitleContainer')}>
@@ -91,7 +46,7 @@ function FavoritePage() {
         <div>
           <SearchBar />
           <div className={cx('filterBox')}>
-            <Text typography="t6" color="gray400">{`총 ${productListData.length}개`}</Text>
+            <Text typography="t6" color="gray400">{`총 ${favoriteList.length}개`}</Text>
             <Dropdown
               options={options}
               selectedLabel={(SEARCH_FILTER_MAP[watch('filter') as SearchFilterType])}
@@ -101,7 +56,7 @@ function FavoritePage() {
           </div>
         </div>
         <div className={cx('productArticleContainer')}>
-          {productListData.map((item) => {
+          {favoriteList.map((item) => {
             return <ProductArticle key={item.productNo} itemData={item} />;
           })}
         </div>
