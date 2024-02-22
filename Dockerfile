@@ -1,5 +1,5 @@
 # Install dependencies only when needed
-FROM node:alpine AS deps
+FROM node18:alpine AS deps
 RUN apk add --no-cache libc6-compat python3 build-base
 WORKDIR /app
 COPY package.json yarn.lock ./
