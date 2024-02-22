@@ -4,19 +4,14 @@ import Image from 'next/image';
 
 import KakaoScript from '@shared/kakao-script/KakaoScript';
 
-function KakaoLoginButton() {
-  // TODO: 인가코드를 이용해서 백엔드에 api 요청하기
-  const handleLoginKakao = () => {
-    window.Kakao.Auth.authorize({
-      redirectUri: process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI,
-    });
-  };
+const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.NEXT_PUBLIC_KAKAO_REST_API_KEY}&redirect_uri=${process.env.NEXT_PUBLIC_KAKAO_REDIRECT_URI}&response_type=code`;
 
+function KakaoLoginButton() {
   return (
     <>
-      <button type="button" onClick={handleLoginKakao} style={{ cursor: 'pointer' }}>
+      <a type="button" href={KAKAO_AUTH_URL} style={{ cursor: 'pointer' }}>
         <Image src="/assets/kakaoLoginButton.png" alt="카카오 로그인 버튼" width={40} height={40} />
-      </button>
+      </a>
       <KakaoScript />
     </>
   );
