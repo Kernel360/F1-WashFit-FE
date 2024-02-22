@@ -26,7 +26,7 @@ jobs:
           REPOSITORY: washfit-client
           IMAGE_TAG: latest
         run: |
-          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f /users/imbyeong-wook/Desktop/washfit/Dockerfile .
+          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG -f /Users/imbyeong-wook/Desktop/washfit/Dockerfile .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
       - name: Application Run
