@@ -22,7 +22,7 @@ function KakaoPage() {
   const searchParams = useSearchParams();
   const code = searchParams.get('code');
   /* eslint-disable no-console */
-  console.log(code);
+  console.log(code, '인가 코드');
 
   const loginHandler = useCallback(async () => {
     const response = await axios.post<null, IKakaoToken>(
@@ -32,7 +32,7 @@ function KakaoPage() {
         headers: { 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
       },
     );
-
+    console.log(response.access_token, 'access_token');
     const accessToken = await getRequest<IKakaoToken>('/member/login/forKakao', {
       headers: {
         Authorization: response.access_token,
