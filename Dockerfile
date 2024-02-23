@@ -23,8 +23,6 @@ RUN \
   else echo "Lockfile not found." && exit 1; \
   fi
 
-COPY .env.production /app/.env.production
-
 FROM base AS runner
 WORKDIR /app
 
@@ -41,12 +39,16 @@ RUN chown nextjs:nodejs .next
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
+# .env.production 파일을 환경 변수로 설정
+ARG NODE_ENV=production
+ARG HOSTNAME=0.0.0.0
+ARG PORT=3000
+ENV NODE_ENV $NODE_ENV
+ENV HOSTNAME $HOSTNAME
+ENV PORT $PORT
+
 USER nextjs
 
-EXPOSE 3000
-
-ENV PORT 3000
-
-ENV HOSTNAME "0.0.0.0"
+EXPOSE $PORT
 
 CMD ["node", "server.js"]
