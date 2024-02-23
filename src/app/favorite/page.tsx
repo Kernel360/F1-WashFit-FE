@@ -35,6 +35,8 @@ function FavoritePage() {
 
   const { favoriteList, hasNextPage, loadMore } = useFavoriteList();
 
+  // TODO: 저장한 제품이 없을 경우 디자인 필요
+
   return (
     <>
       <div className={cx('headerTitleContainer')}>
@@ -55,19 +57,23 @@ function FavoritePage() {
             />
           </div>
         </div>
-        <InfiniteScroll
-          dataLength={favoriteList?.length ?? 0}
-          next={loadMore}
-          hasMore={hasNextPage}
-          loader={<div className="loader" key={0}>Loading ...</div>}
-          inverse={false}
-        >
-          <div className={cx('productArticleWrapper')}>
-            {favoriteList.map((item) => {
-              return <ProductArticle key={item.productNo} itemData={item} />;
-            })}
-          </div>
-        </InfiniteScroll>
+        {favoriteList.length === 0
+          ? <p>저장한 제품이 없습니다.</p>
+          : (
+            <InfiniteScroll
+              dataLength={favoriteList?.length ?? 0}
+              next={loadMore}
+              hasMore={hasNextPage}
+              loader={<div className="loader" key={0}>Loading ...</div>}
+              inverse={false}
+            >
+              <div className={cx('productArticleWrapper')}>
+                {favoriteList.map((item) => {
+                  return <ProductArticle key={item.productNo} itemData={item} />;
+                })}
+              </div>
+            </InfiniteScroll>
+          )}
       </main>
       <BottomNav />
     </>
