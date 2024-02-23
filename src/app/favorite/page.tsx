@@ -1,6 +1,7 @@
 'use client';
 
 import { useForm } from 'react-hook-form';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import classNames from 'classnames/bind';
 
@@ -32,8 +33,7 @@ function FavoritePage() {
     },
   });
 
-  const { data: productData, isSuccess } = useFavoriteList();
-  const favoriteList = isSuccess ? productData?.value?.content ?? [] : [];
+  const { favoriteList, hasNextPage, loadMore } = useFavoriteList();
 
   return (
     <>
@@ -55,11 +55,19 @@ function FavoritePage() {
             />
           </div>
         </div>
-        <div className={cx('productArticleContainer')}>
-          {favoriteList.map((item) => {
-            return <ProductArticle key={item.productNo} itemData={item} />;
-          })}
-        </div>
+        <InfiniteScroll
+          dataLength={favoriteList?.length ?? 0}
+          next={loadMore}
+          hasMore={hasNextPage}
+          loader={<div className="loader" key={0}>Loading ...</div>}
+          inverse={false}
+        >
+          <div className={cx('productArticleWrapper')}>
+            {favoriteList.map((item) => {
+              return <ProductArticle key={item.productNo} itemData={item} />;
+            })}
+          </div>
+        </InfiniteScroll>
       </main>
       <BottomNav />
     </>
