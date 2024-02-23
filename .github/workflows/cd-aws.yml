@@ -19,7 +19,7 @@ jobs:
           node-version: '18'
           
       - run: |
-          jecho "${{ secrets.ENV_PRODUCTION }}" > .env.production
+          echo "${{ secrets.ENV_PRODUCTION }}" > .env.production
   
       
       - name: Configure AWS credentials
