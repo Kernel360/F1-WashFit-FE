@@ -18,6 +18,8 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+COPY .env.production .env.production
+
 RUN \
   if [ -f yarn.lock ]; then yarn run build; \
   else echo "Lockfile not found." && exit 1; \
