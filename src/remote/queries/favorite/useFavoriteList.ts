@@ -2,22 +2,20 @@ import { useCallback } from 'react';
 
 import { useInfiniteQuery } from '@tanstack/react-query';
 
-import { HomeSortType } from '@components/home/filer-group/types/filterGroup.type';
 import { getFavoriteList } from '@remote/api/requests/favorite/favorite.get.api';
 import { ProductListInfoType } from '@remote/api/types/home';
 
 const PAGE_SIZE = 10;
 
-function useFavoriteList(sortType: HomeSortType = 'recent-order') {
+function useFavoriteList() {
   const {
     data, isLoading, fetchNextPage, isFetching, hasNextPage = false,
   } = useInfiniteQuery<ProductListInfoType>({
-    queryKey: ['FavoriteProductList', sortType],
+    queryKey: ['FavoriteProductList'],
     queryFn: ({ pageParam = 0 }) => {
       return getFavoriteList(
         Number(pageParam),
         PAGE_SIZE,
-        sortType,
       );
     },
     getNextPageParam: (lastPage) => {
@@ -29,7 +27,6 @@ function useFavoriteList(sortType: HomeSortType = 'recent-order') {
     },
     suspense: true,
   });
-  //   console.log('favoriteList', data?.pages[0].value.content);
 
   const favoriteList = data?.pages.flatMap((page) => { return page.value.content; }) || [];
 
