@@ -1,52 +1,68 @@
-FROM node:18-alpine AS base
+name: CD-AWS Test
 
-FROM base AS deps
+on:
+  push:
+    branches:
+      - main
 
-RUN apk add --no-cache libc6-compat
-WORKDIR /app
+jobs:
+  Deploy-Production:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-COPY package.json yarn.lock* ./
-RUN \
-  if [ -f yarn.lock ]; then yarn --frozen-lockfile; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
-COPY . .
+      - name: Set up Node.js environment
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+          
+      - run: |
+          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env.production
+        env:
+          SECRETS_CONTEXT: ${{ toJson(secrets) }}
+      
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v3
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2
 
-FROM base AS builder
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
 
-WORKDIR /app
+      - name: Build, tag, and push docker image to Amazon ECR
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: washfit-client
+          IMAGE_TAG: latest
+        run: |
+          docker build -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
-COPY --from=deps /app/node_modules ./node_modules
+      - name: Application Run
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.AWS_EC2_HOST }}
+          username: ${{ secrets.AWS_USERNAME }}
+          key: ${{ secrets.AWS_KEY}}
+          script: |
+            # Install Docker and Docker Compose
+            sudo dnf update
+            sudo dnf install docker
+            sudo systemctl start docker
+            sudo systemctl enable docker
+            sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+            sudo chmod +x /usr/local/bin/docker-compose
 
-COPY .env.production .env.production
-
-RUN \
-  if [ -f yarn.lock ]; then yarn run build; \
-  else echo "Lockfile not found." && exit 1; \
-  fi
-
-FROM base AS runner
-WORKDIR /app
-
-ENV NODE_ENV production
-
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-COPY --from=builder /app/public ./public
-
-RUN mkdir .next
-RUN chown nextjs:nodejs .next
-
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-USER nextjs
-
-EXPOSE 3000
-
-ENV PORT 3000
-
-ENV HOSTNAME "0.0.0.0"
-
-CMD ["node", "server.js"]
+            # Docker Compose
+            mkdir -p deploy
+            cd deploy
+            echo "${{ secrets.DOCKER_COMPOSE_AWS }}" > docker-compose.yml
+            
+            docker-compose pull
+            docker-compose down
+            docker-compose up -d
