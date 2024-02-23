@@ -19,7 +19,7 @@ jobs:
           node-version: '18'
           
       - run: |
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env.local
+          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env.production
         env:
           SECRETS_CONTEXT: ${{ toJson(secrets) }}
       
