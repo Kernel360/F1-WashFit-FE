@@ -10,12 +10,14 @@ import { getRequest } from '@remote/api/requests/requests.api';
 const GRANT_TYPE = 'authorization_code';
 
 interface IKakaoToken {
-  access_token: string
-  token_type: string
-  refresh_token: string
-  expires_in: number
-  scope: string
-  refresh_token_expires_in: number
+  data: {
+    access_token: string
+    token_type: string
+    refresh_token: string
+    expires_in: number
+    scope: string
+    refresh_token_expires_in: number
+  }
 }
 
 function KakaoPage() {
@@ -32,10 +34,10 @@ function KakaoPage() {
         headers: { 'Content-type': 'application/x-www-form-urlencoded;charset=utf-8' },
       },
     );
-    console.log(response.access_token, 'access_token');
+    console.log(response.data.access_token, 'access_token');
     const accessToken = await getRequest<IKakaoToken>('/member/login/forKakao', {
       headers: {
-        Authorization: response.access_token,
+        Authorization: response.data.access_token,
       },
     });
     // TODO: 리다이렉트 작업
