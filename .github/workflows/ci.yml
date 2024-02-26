@@ -12,14 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Create .env file
+        run: |
+          touch .env.local
+          echo "${{ secrets.ENV_DEVELOPMENT }}" > .env.local
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
         with:
           node-version: '18'
-      - run: |
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env.local
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
       - run: yarn install
       - run: yarn lint
 
@@ -28,6 +28,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Create .env file
+        run: |
+          touch .env.local
+          echo "${{ secrets.ENV_DEVELOPMENT }}" > .env.local
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
         with:
@@ -44,6 +48,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Create .env file
+        run: |
+          touch .env.local
+          echo "${{ secrets.ENV_DEVELOPMENT }}" > .env.local
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v2
         with:
