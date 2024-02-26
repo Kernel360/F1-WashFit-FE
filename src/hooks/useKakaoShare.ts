@@ -10,7 +10,7 @@ declare global {
   }
 }
 
-function useKakaoShare(containerId: string, key: string) {
+function useKakaoShare(containerId: string, key: string, productUrl: string) {
   const createShareButton = useCallback(() => {
     // kakao sdk script이 정상적으로 불러와졌으면 window.Kakao로 접근이 가능합니다
     if (window.Kakao) {
@@ -30,8 +30,8 @@ function useKakaoShare(containerId: string, key: string) {
           imageUrl:
             'https://tago.kr/images/sub/TG300-D02_img01.png',
           link: {
-            webUrl: 'https://dev.washfit.site/',
-            mobileWebUrl: 'https://dev.washfit.site/',
+            webUrl: `https://dev.washfit.site/${productUrl}`,
+            mobileWebUrl: `https://dev.washfit.site/${productUrl}`,
           },
         },
         social: {
@@ -44,22 +44,22 @@ function useKakaoShare(containerId: string, key: string) {
           {
             title: '웹으로 보기',
             link: {
-              mobileWebUrl: 'https://dev.washfit.site/',
-              webUrl: 'https://dev.washfit.site/',
+              mobileWebUrl: `https://dev.washfit.site/${productUrl}`,
+              webUrl: `https://dev.washfit.site/${productUrl}`,
             },
           },
           // 카카오톡 모바일에서 보기
           {
             title: '앱으로 보기',
             link: {
-              mobileWebUrl: 'https://dev.washfit.site/',
-              webUrl: 'https://dev.washfit.site/',
+              mobileWebUrl: `https://dev.washfit.site/${productUrl}`,
+              webUrl: `https://dev.washfit.site/${productUrl}`,
             },
           },
         ],
       });
     }
-  }, [containerId, key]);
+  }, [containerId, productUrl, key]);
 
   useEffect(() => {
     createShareButton();

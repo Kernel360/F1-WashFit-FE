@@ -1,11 +1,14 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 
+import { usePathname } from 'next/navigation';
+
 import Share from '@components/icons/Share';
 import useKakaoShare from '@hooks/useKakaoShare';
 import KakaoScript from '@shared/kakao-script/KakaoScript';
 
 function KakaoShareButton() {
-  const containerId = useKakaoShare('#kakao-link-btn', process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY!);
+  const pathName = usePathname();
+  const containerId = useKakaoShare('#kakao-link-btn', process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY!, pathName);
 
   return (
     <>
