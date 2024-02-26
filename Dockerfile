@@ -8,7 +8,7 @@ RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
 # Dependancy install을 위해 package.json, package-lock.json, yarn.lock 복사 
-COPY package.json yarn.lock ./ 
+COPY package.json yarn.lock* ./ 
 
 # Dependancy 설치 (새로운 lock 파일 수정 또는 생성 방지)
 RUN yarn --frozen-lockfile 
@@ -18,6 +18,9 @@ RUN yarn --frozen-lockfile
 # 2단계: next.js 빌드 단계
 FROM node:18-alpine AS builder
 
+# Docker를 build할때 개발 모드 구분용 환경 변수를 명시함
+ARG ENV_MODE 
+
 # 명령어를 실행할 디렉터리 지정
 WORKDIR /app
 
@@ -25,6 +28,7 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
+# 구축 환경에 따라 env 변수를 다르게 가져가야 하는 경우 환경 변수를 이용해서 env를 구분해준다.
 RUN yarn build
 
 ###########################################################
@@ -35,6 +39,8 @@ FROM node:18-alpine AS runner
 # 명령어를 실행할 디렉터리 지정
 WORKDIR /app
 
+ENV NODE_ENV production
+
 # container 환경에 시스템 사용자를 추가함
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
@@ -43,6 +49,10 @@ RUN adduser --system --uid 1001 nextjs
 # 빌드에 필요한 최소한의 파일만 ./next/standalone로 출력이 된다.
 # standalone 결과물에는 public 폴더와 static 폴더 내용은 포함되지 않으므로, 따로 복사를 해준다.
 COPY --from=builder /app/public ./public
+
+RUN mkdir .next
+RUN chown nextjs:nodejs .next
+
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
