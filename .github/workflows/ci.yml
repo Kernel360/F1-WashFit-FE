@@ -20,7 +20,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '18'
-      - run: yarn install
       - run: yarn lint
 
   build:
@@ -36,10 +35,6 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '18'
-      - run: |
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env.local
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
       - run: yarn install
       - run: CI='false' yarn build
 
@@ -56,9 +51,5 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '18'
-      - run: |
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env.local
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
       - run: yarn install
       - run: yarn test
