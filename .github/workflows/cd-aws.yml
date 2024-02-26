@@ -30,7 +30,7 @@ jobs:
           REPOSITORY: washfit-client
           IMAGE_TAG: latest
         run: |
-          docker build --no-cache -t --build-arg ENV_MODE=production $REGISTRY/$REPOSITORY:$IMAGE_TAG .
+          docker build --no-cache -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
       - name: ECR Login
