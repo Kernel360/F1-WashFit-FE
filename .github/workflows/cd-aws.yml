@@ -12,16 +12,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      - name: Set up Node.js environment
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18'
-          
-      - run: |
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
       
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v3
