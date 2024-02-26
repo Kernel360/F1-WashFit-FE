@@ -40,7 +40,7 @@ jobs:
           REPOSITORY: washfit-client
           IMAGE_TAG: latest
         run: |
-          docker build --no-cache -t $REGISTRY/$REPOSITORY:$IMAGE_TAG . --build-arg ENV_MODE=production
+          docker build --no-cache -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
       - name: Application Run

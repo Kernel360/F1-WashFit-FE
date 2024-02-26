@@ -29,7 +29,6 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
 # 구축 환경에 따라 env 변수를 다르게 가져가야 하는 경우 환경 변수를 이용해서 env를 구분해준다.
-COPY .env.$ENV_MODE .env.production
 RUN yarn build
 
 ###########################################################
@@ -59,10 +58,6 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
 # 컨테이너의 수신 대기 포트를 3000으로 설정
 EXPOSE 3000
-
-ENV PORT 3000
-# set hostname to localhost
-ENV HOSTNAME "0.0.0.0"
 
 # node로 애플리케이션 실행
 CMD ["node", "server.js"] 
