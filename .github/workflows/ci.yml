@@ -62,4 +62,3 @@ jobs:
           SECRETS_CONTEXT: ${{ toJson(secrets) }}
       - run: yarn install
       - run: yarn test
-   
