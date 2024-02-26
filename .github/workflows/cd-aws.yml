@@ -19,8 +19,6 @@ jobs:
           node-version: '18'
       - run: |
           echo "${{ secrets.ENV_PRODUCTION }}" > .env.production
-        env: |
-          SECRETS_CONTEXT: ${{ toJSON(secrets) }}
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v3
