@@ -36,7 +36,7 @@ jobs:
       - name: ECR Login
         run: |
           aws ecr get-login-password | docker login --username AWS --password-stdin 654654231595.dkr.ecr.ap-northeast-2.amazonaws.com
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env.production
+          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > ENV.PRODUCTION
         env:
           SECRETS_CONTEXT: ${{ toJson(secrets) }}
       
