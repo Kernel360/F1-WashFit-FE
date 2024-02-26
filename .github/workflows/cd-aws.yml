@@ -40,8 +40,6 @@ jobs:
 
       - name: Application Run
         uses: appleboy/ssh-action@v1.0.3
-        env:
-          PORT: 8000   
         with:
           host: ${{ secrets.AWS_EC2_HOST }}
           username: ${{ secrets.AWS_USERNAME }}
