@@ -33,6 +33,10 @@ jobs:
           docker build --no-cache -t $REGISTRY/$REPOSITORY:$IMAGE_TAG .
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
 
+      - name: ECR Login
+        run: |
+          aws ecr get-login-password | docker login --username AWS --password-stdin 654654231595.dkr.ecr.ap-northeast-2.amazonaws.com
+
       - name: Application Run
         uses: appleboy/ssh-action@v1.0.3
         with:
