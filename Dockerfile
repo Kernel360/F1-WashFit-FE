@@ -18,9 +18,6 @@ RUN yarn --frozen-lockfile
 # 2단계: next.js 빌드 단계
 FROM node:18-alpine AS builder
 
-# Docker를 build할때 개발 모드 구분용 환경 변수를 명시함
-ARG ENV_MODE 
-
 # 명령어를 실행할 디렉터리 지정
 WORKDIR /usr/src/app
 
@@ -29,7 +26,6 @@ COPY --from=deps /usr/src/app/node_modules ./node_modules
 COPY . .
 
 # 구축 환경에 따라 env 변수를 다르게 가져가야 하는 경우 환경 변수를 이용해서 env를 구분해준다.
-COPY .env.$ENV_MODE ./.env.production
 RUN yarn build
 
 ###########################################################
