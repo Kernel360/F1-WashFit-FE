@@ -1,11 +1,15 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 'use client';
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import classNames from 'classnames/bind';
 
 import { SEARCH_FILTER_MAP, SearchFilterType } from '@constants/searchByMap';
+import useSearchProductByFilter from '@remote/queries/search/useSearchProductByFilter';
 import Drawer from '@shared/drawer/Drawer';
 import Dropdown from '@shared/dropdown/Dropdown';
 import Header from '@shared/header/Header';
@@ -17,53 +21,25 @@ import Text from '@shared/text/Text';
 import styles from './page.module.scss';
 
 const cx = classNames.bind(styles);
-const productArticleData = [
-  {
-    brand: '카믹스',
-    category: '코팅제',
-    productNo: 1,
-    imageSource: '/assets/productList.webp',
-    productName: '아머올 세차용품 스피드 왁스 스프레이 500ml스피드 왁스 스프레이 500ml',
-    safetyStatus: 'warning',
-  },
-  {
-    brand: '카믹스',
-    category: '코팅제',
-    productNo: 2,
-    imageSource: '/assets/productList.webp',
-    productName: '아머올 세차용품 스피드 왁스 스프레이 500ml스피드 왁스 스프레이 500ml',
-    safetyStatus: 'warning',
-  },
-  {
-    brand: '카믹스',
-    category: '코팅제',
-    productNo: 3,
-    imageSource: '/assets/productList.webp',
-    productName: '아머올 세차용품 스피드 왁스 스프레이 500ml스피드 왁스 스프레이 500ml',
-    safetyStatus: 'warning',
-  },
-  {
-    brand: '카믹스',
-    category: '코팅제',
-    productNo: 4,
-    imageSource: '/assets/productList.webp',
-    productName: '아머올 세차용품 스피드 왁스 스프레이 500ml스피드 왁스 스프레이 500ml',
-    safetyStatus: 'warning',
-  },
-];
 
 const options = [
-  { label: '조회순', value: 'view' },
-  { label: '위반제품순', value: 'violations' },
-  { label: '최신순', value: 'latest' },
-  { label: '추천순', value: 'recommended' },
+  { label: '조회순', value: 'viewCnt-order' },
+  { label: '위반제품순', value: 'violation-products' },
+  { label: '최신순', value: 'recent-order' },
+  { label: '추천순', value: 'recommend-order' },
 ];
 
 function SearchPage() {
-  // TODO: 쿼리스트링을 필터 값 받아와서 default value 설정하기 ex. view, violations, latest, recommended
+  const keywordRef = useRef<HTMLInputElement>(null);
+  const [trigger, setTrigger] = useState(false);
+
+  const handleSearch = () => {
+    setTrigger((prev) => { return !prev; });
+  };
+
   const { register, watch } = useForm({
     defaultValues: {
-      filter: 'view',
+      filter: 'viewCnt-order',
     },
   });
 
@@ -73,14 +49,22 @@ function SearchPage() {
     setIsOpenFilterDrawer((prev) => { return !prev; });
   };
 
+  //
+  const {
+    data: productList,
+    hasNextPage,
+    loadMore,
+    productCount,
+  } = useSearchProductByFilter(keywordRef.current?.value, watch('filter') as SearchFilterType);
+
   return (
     <>
       <Header type="search" onFilterClick={handleFilterClick} title="검색" />
       <Spacing size={8} />
       <main className={cx('mainContainer', 'main')}>
-        <SearchBar />
+        <SearchBar ref={keywordRef} handleSearch={handleSearch} />
         <div className={cx('filterWrapper')}>
-          <Text typography="t6" color="gray400">{`총 ${productArticleData.length}개`}</Text>
+          <Text typography="t6" color="gray400">{`총 ${productCount}개`}</Text>
           <Dropdown
             options={options}
             selectedLabel={(SEARCH_FILTER_MAP[watch('filter') as SearchFilterType])}
@@ -88,11 +72,19 @@ function SearchPage() {
             {...register('filter')}
           />
         </div>
-        <div className={cx('productArticleContainer')}>
-          {productArticleData.map((item) => {
-            return <ProductArticle key={item.productNo} itemData={item} />;
-          })}
-        </div>
+        <InfiniteScroll
+          dataLength={productList?.length ?? 0}
+          next={loadMore}
+          hasMore={hasNextPage}
+          loader={<div className="loader" key={0}>Loading ...</div>}
+          inverse={false}
+        >
+          <div className={cx('productArticleContainer')}>
+            {productList?.map((item) => {
+              return <ProductArticle key={item.productNo} itemData={item} />;
+            })}
+          </div>
+        </InfiniteScroll>
       </main>
       <Drawer isOpen={isOpenFilterDrawer} onClose={() => { setIsOpenFilterDrawer(false); }}>
         {/* 필터 내용 아코디언 */}

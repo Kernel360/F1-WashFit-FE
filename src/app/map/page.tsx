@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
@@ -30,7 +31,7 @@ function MapPage() {
   return (
     <div className={cx('layout')}>
       <div className={cx('searchWrapper')}>
-        <SearchBar isShadow />
+        {/* <SearchBar isShadow /> */}
       </div>
       <KakaoMap map={map} setMap={setMap} />
       <Markers map={map} carwashs={carWashMarkers!} />

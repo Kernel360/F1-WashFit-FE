@@ -9,6 +9,7 @@ import classNames from 'classnames/bind';
 
 import FilterGroup from '@components/home/filer-group/FilterGroup';
 import { HomeSortType } from '@components/home/filer-group/types/filterGroup.type';
+import { SearchFilterType } from '@constants/searchByMap';
 import { MOCK_BANNER_DATA, MOCK_RECOMMEND_PRODUCTS } from '@mocks/homeHandler/mocks';
 import useBanner from '@remote/queries/home/useBanner';
 import useProductList from '@remote/queries/home/useProductList';
@@ -44,7 +45,7 @@ function Home({ searchParams }: { searchParams: { filter: HomeSortType } }) {
 
   const {
     data: productList, hasNextPage, loadMore,
-  } = useProductList(searchParams.filter);
+  } = useProductList(searchParams.filter as SearchFilterType);
 
   return (
     <>
@@ -59,7 +60,7 @@ function Home({ searchParams }: { searchParams: { filter: HomeSortType } }) {
           <RecommendList recommendProductsData={MOCK_RECOMMEND_PRODUCTS} />
         </div>
         <Spacing size={35} />
-        <div className={cx('productListWrapper')}>
+        <div className={cx('productListContainer')}>
           <Text typography="t4" bold>WashFit 랭킹</Text>
           <Spacing size={16} />
           <FilterGroup />
@@ -71,7 +72,7 @@ function Home({ searchParams }: { searchParams: { filter: HomeSortType } }) {
             loader={<div className="loader" key={0}>Loading ...</div>}
             inverse={false}
           >
-            <div className={cx('productArticleWrapper')}>
+            <div className={cx('productArticleContainer')}>
               {productList?.map((item, index) => {
                 return <ProductArticle key={index} itemData={item} />;
               })}

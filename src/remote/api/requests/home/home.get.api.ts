@@ -1,4 +1,4 @@
-import { HomeSortType } from '@components/home/filer-group/types/filterGroup.type';
+import { SearchFilterType } from '@/constants/searchByMap';
 
 import {
   BannerType, ProductListInfoType, RecommendProductsType,
@@ -20,7 +20,7 @@ export const getRecommendProducts = async () => {
 };
 
 /* ----- 제품 목록 정보 api ----- */
-export const getProductList = async (pageNum: number, size: number, sortType: HomeSortType) => {
+export const getProductList = async (pageNum: number, size: number, sortType: SearchFilterType) => {
   const response = await getRequest<ProductListInfoType>(`/products/rank?sortType=${sortType}&page=${pageNum}&size=${size}`);
 
   return response;
