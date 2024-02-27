@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 'use client';
 
 import { useForm } from 'react-hook-form';
@@ -46,7 +48,7 @@ function FavoritePage() {
       <Spacing size={12} />
       <main className={cx('mainContainer', 'main')}>
         <div>
-          <SearchBar />
+          {/* <SearchBar /> */}
           <div className={cx('filterBox')}>
             <Text typography="t6" color="gray400">{`총 ${favoriteList.length}개`}</Text>
             <Dropdown
