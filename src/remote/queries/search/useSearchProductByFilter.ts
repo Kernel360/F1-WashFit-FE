@@ -7,7 +7,7 @@ import { getSearchProductByFilter } from '@remote/api/requests/search/search.get
 
 const PAGE_SIZE = 10;
 
-function useSearchProductByFilter(keyword: string = '', sortType: SearchFilterType = 'recent_order') {
+function useSearchProductByFilter(keyword: string = '', sortType: SearchFilterType = 'recent-order') {
   const {
     data: productList, isLoading, fetchNextPage, isFetching, hasNextPage = false,
   } = useInfiniteQuery({

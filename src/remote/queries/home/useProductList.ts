@@ -7,7 +7,7 @@ import { getProductList } from '@remote/api/requests/home/home.get.api';
 
 const PAGE_SIZE = 10;
 
-function useProductList(sortType: SearchFilterType = 'recent_order') {
+function useProductList(sortType: SearchFilterType = 'recent-order') {
   const {
     data: productList, isLoading, fetchNextPage, isFetching, hasNextPage = false,
   } = useInfiniteQuery({
