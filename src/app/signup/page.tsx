@@ -10,6 +10,7 @@ import {
 } from '@constants/dropdownMap';
 import { GENDER_OPTIONS, AGE_OPTIONS } from '@constants/myPage';
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
+import { getCheckEmail, getCheckId } from '@remote/api/requests/auth/auth.get.api';
 import { ISignUp } from '@remote/api/types/auth';
 import useSignup from '@remote/queries/auth/useSignup';
 import Button from '@shared/button/Button';
@@ -58,8 +59,6 @@ function SignupPage() {
     setStep((currentStep) => { return currentStep - 1; });
   };
 
-  // TODO: 아이디 textfield onBlur 시 중복된 아이디 검사
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       {step === 1 && (
@@ -75,9 +74,17 @@ function SignupPage() {
               {...register('id', {
                 required: true,
                 pattern: VALIDATION_MESSAGE_MAP.id.value,
+                validate: {
+                  checkId: async () => {
+                    const res = await getCheckId(watch('id'));
+                    return !res;
+                  },
+                },
               })}
               hasError={!!errors.id}
-              helpMessage={VALIDATION_MESSAGE_MAP.id.message}
+              helpMessage={errors.id?.type === 'checkId'
+                ? VALIDATION_MESSAGE_MAP.duplicationId.message
+                : VALIDATION_MESSAGE_MAP.id.message}
             />
             <TextField
               label="비밀번호"
@@ -115,9 +122,17 @@ function SignupPage() {
               {...register('email', {
                 required: true,
                 pattern: VALIDATION_MESSAGE_MAP.email.value,
+                validate: {
+                  checkEmail: async () => {
+                    const res = await getCheckEmail(watch('email'));
+                    return !res;
+                  },
+                },
               })}
               hasError={!!errors.email}
-              helpMessage={VALIDATION_MESSAGE_MAP.email.message}
+              helpMessage={errors.email?.type === 'checkEmail'
+                ? VALIDATION_MESSAGE_MAP.duplicationEmail.message
+                : VALIDATION_MESSAGE_MAP.email.message}
             />
             <DropdownField
               label="성별"
@@ -148,7 +163,7 @@ function SignupPage() {
       )}
 
       {step === 2 && (
-      <Terms type="signup" stepBack={step > 1 ? onBack : undefined} onClick={() => { return onSubmit(watch()); }} />
+        <Terms type="signup" stepBack={step > 1 ? onBack : undefined} onClick={() => { return onSubmit(watch()); }} />
       )}
     </form>
   );
