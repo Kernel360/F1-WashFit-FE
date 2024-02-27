@@ -5,10 +5,10 @@
     }
   }
 
-  .productListWrapper {
+  .productListContainer {
     padding: 0 var(--default-padding) 80px;
 
-    .productArticleWrapper {
+    .productArticleContainer {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 12px;
