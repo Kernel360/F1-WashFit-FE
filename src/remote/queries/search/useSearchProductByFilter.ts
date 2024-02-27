@@ -3,17 +3,18 @@ import { useCallback } from 'react';
 import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { SearchFilterType } from '@/constants/searchByMap';
-import { getProductList } from '@remote/api/requests/home/home.get.api';
+import { getSearchProductByFilter } from '@remote/api/requests/search/search.get.api';
 
 const PAGE_SIZE = 10;
 
-function useProductList(sortType: SearchFilterType = 'recent_order') {
+function useSearchProductByFilter(keyword: string = '', sortType: SearchFilterType = 'recent_order') {
   const {
     data: productList, isLoading, fetchNextPage, isFetching, hasNextPage = false,
   } = useInfiniteQuery({
-    queryKey: ['productList', sortType],
+    queryKey: ['productList', sortType, keyword],
     queryFn: ({ pageParam = 0 }) => {
-      return getProductList(
+      return getSearchProductByFilter(
+        keyword,
         Number(pageParam),
         PAGE_SIZE,
         sortType,
@@ -36,12 +37,13 @@ function useProductList(sortType: SearchFilterType = 'recent_order') {
 
     await fetchNextPage();
   }, [fetchNextPage, hasNextPage, isFetching]);
-
   const data = productList?.pages.map((page) => { return page.value.content; }).flat();
 
+  const productCount = productList?.pages[0].value.totalElements;
+
   return {
-    data, isLoading, loadMore, isFetching, hasNextPage,
+    data, isLoading, loadMore, isFetching, hasNextPage, productCount,
   };
 }
 
-export default useProductList;
+export default useSearchProductByFilter;
