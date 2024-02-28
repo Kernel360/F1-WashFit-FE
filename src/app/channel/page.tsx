@@ -1,49 +1,64 @@
+/* eslint-disable react/no-array-index-key */
+
+'use client';
+
+import { useState } from 'react';
+
 import classNames from 'classnames/bind';
 
+import Title from '@components/shared/title/Title';
+import useYoutubeList from '@remote/queries/channel/useYoutubeList';
 import BottomNav from '@shared/bottom-nav/BottomNav';
 import ChannelArticle from '@shared/channel-article/ChannelArticle';
-import Header from '@shared/header/Header';
 
 import styles from './page.module.scss';
 
 const cx = classNames.bind(styles);
 
-const dataList = [{
-  id: 1,
-  src: 'https://www.youtube.com/embed/DNJ5JqLw9YM?si=6hCG8Rz87EMX-LQE',
-  alt: 'YouTube video player',
-  profile: '/assets/profile.JPG',
-  title: '일을 위해 2 시간 지브리 bmg 🚖 편안한 지브리 음악, 지브리 스튜디오',
-  description: '일을 위해 2 시간 지브리 bmg 🚖 편안한 지브리 음악, 지브리 스튜디오',
-}, {
-  id: 2,
-  src: 'https://www.youtube.com/embed/m6XwKBMsZk0?si=K3BkPDtIoelv-ZI5',
-  alt: 'YouTube video player',
-  profile: '/assets/video.png',
-  title: 'Teddy Swims - Cruel Summer (Taylor Swift cover) in the Live Lounge',
-  description: 'Teddy Swims - Cruel Summer (Taylor Swift cover) in the Live Lounge',
-}, {
-  id: 3,
-  src: 'https://www.youtube.com/embed/_QWZQh0YYWA?si=gGqweAyaiuSp9sBN',
-  alt: 'YouTube video player',
-  profile: '/assets/video.png',
-  title: 'Teddy Swims - You\'re Still The One (Shania Twain Cover)',
-  description: 'Teddy Swims - You\'re Still The One (Shania Twain Cover)',
-}];
+const CHANNEL_LIST = {
+  DetailWizard: 'UCJM63e_MydEL2o6dMuJ_teQ',
+  ShineFreak: 'UCoqiH2Ce3qc8wr_t2GvIWvw',
+  autogrm: 'UCKUHhKTlNTHRlwbjoFDKOfA',
+  AutobriteDirectKorea: 'UCHVO8oWoMCIIdQHXUB32X1w',
+  saealnam: 'UCB22mXLQeRlCPn-H000OxYg',
+};
 
 function ChannelPage() {
+  const [selectedChannel, setSelectedChannel] = useState(Object.values(CHANNEL_LIST)[0]);
+
+  const { data: dataList, isError } = useYoutubeList(selectedChannel);
+
+  const handleChannel = (channelId: string) => {
+    setSelectedChannel(channelId);
+  };
+
   return (
-    <div>
-      <Header className={cx('header')} />
+    <>
+      <div className={cx('headerTitleWrapper')}>
+        <Title title="유튜브 추천 채널" titleSize="t3" />
+      </div>
       <main className={cx('mainContainer')}>
-        {dataList.map((data) => {
+        <ul className={cx('channelList')}>
+          {Object.entries(CHANNEL_LIST).map(([channelName, channelId], idx) => {
+            return (
+              <li key={idx}>
+                <button aria-label="채널 버튼" className={cx('channelButton', selectedChannel === channelId ? 'selected' : '')} onClick={() => { return handleChannel(channelId); }}>
+                  {channelName}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+
+        {isError && (<div className={cx('error')}>서버요청을 초과하였습니다.</div>)}
+        {dataList?.items?.map((data, idx) => {
           return (
-            <ChannelArticle key={data.id} data={data} />
+            <ChannelArticle key={idx} data={data} />
           );
         })}
       </main>
       <BottomNav />
-    </div>
+    </>
   );
 }
 
