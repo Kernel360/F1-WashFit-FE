@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ComponentType } from 'react';
+import { ComponentType, useEffect } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -15,10 +15,16 @@ function withAuth<Props = Record<string, never>>(
       (prev, curr) => { return prev === curr; },
     );
 
+    useEffect(() => {
+      if (userId == null) {
+        router.push('/login');
+      }
+    }, [userId, router]);
+
     if (userId == null) {
-      router.push('/');
       return null;
     }
+
     return <WrappedComponent {...(props as any)} />;
   };
 }
