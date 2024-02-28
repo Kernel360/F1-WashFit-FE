@@ -18,7 +18,7 @@ declare global {
     kakao: any
   }
 }
-const location = { lat: 37.514417066172385, lng: 127.06132898292525 };
+const LOCATION = { lat: 37.514417066172385, lng: 127.06132898292525 };
 
 interface ILocation {
   lat: number;
@@ -35,8 +35,8 @@ function KakaoMap({ map, setMap }: IKakaoProps) {
     window.kakao.maps.load(() => {
       const mapContainer = document.getElementById('map');
       const mapOption = {
-        center: new window.kakao.maps.LatLng(location.lat, location.lng),
-        level: 3,
+        center: new window.kakao.maps.LatLng(LOCATION.lat, LOCATION.lng),
+        level: 10,
       };
       const newMap = new window.kakao.maps.Map(mapContainer, mapOption);
       setMap(newMap);
