@@ -33,7 +33,7 @@ function SignupPage() {
       id: '',
       password: '',
       confirmPassword: '',
-      gender: 'man',
+      gender: 'MAN',
       age: 'AGE_20',
     },
     mode: 'onBlur',
@@ -51,6 +51,7 @@ function SignupPage() {
   };
 
   const [step, setStep] = useState(1);
+
   const onNext = () => {
     setStep((currentStep) => { return currentStep + 1; });
   };
