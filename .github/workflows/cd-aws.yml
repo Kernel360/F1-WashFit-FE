@@ -26,7 +26,7 @@ jobs:
 
       - name: Create .env file
         run: |
-          touch .env.local
+          touch .env.production
           echo "${{ secrets.ENV_PRODUCTION }}" > .env.production
 
       - name: Build, tag, and push docker image to Amazon ECR
