@@ -15,7 +15,7 @@ import styles from './page.module.scss';
 
 const cx = classNames.bind(styles);
 
-const channelList = {
+const CHANNEL_LIST = {
   DetailWizard: 'UCJM63e_MydEL2o6dMuJ_teQ',
   ShineFreak: 'UCoqiH2Ce3qc8wr_t2GvIWvw',
   autogrm: 'UCKUHhKTlNTHRlwbjoFDKOfA',
@@ -24,7 +24,7 @@ const channelList = {
 };
 
 function ChannelPage() {
-  const [selectedChannel, setSelectedChannel] = useState(Object.values(channelList)[0]);
+  const [selectedChannel, setSelectedChannel] = useState(Object.values(CHANNEL_LIST)[0]);
 
   const { data: dataList, isError } = useYoutubeList(selectedChannel);
 
@@ -34,12 +34,12 @@ function ChannelPage() {
 
   return (
     <>
-      <div className={cx('headerTitleContainer')}>
+      <div className={cx('headerTitleWrapper')}>
         <Title title="유튜브 추천 채널" titleSize="t3" />
       </div>
       <main className={cx('mainContainer')}>
         <ul className={cx('channelList')}>
-          {Object.entries(channelList).map(([channelName, channelId], idx) => {
+          {Object.entries(CHANNEL_LIST).map(([channelName, channelId], idx) => {
             return (
               <li key={idx}>
                 <button aria-label="채널 버튼" className={cx('channelButton', selectedChannel === channelId ? 'selected' : '')} onClick={() => { return handleChannel(channelId); }}>

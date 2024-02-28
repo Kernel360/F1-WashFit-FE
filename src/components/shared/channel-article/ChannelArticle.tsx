@@ -15,18 +15,19 @@ interface ChannelArticleProps {
 
 const cx = classNames.bind(styles);
 
+const VIDEO_OPTS = {
+  width: '100%',
+  height: '100%',
+  playerVars: {
+    autoplay: 0,
+  },
+};
+
 function ChannelArticle({ data }: ChannelArticleProps) {
-  const opts = {
-    width: '100%',
-    height: '100%',
-    playerVars: {
-      autoplay: 0,
-    },
-  };
   return (
     <article className={cx('article')}>
       <div className={cx('videoContainer')}>
-        <YouTube className={cx('video')} videoId={data.id.videoId} opts={opts} />
+        <YouTube className={cx('video')} videoId={data.id.videoId} opts={VIDEO_OPTS} />
       </div>
       <div className={cx('videoInfoContainer')}>
         {/* <div className={cx('imgBox')}>
