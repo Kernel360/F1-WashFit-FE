@@ -31,9 +31,8 @@ jobs:
 
       - name: Create .env file
         run: |
-          jq -r 'to_entries|map("\(.key)=\(.value|tostring)")|.[]' <<< "$SECRETS_CONTEXT" > .env.production
-        env:
-          SECRETS_CONTEXT: ${{ toJson(secrets) }}
+          touch .env.local
+          echo "${{ secrets.ENV_PRODUCTION }}" > .env.production
 
       - name: Build, tag, and push docker image to Amazon ECR
         env:
