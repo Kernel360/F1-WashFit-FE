@@ -33,7 +33,7 @@ function SignupPage() {
       id: '',
       password: '',
       confirmPassword: '',
-      gender: 'MAN',
+      gender: 'MALE',
       age: 'AGE_20',
     },
     mode: 'onBlur',

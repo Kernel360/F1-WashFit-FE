@@ -1,7 +1,7 @@
 export const GENDER_OPTIONS = [
   {
     label: '남성',
-    value: 'MAN',
+    value: 'MALE',
   },
   {
     label: '여성',

@@ -1,6 +1,6 @@
 export const GENDER_MAP = {
-  MAN: '남성',
-  WOMAN: '여성',
+  MALE: '남성',
+  FEMALE: '여성',
 } as const;
 
 export const AGE_MAP = {
