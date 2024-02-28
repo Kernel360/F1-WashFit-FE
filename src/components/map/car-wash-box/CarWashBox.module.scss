@@ -1,0 +1,13 @@
+.carWashContainer {
+  position: fixed;
+  z-index: 2;
+  right: 0;
+  bottom: calc(75.5px + 16px);
+  left: 0;
+  width: calc(100vh - 48px);
+  max-width: 300px;
+  height: 120px;
+  margin: 0 auto;
+  padding: 16px;
+  background-color: var(--white);
+}
