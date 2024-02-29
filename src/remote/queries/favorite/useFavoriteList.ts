@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { useCallback } from 'react';
 
 import { useInfiniteQuery } from '@tanstack/react-query';
@@ -29,13 +31,13 @@ function useFavoriteList(sortType: SearchFilterType = 'recent-order') {
           : lastPage.value.pageable.pageNumber + 1
       );
     },
+    onError: (error: any) => {
+      if (error.response.status === 401) {
+        router.push('/login');
+      }
+    },
     suspense: true,
   });
-
-  // 유효하지 않는 토큰인 경우
-  if (data?.pages[0].status === 401) {
-    router.push('/login');
-  }
 
   const favoriteList = data?.pages.flatMap((page) => { return page.value.content; }) || [];
 
