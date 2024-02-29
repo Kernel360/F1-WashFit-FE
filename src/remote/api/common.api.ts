@@ -1,9 +1,9 @@
 /* eslint-disable no-param-reassign */
-import { useCookies } from 'react-cookie';
 
 import axios, { InternalAxiosRequestConfig, AxiosError, AxiosResponse } from 'axios';
 
 import { axiosInstance } from '@remote/api/instance.api';
+import { getCookie } from '@utils/cookies';
 import logOnDev from '@utils/logOnDev';
 
 axiosInstance.interceptors.request.use(
@@ -12,11 +12,9 @@ axiosInstance.interceptors.request.use(
      * request 직전 공통으로 진행할 작업
      */
     if (config && config.headers) {
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const [cookies, setCookie] = useCookies(['token']);
-
-      if (cookies.token) {
-        config.headers.Authorization = cookies.token as string;
+      const token = getCookie('token') as string;
+      if (token) {
+        config.headers.Authorization = token;
         config.headers['Content-Type'] = 'application/json';
       }
     }
