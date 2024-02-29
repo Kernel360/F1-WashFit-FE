@@ -11,6 +11,7 @@ export const getFavoriteList = async (
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   sortType: SearchFilterType,
 ) => {
+  // TODO: 필터 기능 추가
   // const response = await getRequest<ProductListInfoType>(`/likes?sortType=${sortType}&page=${pageNum}&size=${size}`);
   const response = await getRequest<ProductListInfoType>(`/likes?page=${pageNum}&size=${size}`);
 
