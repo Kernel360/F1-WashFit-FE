@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
@@ -87,7 +88,7 @@ function LoginPage() {
         </ul>
         <Spacing size={24} />
         <Flex gap={12} justify="center" align="center">
-          <NaverLoginButton />
+          {/* <NaverLoginButton /> */}
           <KakaoLoginButton />
         </Flex>
       </main>
