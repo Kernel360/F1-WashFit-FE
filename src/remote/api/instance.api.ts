@@ -7,7 +7,7 @@ import axios, {
 import { getCookie } from '@utils/cookies';
 import logOnDev from '@utils/logOnDev';
 
-export const axiosInstance: Axios = axios.create({
+export const instance: Axios = axios.create({
   baseURL: process.env.NEXT_PUBLIC_BASE_URL,
   // baseURL: '',
   withCredentials: true,
@@ -18,7 +18,7 @@ export const axiosInstance: Axios = axios.create({
   timeout: 3000,
 });
 
-axiosInstance.interceptors.request.use(
+instance.interceptors.request.use(
   (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
     /**
      * request 직전 공통으로 진행할 작업
@@ -44,7 +44,7 @@ axiosInstance.interceptors.request.use(
   { return Promise.reject(error); },
 );
 
-axiosInstance.interceptors.response.use(
+instance.interceptors.response.use(
   (response: AxiosResponse): AxiosResponse => {
     /**
      * http status가 20X이고, http response가 then으로 넘어가기 직전 호출
