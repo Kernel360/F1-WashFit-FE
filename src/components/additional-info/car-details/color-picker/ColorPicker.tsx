@@ -12,7 +12,7 @@ import { ColorMapType, colorMap } from './colorPicker.type';
 
 interface ColorPickerProps extends InputHTMLAttributes<HTMLInputElement> {
   label: string
-  value: string
+  value: number
   color: ColorMapType
 }
 
