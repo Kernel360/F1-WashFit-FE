@@ -20,6 +20,9 @@ import styles from './page.module.scss';
 
 const cx = classNames.bind(styles);
 
+const TOP_MARGIN = 96;
+const BOTTOM_MARGIN = 97;
+
 function MyProfilePage() {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, removeCookie] = useCookies(['token']);
@@ -40,9 +43,6 @@ function MyProfilePage() {
     logout();
   };
 
-  const topMargin = 96;
-  const bottomMargin = 97;
-
   if (isLoggedIn === false) {
     return (
       <>
@@ -50,8 +50,8 @@ function MyProfilePage() {
           title={REQUIRED_LOGIN.title}
           description={REQUIRED_LOGIN.description}
           options={REQUIRED_LOGIN.options}
-          topMargin={topMargin}
-          bottomMargin={bottomMargin}
+          topMargin={TOP_MARGIN}
+          bottomMargin={BOTTOM_MARGIN}
         />
         <BottomNav />
       </>
