@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { SetStateAction } from 'react';
 
-import { useRouter } from 'next/navigation';
-
+import { SearchFilterType } from '@/constants/searchByMap';
 import Flex from '@shared/flex/Flex';
 import Radio from '@shared/radio/Radio';
 
-function FilterGroup() {
-  const router = useRouter();
-
+function FilterGroup({ setFilter }: {
+  setFilter:
+  React.Dispatch<SetStateAction<SearchFilterType>>
+}) {
   const handleRadioValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const sortType = e.target.value;
-    router.push(`/?filter=${sortType}`, { scroll: false });
+    const sortType = e.target.value as SearchFilterType;
+    setFilter(sortType);
   };
 
   return (
