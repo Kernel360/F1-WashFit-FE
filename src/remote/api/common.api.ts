@@ -12,7 +12,6 @@ axiosInstance.interceptors.request.use(
      * request 직전 공통으로 진행할 작업
      */
     if (config && config.headers) {
-      // 인증할 때 받은 토큰을 쿠키에 저장했다면 가져옵니다.
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const [cookies, setCookie] = useCookies(['token']);
 
