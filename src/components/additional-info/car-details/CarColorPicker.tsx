@@ -43,7 +43,7 @@ function CarColorPicker({
             <ColorPicker
               key={option.codeNo}
               label={option.description}
-              value={option.codeName}
+              value={option.codeNo}
               color={option.codeName}
               {...register(option.upperName, {
                 required: true,

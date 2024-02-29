@@ -18,7 +18,7 @@ type Story = StoryObj<typeof meta>;
 export const black: Story = {
   args: {
     label: '검은색',
-    value: '37383C',
+    value: 21,
     color: 'black',
   },
 };
@@ -26,7 +26,7 @@ export const black: Story = {
 export const green: Story = {
   args: {
     label: '초록',
-    value: '2F4F4F',
+    value: 26,
     color: 'green',
   },
 };

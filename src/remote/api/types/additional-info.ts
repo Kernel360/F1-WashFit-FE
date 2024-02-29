@@ -16,4 +16,18 @@ export interface IAdditionalInfo {
   modifiedBy: string | null
 }
 
+export interface ICarDetails {
+  segment: number
+  carType: number
+  color: number
+  driving: number
+  parking: number
+}
+
+export interface ICarWashDetails {
+  frequency: number
+  cost: number
+  interest: number
+}
+
 export type AdditionalInfoType = ICommon<IAdditionalInfo[]>;

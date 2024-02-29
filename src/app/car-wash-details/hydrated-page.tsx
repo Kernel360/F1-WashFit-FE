@@ -7,9 +7,11 @@ import { useForm } from 'react-hook-form';
 
 import CarDetails from '@components/additional-info/car-details/CarDetails';
 import DetailsLoading from '@components/additional-info/details-loading/DetailsLoading';
+import { ICarWashDetails } from '@remote/api/types/additional-info';
 import useCarWashCost from '@remote/queries/additional-info/car-wash-details/useCarWashCost';
 import useCarWashFrequency from '@remote/queries/additional-info/car-wash-details/useCarWashFrequency';
 import useCarWashInterest from '@remote/queries/additional-info/car-wash-details/useCarWashInterest';
+import useRegisterCarWashDetails from '@remote/queries/additional-info/car-wash-details/useRegisterCarWashDetails';
 import Header from '@shared/header/Header';
 import Loader from '@shared/loader/Loader';
 import ProgressBar from '@shared/progress-bar/ProgressBar';
@@ -19,7 +21,7 @@ function CarWashDetailsPage() {
   const { data: carWashFrequencyData } = useCarWashFrequency();
   const { data: carWashCostData } = useCarWashCost();
   const { data: carWashInterestData } = useCarWashInterest();
-
+  const { mutate } = useRegisterCarWashDetails();
   const [step, setStep] = useState(1);
 
   const {
@@ -38,8 +40,7 @@ function CarWashDetailsPage() {
   // eslint-disable-next-line @typescript-eslint/require-await
   const onSubmit = async () => {
     onNext();
-    // TODO: 쿼리훅 제작
-    // console.log(getValues());
+    mutate({ ...getValues() as ICarWashDetails });
   };
 
   // TODO: Loader 컴포넌트 제작
