@@ -34,7 +34,7 @@ export const refreshToken = async () => {
 export const findId = async ({
   email,
 }: FindId) => {
-  const response = await postRequest<ICommon<null>, FindId>('/member/find/memberId', {
+  const response = await postRequest<ICommon<null>, FindId>('/member/find-memberId', {
     email,
   });
 
