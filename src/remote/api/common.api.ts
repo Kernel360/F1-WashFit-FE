@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-param-reassign */
 
 import axios, { InternalAxiosRequestConfig, AxiosError, AxiosResponse } from 'axios';
@@ -11,11 +12,12 @@ axiosInstance.interceptors.request.use(
     /**
      * request 직전 공통으로 진행할 작업
      */
+    const token = getCookie('token') as string;
+    console.log('token', token);
     if (config && config.headers) {
-      const token = getCookie('token') as string;
       if (token) {
+        console.log('token 안쪽', token);
         config.headers.Authorization = token;
-        config.headers['Content-Type'] = 'application/json';
       }
     }
     if (process.env.NODE_ENV === 'development') {
