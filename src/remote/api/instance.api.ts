@@ -1,5 +1,5 @@
-/* eslint-disable no-param-reassign */
-/* eslint-disable no-console */
+import { toast } from 'react-toastify';
+
 import axios, {
   Axios, InternalAxiosRequestConfig, AxiosError, AxiosResponse,
 } from 'axios';
@@ -24,10 +24,9 @@ instance.interceptors.request.use(
      * request 직전 공통으로 진행할 작업
      */
     const token = getCookie('token') as string;
-    console.log('token', token);
     if (config && config.headers) {
       if (token) {
-        console.log('token 안쪽', token);
+        // eslint-disable-next-line no-param-reassign
         config.headers.Authorization = token;
       }
     }
@@ -79,6 +78,7 @@ instance.interceptors.response.use(
           }
           case 500: {
             // 서버 문제 발생 메시지 연결
+            toast.error('서버 에러 발생!!');
             break;
           }
           default: {
