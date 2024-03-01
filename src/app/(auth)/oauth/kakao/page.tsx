@@ -47,11 +47,11 @@ function KakaoPage() {
         },
       });
 
-      const { id, jwtToken } = data.value;
+      const { id, email, jwtToken } = data.value;
       const cookieOptions = { path: '/', maxAge: 60 * 15 };
 
       setCookie('token', jwtToken, cookieOptions);
-      dispatch(setUserId(id));
+      dispatch(setUserId({ id, email }));
       router.push('/');
     } catch (e) {
       console.error(e);

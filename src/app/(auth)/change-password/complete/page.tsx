@@ -2,10 +2,10 @@ import { COMPLETE_CHANGE_PW } from '@constants/completeMessage';
 import Confirmation from '@shared/confirmation/Confirmation';
 import Header from '@shared/header/Header';
 
-function CompleteChangePasswordPage() {
-  const topMargin = 16;
-  const bottomMargin = 66;
+const TOP_MARGIN = 16;
+const BOTTOM_MARGIN = 66;
 
+function CompleteChangePasswordPage() {
   return (
     <>
       <Header />
@@ -13,8 +13,8 @@ function CompleteChangePasswordPage() {
         options={COMPLETE_CHANGE_PW.options}
         title={COMPLETE_CHANGE_PW.title}
         description={COMPLETE_CHANGE_PW.description}
-        topMargin={topMargin}
-        bottomMargin={bottomMargin}
+        topMargin={TOP_MARGIN}
+        bottomMargin={BOTTOM_MARGIN}
         isHeader
       />
     </>

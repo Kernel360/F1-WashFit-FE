@@ -8,10 +8,11 @@
 import { useForm } from 'react-hook-form';
 
 import dynamic from 'next/dynamic';
+import { useSearchParams } from 'next/navigation';
 
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
 import { ChangePassword } from '@remote/api/types/auth';
-import useChangePassword from '@remote/queries/auth/useChangePassword';
+import useResetPassword from '@remote/queries/auth/useResetPassword';
 import Header from '@shared/header/Header';
 import Spacing from '@shared/spacing/Spacing';
 import TextField from '@shared/text-field/TextField';
@@ -25,7 +26,10 @@ type ChangePasswordType = {
   confirmPassword: string
 } & ChangePassword;
 
-function ChangePasswordPage() {
+function ResetPasswordPage() {
+  const searchParams = useSearchParams();
+  const token = searchParams.get('token')!;
+
   const {
     register, handleSubmit, watch,
     formState: { isValid, errors, isDirty },
@@ -33,18 +37,11 @@ function ChangePasswordPage() {
     mode: 'onBlur',
   });
 
-  const { mutate, isError } = useChangePassword();
+  const { mutate } = useResetPassword();
 
   const onSubmit = (data: ChangePasswordType) => {
     const { password } = data;
-    mutate({ password }, {
-      onSuccess: () => {
-        alert('비밀번호 변경 완료');
-        // TODO: 비밀번호 변경 페이지 로드하기
-      },
-    });
-
-    console.log(password);
+    mutate({ password, token });
   };
 
   return (
@@ -75,14 +72,8 @@ function ChangePasswordPage() {
             required: true,
             validate: (value) => { return value === watch('password') || false; },
           })}
-          hasError={!!errors.confirmPassword || isError}
-          helpMessage={
-            isError
-              ? VALIDATION_MESSAGE_MAP.failedChangePassword.message
-              : (errors.confirmPassword
-                ? VALIDATION_MESSAGE_MAP.confirmPassword.message
-                : undefined)
-          }
+          hasError={!!errors.confirmPassword}
+          helpMessage={VALIDATION_MESSAGE_MAP.confirmPassword.message}
         />
         <div>
           <FixedBottomButton
@@ -98,4 +89,4 @@ function ChangePasswordPage() {
   );
 }
 
-export default ChangePasswordPage;
+export default ResetPasswordPage;

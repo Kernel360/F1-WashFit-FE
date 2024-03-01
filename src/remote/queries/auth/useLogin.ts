@@ -12,11 +12,11 @@ function useLogin() {
   const dispatch = useAppDispatch();
 
   const onSuccess = (data: UserInfoType) => {
-    const { id, jwtToken } = data.value;
+    const { id, email, jwtToken } = data.value;
     const cookieOptions = { path: '/', maxAge: 60 * 15 };
 
     setCookie('token', jwtToken, cookieOptions);
-    dispatch(setUserId(id));
+    dispatch(setUserId({ id, email }));
     router.push('/');
   };
 
