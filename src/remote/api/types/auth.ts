@@ -11,6 +11,11 @@ export interface ISignUp extends ISignIn {
   age: string
 }
 
+export interface IResetPassword {
+  token: string
+  password: string
+}
+
 export type FindId = Pick<ISignUp, 'email'>;
 
 export type FindPassword = Pick<ISignUp, 'id'>;
