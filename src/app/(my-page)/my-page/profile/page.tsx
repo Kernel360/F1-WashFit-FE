@@ -73,6 +73,7 @@ function ProfilePage() {
           })}
           hasError={!!errors.id}
           helpMessage={VALIDATION_MESSAGE_MAP.id.message}
+          readOnly
         />
         <TextField
           label="이메일"
