@@ -1,13 +1,10 @@
-/* eslint-disable no-alert */
 /* eslint-disable @typescript-eslint/no-misused-promises */
-/* eslint-disable no-console */
 
 'use client';
 
 import { useForm } from 'react-hook-form';
 
 import dynamic from 'next/dynamic';
-import { useRouter } from 'next/navigation';
 
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
 import { FindPassword } from '@remote/api/types/auth';
@@ -24,23 +21,19 @@ const FixedBottomButton = dynamic(() => { return import('@shared/fixedBottomButt
 function FindPasswordPage() {
   const {
     register, handleSubmit,
-    formState: { isValid, isDirty },
+    formState: { errors, isValid, isDirty },
   } = useForm<FindPassword>({
+    defaultValues: {
+      id: '',
+    },
     mode: 'onBlur',
   });
 
-  const router = useRouter();
-  const { mutate, isError } = useFindPassword();
+  const { mutate } = useFindPassword();
 
   const onSubmit = (data: FindPassword) => {
     const { id } = data;
-    mutate({ id }, {
-      onSuccess: () => {
-        router.push('/change-password');
-      },
-    });
-
-    console.log(id);
+    mutate({ id });
   };
 
   return (
@@ -58,8 +51,8 @@ function FindPasswordPage() {
             required: true,
             pattern: VALIDATION_MESSAGE_MAP.id.value,
           })}
-          hasError={isError}
-          helpMessage={VALIDATION_MESSAGE_MAP.failedFindPassword.message}
+          hasError={!!errors.id}
+          helpMessage={VALIDATION_MESSAGE_MAP.id.message}
         />
         <div>
           <FixedBottomButton
