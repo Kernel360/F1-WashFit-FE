@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useCookies } from 'react-cookie';
 
 import classNames from 'classnames/bind';
 import Link from 'next/link';
@@ -24,12 +23,12 @@ const TOP_MARGIN = 96;
 const BOTTOM_MARGIN = 97;
 
 function MyProfilePage() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [cookies, removeCookie] = useCookies(['token']);
   const logout = useLoggedOut();
 
-  // eslint-disable-next-line max-len
-  const userId = useAppSelector((state) => { return state.user.id; }, (prev, curr) => { return prev === curr; });
+  const userId = useAppSelector(
+    (state) => { return state.user.id; },
+    (prev, curr) => { return prev === curr; },
+  );
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 

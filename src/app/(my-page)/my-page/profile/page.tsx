@@ -1,11 +1,17 @@
 'use client';
 
+import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 
 import dynamic from 'next/dynamic';
 
+import {
+  AGE_MAP, AgeType, GENDER_MAP, GenderType,
+} from '@constants/dropdownMap';
 import { AGE_OPTIONS, GENDER_OPTIONS } from '@constants/myPage';
 import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
+import useProfile from '@remote/queries/my-page/useProfile';
+import useUpdateProfile from '@remote/queries/my-page/useUpdateProfile';
 import DropdownField from '@shared/dropdown-field/DropdownField';
 import Header from '@shared/header/Header';
 import Spacing from '@shared/spacing/Spacing';
@@ -16,25 +22,41 @@ const FixedBottomButton = dynamic(() => { return import('@shared/fixedBottomButt
 });
 
 function ProfilePage() {
-  // TODO: api or store를 통해 defaultValue 설정하기
+  const { data: profile } = useProfile();
+  const { mutate } = useUpdateProfile();
+
   const {
-    register, watch, formState: {
+    register, watch, reset, formState: {
       errors, isDirty, isValid,
     }, getValues,
   } = useForm({
-    defaultValues: {
-      id: 'washpedia123',
-      email: 'washpedia@gmail.com',
-      gender: '남성',
-      age: '20',
-    },
+    defaultValues: useMemo(() => {
+      return {
+        id: profile?.value.id,
+        email: profile?.value.email,
+        gender: profile?.value.gender,
+        age: profile?.value.age,
+      };
+    }, [profile?.value.age, profile?.value.email, profile?.value.gender, profile?.value.id]),
     mode: 'onBlur',
   });
 
   const onSubmit = () => {
     // eslint-disable-next-line no-console
-    console.log(getValues());
+    const { gender, age } = getValues();
+    if (gender != null && age != null) {
+      mutate({ gender, age });
+    }
   };
+
+  useEffect(() => {
+    reset({
+      id: profile?.value.id,
+      email: profile?.value.email,
+      gender: profile?.value.gender,
+      age: profile?.value.age,
+    });
+  }, [profile?.value.age, profile?.value.email, profile?.value.gender, profile?.value.id, reset]);
 
   return (
     <>
@@ -67,7 +89,7 @@ function ProfilePage() {
         <Spacing size={12} />
         <DropdownField
           label="성별"
-          selectedLabel={watch('gender')}
+          selectedLabel={GENDER_MAP[watch('gender') as GenderType]}
           type="profile"
           options={GENDER_OPTIONS}
           {...register('gender')}
@@ -75,7 +97,7 @@ function ProfilePage() {
         <Spacing size={12} />
         <DropdownField
           label="연령대"
-          selectedLabel={watch('age')}
+          selectedLabel={AGE_MAP[watch('age') as AgeType]}
           type="profile"
           options={AGE_OPTIONS}
           {...register('age')}
