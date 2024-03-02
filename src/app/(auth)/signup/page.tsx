@@ -27,7 +27,7 @@ type SignUpFormType = {
 
 function SignupPage() {
   const {
-    register, handleSubmit, formState: { errors, isValid, isDirty }, watch,
+    register, formState: { errors, isValid, isDirty }, watch,
   } = useForm<SignUpFormType>({
     defaultValues: {
       id: '',
@@ -61,7 +61,7 @@ function SignupPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form>
       {step === 1 && (
         <>
           <Header />
@@ -75,12 +75,6 @@ function SignupPage() {
               {...register('id', {
                 required: true,
                 pattern: VALIDATION_MESSAGE_MAP.id.value,
-                validate: {
-                  checkId: async () => {
-                    const res = await getCheckId(watch('id'));
-                    return !res;
-                  },
-                },
               })}
               hasError={!!errors.id}
               helpMessage={errors.id?.type === 'checkId'
@@ -123,12 +117,6 @@ function SignupPage() {
               {...register('email', {
                 required: true,
                 pattern: VALIDATION_MESSAGE_MAP.email.value,
-                validate: {
-                  checkEmail: async () => {
-                    const res = await getCheckEmail(watch('email'));
-                    return !res;
-                  },
-                },
               })}
               hasError={!!errors.email}
               helpMessage={errors.email?.type === 'checkEmail'
