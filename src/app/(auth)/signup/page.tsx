@@ -2,8 +2,10 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
+
+import { useRouter } from 'next/navigation';
 
 import {
   AGE_MAP, AgeType, GENDER_MAP, GenderType,
@@ -26,8 +28,14 @@ type SignUpFormType = {
 } & ISignUp;
 
 function SignupPage() {
+  const router = useRouter();
+  const [duplicationValidation, setDuplicationValidation] = useState({
+    id: false,
+    email: false,
+  });
+
   const {
-    register, formState: { errors, isValid, isDirty }, watch,
+    register, getValues, handleSubmit, formState: { errors, isValid, isDirty }, watch,
   } = useForm<SignUpFormType>({
     defaultValues: {
       id: '',
@@ -48,6 +56,7 @@ function SignupPage() {
     mutate({
       id, password, email, gender, age,
     });
+    router.push('/login');
   };
 
   const [step, setStep] = useState(1);
@@ -59,6 +68,28 @@ function SignupPage() {
   const onBack = () => {
     setStep((currentStep) => { return currentStep - 1; });
   };
+
+  const handleIdBlur = useCallback(async () => {
+    if (getValues('id').length === 0 || !VALIDATION_MESSAGE_MAP.id.value?.test(getValues('id'))) return;
+    const isDuplicationId = await getCheckId((getValues('id')));
+    setDuplicationValidation((prev) => {
+      return {
+        ...prev,
+        id: isDuplicationId,
+      };
+    });
+  }, [getValues]);
+
+  const handleEmailBlur = useCallback(async () => {
+    if (getValues('email').length === 0 || !VALIDATION_MESSAGE_MAP.email.value?.test(getValues('email'))) return;
+    const isDuplicationEmail = await getCheckEmail((getValues('email')));
+    setDuplicationValidation((prev) => {
+      return {
+        ...prev,
+        email: isDuplicationEmail,
+      };
+    });
+  }, [getValues]);
 
   return (
     <form>
@@ -75,9 +106,10 @@ function SignupPage() {
               {...register('id', {
                 required: true,
                 pattern: VALIDATION_MESSAGE_MAP.id.value,
+                onBlur: handleIdBlur,
               })}
-              hasError={!!errors.id}
-              helpMessage={errors.id?.type === 'checkId'
+              hasError={!!errors.id || !!duplicationValidation.id}
+              helpMessage={duplicationValidation.id
                 ? VALIDATION_MESSAGE_MAP.duplicationId.message
                 : VALIDATION_MESSAGE_MAP.id.message}
             />
@@ -117,9 +149,10 @@ function SignupPage() {
               {...register('email', {
                 required: true,
                 pattern: VALIDATION_MESSAGE_MAP.email.value,
+                onBlur: handleEmailBlur,
               })}
-              hasError={!!errors.email}
-              helpMessage={errors.email?.type === 'checkEmail'
+              hasError={!!errors.email || !!duplicationValidation.email}
+              helpMessage={duplicationValidation.email
                 ? VALIDATION_MESSAGE_MAP.duplicationEmail.message
                 : VALIDATION_MESSAGE_MAP.email.message}
             />
@@ -150,9 +183,8 @@ function SignupPage() {
           <Spacing size={42.5} />
         </>
       )}
-
       {step === 2 && (
-        <Terms type="signup" stepBack={step > 1 ? onBack : undefined} onClick={() => { return onSubmit(watch()); }} />
+        <Terms type="signup" stepBack={step > 1 ? onBack : undefined} onClick={handleSubmit(onSubmit)} />
       )}
     </form>
   );
