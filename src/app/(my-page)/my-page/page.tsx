@@ -1,7 +1,5 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-
 import classNames from 'classnames/bind';
 import Link from 'next/link';
 
@@ -30,19 +28,13 @@ function MyProfilePage() {
     (prev, curr) => { return prev === curr; },
   );
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    setIsLoggedIn(userId !== null);
-  }, [userId]);
-
   // 로그아웃
   const handleLoggedOut = () => {
     // TODO: 먼저 로그아웃 모달이 뜨도록 할지 논의필요
     logout();
   };
 
-  if (isLoggedIn === false) {
+  if (userId == null) {
     return (
       <>
         <Confirmation
@@ -75,13 +67,13 @@ function MyProfilePage() {
           </Link>
         </li>
         <li className={cx('linkInfoContainer')}>
-          <Link href="/car-details">
+          <Link href="/my-page/car-details">
             나의 차량 정보
             <LinkArrow />
           </Link>
         </li>
         <li className={cx('linkInfoContainer')}>
-          <Link href="/car-wash-details">
+          <Link href="/my-page/car-wash-details">
             나의 세차 정보
             <LinkArrow />
           </Link>

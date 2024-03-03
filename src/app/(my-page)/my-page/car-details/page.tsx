@@ -1,41 +1,58 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
+
 'use client';
 
+import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 
 import dynamic from 'next/dynamic';
 
-import {
-  CARTYPE_OPTIONS, COLOR_OPTIONS, DRIVING_OPTIONS, PARKING_OPTIONS, SEGMENT_OPTIONS,
-} from '@constants/myPage';
+import withRegisterCarDetails from '@hooks/withRegisterCarDetails';
+import { ICarDetails } from '@remote/api/types/additional-info';
+import { CarInfoType } from '@remote/api/types/my-page';
+import useRegisterCarDetails from '@remote/queries/additional-info/car-details/useRegisterCarDetails';
 import DropdownField from '@shared/dropdown-field/DropdownField';
 import Header from '@shared/header/Header';
 import Spacing from '@shared/spacing/Spacing';
+import mappingCarDetails from '@utils/mappingCarDetails';
 
 const FixedBottomButton = dynamic(() => { return import('@shared/fixedBottomButton/FixedBottomButton'); }, {
   ssr: false,
 });
 
-function MyCarDetailsPage() {
-  // TODO: api or store를 통해 defaultValue 설정하기
+function MyCarDetailsPage({ myCarInfo }: { myCarInfo: CarInfoType }) {
+  const { carOptions, mappingCarOptions } = mappingCarDetails(myCarInfo);
+  const { mutate } = useRegisterCarDetails();
   const {
-    register, watch, formState: {
+    register, watch, reset, formState: {
       isDirty, isValid,
-    }, getValues,
+    }, handleSubmit,
   } = useForm({
-    defaultValues: {
-      segment: '세단',
-      cartype: '중형',
-      color: '빨간색',
-      driving: '복합적',
-      parking: '노상',
-    },
+    defaultValues: useMemo(() => {
+      return {
+        segment: myCarInfo.value.car_info.segment,
+        cartype: myCarInfo.value.car_info.cartype,
+        color: myCarInfo.value.car_info.color,
+        driving: myCarInfo.value.car_info.driving,
+        parking: myCarInfo.value.car_info.parking,
+      };
+    }, [myCarInfo]),
     mode: 'onBlur',
   });
 
-  const onSubmit = () => {
-    // eslint-disable-next-line no-console
-    console.log(getValues());
+  const onSubmit = (carInfo: ICarDetails) => {
+    mutate(carInfo);
   };
+
+  useEffect(() => {
+    reset({
+      segment: myCarInfo.value.car_info.segment,
+      cartype: myCarInfo.value.car_info.cartype,
+      color: myCarInfo.value.car_info.color,
+      driving: myCarInfo.value.car_info.driving,
+      parking: myCarInfo.value.car_info.parking,
+    });
+  }, [myCarInfo, reset]);
 
   return (
     <>
@@ -44,47 +61,47 @@ function MyCarDetailsPage() {
       <main className="mainContainer">
         <DropdownField
           label="차량 유형"
-          selectedLabel={watch('segment')}
+          selectedLabel={mappingCarOptions.segment_options[watch('segment')]}
           type="profile"
-          options={SEGMENT_OPTIONS}
+          options={carOptions.segment_options}
           {...register('segment')}
         />
         <Spacing size={12} />
         <DropdownField
           label="차량 크기"
-          selectedLabel={watch('cartype')}
+          selectedLabel={mappingCarOptions.carType_options[watch('cartype')]}
           type="profile"
-          options={CARTYPE_OPTIONS}
+          options={carOptions.carType_options}
           {...register('cartype')}
         />
         <Spacing size={12} />
         <DropdownField
           label="차량 색상"
-          selectedLabel={watch('color')}
+          selectedLabel={mappingCarOptions.color_options[watch('color')]}
           type="profile"
-          options={COLOR_OPTIONS}
+          options={carOptions.color_options}
           {...register('color')}
         />
         <Spacing size={12} />
         <DropdownField
           label="주행 환경"
-          selectedLabel={watch('driving')}
+          selectedLabel={mappingCarOptions.driving_options[watch('driving')]}
           type="profile"
-          options={DRIVING_OPTIONS}
+          options={carOptions.driving_options}
           {...register('driving')}
         />
         <Spacing size={12} />
         <DropdownField
           label="주차 환경"
-          selectedLabel={watch('parking')}
+          selectedLabel={mappingCarOptions.parking_options[watch('parking')]}
           type="profile"
-          options={PARKING_OPTIONS}
+          options={carOptions.parking_options}
           {...register('parking')}
         />
-        <FixedBottomButton onClick={onSubmit} type="submit" disabled={!isDirty || !isValid}>변경 사항 저장하기</FixedBottomButton>
+        <FixedBottomButton onClick={handleSubmit(onSubmit)} type="submit" disabled={!isDirty || !isValid}>변경 사항 저장하기</FixedBottomButton>
       </main>
     </>
   );
 }
 
-export default MyCarDetailsPage;
+export default withRegisterCarDetails(MyCarDetailsPage);

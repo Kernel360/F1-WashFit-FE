@@ -18,7 +18,7 @@ export interface IAdditionalInfo {
 
 export interface ICarDetails {
   segment: number
-  carType: number
+  cartype: number
   color: number
   driving: number
   parking: number
