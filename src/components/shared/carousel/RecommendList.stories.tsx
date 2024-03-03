@@ -1,22 +1,22 @@
-import type { Meta, StoryObj } from '@storybook/react';
+// import type { Meta, StoryObj } from '@storybook/react';
 
-import RecommendList from './RecommendList';
+// import RecommendList from './RecommendList';
 
-const meta = {
-  title: 'Shared/RecommendList',
-  component: RecommendList,
-  parameters: {
-  },
-  tags: ['autodocs'],
-  argTypes: {
-  },
-} satisfies Meta<typeof RecommendList>;
+// const meta = {
+//   title: 'Shared/RecommendList',
+//   component: RecommendList,
+//   parameters: {
+//   },
+//   tags: ['autodocs'],
+//   argTypes: {
+//   },
+// } satisfies Meta<typeof RecommendList>;
 
-export default meta;
-type Story = StoryObj<typeof meta>;
+// export default meta;
+// type Story = StoryObj<typeof meta>;
 
-export const AdBanner: Story = {
-  args: {
-    // recommendProductsData: MOCK_RECOMMEND_PRODUCTS,
-  },
-};
+// export const AdBanner: Story = {
+//   args: {
+//     recommendProductsData: MOCK_RECOMMEND_PRODUCTS,
+//   },
+// };
