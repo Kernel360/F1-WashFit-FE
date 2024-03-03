@@ -5,8 +5,8 @@ import styles from './Skeleton.module.scss';
 const cx = classNames.bind(styles);
 
 interface SkeletonProps {
-  width: number
-  height: number
+  width: number | string
+  height: number | string
 }
 
 function Skeleton({ width, height }: SkeletonProps) {
