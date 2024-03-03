@@ -8,6 +8,8 @@ export const getChannelList = async (
   part = 'snippet',
   order = 'date',
   maxResults = 5,
+  type = 'video',
+  videoDuration = 'medium',
 ) => {
   const response = await axios.get<IVideoList>(
     `${process.env.NEXT_PUBLIC_YOUTUBE_BASE_URL}/search`,
@@ -17,6 +19,8 @@ export const getChannelList = async (
         channelId,
         order,
         maxResults,
+        type,
+        videoDuration,
         key: process.env.NEXT_PUBLIC_YOUTUBE_API_KEY,
       },
     },
