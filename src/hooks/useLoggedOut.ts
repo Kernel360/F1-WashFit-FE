@@ -14,9 +14,7 @@ function useLoggedOut() {
     router.push(redirectPath);
     removeCookie('token', { path: '/' });
     query.clear();
-    setTimeout(() => {
-      dispatch(clearUserId());
-    }, 1000);
+    dispatch(clearUserId());
   };
 
   return logout;
