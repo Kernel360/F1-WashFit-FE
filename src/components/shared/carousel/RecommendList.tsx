@@ -29,7 +29,7 @@ function RecommendList({ recommendProductsData }: { recommendProductsData: Recom
     <Slider {...settings} className="recommend-slide">
       {recommendList?.map((slide) => {
         return (
-          <Link href={slide.productNo.toString()} key={slide.productNo}>
+          <Link href={`/product/${slide.productNo.toString()}`} key={slide.productNo}>
             <div className="img-container">
               <Image
                 // src={slide.imageSource}
