@@ -38,21 +38,21 @@ export const MOCK_RECOMMEND_PRODUCTS = {
   message: '추천 제품 조회 성공',
   value: [
     {
-      id: 1,
+      productNo: 1,
       link: '/',
       imageSource: '/assets/recommendItem1.png',
       alt: '그림',
       productName: '카샴푸',
     },
     {
-      id: 2,
+      productNo: 2,
       link: '/',
       imageSource: '/assets/recommendItem2.png',
       alt: '그림',
       productName: '휠 클리너',
     },
     {
-      id: 3,
+      productNo: 3,
       link: '/',
       imageSource: '/assets/recommendItem3.png',
       alt: '그림',
@@ -60,7 +60,7 @@ export const MOCK_RECOMMEND_PRODUCTS = {
 
     },
     {
-      id: 4,
+      productNo: 4,
       link: '/',
       imageSource: '/assets/recommendItem4.png',
       alt: '그림',
@@ -68,7 +68,7 @@ export const MOCK_RECOMMEND_PRODUCTS = {
 
     },
     {
-      id: 5,
+      productNo: 5,
       link: '/',
       imageSource: '/assets/recommendItem4.png',
       alt: '그림',
@@ -76,28 +76,28 @@ export const MOCK_RECOMMEND_PRODUCTS = {
 
     },
     {
-      id: 6,
+      productNo: 6,
       link: '/',
       imageSource: '/assets/recommendItem1.png',
       alt: '그림',
       productName: '카샴푸',
     },
     {
-      id: 7,
+      productNo: 7,
       link: '/',
       imageSource: '/assets/recommendItem1.png',
       alt: '그림',
       productName: '카샴푸',
     },
     {
-      id: 8,
+      productNo: 8,
       link: '/',
       imageSource: '/assets/recommendItem2.png',
       alt: '그림',
       productName: '휠 클리너',
     },
     {
-      id: 9,
+      productNo: 9,
       link: '/',
       imageSource: '/assets/recommendItem4.png',
       alt: '그림',
@@ -105,7 +105,7 @@ export const MOCK_RECOMMEND_PRODUCTS = {
 
     },
     {
-      id: 10,
+      productNo: 10,
       link: '/',
       imageSource: '/assets/recommendItem3.png',
       alt: '그림',
