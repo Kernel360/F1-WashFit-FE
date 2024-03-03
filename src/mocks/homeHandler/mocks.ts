@@ -19,8 +19,8 @@ export const MOCK_BANNER_DATA = {
     {
       productNo: 3,
       imageSource: '/assets/banner3.jpg',
-      item: '세정제',
       alt: '그림',
+      item: '세정제',
     },
     {
       productNo: 4,

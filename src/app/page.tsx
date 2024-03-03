@@ -4,7 +4,7 @@ import ProductList from '@components/home/product-list/ProductList';
 import { MOCK_BANNER_DATA } from '@mocks/homeHandler/mocks';
 import BottomNav from '@shared/bottom-nav/BottomNav';
 import Banner from '@shared/carousel/Banner';
-import RecommendList from '@shared/carousel/RecommendList';
+import RecommendListContainer from '@shared/carousel/RecommendListContainer';
 import Header from '@shared/header/Header';
 import ScrollToTop from '@shared/scroll-to-top/ScrollToTop';
 import Spacing from '@shared/spacing/Spacing';
@@ -25,7 +25,7 @@ function Home() {
         <div className={cx('recommendWrapper')}>
           <Text typography="t4" bold>추천 세차용품</Text>
           <Spacing size={16} />
-          <RecommendList />
+          <RecommendListContainer />
         </div>
         <Spacing size={35} />
         <div className={cx('productListContainer')}>

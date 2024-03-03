@@ -6,7 +6,7 @@ import Slider from 'react-slick';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import useRecommendProducts from '@remote/queries/home/useRecommendProducts';
+import { RecommendProductsType } from '@remote/api/types/home';
 import Text from '@shared/text/Text';
 
 const settings = {
@@ -21,8 +21,8 @@ const settings = {
   autoplaySpeed: 5000,
 };
 
-function RecommendList() {
-  const { data: recommendProductsData } = useRecommendProducts();
+// eslint-disable-next-line max-len
+function RecommendList({ recommendProductsData }: { recommendProductsData: RecommendProductsType }) {
   const recommendList = recommendProductsData?.value;
 
   return (
