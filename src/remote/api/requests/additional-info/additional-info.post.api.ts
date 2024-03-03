@@ -4,10 +4,10 @@ import { postRequest } from '../requests.api';
 
 /* ----- 차량 정보 입력 api ----- */
 export const postCarDetails = async ({
-  segment, carType, color, driving, parking,
+  segment, cartype, color, driving, parking,
 }: ICarDetails) => {
   const response = await postRequest<ICommon<null>, ICarDetails>('/member/car', {
-    segment, carType, color, driving, parking,
+    segment, cartype, color, driving, parking,
   });
 
   return response;

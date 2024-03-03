@@ -1,39 +1,54 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
+
 'use client';
 
+import { useEffect, useMemo } from 'react';
 import { useForm } from 'react-hook-form';
 
 import dynamic from 'next/dynamic';
 
-import {
-  COST_OPTIONS, FREQUENCY_OPTIONS, INTEREST_OPTIONS,
-} from '@constants/myPage';
+import withRegisterCarWashDetails from '@hooks/withRegisterCarWashDetails';
+import { ICarWashDetails } from '@remote/api/types/additional-info';
+import { CarWashInfoType } from '@remote/api/types/my-page';
+import useRegisterCarWashDetails from '@remote/queries/additional-info/car-wash-details/useRegisterCarWashDetails';
 import DropdownField from '@shared/dropdown-field/DropdownField';
 import Header from '@shared/header/Header';
 import Spacing from '@shared/spacing/Spacing';
+import mappingCarWashDetails from '@utils/mappingCarWashDetails';
 
 const FixedBottomButton = dynamic(() => { return import('@shared/fixedBottomButton/FixedBottomButton'); }, {
   ssr: false,
 });
 
-function MyCarWashDetailsPage() {
-  // TODO: api or store를 통해 defaultValue 설정하기
+function MyCarWashDetailsPage({ myCarWashInfo }: { myCarWashInfo: CarWashInfoType }) {
+  const { carWashOptions, mappingCarWashOptions } = mappingCarWashDetails(myCarWashInfo);
+  const { mutate } = useRegisterCarWashDetails();
   const {
-    register, watch, formState: {
+    register, watch, reset, formState: {
       isDirty, isValid,
-    }, getValues,
+    }, handleSubmit,
   } = useForm({
-    defaultValues: {
-      frequency: '월 4회 이상',
-      cost: '월 10만원 이상',
-      interest: '도장',
-    },
+    defaultValues: useMemo(() => {
+      return {
+        frequency: myCarWashInfo.value.wash_info.frequency,
+        cost: myCarWashInfo.value.wash_info.cost,
+        interest: myCarWashInfo.value.wash_info.interest,
+      };
+    }, [myCarWashInfo]),
     mode: 'onBlur',
   });
 
-  const onSubmit = () => {
-    // eslint-disable-next-line no-console
-    console.log(getValues());
+  const onSubmit = (carWashInfo: ICarWashDetails) => {
+    mutate(carWashInfo);
   };
+
+  useEffect(() => {
+    reset({
+      frequency: myCarWashInfo.value.wash_info.frequency,
+      cost: myCarWashInfo.value.wash_info.cost,
+      interest: myCarWashInfo.value.wash_info.interest,
+    });
+  }, [myCarWashInfo, reset]);
 
   return (
     <>
@@ -42,31 +57,31 @@ function MyCarWashDetailsPage() {
       <main className="mainContainer">
         <DropdownField
           label="세차 횟수"
-          selectedLabel={watch('frequency')}
+          selectedLabel={mappingCarWashOptions.frequency_options[watch('frequency')]}
           type="profile"
-          options={FREQUENCY_OPTIONS}
+          options={carWashOptions.frequency_options}
           {...register('frequency')}
         />
         <Spacing size={12} />
         <DropdownField
           label="지출 비용"
-          selectedLabel={watch('cost')}
+          selectedLabel={mappingCarWashOptions.cost_options[watch('cost')]}
           type="profile"
-          options={COST_OPTIONS}
+          options={carWashOptions.cost_options}
           {...register('cost')}
         />
         <Spacing size={12} />
         <DropdownField
           label="주요 관심사"
-          selectedLabel={watch('interest')}
+          selectedLabel={mappingCarWashOptions.interest_options[watch('interest')]}
           type="profile"
-          options={INTEREST_OPTIONS}
+          options={carWashOptions.interest_options}
           {...register('interest')}
         />
-        <FixedBottomButton onClick={onSubmit} type="submit" disabled={!isDirty || !isValid}>변경 사항 저장하기</FixedBottomButton>
+        <FixedBottomButton onClick={handleSubmit(onSubmit)} type="submit" disabled={!isDirty || !isValid}>변경 사항 저장하기</FixedBottomButton>
       </main>
     </>
   );
 }
 
-export default MyCarWashDetailsPage;
+export default withRegisterCarWashDetails(MyCarWashDetailsPage);
