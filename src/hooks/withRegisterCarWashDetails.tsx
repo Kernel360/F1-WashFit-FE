@@ -38,8 +38,7 @@ function withRegisterCarWashDetails<Props extends WithCarWashInfoProps>(
     useEffect(() => {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       handleRegister();
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [handleRegister]);
 
     if (myCarWashInfo == null) {
       return null;
