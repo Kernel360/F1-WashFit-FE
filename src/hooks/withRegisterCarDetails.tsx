@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   ComponentType, useCallback, useEffect, useState,
 } from 'react';
@@ -7,20 +6,23 @@ import { isAxiosError } from 'axios';
 import { useRouter } from 'next/navigation';
 
 import { getRequest } from '@remote/api/requests/requests.api';
-import { ICommon } from '@remote/api/types/common';
 import { CarInfoType } from '@remote/api/types/my-page';
 
-function withRegisterCarDetails<Props = Record<string, never>>(
+interface WithCarInfoProps {
+  myCarInfo: CarInfoType;
+}
+
+function withRegisterCarDetails<Props extends WithCarInfoProps>(
   WrappedComponent: ComponentType<Props>,
 ) {
-  return function RegisteredComponent(props: Props) {
+  return function RegisteredComponent(props: Omit<Props, keyof WithCarInfoProps>) {
     const router = useRouter();
-    const [myCarInfo, setMyCarInfo] = useState<ICommon<CarInfoType> | null>(null);
+    const [myCarInfo, setMyCarInfo] = useState<CarInfoType | null>(null);
 
     // eslint-disable-next-line consistent-return
     const handleRegister = useCallback(async () => {
       try {
-        const response = await getRequest<ICommon<CarInfoType>>('/mypage/car');
+        const response = await getRequest<CarInfoType>('/mypage/car');
         setMyCarInfo(response);
         return response;
       } catch (error) {
@@ -42,7 +44,7 @@ function withRegisterCarDetails<Props = Record<string, never>>(
       return null;
     }
 
-    return <WrappedComponent {...(props as any)} myCarInfo={myCarInfo} />;
+    return <WrappedComponent {...props as Props} myCarInfo={myCarInfo} />;
   };
 }
 

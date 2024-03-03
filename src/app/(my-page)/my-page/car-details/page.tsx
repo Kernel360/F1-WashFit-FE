@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 
 import dynamic from 'next/dynamic';
 
-import withRegisterDetails from '@hooks/withRegisterCarDetails';
+import withRegisterCarDetails from '@hooks/withRegisterCarDetails';
 import { ICarDetails } from '@remote/api/types/additional-info';
 import { CarInfoType } from '@remote/api/types/my-page';
 import useRegisterCarDetails from '@remote/queries/additional-info/car-details/useRegisterCarDetails';
@@ -104,4 +104,4 @@ function MyCarDetailsPage({ myCarInfo }: { myCarInfo: CarInfoType }) {
   );
 }
 
-export default withRegisterDetails(MyCarDetailsPage);
+export default withRegisterCarDetails(MyCarDetailsPage);

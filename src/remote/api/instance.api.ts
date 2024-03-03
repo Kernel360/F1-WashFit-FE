@@ -8,8 +8,8 @@ import { getCookie } from '@utils/cookies';
 import logOnDev from '@utils/logOnDev';
 
 export const instance: Axios = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BASE_URL,
-  // baseURL: '',
+  // baseURL: process.env.NEXT_PUBLIC_BASE_URL,
+  baseURL: '',
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
