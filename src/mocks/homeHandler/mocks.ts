@@ -5,28 +5,28 @@ export const MOCK_BANNER_DATA = {
   message: '추천제품정보 조회 성공',
   value: [
     {
-      id: 1,
-      link: '/',
+      productNo: 1,
       imageSource: '/assets/banner1.jpg',
       alt: '그림',
+      item: '세정제',
     },
     {
-      id: 2,
-      link: '/',
+      productNo: 2,
       imageSource: '/assets/banner2.jpg',
       alt: '그림',
+      item: '세정제',
     },
     {
-      id: 3,
-      link: '/',
+      productNo: 3,
       imageSource: '/assets/banner3.jpg',
+      item: '세정제',
       alt: '그림',
     },
     {
-      id: 4,
-      link: '/',
+      productNo: 4,
       imageSource: '/assets/banner4.jpg',
       alt: '그림',
+      item: '세정제',
     },
   ],
 };
