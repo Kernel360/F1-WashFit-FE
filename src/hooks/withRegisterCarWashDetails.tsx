@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   ComponentType, useCallback, useEffect, useState,
 } from 'react';
@@ -9,12 +8,17 @@ import { useRouter } from 'next/navigation';
 import { getRequest } from '@remote/api/requests/requests.api';
 import { CarWashInfoType } from '@remote/api/types/my-page';
 
-function withRegisterCarWashDetails<Props = Record<string, never>>(
+interface WithCarWashInfoProps {
+  myCarWashInfo: CarWashInfoType;
+}
+
+function withRegisterCarWashDetails<Props extends WithCarWashInfoProps>(
   WrappedComponent: ComponentType<Props>,
 ) {
-  return function RegisteredComponent(props: Props) {
+  return function RegisteredComponent(props: Omit<Props, keyof WithCarWashInfoProps>) {
     const router = useRouter();
     const [myCarWashInfo, setMyCarWashInfo] = useState<CarWashInfoType | null>(null);
+
     // eslint-disable-next-line consistent-return
     const handleRegister = useCallback(async () => {
       try {
@@ -41,7 +45,7 @@ function withRegisterCarWashDetails<Props = Record<string, never>>(
       return null;
     }
 
-    return <WrappedComponent {...(props as any)} myCarWashInfo={myCarWashInfo} />;
+    return <WrappedComponent {...props as Props} myCarWashInfo={myCarWashInfo} />;
   };
 }
 
