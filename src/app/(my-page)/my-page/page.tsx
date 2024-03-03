@@ -28,9 +28,7 @@ function MyProfilePage() {
     (prev, curr) => { return prev === curr; },
   );
 
-  // 로그아웃
   const handleLoggedOut = () => {
-    // TODO: 먼저 로그아웃 모달이 뜨도록 할지 논의필요
     logout();
   };
 

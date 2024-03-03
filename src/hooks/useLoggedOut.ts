@@ -11,10 +11,13 @@ function useLoggedOut() {
   const query = useQueryClient();
 
   const logout = (redirectPath = '/') => {
-    dispatch(clearUserId());
+    router.push(redirectPath);
     removeCookie('token', { path: '/' });
     query.clear();
-    router.push(redirectPath);
+    const clearId = setTimeout(() => {
+      dispatch(clearUserId());
+    }, 1000);
+    clearTimeout(clearId);
   };
 
   return logout;
