@@ -24,7 +24,6 @@ const FixedBottomButton = dynamic(() => { return import('@shared/fixedBottomButt
 function ProfilePage() {
   const { data: profile } = useProfile();
   const { mutate } = useUpdateProfile();
-
   const {
     register, watch, reset, formState: {
       errors, isDirty, isValid,
@@ -37,7 +36,7 @@ function ProfilePage() {
         gender: profile?.value.gender,
         age: profile?.value.age,
       };
-    }, [profile?.value.age, profile?.value.email, profile?.value.gender, profile?.value.id]),
+    }, [profile]),
     mode: 'onBlur',
   });
 
@@ -56,7 +55,7 @@ function ProfilePage() {
       gender: profile?.value.gender,
       age: profile?.value.age,
     });
-  }, [profile?.value.age, profile?.value.email, profile?.value.gender, profile?.value.id, reset]);
+  }, [profile, reset]);
 
   return (
     <>
