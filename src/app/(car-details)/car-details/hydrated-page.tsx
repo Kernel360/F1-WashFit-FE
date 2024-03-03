@@ -93,8 +93,8 @@ function CarDetailsPage() {
       {step === 3 && (
         <CarColorPicker
           onClick={onNext}
-          main="차량 크기가 무엇인가요?"
-          sub="차량 크기를 선택해주세요."
+          main="차량 색상은 무엇인가요?"
+          sub="차량 색상을 선택해주세요."
           options={carColorData}
           register={register}
           dirtyFields={dirtyFields}
