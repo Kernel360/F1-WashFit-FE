@@ -5,8 +5,6 @@
 import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { useRouter } from 'next/navigation';
-
 import {
   AGE_MAP, AgeType, GENDER_MAP, GenderType,
 } from '@constants/dropdownMap';
@@ -28,7 +26,6 @@ type SignUpFormType = {
 } & ISignUp;
 
 function SignupPage() {
-  const router = useRouter();
   const [duplicationValidation, setDuplicationValidation] = useState({
     id: false,
     email: false,
@@ -56,7 +53,6 @@ function SignupPage() {
     mutate({
       id, password, email, gender, age,
     });
-    router.push('/login');
   };
 
   const [step, setStep] = useState(1);
