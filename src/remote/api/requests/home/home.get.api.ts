@@ -14,7 +14,7 @@ export const getBanner = async () => {
 
 /* ----- 추천 제품 정보 api ----- */
 export const getRecommendProducts = async () => {
-  const response = await getRequest<RecommendProductsType>('/recommend_products');
+  const response = await getRequest<RecommendProductsType>('/recommend-products');
 
   return response;
 };
