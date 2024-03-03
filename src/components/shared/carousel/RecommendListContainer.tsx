@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 
 import useRecommendProducts from '@remote/queries/home/useRecommendProducts';
