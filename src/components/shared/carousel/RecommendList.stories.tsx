@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { MOCK_RECOMMEND_PRODUCTS } from '@mocks/homeHandler/mocks';
+import { MOCK_RECOMMEND_PRODUCTS } from '@/mocks/homeHandler/mocks';
 
 import RecommendList from './RecommendList';
 
@@ -17,7 +17,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const AdBanner: Story = {
+export const DefaultRecommendList: Story = {
   args: {
     recommendProductsData: MOCK_RECOMMEND_PRODUCTS,
   },
