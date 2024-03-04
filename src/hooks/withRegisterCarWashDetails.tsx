@@ -32,6 +32,7 @@ function withRegisterCarWashDetails<Props extends WithCarWashInfoProps>(
             router.push('/car-wash-details');
           }
         }
+        return null;
       }
     }, [router]);
 
