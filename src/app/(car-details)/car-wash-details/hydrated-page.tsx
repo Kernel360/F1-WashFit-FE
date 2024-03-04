@@ -2,7 +2,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import CarDetails from '@components/additional-info/car-details/CarDetails';
@@ -29,13 +29,13 @@ function CarWashDetailsPage() {
     register, getValues, formState: { dirtyFields },
   } = useForm();
 
-  const onNext = () => {
+  const onNext = useCallback(() => {
     setStep((currentStep) => { return currentStep + 1; });
-  };
+  }, []);
 
-  const onBack = () => {
+  const onBack = useCallback(() => {
     setStep((currentStep) => { return currentStep - 1; });
-  };
+  }, []);
 
   // eslint-disable-next-line @typescript-eslint/require-await
   const onSubmit = async () => {
