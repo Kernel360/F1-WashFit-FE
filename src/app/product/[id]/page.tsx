@@ -204,7 +204,7 @@ function ProductDetailsPage() {
                 <Text color="gray600" typography="t6" className={cx('infoDescription')}>{firstAid}</Text>
               </Flex>
               <Flex>
-                <Text typography="t7" className={cx('infoTitle')}>위반정보</Text>
+                <Text typography="t7" className={cx('infoTitle')}>특이사항</Text>
                 <Spacing size={8} direction="vertical" />
                 <Text color="gray600" typography="t6" className={cx('infoDescription')}>{violationInfo}</Text>
               </Flex>
