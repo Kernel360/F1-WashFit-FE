@@ -58,6 +58,7 @@ function ProductDetailsPage() {
     usage,
     usagePrecaution,
     firstAid,
+    violationInfo,
   } = productDetailsData.value;
 
   return (
@@ -170,6 +171,11 @@ function ProductDetailsPage() {
                 <Text typography="t7" className={cx('infoTitle')}>응급조치</Text>
                 <Spacing size={8} direction="vertical" />
                 <Text color="gray600" typography="t6" className={cx('infoDescription')}>{firstAid}</Text>
+              </Flex>
+              <Flex>
+                <Text typography="t7" className={cx('infoTitle')}>위반정보</Text>
+                <Spacing size={8} direction="vertical" />
+                <Text color="gray600" typography="t6" className={cx('infoDescription')}>{violationInfo}</Text>
               </Flex>
             </AccordionBody>
           </AccordionItem>
