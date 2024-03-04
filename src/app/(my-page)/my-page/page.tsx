@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+
 'use client';
 
 import classNames from 'classnames/bind';
@@ -77,14 +79,20 @@ function MyProfilePage() {
           </Link>
         </li>
         <li className={cx('linkInfoContainer')}>
-          <Link href="/">
-            리뷰 관리
+          <Link href="#">
+            리뷰 관리 (준비 중..)
             <LinkArrow />
           </Link>
         </li>
         <li className={cx('linkInfoContainer')}>
           <Link href="https://forms.gle/ty3EwK1Qmwe5FW1w6">
             문의하기
+            <LinkArrow />
+          </Link>
+        </li>
+        <li className={cx('linkInfoContainer')}>
+          <Link href="/change-password">
+            비밀번호 변경하기
             <LinkArrow />
           </Link>
         </li>
