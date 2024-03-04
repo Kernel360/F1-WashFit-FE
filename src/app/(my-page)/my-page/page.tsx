@@ -85,7 +85,7 @@ function MyProfilePage() {
           </Link>
         </li>
         <li className={cx('linkInfoContainer')}>
-          <Link href="https://forms.gle/ty3EwK1Qmwe5FW1w6">
+          <Link href="https://forms.gle/ty3EwK1Qmwe5FW1w6" target="_blank">
             문의하기
             <LinkArrow />
           </Link>
