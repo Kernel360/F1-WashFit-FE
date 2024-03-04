@@ -1,6 +1,6 @@
 import {
   ChangePassword,
-  FindId, FindPassword, RefreshTokenType, ISignIn, ISignUp, UserInfoType,
+  FindId, FindPassword, RefreshTokenType, ISignIn, ISignUp, UserInfoType, IResetPassword,
 } from '../../types/auth';
 import { ICommon } from '../../types/common';
 import { postRequest, putRequest } from '../requests.api';
@@ -34,7 +34,7 @@ export const refreshToken = async () => {
 export const findId = async ({
   email,
 }: FindId) => {
-  const response = await postRequest<ICommon<null>, FindId>('/member/find/memberId', {
+  const response = await postRequest<ICommon<null>, FindId>('/member/find-memberId', {
     email,
   });
 
@@ -51,11 +51,23 @@ export const findPassword = async ({
   return response;
 };
 
+/* ----- 회원 비밀번호 찾기 ----- */
 export const changePassword = async ({
   password,
 }: ChangePassword) => {
   const response = await putRequest<null, ChangePassword>('/member/change-password', {
     password,
+  });
+
+  return response;
+};
+
+/* ----- 비회원 비밀번호 찾기 ----- */
+export const resetPassword = async ({
+  password, token = '',
+}: IResetPassword) => {
+  const response = await putRequest<null, IResetPassword>('/member/reset-password', {
+    password, token,
   });
 
   return response;

@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable array-callback-return */
 /* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
@@ -5,13 +6,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { useCallback, useEffect } from 'react';
+import { SetStateAction, useCallback, useEffect } from 'react';
 
-import { MarkersType } from '@remote/api/types/map';
+import { MarkersType, IMarkers } from '@remote/api/types/map';
 
 interface MarkerProps {
   map: any
   carwashs: MarkersType
+  setCarWash: React.Dispatch<SetStateAction<IMarkers | null>>
 }
 
 declare global {
@@ -20,7 +22,7 @@ declare global {
   }
 }
 
-function Markers({ map, carwashs }: MarkerProps) {
+function Markers({ map, carwashs, setCarWash }: MarkerProps) {
   const loadKakoMarkers = useCallback(() => {
     if (map) {
       // 식당 데이터 마커 띄우기
@@ -50,16 +52,20 @@ function Markers({ map, carwashs }: MarkerProps) {
 
         // 마커가 지도 위에 표시되도록 설정합니다
         marker.setMap(map);
+
+        // 선택한 가게 저장
+        window.kakao.maps.event.addListener(marker, 'click', () => {
+          setCarWash(carwash);
+        });
       });
     }
-  }, [map, carwashs]);
+  }, [map, carwashs, setCarWash]);
 
   useEffect(() => {
     loadKakoMarkers();
   }, [loadKakoMarkers, map]);
 
   return (
-    // eslint-disable-next-line react/jsx-no-useless-fragment
     <></>
   );
 }

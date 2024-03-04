@@ -1,3 +1,41 @@
+.headerTitleWrapper {
+    box-sizing: border-box;
+    padding: 23px var(--default-padding) 12px;
+}
+
 .mainContainer {
     margin-bottom: 76px;
+
+    .channelList {
+        display: flex;
+        box-sizing: border-box;
+        margin: 12px 0;
+        padding: 0 var(--default-padding);
+        overflow: auto;
+        white-space: nowrap;
+        gap: 5px;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        .channelButton {
+            padding: 5px 10px;
+            transition: 0.15s all ease-out;
+            border: 1px solid var(--primary200);
+            border-radius: 15px;
+            color: var(--primary200);
+            font-size: 12px;
+
+            &.selected {
+                border-color: var(--primary400);
+                background-color: var(--primary400);
+                color: var(--white);
+            }
+        }
+    }
+
+    .error {
+        padding: 0 var(--default-padding);
+    }
 }

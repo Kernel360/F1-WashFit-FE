@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+
 'use client';
 
 import { useForm } from 'react-hook-form';
@@ -6,6 +8,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import classNames from 'classnames/bind';
 
 import { SEARCH_FILTER_MAP, SearchFilterType } from '@constants/searchByMap';
+import withAuth from '@hooks/withAuth';
 import useFavoriteList from '@remote/queries/favorite/useFavoriteList';
 import BottomNav from '@shared/bottom-nav/BottomNav';
 import Dropdown from '@shared/dropdown/Dropdown';
@@ -20,22 +23,20 @@ import styles from './page.module.scss';
 const cx = classNames.bind(styles);
 
 const options = [
-  { label: '조회순', value: 'view' },
-  { label: '위반제품순', value: 'violations' },
-  { label: '최신순', value: 'latest' },
-  { label: '추천순', value: 'recommended' },
+  { label: '조회순', value: 'viewCnt-order' },
+  { label: '위반제품순', value: 'violation-products' },
+  { label: '최신순', value: 'recent-order' },
+  { label: '추천순', value: 'recommend-order' },
 ];
 
 function FavoritePage() {
   const { register, watch } = useForm({
     defaultValues: {
-      filter: 'view',
+      filter: 'viewCnt-order',
     },
   });
 
-  const { favoriteList, hasNextPage, loadMore } = useFavoriteList();
-
-  // TODO: 저장한 제품이 없을 경우 디자인 필요
+  const { favoriteList, hasNextPage, loadMore } = useFavoriteList(watch('filter') as SearchFilterType);
 
   return (
     <>
@@ -46,7 +47,7 @@ function FavoritePage() {
       <Spacing size={12} />
       <main className={cx('mainContainer', 'main')}>
         <div>
-          <SearchBar />
+          {/* <SearchBar /> */}
           <div className={cx('filterBox')}>
             <Text typography="t6" color="gray400">{`총 ${favoriteList.length}개`}</Text>
             <Dropdown
@@ -80,4 +81,4 @@ function FavoritePage() {
   );
 }
 
-export default FavoritePage;
+export default withAuth(FavoritePage);

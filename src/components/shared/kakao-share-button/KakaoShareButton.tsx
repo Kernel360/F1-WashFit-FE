@@ -7,7 +7,8 @@ import useKakaoShare from '@hooks/useKakaoShare';
 import KakaoScript from '@shared/kakao-script/KakaoScript';
 
 function KakaoShareButton() {
-  const pathName = usePathname();
+  const pathName = usePathname().substring(1);
+
   const containerId = useKakaoShare('#kakao-link-btn', process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY!, pathName);
 
   return (

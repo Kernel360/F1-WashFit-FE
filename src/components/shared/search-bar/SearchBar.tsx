@@ -1,6 +1,8 @@
+/* eslint-disable no-param-reassign */
+
 'use client';
 
-import { useState } from 'react';
+import { forwardRef } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -12,13 +14,13 @@ import styles from './SearchBar.module.scss';
 
 const cx = classNames.bind(styles);
 
-function SearchBar({ isShadow = false }:{ isShadow?:boolean }) {
-  const [keyword, setKeyword] = useState<string>('');
-  const handleSearch = () => {
-    // eslint-disable-next-line no-console
-    console.log('검색완료');
-  };
+interface SearchBarProps {
+  isShadow?: boolean
+  handleSearch: () => void
+}
 
+// eslint-disable-next-line max-len
+const SearchBar = forwardRef<HTMLInputElement, SearchBarProps>(({ isShadow = false, handleSearch }, ref) => {
   return (
     <form
       className={cx('container', { shadow: isShadow })}
@@ -33,16 +35,22 @@ function SearchBar({ isShadow = false }:{ isShadow?:boolean }) {
         name="q"
         placeholder="검색어를 입력하세요."
         onKeyUp={(e) => { return e.key === 'Enter' && handleSearch(); }}
-        onChange={(e) => { return setKeyword(e.target.value); }}
-        value={keyword}
+        ref={ref}
       />
-      {keyword.length > 0 && (
-      <button aria-label="전체 삭제 버튼" onClick={() => { return setKeyword(''); }}>
-        <Delete />
+      <button
+        type="button"
+        aria-label="전체 삭제 버튼"
+        onClick={() => {
+          if (ref != null && typeof ref !== 'function') {
+            ref.current!.value = '';
+          }
+        }}
+        style={{ cursor: 'pointer' }}
+      >
+        <Delete fillColor="gray300" />
       </button>
-      )}
     </form>
   );
-}
+});
 
 export default SearchBar;

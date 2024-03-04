@@ -2,12 +2,12 @@ import { useCallback } from 'react';
 
 import { useInfiniteQuery } from '@tanstack/react-query';
 
-import { HomeSortType } from '@components/home/filer-group/types/filterGroup.type';
+import { SearchFilterType } from '@/constants/searchByMap';
 import { getProductList } from '@remote/api/requests/home/home.get.api';
 
 const PAGE_SIZE = 10;
 
-function useProductList(sortType: HomeSortType = 'recent-order') {
+function useProductList(sortType: SearchFilterType = 'recent-order') {
   const {
     data: productList, isLoading, fetchNextPage, isFetching, hasNextPage = false,
   } = useInfiniteQuery({

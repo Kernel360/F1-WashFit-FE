@@ -1,10 +1,10 @@
 import { ICommon } from './common';
 
 export interface IBanner {
-  id: number
-  link: string
+  productNo: number
   imageSource: string
   alt: string
+  item: string
 }
 
 export interface IRecommendProducts extends IBanner {

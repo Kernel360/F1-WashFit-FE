@@ -41,7 +41,7 @@ function CarDetails({
                 key={option.codeNo}
                 type="additionalInfo"
                 label={option.description}
-                value={option.codeName}
+                value={option.codeNo}
                 {...register(option.upperName, {
                   required: true,
                 })}

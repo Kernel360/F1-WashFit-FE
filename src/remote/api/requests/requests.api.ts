@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios';
 
-import { axiosInstance } from '@remote/api/instance.api';
+import { instance } from '@remote/api/instance.api';
 
 /* get 요청 */
 export const getRequest = async <T>(
   url: string,
   config?: AxiosRequestConfig,
 ): Promise<T> => {
-  const response = await axiosInstance.get<T>(
+  const response = await instance.get<T>(
     url,
     config as InternalAxiosRequestConfig,
   );
@@ -21,7 +21,7 @@ export const postRequest = async <T, D>(
   data?: D,
   config?: AxiosRequestConfig,
 ): Promise<T> => {
-  const response = await axiosInstance.post<T>(
+  const response = await instance.post<T>(
     url,
     data,
     config as InternalAxiosRequestConfig,
@@ -34,7 +34,7 @@ export const deleteRequest = async <T>(
   url: string,
   config?: AxiosRequestConfig,
 ): Promise<T> => {
-  const response = await axiosInstance.delete<T>(
+  const response = await instance.delete<T>(
     url,
     config as InternalAxiosRequestConfig,
   );
@@ -47,7 +47,7 @@ export const putRequest = async <T, D>(
   data: D,
   config?: AxiosRequestConfig,
 ): Promise<T> => {
-  const response = await axiosInstance.put<T>(
+  const response = await instance.put<T>(
     url,
     data,
     config as InternalAxiosRequestConfig,
@@ -61,7 +61,7 @@ export const patchRequest = async <T, D>(
   data: D,
   config?: AxiosRequestConfig,
 ): Promise<T> => {
-  const response = await axiosInstance.put<T>(
+  const response = await instance.put<T>(
     url,
     data,
     config as InternalAxiosRequestConfig,

@@ -11,11 +11,15 @@ export interface ISignUp extends ISignIn {
   age: string
 }
 
-export type FindId = Pick<ISignUp, 'email'>;
+export interface IUpdateProfile {
+  gender: string
+  age: string
+}
 
-export type FindPassword = Pick<ISignUp, 'id'>;
-
-export type ChangePassword = Pick<ISignUp, 'password'>;
+export interface IResetPassword {
+  token: string
+  password: string
+}
 
 // 로그인 성공시 res
 export interface IUserInfo {
@@ -32,11 +36,13 @@ export interface IUserInfo {
   password: null
 }
 
-export type UserInfoType = ICommon<IUserInfo>;
-
 // refreshToken res
 export interface IRefreshToken {
   jwtToken: string
 }
 
+export type FindId = Pick<ISignUp, 'email'>;
+export type FindPassword = Pick<ISignUp, 'id'>;
+export type ChangePassword = Pick<ISignUp, 'password'>;
+export type UserInfoType = ICommon<IUserInfo>;
 export type RefreshTokenType = ICommon<IRefreshToken>;
