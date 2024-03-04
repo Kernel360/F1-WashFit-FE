@@ -2,7 +2,7 @@
 
 'use client';
 
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import CarColorPicker from '@components/additional-info/car-details/CarColorPicker';
@@ -34,9 +34,13 @@ function CarDetailsPage() {
     register, getValues, formState: { dirtyFields },
   } = useForm();
 
-  const onNext = () => {
+  const onNext = useCallback(() => {
     setStep((currentStep) => { return currentStep + 1; });
-  };
+  }, []);
+
+  const onBack = useCallback(() => {
+    setStep((currentStep) => { return currentStep - 1; });
+  }, []);
 
   // eslint-disable-next-line @typescript-eslint/require-await
   const onSubmit = async () => {
@@ -64,7 +68,7 @@ function CarDetailsPage() {
     <>
       {step <= 5 && (
         <>
-          <Header />
+          <Header stepBack={step > 1 ? onBack : undefined} />
           <Spacing size={16} />
           <ProgressBar progressCount={5} currentStep={step} />
           <Spacing size={32} />
