@@ -40,8 +40,9 @@ function CarWashDetailsPage() {
     if (step === 1) {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       router.push('/my-page');
+    } else {
+      setStep((currentStep) => { return currentStep - 1; });
     }
-    setStep((currentStep) => { return currentStep - 1; });
   }, [router, step]);
 
   // eslint-disable-next-line @typescript-eslint/require-await
