@@ -5,7 +5,7 @@
 import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 
 import CarColorPicker from '@components/additional-info/car-details/CarColorPicker';
 import CarDetails from '@components/additional-info/car-details/CarDetails';
@@ -45,9 +45,8 @@ function CarDetailsPage() {
     if (step === 1) {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
       router.push('/my-page');
-    } else {
-      setStep((currentStep) => { return currentStep - 1; });
     }
+    setStep((currentStep) => { return currentStep - 1; });
   }, [router, step]);
 
   // eslint-disable-next-line @typescript-eslint/require-await
