@@ -24,7 +24,7 @@ const cx = classNames.bind(styles);
 
 const options = [
   { label: '조회순', value: 'viewCnt-order' },
-  { label: '위반제품순', value: 'violation-products' },
+  { label: '특이사항', value: 'violation-products' },
   { label: '최신순', value: 'recent-order' },
   { label: '추천순', value: 'recommend-order' },
 ];
