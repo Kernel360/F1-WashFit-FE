@@ -39,10 +39,10 @@ function ProductArticle({ isRow = false, itemData }: ProductArticleProps) {
           />
         </div>
         <div className={cx('infoBox')}>
-          <Text className={cx('ellipsis')} typography="t8" color="primary500">{itemData.brand}</Text>
+          <Text className={cx('ellipsis')} typography="t8" color="primary500">{itemData.companyName}</Text>
           <Text className={cx('ellipsis')} typography="t6" color="gray900">{itemData.productName}</Text>
           <div>
-            <Text typography="t7" color="gray500">{itemData.upperItem}</Text>
+            <Text typography="t7" color="gray500">{itemData.item}</Text>
             <Heart width={16} height={14} color="gray400" />
           </div>
         </div>

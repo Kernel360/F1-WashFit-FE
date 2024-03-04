@@ -25,6 +25,8 @@ export interface IProduct {
   createdBy: string
   modifiedAt: string
   modifiedBy: string
+  companyName: string
+  item: string
 }
 
 export interface IProductContent {
