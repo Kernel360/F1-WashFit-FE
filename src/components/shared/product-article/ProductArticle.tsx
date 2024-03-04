@@ -1,3 +1,5 @@
+import { useCallback } from 'react';
+
 import classNames from 'classnames/bind';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -17,13 +19,40 @@ const cx = classNames.bind(styles);
 const safeIcon = '/assets/icons/safe.png';
 const warningIcon = '/assets/icons/warning.png';
 
+type Type = {
+  [key: string]: {
+    [key: number]: string
+  }
+};
+
+const TYPE: Type = {
+  세정제: {
+    0: '/assets/세정제(1).webp',
+    1: '/assets/세정제(2).webp',
+    2: '/assets/세정제(3).webp',
+    3: '/assets/세정제(4).webp',
+    4: '/assets/세정제(5).webp',
+  },
+  코팅제: {
+    0: '/assets/코팅제(1).webp',
+    1: '/assets/코팅제(2).webp',
+    2: '/assets/코팅제(3).webp',
+    3: '/assets/코팅제(4).webp',
+    4: '/assets/코팅제(5).webp',
+  },
+};
+
 function ProductArticle({ isRow = false, itemData }: ProductArticleProps) {
+  const getRandomNumber = useCallback(() => {
+    return Math.floor(Math.random() * 5); // 0 이상 5 미만의 난수를 생성하고 소수점 이하 버림
+  }, []);
   return (
     <Link href={`/product/${itemData.productNo}`}>
       <article className={cx('container', { row: isRow })}>
         <div className={cx('imgBox')}>
           <Image
-            src={itemData.imageSource ?? '/assets/productList.webp'}
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+            src={itemData.item === '코팅제' ? TYPE.코팅제[getRandomNumber()] : TYPE.세정제[getRandomNumber()]}
             alt="제품 이미지"
             width={0}
             height={0}
