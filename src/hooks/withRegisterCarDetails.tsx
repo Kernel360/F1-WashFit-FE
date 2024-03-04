@@ -32,6 +32,7 @@ function withRegisterCarDetails<Props extends WithCarInfoProps>(
             router.push('/car-details');
           }
         }
+        return null;
       }
     }, [router]);
 

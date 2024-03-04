@@ -61,7 +61,7 @@ export const patchRequest = async <T, D>(
   data: D,
   config?: AxiosRequestConfig,
 ): Promise<T> => {
-  const response = await instance.put<T>(
+  const response = await instance.patch<T>(
     url,
     data,
     config as InternalAxiosRequestConfig,
