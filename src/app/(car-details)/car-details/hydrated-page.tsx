@@ -5,15 +5,7 @@
 import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 import { useRouter } from 'next/navigation';
-=======
-import { useRouter } from 'next/router';
->>>>>>> e79799f (fix: 차량 정보 뒤로 가기 기능 추가)
-=======
-import { useRouter } from 'next/navigation';
->>>>>>> 0a1c9d3 (fix: 상세 등록 뒤로 가기 기능 수정)
 
 import CarColorPicker from '@components/additional-info/car-details/CarColorPicker';
 import CarDetails from '@components/additional-info/car-details/CarDetails';
