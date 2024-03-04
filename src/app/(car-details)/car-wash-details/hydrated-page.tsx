@@ -5,6 +5,8 @@
 import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { useRouter } from 'next/router';
+
 import CarDetails from '@components/additional-info/car-details/CarDetails';
 import DetailsLoading from '@components/additional-info/details-loading/DetailsLoading';
 import { ICarWashDetails } from '@remote/api/types/additional-info';
@@ -23,6 +25,7 @@ function CarWashDetailsPage() {
   const { data: carWashInterestData } = useCarWashInterest();
   const { mutate } = useRegisterCarWashDetails();
   const [step, setStep] = useState(1);
+  const router = useRouter();
 
   const {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -34,8 +37,13 @@ function CarWashDetailsPage() {
   }, []);
 
   const onBack = useCallback(() => {
-    setStep((currentStep) => { return currentStep - 1; });
-  }, []);
+    if (step === 1) {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      router.push('/my-page');
+    } else {
+      setStep((currentStep) => { return currentStep - 1; });
+    }
+  }, [router, step]);
 
   // eslint-disable-next-line @typescript-eslint/require-await
   const onSubmit = async () => {
