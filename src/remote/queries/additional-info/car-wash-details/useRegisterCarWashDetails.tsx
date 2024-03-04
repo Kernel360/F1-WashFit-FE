@@ -10,7 +10,7 @@ function useRegisterCarWashDetails() {
   return useMutation({
     mutationFn: postCarWashDetails,
     onSuccess: () => {
-      router.push('/');
+      router.push('/my-page');
       toast.success('등록을 완료하였습니다!');
     },
     onError: () => {

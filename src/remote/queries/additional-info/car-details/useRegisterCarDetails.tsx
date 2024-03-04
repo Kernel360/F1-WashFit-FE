@@ -10,7 +10,7 @@ function useRegisterCarDetails() {
   return useMutation({
     mutationFn: postCarDetails,
     onSuccess: () => {
-      router.push('/');
+      router.push('/my-page');
       toast.success('등록을 완료하였습니다!');
     },
     onError: () => {
