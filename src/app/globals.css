@@ -27,10 +27,14 @@
   /* -------------- z-index -------------- */
   --header-zindex: 2;
 <<<<<<< HEAD
+<<<<<<< HEAD
   --bottomnav-zindex: 10;
 =======
   --bottomnav-zindex: 2;
 >>>>>>> c8e1b54 (design: bottomNav z-index 수정)
+=======
+  --bottomnav-zindex: 10;
+>>>>>>> 38dd8a2 (design: bottomNav z-index 수정)
   --dimmed-zindex: 10;
   --modal-zindex: 11;
   --loader-zindex: 12;
