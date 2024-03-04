@@ -24,7 +24,33 @@ import styles from './page.module.scss';
 
 const cx = classNames.bind(styles);
 
+type Type = {
+  [key: string]: {
+    [key: number]: string
+  }
+};
+
+const TYPE: Type = {
+  세정제: {
+    0: '/assets/세정제(1).webp',
+    1: '/assets/세정제(2).webp',
+    2: '/assets/세정제(3).webp',
+    3: '/assets/세정제(4).webp',
+    4: '/assets/세정제(5).webp',
+  },
+  코팅제: {
+    0: '/assets/코팅제(1).webp',
+    1: '/assets/코팅제(2).webp',
+    2: '/assets/코팅제(3).webp',
+    3: '/assets/코팅제(4).webp',
+    4: '/assets/코팅제(5).webp',
+  },
+};
+
 function ProductDetailsPage() {
+  const getRandomNumber = useCallback(() => {
+    return Math.floor(Math.random() * 5); // 0 이상 5 미만의 난수를 생성하고 소수점 이하 버림
+  }, []);
   const path = usePathname();
   let productNo = Number(path.split('/').at(-1));
   const [type, setType] = useState('info');
@@ -59,13 +85,18 @@ function ProductDetailsPage() {
     usagePrecaution,
     firstAid,
     violationInfo,
+    item,
   } = productDetailsData.value;
 
   return (
     <>
       <Header type="product" className={cx('product')} />
       <div style={{ aspectRatio: 1, position: 'relative' }}>
-        <Image src="/assets/product.png" alt="상품 이미지" fill />
+        <Image
+          src={item === '코팅제' ? TYPE.코팅제[getRandomNumber()] : TYPE.세정제[getRandomNumber()]}
+          alt="상품 이미지"
+          fill
+        />
       </div>
       <Flex direction="column" className={cx('productInfo')}>
         <Text color="primary500" typography="t6">{brand}</Text>
