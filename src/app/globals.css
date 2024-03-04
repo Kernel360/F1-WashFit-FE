@@ -26,6 +26,7 @@
 
   /* -------------- z-index -------------- */
   --header-zindex: 2;
+  --bottomnav-zindex: 2;
   --dimmed-zindex: 10;
   --modal-zindex: 11;
   --loader-zindex: 12;
