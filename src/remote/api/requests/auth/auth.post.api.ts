@@ -3,7 +3,7 @@ import {
   FindId, FindPassword, RefreshTokenType, ISignIn, ISignUp, UserInfoType, IResetPassword,
 } from '../../types/auth';
 import { ICommon } from '../../types/common';
-import { postRequest, putRequest } from '../requests.api';
+import { postRequest } from '../requests.api';
 
 export const signup = async ({
   id, password, email, gender, age,
@@ -66,7 +66,7 @@ export const changePassword = async ({
 export const resetPassword = async ({
   password, token = '',
 }: IResetPassword) => {
-  const response = await putRequest<null, IResetPassword>('/member/reset-password', {
+  const response = await postRequest<null, IResetPassword>('/member/reset-password', {
     password, token,
   });
 
