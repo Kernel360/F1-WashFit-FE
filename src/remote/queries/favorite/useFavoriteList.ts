@@ -32,7 +32,7 @@ function useFavoriteList(sortType: SearchFilterType = 'recent-order') {
       );
     },
     onError: (error: any) => {
-      if (error.response.status === 401) {
+      if (error.response.status === 400 || error.response.status === 401) {
         router.push('/login');
       }
     },
