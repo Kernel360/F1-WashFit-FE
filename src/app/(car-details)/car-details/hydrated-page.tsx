@@ -5,6 +5,8 @@
 import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+import { useRouter } from 'next/router';
+
 import CarColorPicker from '@components/additional-info/car-details/CarColorPicker';
 import CarDetails from '@components/additional-info/car-details/CarDetails';
 import DetailsLoading from '@components/additional-info/details-loading/DetailsLoading';
@@ -28,6 +30,7 @@ function CarDetailsPage() {
   const { data: carParkingData, isLoading: isCarParkingLoading } = useCarParking();
   const { mutate } = useRegisterCarDetails();
   const [step, setStep] = useState(1);
+  const router = useRouter();
 
   const {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -39,8 +42,13 @@ function CarDetailsPage() {
   }, []);
 
   const onBack = useCallback(() => {
-    setStep((currentStep) => { return currentStep - 1; });
-  }, []);
+    if (step === 1) {
+      // eslint-disable-next-line @typescript-eslint/no-floating-promises
+      router.push('/my-page');
+    } else {
+      setStep((currentStep) => { return currentStep - 1; });
+    }
+  }, [router, step]);
 
   // eslint-disable-next-line @typescript-eslint/require-await
   const onSubmit = async () => {
