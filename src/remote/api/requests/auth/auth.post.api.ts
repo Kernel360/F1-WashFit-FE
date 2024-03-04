@@ -55,7 +55,7 @@ export const findPassword = async ({
 export const changePassword = async ({
   password,
 }: ChangePassword) => {
-  const response = await putRequest<null, ChangePassword>('/mypage/change-password', {
+  const response = await postRequest<null, ChangePassword>('/mypage/change-password', {
     password,
   });
 
