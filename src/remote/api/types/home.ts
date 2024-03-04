@@ -64,6 +64,7 @@ export interface IProductDetails extends IProduct {
   productType: string
   manufactureType: string
   manufactureMethod: string
+  violationInfo: string
   weight: string
   mainSubstance: string
   grade: number

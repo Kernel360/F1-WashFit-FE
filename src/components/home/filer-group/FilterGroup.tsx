@@ -16,7 +16,7 @@ function FilterGroup({ setFilter }: {
   return (
     <Flex justify="space-between" align="center" gap={8}>
       <Radio label="조회순" name="filter" type="filter" value="viewCnt-order" defaultChecked onChange={handleRadioValue} />
-      <Radio label="위반제품" name="filter" type="filter" value="violation-products" onChange={handleRadioValue} />
+      <Radio label="특이사항" name="filter" type="filter" value="violation-products" onChange={handleRadioValue} />
       <Radio label="추천순" name="filter" type="filter" value="recommend-order" onChange={handleRadioValue} />
       <Radio label="최신순" name="filter" type="filter" value="recent-order" onChange={handleRadioValue} />
     </Flex>
