@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ComponentType, useEffect } from 'react';
+import { toast } from 'react-toastify';
 
 import { useRouter } from 'next/navigation';
 
@@ -17,7 +18,8 @@ function withAuth<Props = Record<string, never>>(
 
     useEffect(() => {
       if (userId == null) {
-        router.push('/login');
+        router.push('/');
+        toast.info('로그인 해주세요.');
       }
     }, [userId, router]);
 
