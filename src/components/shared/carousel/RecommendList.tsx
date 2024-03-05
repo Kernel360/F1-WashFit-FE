@@ -9,6 +9,8 @@ import Link from 'next/link';
 import { RecommendProductsType } from '@remote/api/types/home';
 import Text from '@shared/text/Text';
 
+import Spacing from '../spacing/Spacing';
+
 const settings = {
   infinite: true,
   slidesToShow: 4,
@@ -19,6 +21,7 @@ const settings = {
   arrows: false,
   speed: 2000,
   autoplaySpeed: 5000,
+  swipeToSlide: true,
 };
 
 // eslint-disable-next-line max-len
@@ -29,16 +32,15 @@ function RecommendList({ recommendProductsData }: { recommendProductsData: Recom
     <Slider {...settings} className="recommend-slide">
       {recommendList?.map((slide) => {
         return (
-          <Link href={`/product/${slide.productNo.toString()}`} key={slide.productNo}>
-            <div className="img-container">
-              <Image
-                // src={slide.imageSource}
-                src={slide.item === '코팅제' ? '/assets/코팅제.webp' : '/assets/세정제.webp'}
-                alt={slide.alt}
-                width={60}
-                height={60}
-              />
-            </div>
+          <Link href={`/product/${slide.productNo.toString()}`} key={slide.productNo} className="imageContainer">
+            <Image
+              // src={slide.imageSource}
+              src={slide.item === '코팅제' ? '/assets/코팅제.webp' : '/assets/세정제.webp'}
+              alt={slide.alt}
+              width={85}
+              height={85}
+            />
+            <Spacing size={4} />
             <Text color="gray800" typography="t7" className="ellipsis" css={{ height: '35px' }}>{slide.productName}</Text>
           </Link>
         );
