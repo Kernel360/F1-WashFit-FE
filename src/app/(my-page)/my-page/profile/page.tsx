@@ -33,8 +33,8 @@ function ProfilePage() {
       return {
         id: profile?.value.id,
         email: profile?.value.email,
-        gender: profile?.value.gender,
-        age: profile?.value.age,
+        gender: profile?.value.gender === 'OTHERS' ? 'MALE' : profile?.value.gender,
+        age: profile?.value.age === 'AGE_99' ? 'AGE_20' : profile?.value.age,
       };
     }, [profile]),
     mode: 'onBlur',
