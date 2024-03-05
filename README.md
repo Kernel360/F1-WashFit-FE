@@ -139,7 +139,7 @@ Washfit는 차를 깨끗하게 만드는 "세차 용품"에 대한 기본 정보
 - throttling을 이용한 무분별한 스크롤 이벤트 방지
 - 웹 폰트 다운로드 시간을 줄이기 위해 woff2 확장자 추가 및 3초 이상 폰트가 다운로드 되지 못한 경우, 기존 폰트를 사용하도록 fallback 설정
 - 필요한 시점에 이미지를 불러오도록 lazy loading을 적용 및 layout shift를 방지하기 위한 Next.js image 태그 적용
-- 렌더링 시 불필요한 연산을 줄이기 위해 useCallback, useMemo 사용
+- 렌더링 시 불필요한 연산을 줄이기 위해 useCallback, useMemo, React.memo 사용
 - dynamic import를 사용하여 빌드 타임이 아닌 런타임에서 컴포넌트를 랜더링 하도록 코드 스플리팅 적용
 - react-hook-form을 사용하여 불필요한 리랜더링 방지 및 마운팅 속도 증가
 - 불필요한 api 요청을 방지하기 위해 tanstack-query를 활용한 데이터 캐싱
