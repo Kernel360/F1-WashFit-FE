@@ -19,7 +19,6 @@ function Home() {
     <>
       <Header className={cx('home')} type="home" />
       <main className={cx('mainContainer')}>
-        <Spacing size={8} />
         <Banner bannerData={MOCK_BANNER_DATA} />
         <Spacing size={32} />
         <div className={cx('recommendWrapper')}>
@@ -27,7 +26,7 @@ function Home() {
           <Spacing size={16} />
           <RecommendListContainer />
         </div>
-        <Spacing size={35} />
+        <Spacing size={32} />
         <div className={cx('productListContainer')}>
           <Text typography="t4" bold>WashFit 랭킹</Text>
           <Spacing size={16} />
