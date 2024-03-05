@@ -35,8 +35,8 @@ function ProfilePage() {
       return {
         id: profile?.value.id,
         email: profile?.value.email,
-        gender: profile?.value.gender === 'OTHERS' ? 'DEFAULT' : profile?.value.gender,
-        age: profile?.value.age === 'AGE_99' ? 'DEFAULT' : profile?.value.age,
+        gender: profile?.value.gender === 'OTHERS' ? 'MALE' : profile?.value.gender,
+        age: profile?.value.age === 'AGE_99' ? 'AGE_20' : profile?.value.age,
       };
     }, [profile]),
     mode: 'onBlur',
@@ -53,8 +53,8 @@ function ProfilePage() {
     reset({
       id: profile?.value.id,
       email: profile?.value.email,
-      gender: profile?.value.gender === 'OTHERS' ? 'DEFAULT' : profile?.value.gender,
-      age: profile?.value.age === 'AGE_99' ? 'DEFAULT' : profile?.value.age,
+      gender: profile?.value.gender === 'OTHERS' ? 'MALE' : profile?.value.gender,
+      age: profile?.value.age === 'AGE_99' ? 'AGE_20' : profile?.value.age,
     });
   }, [profile, reset]);
 

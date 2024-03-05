@@ -1,7 +1,6 @@
 export const GENDER_MAP = {
   MALE: '남성',
   FEMALE: '여성',
-  DEFAULT: '수정 필요',
 } as const;
 
 export const AGE_MAP = {
@@ -10,7 +9,6 @@ export const AGE_MAP = {
   AGE_40: '40대',
   AGE_50: '50대',
   AGE_60: '60대 이상',
-  DEFAULT: '수정 필요',
 } as const;
 
 export type GenderType = keyof typeof GENDER_MAP;
