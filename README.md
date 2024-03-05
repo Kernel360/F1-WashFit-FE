@@ -1,29 +1,75 @@
+<div align="center">
+  
+  ![header](https://capsule-render.vercel.app/api?type=waving&height=300&color=0075FF&text=Washfit&reversal=false&textBg=false&fontColor=EEEEEE)
+  
+</div>
+
 # 🚗 안전한 세차용품 정보 제공 플랫폼
 
 ## 🔗 프로젝트 링크
 
-- [배포 URL](https://dev.washfit.site/)
+- [운영 서버 URL](https://www.washfit.site/)
+- [개발 서버 URL](https://dev.washfit.site/)
 - [스토리북 URL](https://www.chromatic.com/library?appId=659a0cf1b613430cc09b3672)
 - [피그마 URL](https://www.figma.com/file/B4wGiQ4M4k3mtcSyyK0ATf/washpedia?type=design&node-id=241-4547&mode=design&t=IuuBM2gGXeTFVTIW-0)
 - [노션 URL](https://www.notion.so/Wash-pedia-0d4a31ff248349b3a3ea202e048303d5)
 
 <br />
 
-## 📖 프로젝트 소개
+## 📖 개요
 
-- Washpedia는 차를 깨끗하게 만드는 "세차 용품"에 대한 기본 정보와 유해성 유무를 쉽게 찾아볼 수 있는 웹 서비스입니다.
-- 사용자 정보를 바탕으로 세차용품을 추천 받을 수 있습니다.
-- 주변에 세차장이 어디 있는지, 어떤 후기가 담겨있는지 확인할 수 있습니다.
-- 세차 관련 유튜브 영상을 추천 받을 수 있어요.
+Washfit는 차를 깨끗하게 만드는 "세차 용품"에 대한 기본 정보와 유해성 유무를 쉽게 찾아볼 수 있는 웹 서비스입니다.
 
 <br />
+
+## 🍾 주요 기능 소개
+
+**지도**
+- 카카오 오픈 api을 이용하여 사용자 주변 세차장 위치와 세차장 정보를 볼 수 있습니다.
+- 내 위치로 이동 버튼을 통해 접속 위치로 이동할 수 있습니다.
+
+**즐겨찾기**
+- 사용자가 찜한 세차 용품들을 볼 수 있습니다.
+- 조회순 / 특이사항 / 최신순 / 추천순으로 세차용품들을 필터링 할 수 있습니다.
+
+**홈페이지**
+- 공지사항을 슬라이드로 연속해서 볼 수 있습니다.
+- 마이페이지에서 등록한 정보를 토대로 회원들이 많이 찜한 세차 용품을 추천 받을 수 있습니다
+- 조회순 / 특이사항 / 최신순 / 추천순에 따라 세차 용품을 볼 수 있습니다.
+
+**채널**
+- 10만명 이상의 구독자를 보유한 유명 유튜버 5명을 추려 최신 세차 관련 영상을 추천받으실 수 있습니다.
+
+**검색**
+- 2000개 이상의 세차 용품을 조회순 / 특이사항 / 최신순 / 추천순으로 검색할 수 있어요.
+
+**세차 용품 상세 페이지**
+- 세차 용품의 이미지와 제품명, 브랜드, 업체명, 제품용도, 응급처치 등 다양한 정보를 제공받을 수 있습니다.
+- 사용자들의 직접적인 경험을 리뷰를 통해 확인할 수 있어요.
+- 찜 버튼을 이용해 나만의 세차 용품을 즐겨찾기 페이지에 담을 수 있습니다.
+- 카카오 공유하기 기능을 이용해 타인과 세차용품을 공유할 수 있습니다.
+
+**인증**
+- 아이디 / 비밀번호 / 이메일 / 성별 / 연령층을 토대로 회원가입 할 수 있습니다.
+- 회원가입된 회원 정보를 이용하여 로그인 할 수 있습니다.
+- 카카오 계정을 이용하여 로그인 할 수 있습니다.
+- 아이디를 잊어버렸다면 가입된 이메일을 통해 아이디를 찾을 수 있습니다.
+- 비밀번호를 잊어버렸다면 가입된 아이디를 통해 비밀번호를 찾을 수 있습니다.
+
+**마이페이지**
+- 내 프로필을 수정할 수 있습니다.
+- 5단계의 차량 정보와 3단계의 세차 용품의 정보를 입력하여 회원들이 많이 사용하는 세차 용품을 추천 받을 수 있습니다.
+- 문의하기를 이용하여 사용자가 불편했던 점이나 개선하고싶은 사항을 전달 받을 수 있습니다.
+- 비밀번호 변경을 할 수 있습니다.
+
 
 ## 🕹️ 기술적 성취
 
 - 백엔드 팀과 비동기적 소통 및 협업 경험
-- 기획부터 디자인까지 참여한 경험
-- ci/cd 배포,빌드,테스트 자동화 파이프 라인 구축
+- CI/CD 배포,빌드,테스트 자동화 파이프 라인 구축
 - storybook을 이용한 시각적 회귀 테스트 및 vitest, msw를 이용한 테스트 코드 작성
+- 프로젝트 설정부터 실제 운영까지의 경험
+- 로컬 / 개발 / 운영 서버를 분리하여 작업한 경험
 
 <br />
 
@@ -63,6 +109,7 @@
 ![Notion](https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white)
 ![Slack](https://img.shields.io/badge/slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
+![Postman](https://img.shields.io/badge/postman-FF6C37.svg?style=for-the-badge&logo=postman&logoColor=white)
 
 **버전 관리**<br />
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
@@ -76,11 +123,14 @@
 ![Swiper](https://img.shields.io/badge/swiper-6332F6?style=for-the-badge&logo=swiper&logoColor=white)
 
 **배포**<br>
+![AMAZON EC2](https://img.shields.io/badge/AMAZON_EC2-FF9900?style=for-the-badge&logo=amazonec2&logoColor=white)
+![DOCKER](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
 ![Chromatic](https://img.shields.io/badge/chromatic-FC521F?style=for-the-badge&logo=chromatic&logoColor=white)
 
 **그 외**<br />
 ![Eslint](https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white)
+![Style_Lint](https://img.shields.io/badge/style_lint-263238?style=for-the-badge&logo=stylelint&logoColor=white)
 
 <br />
 
@@ -104,24 +154,11 @@
   - msw 보일러 플레이트 제작
   - pretandard 폰트 설정
   - 컬러 팔레트 제작
-  - ci / cd workflow 작성
-  - vercel 배포
     
-- 20개 공통 컴포넌트 제작
-  - [스토리북 URL](https://www.chromatic.com/library?appId=659a0cf1b613430cc09b3672) <- 참고해주세요!
+- 25개이상의 공통 컴포넌트 제작
+  - [스토리북 URL](https://www.chromatic.com/library?appId=659a0cf1b613430cc09b3672)
+ 
     
-- 페이지 <- 모바일 환경에서 봐주세요!
-  - 메인 페이지 UI 제작 [홈 페이지](https://f1-wash-pedia-fe.vercel.app)
-  - 회원 가입 페이지 UI 및 테스트 코드 작성 [회원가입 페이지](https://f1-wash-pedia-fe.vercel.app/signup)
-  - 로그인 페이지 UI 제작 [로그인 페이지](https://f1-wash-pedia-fe.vercel.app/login)
-
-## 🖐️ 질문 사항
-1. 스토리북을 사용하고 있지만 단순히 props만 바꿔가며 변경된 UI만 볼 수 있도록 테스팅을 하고 있는데 현업에선 어떤 식으로 스토리북을 사용하나요?
-2. next.js에서 private router 구현하려면 HOC를 이용하여 컴포넌트를 감싸 유저가 가진 token을 이용하여 유효한 회원인지 판단하는 로직 일반적인가요? 그게 아니라면
-어떤 식으로 구현하는 게 좋을까요?
-3. swiper.js를 사용하여 캐러셀을 제작했는데 초기 랜더링 시 layout shift가 발생하는 문제점이 있어요. 이 문제점을 해결할 수 있는 좋은 방법이 있을까요?
-   
-<img src="https://github.com/Kernel360/F1-WashPedia-FE/assets/103362820/db7a22ee-b51a-45f9-8ec4-52e7d4e515d6" width="300" height="400"/>
 
 
 
