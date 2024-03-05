@@ -7,10 +7,6 @@ export const GENDER_OPTIONS = [
     label: '여성',
     value: 'FEMALE',
   },
-  {
-    label: '수정 필요',
-    value: 'DEFAULT',
-  },
 ];
 
 export const AGE_OPTIONS = [
@@ -32,9 +28,5 @@ export const AGE_OPTIONS = [
   {
     label: '60대 이상',
     value: 'AGE_60',
-  },
-  {
-    label: '수정 필요',
-    value: 'DEFAULT',
   },
 ];
