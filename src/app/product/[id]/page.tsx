@@ -15,7 +15,7 @@ import AccordionHeader from '@shared/accordion/header/AccordionHeader';
 import AccordionItem from '@shared/accordion/item/AccordionItem';
 import Flex from '@shared/flex/Flex';
 import Header from '@shared/header/Header';
-import Loader from '@shared/loader/Loader';
+import FullPageLoader from '@shared/loader/FullPageLoader';
 import Radio from '@shared/radio/Radio';
 import Spacing from '@shared/spacing/Spacing';
 import Text from '@shared/text/Text';
@@ -63,9 +63,8 @@ function ProductDetailsPage() {
     productNo = 1;
   }
   const { data: productDetailsData, isLoading } = useProductDetails(productNo);
-
   if (isLoading || !productDetailsData) {
-    return <Loader />;
+    return <FullPageLoader />;
   }
 
   const {
