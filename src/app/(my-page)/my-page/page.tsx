@@ -20,7 +20,7 @@ import styles from './page.module.scss';
 const cx = classNames.bind(styles);
 
 const TOP_MARGIN = 96;
-const BOTTOM_MARGIN = 97;
+const BOTTOM_MARGIN = 110;
 
 function MyProfilePage() {
   const logout = useLoggedOut();
