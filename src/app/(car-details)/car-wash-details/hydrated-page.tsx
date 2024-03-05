@@ -15,7 +15,7 @@ import useCarWashFrequency from '@remote/queries/additional-info/car-wash-detail
 import useCarWashInterest from '@remote/queries/additional-info/car-wash-details/useCarWashInterest';
 import useRegisterCarWashDetails from '@remote/queries/additional-info/car-wash-details/useRegisterCarWashDetails';
 import Header from '@shared/header/Header';
-import Loader from '@shared/loader/Loader';
+import FullPageLoader from '@shared/loader/FullPageLoader';
 import ProgressBar from '@shared/progress-bar/ProgressBar';
 import Spacing from '@shared/spacing/Spacing';
 
@@ -56,7 +56,7 @@ function CarWashDetailsPage() {
     || carWashCostData == null
     || carWashInterestData == null
   ) {
-    return <Loader />;
+    return <FullPageLoader />;
   }
 
   return (

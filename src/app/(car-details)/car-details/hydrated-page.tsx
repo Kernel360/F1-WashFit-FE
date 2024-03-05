@@ -18,7 +18,7 @@ import useCarSegment from '@remote/queries/additional-info/car-details/useCarSeg
 import useCarType from '@remote/queries/additional-info/car-details/useCarType';
 import useRegisterCarDetails from '@remote/queries/additional-info/car-details/useRegisterCarDetails';
 import Header from '@shared/header/Header';
-import Loader from '@shared/loader/Loader';
+import FullPageLoader from '@shared/loader/FullPageLoader';
 import ProgressBar from '@shared/progress-bar/ProgressBar';
 import Spacing from '@shared/spacing/Spacing';
 
@@ -61,7 +61,7 @@ function CarDetailsPage() {
     || isCarColorLoading === true
     || isCarDrivingLoading === true
     || isCarParkingLoading === true) {
-    return <Loader />;
+    return <FullPageLoader />;
   }
 
   if (carSegmentData == null
