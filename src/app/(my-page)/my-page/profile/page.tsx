@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
+
 'use client';
 
 import { useEffect, useMemo } from 'react';
@@ -9,7 +11,7 @@ import {
   AGE_MAP, AgeType, GENDER_MAP, GenderType,
 } from '@constants/dropdownMap';
 import { AGE_OPTIONS, GENDER_OPTIONS } from '@constants/myPage';
-import VALIDATION_MESSAGE_MAP from '@constants/validationMessage';
+import { ISignUp } from '@remote/api/types/auth';
 import useProfile from '@remote/queries/my-page/useProfile';
 import useUpdateProfile from '@remote/queries/my-page/useUpdateProfile';
 import DropdownField from '@shared/dropdown-field/DropdownField';
@@ -25,24 +27,23 @@ function ProfilePage() {
   const { data: profile } = useProfile();
   const { mutate } = useUpdateProfile();
   const {
-    register, watch, reset, formState: {
-      errors, isDirty, isValid,
-    }, getValues,
+    register, watch, reset, handleSubmit, formState: {
+      isDirty, isValid,
+    },
   } = useForm({
     defaultValues: useMemo(() => {
       return {
         id: profile?.value.id,
         email: profile?.value.email,
-        gender: profile?.value.gender,
-        age: profile?.value.age,
+        gender: profile?.value.gender === 'OTHERS' ? 'MALE' : profile?.value.gender,
+        age: profile?.value.age === 'AGE_99' ? 'AGE_20' : profile?.value.age,
       };
     }, [profile]),
     mode: 'onBlur',
   });
 
-  const onSubmit = () => {
-    // eslint-disable-next-line no-console
-    const { gender, age } = getValues();
+  const onSubmit = (profileInfo: Partial<ISignUp>) => {
+    const { gender, age } = profileInfo;
     if (gender != null && age != null) {
       mutate({ gender, age });
     }
@@ -52,8 +53,8 @@ function ProfilePage() {
     reset({
       id: profile?.value.id,
       email: profile?.value.email,
-      gender: profile?.value.gender,
-      age: profile?.value.age,
+      gender: profile?.value.gender === 'OTHERS' ? 'MALE' : profile?.value.gender,
+      age: profile?.value.age === 'AGE_99' ? 'AGE_20' : profile?.value.age,
     });
   }, [profile, reset]);
 
@@ -66,24 +67,14 @@ function ProfilePage() {
           label="아이디"
           required
           placeholder="아이디"
-          {...register('id', {
-            required: true,
-            pattern: VALIDATION_MESSAGE_MAP.id.value,
-          })}
-          hasError={!!errors.id}
-          helpMessage={VALIDATION_MESSAGE_MAP.id.message}
+          {...register('id')}
           readOnly
         />
         <TextField
           label="이메일"
           required
           placeholder="이메일"
-          {...register('email', {
-            required: true,
-            pattern: VALIDATION_MESSAGE_MAP.email.value,
-          })}
-          hasError={!!errors.email}
-          helpMessage={VALIDATION_MESSAGE_MAP.email.message}
+          {...register('email')}
           readOnly
         />
         <Spacing size={12} />
@@ -102,7 +93,7 @@ function ProfilePage() {
           options={AGE_OPTIONS}
           {...register('age')}
         />
-        <FixedBottomButton onClick={onSubmit} type="submit" disabled={!isDirty || !isValid}>변경 사항 저장하기</FixedBottomButton>
+        <FixedBottomButton onClick={handleSubmit(onSubmit)} type="submit" disabled={!isDirty || !isValid}>변경 사항 저장하기</FixedBottomButton>
       </main>
     </>
   );

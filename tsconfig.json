@@ -77,7 +77,10 @@
       ],
       "@tests/*": [
         "src/tests/*"
-      ]
+      ],
+      "@lottie/*": [
+        "src/lottie/*"
+      ],
     }
   },
   "include": [
