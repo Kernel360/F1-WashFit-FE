@@ -8,7 +8,7 @@ import { updateProfile } from '@/remote/api/requests/my-page/myPage.patch.api';
 function useUpdateProfile() {
   const router = useRouter();
   const onSuccess = () => {
-    router.push('/');
+    router.push('/my-page');
     toast.success('회원정보가 수정되었습니다.');
   };
   const onError = () => {
