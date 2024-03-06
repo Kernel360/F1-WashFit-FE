@@ -65,7 +65,7 @@ Washfit는 차를 깨끗하게 만드는 "세차 용품"에 대한 기본 정보
 
 ## 🕹️ 기술적 성취
 
-- 백엔드 팀과 비동기적 소통 및 협업 경험
+- 백엔드팀과 디자이너 간의 비동기적 소통 및 협업 경험
 - CI/CD 배포, 빌드, 테스트 자동화 파이프 라인 구축
 - storybook을 이용한 시각적 회귀 테스트 및 vitest, msw를 이용한 테스트 코드 작성
 - 프로젝트 설정부터 실제 운영까지의 경험
@@ -103,13 +103,13 @@ Washfit는 차를 깨끗하게 만드는 "세차 용품"에 대한 기본 정보
 ![Storybook](https://img.shields.io/badge/storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white)
 ![MockServiceWorker](https://img.shields.io/badge/mock_service_worker-FF6A33?style=for-the-badge&logo=mockserviceworker&logoColor=white)
 ![Testing Library](https://img.shields.io/badge/testing_library-E33332?style=for-the-badge&logo=testinglibrary&logoColor=white)
+![Postman](https://img.shields.io/badge/postman-FF6C37.svg?style=for-the-badge&logo=postman&logoColor=white)
 
 **협업 툴**<br />
 ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
 ![Notion](https://img.shields.io/badge/notion-000000?style=for-the-badge&logo=notion&logoColor=white)
 ![Slack](https://img.shields.io/badge/slack-4A154B?style=for-the-badge&logo=slack&logoColor=white)
 ![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
-![Postman](https://img.shields.io/badge/postman-FF6C37.svg?style=for-the-badge&logo=postman&logoColor=white)
 
 **버전 관리**<br />
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
@@ -165,7 +165,7 @@ Washfit는 차를 깨끗하게 만드는 "세차 용품"에 대한 기본 정보
 - 배포 환경
   - CI/CD 배포,빌드 ,테스트 자동화 파이프 라인 구축
   - vercel과 vultr을 이용한 개발 서버 배포
-  - docker container와 amazon ec2를 이용한 운영 서버 배포
+  - docker와 amazon ec2를 이용한 운영 서버 배포
  
     
 
