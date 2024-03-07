@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { toast } from 'react-toastify';
 
 import axios, {
@@ -21,13 +22,14 @@ export const instance: Axios = axios.create({
 instance.interceptors.request.use(
   (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
     /**
-     * request 직전 공통으로 진행할 작업
-     */
+         * request 직전 공통으로 진행할 작업
+         */
     const token = getCookie('token') as string;
+    const id = getCookie('id') as string;
     if (config && config.headers) {
       if (token) {
-        // eslint-disable-next-line no-param-reassign
         config.headers.Authorization = token;
+        config.headers.id = id;
       }
     }
     if (process.env.NODE_ENV === 'development') {
