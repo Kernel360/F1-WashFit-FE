@@ -16,6 +16,7 @@ function useLogin() {
     const cookieOptions = { path: '/', maxAge: 60 * 15 };
 
     setCookie('token', jwtToken, cookieOptions);
+    setCookie('id', id, cookieOptions);
     dispatch(setUserId({ id, email }));
     router.push('/');
   };

@@ -28,7 +28,7 @@ const cx = classNames.bind(styles);
 
 function LoginPage() {
   const { register, handleSubmit, formState: { isValid } } = useForm<ISignIn>();
-  const { mutate, isError, isSuccess } = useLogin();
+  const { mutate, isError } = useLogin();
 
   const onSubmit = (data: ISignIn) => {
     const {
@@ -38,14 +38,6 @@ function LoginPage() {
       id, password,
     });
   };
-
-  /* -- redux test -- */
-  const userId = useAppSelector((state) => { return state.user.id; });
-  // console.log(userId);
-
-  if (isSuccess) {
-    console.log(userId);
-  }
 
   return (
     <>
