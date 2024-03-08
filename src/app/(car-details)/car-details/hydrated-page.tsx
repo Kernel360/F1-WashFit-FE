@@ -76,7 +76,7 @@ function CarDetailsPage() {
     <>
       {step <= 5 && (
         <>
-          <Header stepBack={step > 1 ? onBack : undefined} />
+          <Header stepBack={step >= 1 ? onBack : undefined} />
           <Spacing size={16} />
           <ProgressBar progressCount={5} currentStep={step} />
           <Spacing size={32} />

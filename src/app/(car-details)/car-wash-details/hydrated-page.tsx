@@ -63,7 +63,7 @@ function CarWashDetailsPage() {
     <>
       {step <= 3 && (
         <>
-          <Header stepBack={step > 1 ? onBack : undefined} />
+          <Header stepBack={step >= 1 ? onBack : undefined} />
           <Spacing size={16} />
           <ProgressBar progressCount={3} currentStep={step} />
           <Spacing size={32} />
