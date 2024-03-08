@@ -19,7 +19,7 @@ import styles from './page.module.scss';
 
 const cx = classNames.bind(styles);
 
-const TOP_MARGIN = 96;
+const TOP_MARGIN = 80;
 const BOTTOM_MARGIN = 110;
 
 function MyProfilePage() {
