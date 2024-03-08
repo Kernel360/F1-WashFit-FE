@@ -20,14 +20,17 @@ function Confirmation({
   options, title, description, topMargin, bottomMargin, isHeader = false,
 }:ConfirmationProps) {
   const router = useRouter();
+
   const mainContainerStyle = {
-    height: `calc(100vh - ${topMargin + bottomMargin + (isHeader ? 44 : 0)}px)`,
+    height: isHeader ? 'calc(100% - 44px' : '100%',
+    paddingTop: topMargin,
+    paddingBottom: bottomMargin,
+
   };
 
   return (
-    <main className="mainContainer">
-      <Spacing size={topMargin} />
-      <section className="confirmationContainer" style={mainContainerStyle}>
+    <main className="mainContainer" style={mainContainerStyle}>
+      <section className="confirmationContainer">
         <div className="titleWrapper">
           <Text typography="t3" bold color="gray900" display="block" textAlign="start">
             {title}
@@ -47,7 +50,6 @@ function Confirmation({
           })}
         </Flex>
       </section>
-      <Spacing size={bottomMargin} />
     </main>
   );
 }
