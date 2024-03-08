@@ -3,7 +3,7 @@ import Confirmation from '@shared/confirmation/Confirmation';
 import Header from '@shared/header/Header';
 
 const TOP_MARGIN = 16;
-const BOTTOM_MARGIN = 66;
+const BOTTOM_MARGIN = 32;
 
 function CompleteFindIdPage() {
   return (
