@@ -25,7 +25,7 @@ function LeftIcon({
           </Link>
         </li>
         <li style={{ marginLeft: '8px' }}>
-          <Link href="https://docs.google.com/forms/d/e/1FAIpQLSd96McWLLj3bR-3OEEIx656x3I_9-u7ifjwViQKlveIRb5QiA/viewform">
+          <Link href="https://docs.google.com/forms/d/e/1FAIpQLSd96McWLLj3bR-3OEEIx656x3I_9-u7ifjwViQKlveIRb5QiA/viewform" target="_blank">
             <Inquire />
           </Link>
         </li>
