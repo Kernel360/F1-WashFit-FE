@@ -37,6 +37,7 @@ function useFavoriteList(sortType: SearchFilterType = 'recent-order') {
       }
     },
     suspense: true,
+    retry: 1,
   });
 
   const favoriteList = data?.pages.flatMap((page) => { return page.value.content; }) || [];
