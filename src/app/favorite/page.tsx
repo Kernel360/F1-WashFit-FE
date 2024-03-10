@@ -67,6 +67,7 @@ function FavoritePage() {
               hasMore={hasNextPage}
               loader={<div className="loader" key={0}>Loading ...</div>}
               inverse={false}
+              style={{ overflow: 'visible' }}
             >
               <div className={cx('productArticleWrapper')}>
                 {favoriteList.map((item) => {

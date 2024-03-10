@@ -78,6 +78,7 @@ function SearchPage() {
           hasMore={hasNextPage}
           loader={<div className="loader" key={0}>Loading ...</div>}
           inverse={false}
+          style={{ overflow: 'visible' }}
         >
           <div className={cx('productArticleContainer')}>
             {productList?.map((item) => {
