@@ -83,7 +83,7 @@ body {
     line-height: 1;
   }
 
-  ol, ul {
+  ol, ul, li {
     list-style: none;
   }
 
@@ -104,7 +104,7 @@ body {
 
   a {
     color: inherit;
-    text-decoration: inherit; /* no underline */
+    text-decoration: none; /* no underline */
   }
 
   button {
@@ -113,6 +113,7 @@ body {
     padding: 0;
     overflow: visible;
     border: none;
+    border-style:none;
     background: transparent;
   
     /* inherit font & color from ancestor */
