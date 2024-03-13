@@ -29,7 +29,7 @@ function Confirmation({
   };
 
   return (
-    <main className="mainContainer" style={mainContainerStyle}>
+    <main className="mainContainer confirmation" style={mainContainerStyle}>
       <section className="confirmationContainer">
         <div className="titleWrapper">
           <Text typography="t3" bold color="gray900" display="block" textAlign="start">
