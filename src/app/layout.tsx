@@ -17,22 +17,30 @@ import ToastProvider from '@providers/ToastProvider';
 export const metadata: Metadata = {
   title: 'washfit',
   description: '안전한 세차용품 정보 제공 플랫폼',
+  verification: {
+    google: 'R8i7olnVmRJVvhQDYihBy18FkU6RpRiTufHwfrAow4E',
+    other: {
+      'naver-site-verification': '34fe521f58e0a8db451162b240ce08cb94cf4736',
+    },
+  },
 };
 
 const pretendard = localFont({
-  src: [{
-    path: './font/PretendardVariable.woff2',
-  },
-  {
-    path: './font/PretendardVariable.ttf',
-  }],
+  src: [
+    {
+      path: './font/PretendardVariable.woff2',
+    },
+    {
+      path: './font/PretendardVariable.ttf',
+    },
+  ],
   display: 'fallback',
 });
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="ko">
@@ -43,9 +51,7 @@ export default function RootLayout({
               <StoreProvider>
                 <ToastProvider>
                   <ModalContextProvider>
-                    <RefreshTokenProvider>
-                      {children}
-                    </RefreshTokenProvider>
+                    <RefreshTokenProvider>{children}</RefreshTokenProvider>
                   </ModalContextProvider>
                 </ToastProvider>
               </StoreProvider>
