@@ -27,11 +27,11 @@ export const metadata: Metadata = {
 
 const pretendard = localFont({
   src: [{
-      path: './font/PretendardVariable.woff2',
-    },
-    {
-      path: './font/PretendardVariable.ttf',
-    }],
+    path: './font/PretendardVariable.woff2',
+  },
+  {
+    path: './font/PretendardVariable.ttf',
+  }],
   display: 'fallback',
 });
 
@@ -51,7 +51,7 @@ export default function RootLayout({
                   <ModalContextProvider>
                     <RefreshTokenProvider>
                       {children}
-                      </RefreshTokenProvider>
+                    </RefreshTokenProvider>
                   </ModalContextProvider>
                 </ToastProvider>
               </StoreProvider>
