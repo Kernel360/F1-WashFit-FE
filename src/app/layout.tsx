@@ -26,21 +26,19 @@ export const metadata: Metadata = {
 };
 
 const pretendard = localFont({
-  src: [
-    {
+  src: [{
       path: './font/PretendardVariable.woff2',
     },
     {
       path: './font/PretendardVariable.ttf',
-    },
-  ],
+    }],
   display: 'fallback',
 });
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="ko">
@@ -51,7 +49,9 @@ export default function RootLayout({
               <StoreProvider>
                 <ToastProvider>
                   <ModalContextProvider>
-                    <RefreshTokenProvider>{children}</RefreshTokenProvider>
+                    <RefreshTokenProvider>
+                      {children}
+                      </RefreshTokenProvider>
                   </ModalContextProvider>
                 </ToastProvider>
               </StoreProvider>
