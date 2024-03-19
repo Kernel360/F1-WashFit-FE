@@ -17,6 +17,12 @@ import ToastProvider from '@providers/ToastProvider';
 export const metadata: Metadata = {
   title: 'washfit',
   description: '안전한 세차용품 정보 제공 플랫폼',
+  verification: {
+    google: 'R8i7olnVmRJVvhQDYihBy18FkU6RpRiTufHwfrAow4E',
+    other: {
+      'naver-site-verification': '34fe521f58e0a8db451162b240ce08cb94cf4736',
+    },
+  },
 };
 
 const pretendard = localFont({
