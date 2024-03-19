@@ -1,80 +1,80 @@
 import { ICommon } from './common';
 
 export interface IBanner {
-  productNo: number
-  imageSource: string
-  alt: string
-  item: string
+  productNo: number;
+  imageSource: string;
+  alt: string;
+  item: string;
 }
 
 export interface IRecommendProducts extends IBanner {
-  productName: string
+  productName: string;
 }
 
 export interface IProduct {
-  productNo: number
-  productName: string
-  barcode: string
-  imageSource: string
-  reportNumber: string
-  safetyStatus: string
-  viewCount: number
-  brand: string
-  upperItem: string
-  createdAt: string
-  createdBy: string
-  modifiedAt: string
-  modifiedBy: string
-  companyName: string
-  item: string
+  productNo: number;
+  productName: string;
+  barcode: string;
+  imageSource: string;
+  reportNumber: string;
+  safetyStatus: string;
+  viewCount: number;
+  brand: string;
+  upperItem: string;
+  createdAt: string;
+  createdBy: string;
+  modifiedAt: string;
+  modifiedBy: string;
+  companyName: string;
+  item: string;
 }
 
 export interface IProductContent {
-  content: IProduct[]
+  content: IProduct[];
 }
 
 export interface IProductPageInfo {
   pageable: {
-    pageNumber: number
-    pageSize: number
-    sort: {
-      empty: boolean
-      sorted: boolean
-      unsorted: boolean
-    }
-    offset: number
-    paged: boolean
-    unpaged: boolean
-  }
-  totalPages: number
-  totalElements: number
-  last: boolean
-  size: number
-  number: number
-  sort: {
-    empty: boolean
-    sorted: boolean
-    unsorted: boolean
-  }
-  numberOfElements: number
-  first: boolean
-  empty: boolean
+    pageNumber: number;
+    pageSize: number;
+    // sort: {
+    //   empty: boolean
+    //   sorted: boolean
+    //   unsorted: boolean
+    // }
+    // offset: number
+    // paged: boolean
+    // unpaged: boolean
+  };
+  totalPages: number;
+  totalElements?: number;
+  last: boolean;
+  // size?: number
+  // number?: number
+  // sort?: {
+  //   empty: boolean
+  //   sorted: boolean
+  //   unsorted: boolean
+  // }
+  // numberOfElements?: number
+  // first?: boolean
+  // empty?: boolean
 }
 
 export interface IProductDetails extends IProduct {
-  companyName: string
-  productType: string
-  manufactureType: string
-  manufactureMethod: string
-  violationInfo: string
-  weight: string
-  mainSubstance: string
-  grade: number
-  reviewCnt: number
-  viewCount: number
-  usage: string
-  usagePrecaution: string
-  firstAid: string
+  companyName: string;
+  productType: string;
+  manufactureType: string;
+  manufactureMethod: string;
+  violationInfo: string;
+  weight: string;
+  mainSubstance: string;
+  grade: number;
+  reviewCnt: number;
+  viewCount: number;
+  usage: string;
+  usagePrecaution: string;
+  firstAid: string;
 }
 
 export type BannerType = ICommon<IBanner[]>;
