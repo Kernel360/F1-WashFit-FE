@@ -22,13 +22,18 @@ function Home() {
         <Banner bannerData={MOCK_BANNER_DATA} />
         <Spacing size={32} />
         <div className={cx('recommendWrapper')}>
-          <Text typography="t4" bold>추천 세차용품</Text>
+          <Text typography="t4" bold>
+            추천 세차용품
+          </Text>
           <Spacing size={16} />
+
           <RecommendListContainer />
         </div>
         <Spacing size={32} />
         <div className={cx('productListContainer')}>
-          <Text typography="t4" bold>WashFit 랭킹</Text>
+          <Text typography="t4" bold>
+            WashFit 랭킹
+          </Text>
           <Spacing size={16} />
           <ProductList />
         </div>

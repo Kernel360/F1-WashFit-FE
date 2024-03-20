@@ -7,16 +7,21 @@
   box-sizing: border-box;
   flex-direction: column;
   align-items: center;
-  width: 327px;
-  height: 220px;
+  width: 321px;
+  height: 202px;
   padding: 24px 16px;
   overflow: hidden;
   transform: translate(-50%, -50%);
-  border-radius: 10px;
+  border-radius: 16px;
   background-color: var(--white);
 
+
+
   .description {
-    width: 244px;
+    width: 187px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
   .buttonContainer {
