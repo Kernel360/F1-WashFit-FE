@@ -1,9 +1,10 @@
 // optimistic UPdate로 즐겨찾기 구현
 
-import { delFavoriteList } from '@/remote/api/requests/favorite/favorite.get.api';
 import { useMutation } from '@tanstack/react-query';
 
-function deleteFavoriteList() {
+import { delFavoriteList } from '@/remote/api/requests/favorite/favorite.get.api';
+
+function useDeleteFavoriteList() {
   return useMutation({
     mutationFn: delFavoriteList,
     onSuccess: () => {},
@@ -11,4 +12,4 @@ function deleteFavoriteList() {
   });
 }
 
-export default deleteFavoriteList;
+export default useDeleteFavoriteList;
