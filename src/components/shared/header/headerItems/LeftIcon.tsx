@@ -11,9 +11,7 @@ import Text from '@shared/text/Text';
 
 import { LeftIconProps } from '../types/headerType';
 
-function LeftIcon({
-  className, title, type, stepBack,
-}: LeftIconProps) {
+function LeftIcon({ className, title, type, stepBack }: LeftIconProps) {
   const { goBack } = useNavigation();
 
   if (type === 'home') {
@@ -25,9 +23,9 @@ function LeftIcon({
           </Link>
         </li>
         <li style={{ marginLeft: '8px' }}>
-          <Link href="https://docs.google.com/forms/d/e/1FAIpQLSd96McWLLj3bR-3OEEIx656x3I_9-u7ifjwViQKlveIRb5QiA/viewform" target="_blank">
+          {/* <Link href="https://docs.google.com/forms/d/e/1FAIpQLSd96McWLLj3bR-3OEEIx656x3I_9-u7ifjwViQKlveIRb5QiA/viewform" target="_blank">
             <Inquire />
-          </Link>
+          </Link> */}
         </li>
       </Flex>
     );
