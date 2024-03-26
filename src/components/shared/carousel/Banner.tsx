@@ -46,7 +46,9 @@ function Banner({ bannerData }: { bannerData: BannerType }) {
           color="white"
           css={{ borderRadius: '20px', backgroundColor: 'black', padding: '4px 12px' }}
         >
-          {currentSlide + 1}/{bannerList.length}
+          {currentSlide + 1}
+          /
+          {bannerList.length}
         </Text>
       </div>
 
