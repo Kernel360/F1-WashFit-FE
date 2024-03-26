@@ -1,7 +1,7 @@
 import { ICommon } from './common';
 
 export interface IBanner {
-  productNo: number;
+  productNo: number | string;
   imageSource: string;
   alt: string;
   item: string;

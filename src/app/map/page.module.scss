@@ -3,6 +3,7 @@
 
     & nav,
     .searchWrapper {
+        position: relative;
         z-index: var(--header-zindex);
     }
 
