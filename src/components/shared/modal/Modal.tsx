@@ -17,18 +17,24 @@ import styles from './Modal.module.scss';
 const cx = classNames.bind(styles);
 
 interface ModalProps {
-  open: boolean
-  title: React.ReactNode
-  description: React.ReactNode
-  leftButtonLabel: React.ReactNode
-  rightButtonLabel?: React.ReactNode
-  onLeftButtonClick: () => void
-  onRightButtonClick?: () => void
+  open: boolean;
+  title: React.ReactNode;
+  description: React.ReactNode;
+  leftButtonLabel: React.ReactNode;
+  rightButtonLabel?: React.ReactNode;
+  onLeftButtonClick: () => void;
+  onRightButtonClick?: () => void;
 }
 
 function Modal({
   // eslint-disable-next-line max-len
-  open, title, description, leftButtonLabel, rightButtonLabel, onLeftButtonClick, onRightButtonClick,
+  open,
+  title,
+  description,
+  leftButtonLabel,
+  rightButtonLabel,
+  onLeftButtonClick,
+  onRightButtonClick,
 }: ModalProps) {
   const { close } = useModal();
   const modalRef = useOutsideClick(close);
@@ -40,13 +46,53 @@ function Modal({
   return (
     <Dimmed>
       <div className={cx('container')} ref={modalRef}>
-        <Text typography="t4" bold>{title}</Text>
+        <Text typography="t4" bold color="gray900">
+          {title}
+        </Text>
         <Spacing size={8} />
-        <Text typography="t6" color="gray200" textAlign="center" wordBreak="keep-all" className={cx('description')}>{description}</Text>
-        <Spacing size={32} />
-        <Flex justify="space-between" align="center" gap={8} className={cx('buttonContainer')}>
-          <Button onClick={onLeftButtonClick} full color="active" size="large">{leftButtonLabel}</Button>
-          {rightButtonLabel && <Button onClick={onRightButtonClick} full size="large" color="inActive">{rightButtonLabel}</Button>}
+        <div className={cx('description')}>
+          <Text
+            typography="t6"
+            color="gray600"
+            textAlign="center"
+            wordBreak="keep-all"
+            className={cx('description')}
+            fontWeight={600}
+          >
+            {description}
+          </Text>
+        </div>
+        <Spacing size={22} />
+        <Flex
+          justify="space-between"
+          align="center"
+          gap={8}
+          className={cx('buttonContainer')}
+        >
+          <Button
+            onClick={onLeftButtonClick}
+            full
+            color="inActive"
+            size="large"
+            borderRadius="16px"
+            fontWeight={600}
+            height="55px"
+          >
+            {leftButtonLabel}
+          </Button>
+          {rightButtonLabel && (
+            <Button
+              onClick={onRightButtonClick}
+              full
+              size="large"
+              color="active"
+              borderRadius="16px"
+              fontWeight={600}
+              height="55px"
+            >
+              {rightButtonLabel}
+            </Button>
+          )}
         </Flex>
       </div>
     </Dimmed>

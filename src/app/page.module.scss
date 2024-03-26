@@ -1,5 +1,10 @@
 .mainContainer {
+  position: relative;
+
   .recommendWrapper {
+    position: relative;
+    z-index: 5;
+
     & > span {
       padding: 0 var(--default-padding);
     }

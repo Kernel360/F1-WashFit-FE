@@ -2,7 +2,7 @@
 import { SearchFilterType } from '@/constants/searchByMap';
 
 import { ProductListInfoType } from '../../types/home';
-import { getRequest } from '../requests.api';
+import { deleteRequest, getRequest, postRequest } from '../requests.api';
 
 /* ----- like 제품 목록 api ----- */
 export const getFavoriteList = async (
@@ -15,5 +15,19 @@ export const getFavoriteList = async (
   // const response = await getRequest<ProductListInfoType>(`/likes/search?sortType=${sortType}&page=${pageNum}&size=${size}`);
   const response = await getRequest<ProductListInfoType>(`/likes/search?page=${pageNum}&size=${size}`);
 
+  return response;
+};
+
+/* ----- like 제품 추가 api ----- */
+
+export const postFavoriteList = async (productNo: number) => {
+  const response = await postRequest<ProductListInfoType, null>(`/likes?productNo=${productNo}`);
+  return response;
+};
+
+/* ----- like 제품 제거 api ----- */
+
+export const delFavoriteList = async (productNo: number) => {
+  const response = await deleteRequest<ProductListInfoType>(`/likes?productNo=${productNo}`);
   return response;
 };

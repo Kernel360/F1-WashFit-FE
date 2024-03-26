@@ -24,6 +24,10 @@ const settings = {
   swipeToSlide: true,
 };
 
+// 이부분을 슬라이드 대신 3개 나열형으로 바꿔줌
+// 더보기 클릭시 랜덤 3개 추가
+// 그리고 코팅제 / 세정제로 분류
+
 // eslint-disable-next-line max-len
 function RecommendList({ recommendProductsData }: { recommendProductsData: RecommendProductsType }) {
   const recommendList = recommendProductsData?.value;
@@ -41,7 +45,9 @@ function RecommendList({ recommendProductsData }: { recommendProductsData: Recom
               height={85}
             />
             <Spacing size={4} />
-            <Text color="gray800" typography="t7" className="ellipsis" css={{ height: '35px' }}>{slide.productName}</Text>
+            <Text color="gray800" typography="t7" className="ellipsis" css={{ height: '35px' }}>
+              {slide.productName}
+            </Text>
           </Link>
         );
       })}
