@@ -30,7 +30,7 @@ function Banner({ bannerData }: { bannerData: BannerType }) {
     },
   };
   return (
-    <div style={{ position: 'relative' }}>
+    <div className="container">
       <Slider {...settings} className="banner-slide">
         {bannerList.map((slide) => {
           return (
@@ -40,30 +40,17 @@ function Banner({ bannerData }: { bannerData: BannerType }) {
           );
         })}
       </Slider>
-      <div style={{ position: 'absolute', left: '85%', top: '80%' }}>
+      <div style={{ position: 'absolute', left: '85%', top: '78%' }}>
         <Text
           typography="t8"
           color="white"
           css={{ borderRadius: '20px', backgroundColor: 'black', padding: '4px 12px' }}
         >
-          {currentSlide + 1}
-          /
-          {bannerList.length}
+          {currentSlide + 1}/{bannerList.length}
         </Text>
       </div>
 
-      <div
-        style={{
-          position: 'absolute',
-          top: '90%',
-          left: 0,
-          right: 0,
-          height: '60px',
-          backgroundColor: '#fff',
-          borderRadius: '24px 24px 0px 0px',
-          zIndex: 300,
-        }}
-      />
+      <div className="banner-rect" />
     </div>
   );
 }

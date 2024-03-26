@@ -21,10 +21,8 @@ function Home() {
       <Header className={cx('home')} type="home" />
       <main className={cx('mainContainer')} style={{ position: 'relative' }}>
         <Banner bannerData={MOCK_BANNER_DATA} />
-
-        <Spacing size={32} />
+        <Spacing size={8} />
         {/* <Spacing size={220} /> */}
-
         <div className={cx('recommendWrapper')}>
           <Text typography="t4" bold>
             추천 세차용품
