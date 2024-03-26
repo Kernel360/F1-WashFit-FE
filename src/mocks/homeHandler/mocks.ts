@@ -23,7 +23,7 @@ export const MOCK_BANNER_DATA = {
       item: '세정제',
     },
     {
-      productNo: 4,
+      productNo: 'https://autobritedirect.co.kr',
       imageSource: '/assets/banner4.jpg',
       alt: '그림',
       item: '세정제',
@@ -57,7 +57,6 @@ export const MOCK_RECOMMEND_PRODUCTS = {
       imageSource: '/assets/recommendItem3.png',
       alt: '그림',
       productName: '타올',
-
     },
     {
       productNo: 4,
@@ -65,7 +64,6 @@ export const MOCK_RECOMMEND_PRODUCTS = {
       imageSource: '/assets/recommendItem4.png',
       alt: '그림',
       productName: '먼지털이개',
-
     },
     {
       productNo: 5,
@@ -73,7 +71,6 @@ export const MOCK_RECOMMEND_PRODUCTS = {
       imageSource: '/assets/recommendItem4.png',
       alt: '그림',
       productName: '먼지털이개',
-
     },
     {
       productNo: 6,
@@ -102,7 +99,6 @@ export const MOCK_RECOMMEND_PRODUCTS = {
       imageSource: '/assets/recommendItem4.png',
       alt: '그림',
       productName: '먼지털이개',
-
     },
     {
       productNo: 10,
@@ -110,7 +106,6 @@ export const MOCK_RECOMMEND_PRODUCTS = {
       imageSource: '/assets/recommendItem3.png',
       alt: '그림',
       productName: '타올',
-
     },
   ],
 };
