@@ -3,7 +3,7 @@
 import Link from 'next/link';
 
 import BackArrow from '@components/icons/BackArrow';
-import Inquire from '@components/icons/Inquire';
+// import Inquire from '@components/icons/Inquire';
 import Logo from '@components/icons/Logo';
 import useNavigation from '@hooks/useNavigation';
 import Flex from '@shared/flex/Flex';
@@ -11,7 +11,9 @@ import Text from '@shared/text/Text';
 
 import { LeftIconProps } from '../types/headerType';
 
-function LeftIcon({ className, title, type, stepBack }: LeftIconProps) {
+function LeftIcon({
+  className, title, type, stepBack,
+}: LeftIconProps) {
   const { goBack } = useNavigation();
 
   if (type === 'home') {
