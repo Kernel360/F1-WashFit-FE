@@ -47,7 +47,7 @@ export const MOCK_RECOMMEND_PRODUCTS = {
       imageSource: '/assets/recommendItem1.png',
       alt: '그림',
       productName: '카샴푸',
-      link: '/'
+      link: '/',
     },
     {
       productNo: 2,
@@ -55,7 +55,7 @@ export const MOCK_RECOMMEND_PRODUCTS = {
       imageSource: '/assets/recommendItem2.png',
       alt: '그림',
       productName: '휠 클리너',
-      link: '/'
+      link: '/',
     },
     {
       productNo: 3,
@@ -63,7 +63,7 @@ export const MOCK_RECOMMEND_PRODUCTS = {
       imageSource: '/assets/recommendItem3.png',
       alt: '그림',
       productName: '타올',
-      link: '/'
+      link: '/',
     },
     {
       productNo: 4,
@@ -71,7 +71,7 @@ export const MOCK_RECOMMEND_PRODUCTS = {
       imageSource: '/assets/recommendItem4.png',
       alt: '그림',
       productName: '먼지털이개',
-      link: '/'
+      link: '/',
     },
     {
       productNo: 5,
@@ -79,7 +79,7 @@ export const MOCK_RECOMMEND_PRODUCTS = {
       imageSource: '/assets/recommendItem4.png',
       alt: '그림',
       productName: '먼지털이개',
-      link: '/'
+      link: '/',
     },
     {
       productNo: 6,
@@ -87,7 +87,7 @@ export const MOCK_RECOMMEND_PRODUCTS = {
       imageSource: '/assets/recommendItem1.png',
       alt: '그림',
       productName: '카샴푸',
-      link: '/'
+      link: '/',
     },
     {
       productNo: 7,
@@ -95,7 +95,7 @@ export const MOCK_RECOMMEND_PRODUCTS = {
       imageSource: '/assets/recommendItem1.png',
       alt: '그림',
       productName: '카샴푸',
-      link: '/'
+      link: '/',
     },
     {
       productNo: 8,
@@ -103,7 +103,7 @@ export const MOCK_RECOMMEND_PRODUCTS = {
       imageSource: '/assets/recommendItem2.png',
       alt: '그림',
       productName: '휠 클리너',
-      link: '/'
+      link: '/',
     },
     {
       productNo: 9,
@@ -111,7 +111,7 @@ export const MOCK_RECOMMEND_PRODUCTS = {
       imageSource: '/assets/recommendItem4.png',
       alt: '그림',
       productName: '먼지털이개',
-      link: '/'
+      link: '/',
     },
     {
       productNo: 10,
@@ -119,7 +119,7 @@ export const MOCK_RECOMMEND_PRODUCTS = {
       imageSource: '/assets/recommendItem3.png',
       alt: '그림',
       productName: '타올',
-      link: '/'
+      link: '/',
     },
   ],
 };
