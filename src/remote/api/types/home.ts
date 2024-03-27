@@ -5,6 +5,7 @@ export interface IBanner {
   imageSource: string;
   alt: string;
   item: string;
+  link: string;
 }
 
 export interface IRecommendProducts extends IBanner {

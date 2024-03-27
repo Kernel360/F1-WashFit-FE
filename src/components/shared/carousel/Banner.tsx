@@ -34,7 +34,7 @@ function Banner({ bannerData }: { bannerData: BannerType }) {
       <Slider {...settings} className="banner-slide">
         {bannerList.map((slide) => {
           return (
-            <Link href={slide.productNo.toString()} key={slide.productNo}>
+            <Link href={slide.link.toString()} key={slide.productNo}>
               <Image src={slide.imageSource} alt={slide.alt} objectFit="cover" fill />
             </Link>
           );

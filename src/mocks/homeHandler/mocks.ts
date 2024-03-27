@@ -9,24 +9,28 @@ export const MOCK_BANNER_DATA = {
       imageSource: '/assets/banner1.jpg',
       alt: '그림',
       item: '세정제',
+      link: '/'
     },
     {
       productNo: 2,
       imageSource: '/assets/banner2.jpg',
       alt: '그림',
       item: '세정제',
+      link: '/'
     },
     {
       productNo: 3,
       imageSource: '/assets/banner3.jpg',
       alt: '그림',
       item: '세정제',
+      link: '/'
     },
     {
       productNo: 'https://autobritedirect.co.kr',
       imageSource: '/assets/banner4.jpg',
       alt: '그림',
       item: '세정제',
+      link: 'https://autobritedirect.co.kr'
     },
   ],
 };
