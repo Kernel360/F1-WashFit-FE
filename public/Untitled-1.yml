@@ -1,0 +1,1730 @@
+openapi: '3.0.3'
+info:
+  title: 'washpedia API'
+  description: 'washpedia API'
+  version: '1.0.0'
+servers:
+  - url: 'https://api.washfit.site'
+  - url: 'https://devapi.washfit.site'
+  - url: 'http://localhost:8080'
+paths:
+  /admin/washzones:
+    get:
+      summary: 'GET admin/washzones'
+      operationId: 'getWashZones'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                type: 'array'
+                items:
+                  $ref: '#/components/schemas/WashZoneDto'
+    post:
+      summary: 'POST admin/washzones'
+      operationId: 'registerWashZone'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WashZoneDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WashZoneDto'
+  /admin/washzones/bulk:
+    post:
+      summary: 'POST admin/washzones/bulk'
+      operationId: 'registerBulkWashZones'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: 'array'
+              items:
+                $ref: '#/components/schemas/WashZoneDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                type: 'array'
+                items:
+                  $ref: '#/components/schemas/WashZoneDto'
+  /admin/washzones/search:
+    get:
+      summary: 'GET admin/washzones/search'
+      operationId: 'getWashZoneByKeyword'
+      parameters:
+        - name: 'keyword'
+          in: 'query'
+          required: true
+          schema:
+            type: 'string'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WashZoneDto'
+  /admin/product:
+    patch:
+      summary: 'PATCH admin/product'
+      operationId: 'updateProduct'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductUpdateRequest'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProductDto'
+  /admin/product/{productNo}:
+    get:
+      summary: 'GET admin/product/{productNo}'
+      operationId: 'findProductById'
+      parameters:
+        - name: 'productNo'
+          in: 'path'
+          required: true
+          schema:
+            type: 'integer'
+            format: 'int64'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProductDetailDto'
+  /admin/products:
+    get:
+      summary: 'GET admin/products'
+      operationId: 'findProductList'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                type: 'array'
+                items:
+                  $ref: '#/components/schemas/ProductDto'
+  /admin/products/search:
+    get:
+      summary: 'GET admin/products/search'
+      operationId: 'findProductByKeyword'
+      parameters:
+        - name: 'keyword'
+          in: 'query'
+          required: true
+          schema:
+            type: 'string'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProductDto'
+  /admin/products/{OCR_No}:
+    get:
+      summary: 'GET admin/products/{OCR_No}'
+      operationId: 'findProductByOCR'
+      parameters:
+        - name: 'OCR_No'
+          in: 'path'
+          required: true
+          schema:
+            type: 'string'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProductDetailDto'
+  /admin/reviews:
+    get:
+      summary: 'GET admin/reviews'
+      operationId: 'getAllReviews'
+      parameters:
+        - name: 'sortBy'
+          in: 'query'
+          required: false
+          schema:
+            type: 'string'
+            default: 'reviewNo'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AdminReviewDto'
+  /admin/reviews/member:
+    get:
+      summary: 'GET admin/reviews/member'
+      operationId: 'getReviewsByMember'
+      parameters:
+        - name: 'memberNo'
+          in: 'query'
+          required: true
+          schema:
+            type: 'integer'
+            format: 'int64'
+        - name: 'sortBy'
+          in: 'query'
+          required: false
+          schema:
+            type: 'string'
+            default: 'reviewNo'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AdminReviewDto'
+  /admin/reviews/product:
+    get:
+      summary: 'GET admin/reviews/product'
+      operationId: 'getReviewsByProduct'
+      parameters:
+        - name: 'productNo'
+          in: 'query'
+          required: true
+          schema:
+            type: 'integer'
+            format: 'int64'
+        - name: 'sortBy'
+          in: 'query'
+          required: false
+          schema:
+            type: 'string'
+            default: 'reviewNo'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AdminReviewDto'
+  /admin/reviews/{reviewNo}:
+    get:
+      summary: 'GET admin/reviews/{reviewNo}'
+      operationId: 'getReview'
+      parameters:
+        - name: 'reviewNo'
+          in: 'path'
+          required: true
+          schema:
+            type: 'integer'
+            format: 'int64'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/AdminReviewDto'
+    delete:
+      summary: 'DELETE admin/reviews/{reviewNo}'
+      operationId: 'deleteReview'
+      parameters:
+        - name: 'reviewNo'
+          in: 'path'
+          required: true
+          schema:
+            type: 'integer'
+            format: 'int64'
+      responses:
+        '200':
+          description: 'OK'
+  /admin/members:
+    get:
+      summary: 'GET admin/members'
+      operationId: 'getMemberList'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MemberResponse'
+  /admin/brands:
+    get:
+      summary: 'GET admin/brands'
+      operationId: 'getBrandList'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Object'
+  /admin/brands/brand:
+    get:
+      summary: 'GET admin/brands/brand'
+      operationId: 'findBrandById'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Object'
+    put:
+      summary: 'PUT admin/brands/brand'
+      operationId: 'updateAll'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BrandDto'
+    post:
+      summary: 'POST admin/brands/brand'
+      operationId: 'createBrand'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Object'
+    delete:
+      summary: 'DELETE admin/brands/brand'
+      operationId: 'deleteBrand'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BrandDto'
+  /admin/brands/brandName:
+    get:
+      summary: 'GET admin/brands/brandName'
+      operationId: 'findBrandByBrandName'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BrandDto'
+    patch:
+      summary: 'PATCH admin/brands/brandName'
+      operationId: 'updateBrandName'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BrandDto'
+  /admin/brands/companyName:
+    patch:
+      summary: 'PATCH admin/brands/companyName'
+      operationId: 'updateBrandCompanyName'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BrandDto'
+  /admin/brands/description:
+    patch:
+      summary: 'PATCH admin/brands/description'
+      operationId: 'updateBrandDescription'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BrandDto'
+  /admin/brands/nationName:
+    patch:
+      summary: 'PATCH admin/brands/nationName'
+      operationId: 'updateBrandNationName'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrandDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BrandDto'
+  /member/car:
+    post:
+      summary: 'POST member/car'
+      operationId: 'saveCarInfo'
+      parameters:
+        - name: 'Authorization'
+          in: 'header'
+          required: true
+          schema:
+            type: 'string'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CarInfoDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/CarInfo'
+  /member/duplicatedCheckEmail/{email}:
+    get:
+      summary: 'GET member/duplicatedCheckEmail/{email}'
+      operationId: 'duplicatedCheckEmail'
+      parameters:
+        - name: 'email'
+          in: 'path'
+          required: true
+          schema:
+            type: 'string'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                type: 'boolean'
+  /member/duplicatedCheckId/{id}:
+    get:
+      summary: 'GET member/duplicatedCheckId/{id}'
+      operationId: 'duplicatedCheckId'
+      parameters:
+        - name: 'id'
+          in: 'path'
+          required: true
+          schema:
+            type: 'string'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                type: 'boolean'
+  /member/find-memberId:
+    post:
+      summary: 'POST member/find-memberId'
+      operationId: 'sendMemberIdByEmail'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberCredentialDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Object'
+  /member/find-password:
+    post:
+      summary: 'POST member/find-password'
+      operationId: 'sendPasswordResetUriByEmail'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberCredentialDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Object'
+  /member/join:
+    post:
+      summary: 'POST member/join'
+      operationId: 'joinMember'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Object'
+  /member/login:
+    post:
+      summary: 'POST member/login'
+      operationId: 'login'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MemberDto'
+  /member/login/forKakao:
+    get:
+      summary: 'GET member/login/forKakao'
+      operationId: 'loginForKakao'
+      parameters:
+        - name: 'Authorization'
+          in: 'header'
+          required: true
+          schema:
+            type: 'string'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MemberDto'
+  /member/reset-password:
+    post:
+      summary: 'POST member/reset-password'
+      operationId: 'resetPassword'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberCredentialDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Object'
+  /member/wash:
+    post:
+      summary: 'POST member/wash'
+      operationId: 'saveWashInfo'
+      parameters:
+        - name: 'Authorization'
+          in: 'header'
+          required: true
+          schema:
+            type: 'string'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WashInfoDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WashInfo'
+  /commoncode/{codeName}:
+    get:
+      summary: 'GET commoncode/{codeName}'
+      operationId: 'getCommonCode'
+      parameters:
+        - name: 'codeName'
+          in: 'path'
+          required: true
+          schema:
+            type: 'string'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                type: 'array'
+                items:
+                  $ref: '#/components/schemas/CommonCodeDto'
+  /product/{productNo}:
+    get:
+      summary: 'GET product/{productNo}'
+      operationId: 'findProductById'
+      parameters:
+        - name: 'productNo'
+          in: 'path'
+          required: true
+          schema:
+            type: 'integer'
+            format: 'int64'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProductDetailDto'
+  /products:
+    get:
+      summary: 'GET products'
+      operationId: 'findProductList'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                type: 'array'
+                items:
+                  $ref: '#/components/schemas/ProductDto'
+  /products/search:
+    get:
+      summary: 'GET products/search'
+      operationId: 'findProductByKeyword'
+      parameters:
+        - name: 'sortType'
+          in: 'query'
+          required: false
+          schema:
+            type: 'string'
+            enum:
+              - 'VIEW_COUNT_PRODUCT_ORDER'
+              - 'VIOLATION_PRODUCT_LIST'
+              - 'RECOMMENDATION_PRODUCT_ORDER'
+              - 'RECENT_PRODUCT_ORDER'
+            default: 'viewCnt-order'
+        - name: 'keyword'
+          in: 'query'
+          required: false
+          schema:
+            type: 'string'
+        - name: 'Authorization'
+          in: 'header'
+          required: false
+          schema:
+            type: 'string'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+  /products/{OCR_No}:
+    get:
+      summary: 'GET products/{OCR_No}'
+      operationId: 'findProductByOCR'
+      parameters:
+        - name: 'OCR_No'
+          in: 'path'
+          required: true
+          schema:
+            type: 'string'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProductDetailDto'
+  /mypage/car:
+    get:
+      summary: 'GET mypage/car'
+      operationId: 'myCar'
+      parameters:
+        - name: 'Authorization'
+          in: 'header'
+          required: true
+          schema:
+            type: 'string'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                type: 'string'
+  /mypage/change-password:
+    post:
+      summary: 'POST mypage/change-password'
+      operationId: 'changePassword'
+      parameters:
+        - name: 'Authorization'
+          in: 'header'
+          required: true
+          schema:
+            type: 'string'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                type: 'string'
+  /mypage/member:
+    get:
+      summary: 'GET mypage/member'
+      operationId: 'myInfo'
+      parameters:
+        - name: 'Authorization'
+          in: 'header'
+          required: true
+          schema:
+            type: 'string'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/MemberDto'
+    patch:
+      summary: 'PATCH mypage/member'
+      operationId: 'updateMember'
+      parameters:
+        - name: 'Authorization'
+          in: 'header'
+          required: true
+          schema:
+            type: 'string'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MemberDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+    delete:
+      summary: 'DELETE mypage/member'
+      operationId: 'memberDelete'
+      parameters:
+        - name: 'Authorization'
+          in: 'header'
+          required: true
+          schema:
+            type: 'string'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/Void'
+  /mypage/member/validate:
+    get:
+      summary: 'GET mypage/member/validate'
+      operationId: 'validatePassword'
+      parameters:
+        - name: 'Authorization'
+          in: 'header'
+          required: true
+          schema:
+            type: 'string'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                type: 'boolean'
+  /mypage/wash:
+    get:
+      summary: 'GET mypage/wash'
+      operationId: 'myWash'
+      parameters:
+        - name: 'Authorization'
+          in: 'header'
+          required: true
+          schema:
+            type: 'string'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                type: 'string'
+  /banner:
+    get:
+      summary: 'GET banner'
+      operationId: 'getBanner'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BannerDto'
+  /products/rank:
+    get:
+      summary: 'GET products/rank'
+      operationId: 'getProducts'
+      parameters:
+        - name: 'sortType'
+          in: 'query'
+          required: false
+          schema:
+            type: 'string'
+            enum:
+              - 'VIEW_COUNT_PRODUCT_ORDER'
+              - 'VIOLATION_PRODUCT_LIST'
+              - 'RECOMMENDATION_PRODUCT_ORDER'
+              - 'RECENT_PRODUCT_ORDER'
+            default: 'viewCnt-order'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/ProductResponse'
+  /recommend-products:
+    get:
+      summary: 'GET recommend-products'
+      operationId: 'getRecommendProducts'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                type: 'array'
+                items:
+                  $ref: '#/components/schemas/RecommendProductsDto'
+  /bbs:
+    get:
+      summary: 'GET bbs'
+      operationId: 'getBBS'
+      parameters:
+        - name: 'type'
+          in: 'query'
+          required: false
+          schema:
+            type: 'string'
+            default: ''
+        - name: 'keyword'
+          in: 'query'
+          required: false
+          schema:
+            type: 'string'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BBSListDto'
+    post:
+      summary: 'POST bbs'
+      operationId: 'saveBBS'
+      parameters:
+        - name: 'Id'
+          in: 'header'
+          required: true
+          schema:
+            type: 'string'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BBSDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BBSDto'
+    patch:
+      summary: 'PATCH bbs'
+      operationId: 'modifyBBS'
+      parameters:
+        - name: 'Id'
+          in: 'header'
+          required: true
+          schema:
+            type: 'string'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BBSDto'
+        required: true
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BBSDto'
+    delete:
+      summary: 'DELETE bbs'
+      operationId: 'deleteBBS'
+      parameters:
+        - name: 'bbsNo'
+          in: 'query'
+          required: true
+          schema:
+            type: 'integer'
+            format: 'int64'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BBSDto'
+  /bbs/reply:
+    get:
+      summary: 'GET bbs/reply'
+      operationId: 'getBBSReply'
+      parameters:
+        - name: 'upperNo'
+          in: 'query'
+          required: true
+          schema:
+            type: 'integer'
+            format: 'int64'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BBSDto'
+  /bbs/{bbsNo}:
+    get:
+      summary: 'GET bbs/{bbsNo}'
+      operationId: 'getBBSView'
+      parameters:
+        - name: 'bbsNo'
+          in: 'path'
+          required: true
+          schema:
+            type: 'integer'
+            format: 'int64'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/BBSDto'
+  /reviews-washzone:
+    post:
+      summary: 'POST reviews-washzone'
+      operationId: 'createWashzoneReview'
+      parameters:
+        - name: 'Id'
+          in: 'header'
+          required: true
+          schema:
+            type: 'string'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: 'object'
+              required:
+                - 'washzoneReview'
+              properties:
+                washzoneReview:
+                  $ref: '#/components/schemas/WashzoneReviewRequestDto'
+                files:
+                  type: 'array'
+                  items:
+                    $ref: '#/components/schemas/MultipartFile'
+      responses:
+        '200':
+          description: 'OK'
+    patch:
+      summary: 'PATCH reviews-washzone'
+      operationId: 'updateWashzoneReview'
+      parameters:
+        - name: 'Id'
+          in: 'header'
+          required: true
+          schema:
+            type: 'string'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: 'object'
+              required:
+                - 'washzoneReview'
+              properties:
+                washzoneReview:
+                  $ref: '#/components/schemas/WashzoneReviewRequestDto'
+                files:
+                  type: 'array'
+                  items:
+                    $ref: '#/components/schemas/MultipartFile'
+      responses:
+        '200':
+          description: 'OK'
+  /reviews-washzone/member/{memberNo}:
+    get:
+      summary: 'GET reviews-washzone/member/{memberNo}'
+      operationId: 'getWashzoneReviewsByMember'
+      parameters:
+        - name: 'memberNo'
+          in: 'path'
+          required: true
+          schema:
+            type: 'integer'
+            format: 'int64'
+        - name: 'sortBy'
+          in: 'query'
+          required: false
+          schema:
+            type: 'string'
+            default: 'washzoneReviewNo'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WashzoneReviewResponseDto'
+  /reviews-washzone/washzone/{washzoneNo}:
+    get:
+      summary: 'GET reviews-washzone/washzone/{washzoneNo}'
+      operationId: 'getWashzoneReviewsByWashzone'
+      parameters:
+        - name: 'washzoneNo'
+          in: 'path'
+          required: true
+          schema:
+            type: 'integer'
+            format: 'int64'
+        - name: 'sortBy'
+          in: 'query'
+          required: false
+          schema:
+            type: 'string'
+            default: 'washzoneReviewNo'
+      responses:
+        '200':
+          description: 'OK'
+          content:
+            '*/*':
+              schema:
+                $ref: '#/components/schemas/WashzoneReviewResponseDto'
+components:
+  schemas:
+    WashZoneDto:
+      type: 'object'
+      properties:
+        washZoneNo:
+          type: 'integer'
+          format: 'int64'
+        name:
+          type: 'string'
+        address:
+          type: 'string'
+        latitude:
+          type: 'number'
+          format: 'double'
+        longitude:
+          type: 'number'
+          format: 'double'
+        type:
+          type: 'string'
+        remarks:
+          type: 'string'
+    ProductUpdateRequest:
+      type: 'object'
+      properties:
+        productNo:
+          type: 'integer'
+          format: 'int64'
+        productName:
+          type: 'string'
+        reportNumber:
+          type: 'string'
+        productType:
+          type: 'string'
+        companyName:
+          type: 'string'
+        manufactureNation:
+          type: 'string'
+        safetyStatus:
+          type: 'string'
+        issuedDate:
+          type: 'string'
+          format: 'date'
+        barcode:
+          type: 'string'
+        imageSource:
+          type: 'string'
+        viewCount:
+          type: 'integer'
+          format: 'int32'
+        safetyInspectionStandard:
+          type: 'string'
+        upperItem:
+          type: 'string'
+        item:
+          type: 'string'
+        propose:
+          type: 'string'
+        weight:
+          type: 'string'
+        usage:
+          type: 'string'
+        usagePrecaution:
+          type: 'string'
+        firstAid:
+          type: 'string'
+        mainSubstance:
+          type: 'string'
+        allergicSubstance:
+          type: 'string'
+        otherSubstance:
+          type: 'string'
+        preservative:
+          type: 'string'
+        surfactant:
+          type: 'string'
+        fluorescentWhitening:
+          type: 'string'
+        manufactureType:
+          type: 'string'
+        manufactureMethod:
+          type: 'string'
+        violationInfo:
+          type: 'string'
+    ProductDto:
+      type: 'object'
+      properties:
+        productNo:
+          type: 'integer'
+          format: 'int64'
+        productName:
+          type: 'string'
+        barcode:
+          type: 'string'
+        imageSource:
+          type: 'string'
+        reportNumber:
+          type: 'string'
+        safetyStatus:
+          type: 'string'
+          enum:
+            - 'SAFE'
+            - 'CONCERN'
+            - 'DANGER'
+        viewCount:
+          type: 'integer'
+          format: 'int32'
+        brand:
+          type: 'string'
+        upperItem:
+          type: 'string'
+        createdAt:
+          type: 'string'
+          format: 'date-time'
+        createdBy:
+          type: 'string'
+        modifiedAt:
+          type: 'string'
+          format: 'date-time'
+        modifiedBy:
+          type: 'string'
+    ProductDetailDto:
+      type: 'object'
+      properties:
+        productNo:
+          type: 'integer'
+          format: 'int64'
+        productName:
+          type: 'string'
+        barcode:
+          type: 'string'
+        imageSource:
+          type: 'string'
+        reportNumber:
+          type: 'string'
+        safetyStatus:
+          type: 'string'
+        viewCount:
+          type: 'integer'
+          format: 'int32'
+        companyName:
+          type: 'string'
+        productType:
+          type: 'string'
+        issuedDate:
+          type: 'string'
+          format: 'date'
+        safetyInspectionStandard:
+          type: 'string'
+        upperItem:
+          type: 'string'
+        item:
+          type: 'string'
+        propose:
+          type: 'string'
+        weight:
+          type: 'string'
+        usage:
+          type: 'string'
+        usagePrecaution:
+          type: 'string'
+        firstAid:
+          type: 'string'
+        mainSubstance:
+          type: 'string'
+        allergicSubstance:
+          type: 'string'
+        otherSubstance:
+          type: 'string'
+        preservative:
+          type: 'string'
+        surfactant:
+          type: 'string'
+        fluorescentWhitening:
+          type: 'string'
+        manufactureType:
+          type: 'string'
+        manufactureMethod:
+          type: 'string'
+        manufactureNation:
+          type: 'string'
+        violationInfo:
+          type: 'string'
+        createdAt:
+          type: 'string'
+          format: 'date-time'
+        createdBy:
+          type: 'string'
+        modifiedAt:
+          type: 'string'
+          format: 'date-time'
+        modifiedBy:
+          type: 'string'
+    BigDecimal:
+      type: 'object'
+      properties: {}
+    AdminReviewDto:
+      type: 'object'
+      properties:
+        reviewNo:
+          type: 'integer'
+          format: 'int64'
+        productDto:
+          $ref: '#/components/schemas/ProductDto'
+        starRating:
+          $ref: '#/components/schemas/BigDecimal'
+        title:
+          type: 'string'
+        contents:
+          type: 'string'
+        createdAt:
+          type: 'string'
+          format: 'date-time'
+        createdBy:
+          type: 'string'
+        modifiedAt:
+          type: 'string'
+          format: 'date-time'
+        modifiedBy:
+          type: 'string'
+    CarInfo:
+      type: 'object'
+      properties:
+        carNo:
+          type: 'integer'
+          format: 'int64'
+        member:
+          $ref: '#/components/schemas/Member'
+        carType:
+          type: 'integer'
+          format: 'int32'
+        carSize:
+          type: 'integer'
+          format: 'int32'
+        carColor:
+          type: 'integer'
+          format: 'int32'
+        drivingEnv:
+          type: 'integer'
+          format: 'int32'
+        parkingEnv:
+          type: 'integer'
+          format: 'int32'
+        createdAt:
+          type: 'string'
+          format: 'date-time'
+        createdBy:
+          type: 'string'
+        modifiedAt:
+          type: 'string'
+          format: 'date-time'
+        modifiedBy:
+          type: 'string'
+    Member:
+      type: 'object'
+      properties:
+        memberNo:
+          type: 'integer'
+          format: 'int64'
+        id:
+          type: 'string'
+        carInfo:
+          $ref: '#/components/schemas/CarInfo'
+        washInfo:
+          $ref: '#/components/schemas/WashInfo'
+        email:
+          type: 'string'
+        password:
+          type: 'string'
+        gender:
+          type: 'integer'
+          format: 'int32'
+        age:
+          type: 'integer'
+          format: 'int32'
+        accountType:
+          type: 'string'
+        createdAt:
+          type: 'string'
+          format: 'date-time'
+        createdBy:
+          type: 'string'
+        modifiedAt:
+          type: 'string'
+          format: 'date-time'
+        modifiedBy:
+          type: 'string'
+    WashInfo:
+      type: 'object'
+      properties:
+        washNo:
+          type: 'integer'
+          format: 'int64'
+        member:
+          $ref: '#/components/schemas/Member'
+        washCount:
+          type: 'integer'
+          format: 'int32'
+        monthlyExpense:
+          type: 'integer'
+          format: 'int32'
+        interest:
+          type: 'integer'
+          format: 'int32'
+        createdAt:
+          type: 'string'
+          format: 'date-time'
+        createdBy:
+          type: 'string'
+        modifiedAt:
+          type: 'string'
+          format: 'date-time'
+        modifiedBy:
+          type: 'string'
+    MemberResponse:
+      type: 'object'
+      properties:
+        memberNo:
+          type: 'integer'
+          format: 'int64'
+        id:
+          type: 'string'
+        email:
+          type: 'string'
+        gender:
+          type: 'integer'
+          format: 'int32'
+        age:
+          type: 'integer'
+          format: 'int32'
+        registerDate:
+          type: 'string'
+          format: 'date-time'
+        accountType:
+          type: 'string'
+        washInfo:
+          $ref: '#/components/schemas/WashInfo'
+        carInfo:
+          $ref: '#/components/schemas/CarInfo'
+    Object:
+      type: 'object'
+      properties: {}
+    BrandDto:
+      type: 'object'
+      properties:
+        brandNo:
+          type: 'integer'
+          format: 'int64'
+        brandName:
+          type: 'string'
+        companyName:
+          type: 'string'
+        description:
+          type: 'string'
+        nationName:
+          type: 'string'
+    CarInfoDto:
+      type: 'object'
+      properties:
+        cartype:
+          type: 'integer'
+          format: 'int32'
+        segment:
+          type: 'integer'
+          format: 'int32'
+        color:
+          type: 'integer'
+          format: 'int32'
+        driving:
+          type: 'integer'
+          format: 'int32'
+        parking:
+          type: 'integer'
+          format: 'int32'
+    MemberCredentialDto:
+      type: 'object'
+      properties:
+        token:
+          type: 'string'
+        email:
+          type: 'string'
+        id:
+          type: 'string'
+        password:
+          type: 'string'
+    MemberDto:
+      type: 'object'
+      properties:
+        memberNo:
+          type: 'integer'
+          format: 'int64'
+        id:
+          type: 'string'
+        email:
+          type: 'string'
+        password:
+          type: 'string'
+        gender:
+          type: 'string'
+        age:
+          type: 'string'
+        createdAt:
+          type: 'string'
+          format: 'date-time'
+        createdBy:
+          type: 'string'
+        modifiedAt:
+          type: 'string'
+          format: 'date-time'
+        modifiedBy:
+          type: 'string'
+        jwtToken:
+          type: 'string'
+    WashInfoDto:
+      type: 'object'
+      properties:
+        frequency:
+          type: 'integer'
+          format: 'int32'
+        cost:
+          type: 'integer'
+          format: 'int32'
+        interest:
+          type: 'integer'
+          format: 'int32'
+    CommonCodeDto:
+      type: 'object'
+      properties:
+        codeNo:
+          type: 'integer'
+          format: 'int64'
+        codeName:
+          type: 'string'
+        upperNo:
+          type: 'integer'
+          format: 'int64'
+        upperName:
+          type: 'string'
+        sortOrder:
+          type: 'integer'
+          format: 'int32'
+        isUsed:
+          type: 'boolean'
+        description:
+          type: 'string'
+        createdAt:
+          type: 'string'
+          format: 'date-time'
+        createdBy:
+          type: 'string'
+        modifiedAt:
+          type: 'string'
+          format: 'date-time'
+        modifiedBy:
+          type: 'string'
+    ProductResponse:
+      type: 'object'
+      properties:
+        productNo:
+          type: 'integer'
+          format: 'int64'
+        productName:
+          type: 'string'
+        companyName:
+          type: 'string'
+        item:
+          type: 'string'
+        likeCnt:
+          type: 'integer'
+          format: 'int64'
+    PasswordDto:
+      type: 'object'
+      properties:
+        password:
+          type: 'string'
+    Void:
+      type: 'object'
+      properties: {}
+    BannerDto:
+      type: 'object'
+      properties:
+        id:
+          type: 'integer'
+          format: 'int64'
+        imageSource:
+          type: 'string'
+        alt:
+          type: 'string'
+    RecommendProductsDto:
+      type: 'object'
+      properties:
+        productNo:
+          type: 'integer'
+          format: 'int64'
+        imageSource:
+          type: 'string'
+        alt:
+          type: 'string'
+        productName:
+          type: 'string'
+        item:
+          type: 'string'
+    BBSListDto:
+      type: 'object'
+      properties:
+        bbsNo:
+          type: 'integer'
+          format: 'int64'
+        type:
+          type: 'string'
+        title:
+          type: 'string'
+        createdAt:
+          type: 'string'
+          format: 'date-time'
+        createdBy:
+          type: 'string'
+        viewCount:
+          type: 'integer'
+          format: 'int64'
+        memberNo:
+          type: 'integer'
+          format: 'int64'
+        id:
+          type: 'string'
+    BBSDto:
+      type: 'object'
+      properties:
+        bbsNo:
+          type: 'integer'
+          format: 'int64'
+        upperNo:
+          type: 'integer'
+          format: 'int64'
+        type:
+          type: 'string'
+        title:
+          type: 'string'
+        contents:
+          type: 'string'
+        isVisible:
+          type: 'boolean'
+        createdAt:
+          type: 'string'
+          format: 'date-time'
+        createdBy:
+          type: 'string'
+        modifiedAt:
+          type: 'string'
+          format: 'date-time'
+        modifiedBy:
+          type: 'string'
+        viewCount:
+          type: 'integer'
+          format: 'int64'
+        memberDto:
+          $ref: '#/components/schemas/MemberDto'
+    WashzoneReviewRequestDto:
+      type: 'object'
+      properties:
+        washzoneReviewNo:
+          type: 'integer'
+          format: 'int64'
+        washzoneNo:
+          type: 'integer'
+          format: 'int64'
+        memberNo:
+          type: 'integer'
+          format: 'int64'
+        starRating:
+          $ref: '#/components/schemas/BigDecimal'
+        title:
+          type: 'string'
+        contents:
+          type: 'string'
+        createdAt:
+          type: 'string'
+          format: 'date-time'
+        createdBy:
+          type: 'string'
+        modifiedAt:
+          type: 'string'
+          format: 'date-time'
+        modifiedBy:
+          type: 'string'
+        files:
+          type: 'array'
+          items:
+            type: 'string'
+    MultipartFile:
+      type: 'object'
+      properties: {}
+    WashzoneReviewResponseDto:
+      type: 'object'
+      properties:
+        washzoneReviewNo:
+          type: 'integer'
+          format: 'int64'
+        washzone:
+          $ref: '#/components/schemas/WashZoneDto'
+        member:
+          $ref: '#/components/schemas/MemberDto'
+        starRating:
+          $ref: '#/components/schemas/BigDecimal'
+        title:
+          type: 'string'
+        contents:
+          type: 'string'
+        createdAt:
+          type: 'string'
+          format: 'date-time'
+        createdBy:
+          type: 'string'
+        modifiedAt:
+          type: 'string'
+          format: 'date-time'
+        modifiedBy:
+          type: 'string'
+        files:
+          type: 'array'
+          items:
+            type: 'string'
