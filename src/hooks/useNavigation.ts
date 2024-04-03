@@ -7,7 +7,10 @@ const useNavigation = () => {
     router.back();
   };
 
-  return { goBack };
+  const goHome = () => {
+    router.push('/');
+  };
+  return { goBack, goHome };
 };
 
 export default useNavigation;
