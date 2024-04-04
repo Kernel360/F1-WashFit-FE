@@ -1,5 +1,17 @@
-import classNames from 'classnames/bind';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-floating-promises */
 
+'use client';
+
+import { useEffect, useRef, useState } from 'react';
+
+import classNames from 'classnames/bind';
+import { useRouter } from 'next/navigation';
+
+import Flex from '@/components/shared/flex/Flex';
+import HomeSearchBar from '@/components/shared/home-search-bar/HomeSearchBar';
+import ImgToText from '@/components/shared/ocr/OCR';
 import ProductList from '@components/home/product-list/ProductList';
 import { MOCK_BANNER_DATA } from '@mocks/homeHandler/mocks';
 // import { TEST_MOCK_BANNER_DATA } from '@mocks/homeHandler/mocks';
@@ -16,6 +28,30 @@ import styles from './page.module.scss';
 const cx = classNames.bind(styles);
 
 function Home() {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const { Img } = await ImgToText();
+        const text = await Img();
+        console.log(text);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const keywordRef = useRef<HTMLInputElement>(null);
+  const router = useRouter();
+  // const [trigger, setTrigger] = useState(false);
+  // useEffect(() => {
+  //   Img();
+  // }, []);
+  const handleSearch = () => {
+    router.push(`/search?keyword=${keywordRef.current?.value}`);
+  };
+
   return (
     <>
       <Header className={cx('home')} type="home" />
@@ -24,6 +60,11 @@ function Home() {
         <Spacing size={8} />
         {/* <Spacing size={220} /> */}
         <div className={cx('recommendWrapper')}>
+          <Flex justify="center">
+            <HomeSearchBar ref={keywordRef} handleSearch={handleSearch} />
+          </Flex>
+          <Spacing size={80} />
+
           <Text typography="t4" bold>
             추천 세차용품
           </Text>

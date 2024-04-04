@@ -1,12 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import classNames from 'classnames/bind';
+import { useSearchParams, useRouter } from 'next/navigation';
 
 import { SEARCH_FILTER_MAP, SearchFilterType } from '@constants/searchByMap';
 import useSearchProductByFilter from '@remote/queries/search/useSearchProductByFilter';
@@ -30,12 +32,26 @@ const options = [
 ];
 
 function SearchPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const getItem = searchParams.get('keyword') as string;
+
   const keywordRef = useRef<HTMLInputElement>(null);
   const [trigger, setTrigger] = useState(false);
 
   const handleSearch = () => {
-    setTrigger((prev) => { return !prev; });
+    setTrigger((prev) => {
+      return !prev;
+    });
   };
+
+  useEffect(() => {
+    if (keywordRef.current) {
+      // router.push(`/search?keyword=${keywordRef.current.value}`);
+      keywordRef.current.value = getItem;
+      handleSearch();
+    }
+  }, []);
 
   const { register, watch } = useForm({
     defaultValues: {
@@ -46,7 +62,9 @@ function SearchPage() {
   const [isOpenFilterDrawer, setIsOpenFilterDrawer] = useState(false);
 
   const handleFilterClick = () => {
-    setIsOpenFilterDrawer((prev) => { return !prev; });
+    setIsOpenFilterDrawer((prev) => {
+      return !prev;
+    });
   };
 
   //
@@ -55,7 +73,10 @@ function SearchPage() {
     hasNextPage,
     loadMore,
     productCount,
-  } = useSearchProductByFilter(keywordRef.current?.value, watch('filter') as SearchFilterType);
+  } = useSearchProductByFilter(
+    keywordRef.current?.value,
+    watch('filter') as SearchFilterType,
+  );
 
   return (
     <>
@@ -67,7 +88,9 @@ function SearchPage() {
           <Text typography="t6" color="gray400">{`총 ${productCount}개`}</Text>
           <Dropdown
             options={options}
-            selectedLabel={(SEARCH_FILTER_MAP[watch('filter') as SearchFilterType])}
+            selectedLabel={
+              SEARCH_FILTER_MAP[watch('filter') as SearchFilterType]
+            }
             type="favorite"
             {...register('filter')}
           />
@@ -76,7 +99,11 @@ function SearchPage() {
           dataLength={productList?.length ?? 0}
           next={loadMore}
           hasMore={hasNextPage}
-          loader={<div className="loader" key={0}>Loading ...</div>}
+          loader={(
+            <div className="loader" key={0}>
+              Loading ...
+            </div>
+          )}
           inverse={false}
           style={{ overflow: 'visible' }}
         >
@@ -87,7 +114,12 @@ function SearchPage() {
           </div>
         </InfiniteScroll>
       </main>
-      <Drawer isOpen={isOpenFilterDrawer} onClose={() => { setIsOpenFilterDrawer(false); }}>
+      <Drawer
+        isOpen={isOpenFilterDrawer}
+        onClose={() => {
+          setIsOpenFilterDrawer(false);
+        }}
+      >
         {/* 필터 내용 아코디언 */}
         <p>Filter Content</p>
       </Drawer>
