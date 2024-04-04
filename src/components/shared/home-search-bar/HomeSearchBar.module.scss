@@ -1,0 +1,70 @@
+$default-color: var(--gray100);
+$shadow: 0 0 8px 0 rgb(0 0 0 / 8%);
+
+@mixin border($color) {
+  border: 1px solid $color;
+}
+
+.container {
+  @include border($default-color);
+
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  padding: 0 16px;
+  border: 1px solid rgba(0 0 0 / 5%);
+  border-radius: 999px;
+  box-shadow: 0 0 8px 0 rgb(0 0 0 / 8%);
+
+  &.shadow {
+    box-shadow: $shadow;
+  }
+
+  &:focus-within {
+    @include border(var(--primary200));
+
+    box-shadow: $shadow;
+  }
+
+  input {
+    flex-grow: 1;
+    width: 80%;
+    height: 100%;
+    margin-left: 2px;
+    padding: 12px 0;
+    border: none;
+    border-radius: 0;
+    outline: inherit;
+    background-color: inherit;
+    color: var(--black);
+    font-size: 16px;
+
+    &::placeholder {
+      color: var(--gray200);
+    }
+  }
+
+  button {
+    svg {
+      vertical-align: top;
+    }
+  }
+
+  /* input[type:search] x 버튼 없애기 */
+
+  /* IE의 경우 */
+  input::-ms-clear,
+  input::-ms-reveal {
+    display: none;
+  }
+
+  /* 크롬의 경우 */
+  input::-webkit-search-decoration,
+  input::-webkit-search-cancel-button,
+  input::-webkit-search-results-button,
+  input::-webkit-search-results-decoration {
+    display: none;
+  }
+}
