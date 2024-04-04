@@ -15,7 +15,7 @@ import { LeftIconProps } from '../types/headerType';
 function LeftIcon({
   className, title, type, stepBack,
 }: LeftIconProps) {
-  const { goBack } = useNavigation();
+  const { goBack, goHome } = useNavigation();
 
   if (type === 'home') {
     return (
@@ -36,7 +36,20 @@ function LeftIcon({
       </Flex>
     );
   }
-
+  if (type === 'search') {
+    return (
+      <ul className={className}>
+        <li>
+          <BackArrow onClick={stepBack ?? goHome} />
+        </li>
+        {title && (
+          <li>
+            <Text>{title}</Text>
+          </li>
+        )}
+      </ul>
+    );
+  }
   return (
     <ul className={className}>
       <li>
