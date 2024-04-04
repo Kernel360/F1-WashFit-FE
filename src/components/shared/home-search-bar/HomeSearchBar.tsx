@@ -10,8 +10,8 @@ import classNames from 'classnames/bind';
 import Camera from '@/components/icons/Camera';
 import HomeSearch from '@/components/icons/HomeSearch';
 
+import ImgToText from '../ocr/Ocr';
 import Spacing from '../spacing/Spacing';
-import ImgToText from '../webcam/WebCam';
 
 import styles from './HomeSearchBar.module.scss';
 
@@ -80,7 +80,7 @@ const HomeSearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
         </button>
       </form>
     );
-  },
+  }
 );
 
 export default HomeSearchBar;

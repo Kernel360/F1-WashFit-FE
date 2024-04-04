@@ -11,7 +11,7 @@ import { useRouter } from 'next/navigation';
 
 import Flex from '@/components/shared/flex/Flex';
 import HomeSearchBar from '@/components/shared/home-search-bar/HomeSearchBar';
-import ImgToText from '@/components/shared/ocr/OCR';
+import ImgToText from '@/components/shared/ocr/Ocr';
 import ProductList from '@components/home/product-list/ProductList';
 import { MOCK_BANNER_DATA } from '@mocks/homeHandler/mocks';
 // import { TEST_MOCK_BANNER_DATA } from '@mocks/homeHandler/mocks';
@@ -64,6 +64,10 @@ function Home() {
             <HomeSearchBar ref={keywordRef} handleSearch={handleSearch} />
           </Flex>
           <Spacing size={80} />
+
+          <Text typography="t4" bold>
+            지금 HOT한 제품
+          </Text>
 
           <Text typography="t4" bold>
             추천 세차용품
