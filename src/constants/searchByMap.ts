@@ -6,3 +6,10 @@ export const SEARCH_FILTER_MAP = {
 } as const;
 
 export type SearchFilterType = keyof typeof SEARCH_FILTER_MAP;
+
+export const SEARCH_WASHFILTER_MAP = {
+  cleaning: '세정제',
+  coating: '코팅제',
+} as const;
+
+export type SearchWashFilterType = keyof typeof SEARCH_WASHFILTER_MAP;
