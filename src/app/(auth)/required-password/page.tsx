@@ -1,7 +1,9 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 'use client';
 
+// import { useEffect } from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
 
 import { useRouter } from 'next/navigation';
@@ -15,7 +17,11 @@ import Title from '@shared/title/Title';
 
 function RequiredPasswordPage() {
   const router = useRouter();
-  const { register, handleSubmit, formState: { dirtyFields } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { dirtyFields },
+  } = useForm();
 
   const onSubmit = (data: FieldValues) => {
     const { password } = data;
@@ -32,7 +38,12 @@ function RequiredPasswordPage() {
       <Header />
       <Spacing size={30} />
       <form onSubmit={handleSubmit(onSubmit)} className="mainContainer">
-        <Title title="비밀번호 입력" description="탈퇴하시려면 비밀번호를 입력해주세요." size={7} descriptionColor="gray400" />
+        <Title
+          title="비밀번호 입력"
+          description="탈퇴하시려면 비밀번호를 입력해주세요."
+          size={7}
+          descriptionColor="gray400"
+        />
         <Spacing size={30} />
         <TextField
           label="비밀번호"
@@ -42,7 +53,12 @@ function RequiredPasswordPage() {
           helpMessage={VALIDATION_MESSAGE_MAP.confirmPassword.message}
         />
         <Spacing size={40} />
-        <Button type="submit" disabled={!dirtyFields.password} size="medium" full>
+        <Button
+          type="submit"
+          disabled={!dirtyFields.password}
+          size="medium"
+          full
+        >
           확인
         </Button>
       </form>

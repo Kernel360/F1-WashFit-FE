@@ -5,12 +5,10 @@ import { createWorker } from 'tesseract.js';
 
 const Ocr = async () => {
   const worker = await createWorker('eng+kor', 1, {});
-  const Img = async () => {
+  const Img = async ({ file }: { file: File }) => {
     const {
       data: { text },
-    } = await worker.recognize(
-      'https://tesseract.projectnaptha.com/img/eng_bw.png',
-    );
+    } = await worker.recognize(file);
 
     // console.log(text);
     await worker.terminate();

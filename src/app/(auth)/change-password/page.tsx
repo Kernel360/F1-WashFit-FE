@@ -17,22 +17,29 @@ import Spacing from '@shared/spacing/Spacing';
 import TextField from '@shared/text-field/TextField';
 import Title from '@shared/title/Title';
 
-const FixedBottomButton = dynamic(() => { return import('@shared/fixedBottomButton/FixedBottomButton'); }, {
-  ssr: false,
-});
+const FixedBottomButton = dynamic(
+  () => {
+    return import('@shared/fixedBottomButton/FixedBottomButton');
+  },
+  {
+    ssr: false,
+  },
+);
 
 type ChangePasswordType = {
-  confirmPassword: string
+  confirmPassword: string;
 } & ChangePassword;
 
 function ChangePasswordPage() {
   const {
-    register, handleSubmit, watch,
+    register,
+    handleSubmit,
+    watch,
     formState: { isValid, errors, isDirty },
   } = useForm<ChangePasswordType>({
     mode: 'onBlur',
   });
-
+  console.log(isDirty);
   const { mutate } = useChangePassword();
 
   const onSubmit = (data: ChangePasswordType) => {
@@ -45,7 +52,12 @@ function ChangePasswordPage() {
       <Header />
       <Spacing size={16} />
       <main className="mainContainer">
-        <Title title="비밀번호 변경" description="사용하실 새 비밀번호를 입력해주세요." size={4} descriptionColor="gray400" />
+        <Title
+          title="비밀번호 변경"
+          description="사용하실 새 비밀번호를 입력해주세요."
+          size={4}
+          descriptionColor="gray400"
+        />
         <Spacing size={40} />
         <TextField
           label="새 비밀번호"
@@ -66,17 +78,15 @@ function ChangePasswordPage() {
           isPasswordType
           {...register('confirmPassword', {
             required: true,
-            validate: (value) => { return value === watch('password') || false; },
+            validate: (value) => {
+              return value === watch('password') || false;
+            },
           })}
           hasError={!!errors.confirmPassword}
           helpMessage={VALIDATION_MESSAGE_MAP.confirmPassword.message}
         />
         <div>
-          <FixedBottomButton
-            disabled={!isValid || !isDirty}
-            onClick={handleSubmit(onSubmit)}
-            size="medium"
-          >
+          <FixedBottomButton disabled={!isValid || !isDirty} onClick={handleSubmit(onSubmit)} size="medium">
             다음
           </FixedBottomButton>
         </div>
