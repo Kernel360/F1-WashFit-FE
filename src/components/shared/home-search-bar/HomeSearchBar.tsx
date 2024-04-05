@@ -3,7 +3,7 @@
 
 'use client';
 
-import { forwardRef } from 'react';
+import { forwardRef, useRef } from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -24,11 +24,20 @@ interface SearchBarProps {
 
 const HomeSearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
   ({ isShadow = false, handleSearch }, ref) => {
+    const FileRef = useRef<HTMLInputElement>(null);
     const fetchData = async () => {
       try {
         const { Img } = await ImgToText();
-        const text = await Img();
-        console.log(text);
+        const file = FileRef?.current?.files?.[0];
+        if (file instanceof File) {
+          const text = await Img({ file });
+          console.log(text);
+        } else {
+          console.error('Invalid file');
+        }
+        // const text = await Img(FileRef?.current?.files?.[0]);
+        // console.log(text);
+        console.log(typeof FileRef?.current?.files?.[0]);
       } catch (error) {
         console.error(error);
         alert('이미지를 불러오는데 실패했습니다.');
@@ -59,6 +68,7 @@ const HomeSearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
             type="file"
             id="audioFile"
             aria-label="카메라 버튼"
+            ref={FileRef}
             onChange={() => {
               fetchData().catch((error) => {
                 return console.error(error);
@@ -80,7 +90,7 @@ const HomeSearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
         </button>
       </form>
     );
-  }
+  },
 );
 
 export default HomeSearchBar;
