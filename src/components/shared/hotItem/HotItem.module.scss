@@ -1,0 +1,11 @@
+.container {
+  position: relative;
+
+  &.favorite {
+    width: 93px;
+  }
+
+  &.profile {
+    width: 100%;
+  }
+}
