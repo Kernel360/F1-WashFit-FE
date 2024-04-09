@@ -55,6 +55,24 @@
   font-size: 14px;
 }
 
+.label.washFilter {
+  height: 68px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.input[type="radio"] + .label.washFilter {
+  border: none;
+  background-color: var(--gray100);
+  color: var(--gray400);
+}
+
+.input[type="radio"]:checked + .label.washFilter {
+  border-color: var(--primary500);
+  background-color: var(--primary500);
+  color: var(--white);
+}
+
 .input[type="radio"] + .label.filter {
   border: 1px solid var(--gray400);
   background-color: var(--white);
