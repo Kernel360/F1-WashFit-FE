@@ -1,7 +1,12 @@
-import { SearchFilterType } from '@/constants/searchByMap';
+import {
+  SearchFilterType,
+  SearchWashFilterType,
+} from '@/constants/searchByMap';
 
 import {
-  BannerType, ProductListInfoType, RecommendProductsType,
+  BannerType,
+  ProductListInfoType,
+  RecommendProductsType,
 } from '../../types/home';
 import { getRequest } from '../requests.api';
 
@@ -14,14 +19,22 @@ export const getBanner = async () => {
 
 /* ----- 추천 제품 정보 api ----- */
 export const getRecommendProducts = async () => {
-  const response = await getRequest<RecommendProductsType>('/recommend-products');
+  const response = await getRequest<RecommendProductsType>(
+    '/recommend-products',
+  );
 
   return response;
 };
 
 /* ----- 제품 목록 정보 api ----- */
-export const getProductList = async (pageNum: number, size: number, sortType: SearchFilterType) => {
-  const response = await getRequest<ProductListInfoType>(`/products/rank?sortType=${sortType}&page=${pageNum}&size=${size}`);
+export const getProductList = async (
+  pageNum: number,
+  size: number,
+  sortType: SearchFilterType | SearchWashFilterType,
+) => {
+  const response = await getRequest<ProductListInfoType>(
+    `/products/rank?sortType=${sortType}&page=${pageNum}&size=${size}`,
+  );
 
   return response;
 };

@@ -9,10 +9,13 @@ import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 import { useRouter } from 'next/navigation';
 
+import { Spinner } from '@/components/additional-info/spinner/Spinner';
+import HotItem from '@/components/home/hotItem/HotItem';
 import Caption from '@/components/icons/Caption';
 import Flex from '@/components/shared/flex/Flex';
 import HomeSearchBar from '@/components/shared/home-search-bar/HomeSearchBar';
 import ImgToText from '@/components/shared/ocr/Ocr';
+import { getProductDetails } from '@/remote/api/requests/product/product.get.api';
 import ProductList from '@components/home/product-list/ProductList';
 import { MOCK_BANNER_DATA } from '@mocks/homeHandler/mocks';
 import BottomNav from '@shared/bottom-nav/BottomNav';
@@ -32,26 +35,9 @@ import styles from './page.module.scss';
 const cx = classNames.bind(styles);
 
 function Home() {
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const { Img } = await ImgToText();
-  //       const text = await Img();
-  //       console.log(text);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
-
+  const [isLoading, setIsLoading] = useState(false);
   const keywordRef = useRef<HTMLInputElement>(null);
   const router = useRouter();
-  // const [trigger, setTrigger] = useState(false);
-  // useEffect(() => {
-  //   Img();
-  // }, []);
   const handleSearch = () => {
     router.push(`/search?keyword=${keywordRef.current?.value}`);
   };
@@ -62,20 +48,19 @@ function Home() {
       <main className={cx('mainContainer')} style={{ position: 'relative' }}>
         <Banner bannerData={MOCK_BANNER_DATA} />
         <Spacing size={8} />
-        {/* <Spacing size={220} /> */}
         <div className={cx('recommendWrapper')}>
           <Flex justify="center">
-            <HomeSearchBar ref={keywordRef} handleSearch={handleSearch} />
+            <HomeSearchBar
+              ref={keywordRef}
+              handleSearch={handleSearch}
+              setIsLoading={setIsLoading}
+            />
           </Flex>
-          <Spacing size={80} />
-
-          <Flex align="center">
-            <Text typography="t4" bold css={{ padding: '0 4px 0 24px' }}>
-              지금 HOT한 제품
-            </Text>
-            <Caption />
-          </Flex>
-
+          <Spacing size={40} />
+          {isLoading ? <Spinner /> : null}
+          <div className={cx('hotItemContainer')}>
+            <HotItem />
+          </div>
           <Spacing size={10} />
           <Text typography="t4" bold>
             추천 세차용품
@@ -84,6 +69,15 @@ function Home() {
 
           <RecommendListContainer />
         </div>
+
+        <Spacing size={40} />
+
+        <div className={cx('recommendListContainer')}>
+          <Text typography="t4" bold>
+            이런 상품은 어때요?
+          </Text>
+        </div>
+
         <Spacing size={32} />
         <div className={cx('productListContainer')}>
           <Text typography="t4" bold>

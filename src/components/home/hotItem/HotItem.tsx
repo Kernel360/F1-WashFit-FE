@@ -6,15 +6,18 @@ import React, { useState } from 'react';
 
 import classNames from 'classnames/bind';
 
+import Caption from '@/components/icons/Caption';
+import { Refresh } from '@/components/icons/Refresh';
+import Flex from '@/components/shared/flex/Flex';
 import HotItemArticle from '@/components/shared/hotItem-article/HotItemArticle';
 import useHotItemList from '@/remote/queries/home/useHotItemList';
 import useProductList from '@/remote/queries/home/useProductList';
 import WashFilterGroup from '@components/home/filer-group/WashFilterGroup';
 import { SearchWashFilterType, SearchFilterType } from '@constants/searchByMap';
 import Spacing from '@shared/spacing/Spacing';
+import Text from '@shared/text/Text';
 
 import styles from './HotItem.module.scss';
-import { Refresh } from '@/components/icons/Refresh';
 
 const cx = classNames.bind(styles);
 
@@ -30,9 +33,14 @@ function HotItem() {
 
   return (
     <>
-      {/* <WashFilterGroup setFilter={setFilter} /> */}
+      <WashFilterGroup setFilter={setFilter} />
       <Spacing size={16} />
-
+      <Flex align="center">
+        <Text typography="t4" bold>
+          지금 HOT한 제품
+        </Text>
+        <Caption />
+      </Flex>
       <div className={cx('productArticleContainer')}>
         {HotItemList?.map((item, index) => {
           return <HotItemArticle key={index} itemData={item} />;
