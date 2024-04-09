@@ -3,7 +3,9 @@
 
 'use client';
 
-import { forwardRef, useRef } from 'react';
+import {
+  Dispatch, SetStateAction, forwardRef, useRef,
+} from 'react';
 
 import classNames from 'classnames/bind';
 
@@ -20,24 +22,42 @@ const cx = classNames.bind(styles);
 interface SearchBarProps {
   isShadow?: boolean;
   handleSearch: () => void;
+  setIsLoading: Dispatch<SetStateAction<boolean>>;
 }
 
 const HomeSearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
-  ({ isShadow = false, handleSearch }, ref) => {
+  ({ isShadow = false, handleSearch, setIsLoading }, ref) => {
     const FileRef = useRef<HTMLInputElement>(null);
+
     const fetchData = async () => {
       try {
+        setIsLoading(true);
+        // const { Img } = await ImgToText();
         const { Img } = await ImgToText();
         const file = FileRef?.current?.files?.[0];
         if (file instanceof File) {
           const text = await Img({ file });
           console.log(text);
+          // const regex = /신 고 번호 { 제 ([0-9-]+)/;
+          const regex = /[A-Z]{2}\d{2}-\d{2}-\d{4}/;
+          const match = regex.exec(text);
+          const reportNumber = match ? match[0] : null;
+          if (!reportNumber) {
+            console.error('Invalid file');
+            alert('유효하지 않은 파일입니다.');
+          }
+          console.log(reportNumber); // "FB21-02-0363" or "EB22-06-0226"
+          setIsLoading(false);
         } else {
           console.error('Invalid file');
         }
-        // const text = await Img(FileRef?.current?.files?.[0]);
-        // console.log(text);
-        console.log(typeof FileRef?.current?.files?.[0]);
+        // const file = FileRef?.current?.files?.[0];
+        // if (file instanceof File) {
+        //   const text = await NodeImg({ file });
+        //   console.log(text);
+        // }
+
+        // console.log(typeof FileRef?.current?.files?.[0]);
       } catch (error) {
         console.error(error);
         alert('이미지를 불러오는데 실패했습니다.');
