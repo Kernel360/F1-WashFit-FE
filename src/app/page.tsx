@@ -10,6 +10,7 @@ import classNames from 'classnames/bind';
 import { useRouter } from 'next/navigation';
 
 import { Spinner } from '@/components/additional-info/spinner/Spinner';
+import FixProductList from '@/components/home/fix-product-list/FixProductList';
 import HotItem from '@/components/home/hotItem/HotItem';
 import Caption from '@/components/icons/Caption';
 import Flex from '@/components/shared/flex/Flex';
@@ -56,26 +57,27 @@ function Home() {
               setIsLoading={setIsLoading}
             />
           </Flex>
-          <Spacing size={40} />
+          <Spacing size={52} />
           {isLoading ? <Spinner /> : null}
           <div className={cx('hotItemContainer')}>
             <HotItem />
           </div>
-          <Spacing size={10} />
+          {/* <Spacing size={10} />
           <Text typography="t4" bold>
             추천 세차용품
           </Text>
           <Spacing size={16} />
 
-          <RecommendListContainer />
+          <RecommendListContainer /> */}
         </div>
 
-        <Spacing size={40} />
+        {/* <Spacing size={20} /> */}
 
         <div className={cx('recommendListContainer')}>
           <Text typography="t4" bold>
             이런 상품은 어때요?
           </Text>
+          <FixProductList />
         </div>
 
         <Spacing size={32} />
@@ -84,7 +86,7 @@ function Home() {
             WashFit 랭킹
           </Text>
           <Spacing size={16} />
-          <ProductList />
+          {/* <ProductList /> */}
         </div>
         <ScrollToTop />
       </main>
