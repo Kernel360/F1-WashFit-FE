@@ -59,7 +59,7 @@ function HotItemArticle({ itemData }: HotItemArticelProps) {
           <Text typography="t6" color="primary500">
             {itemData.companyName}
           </Text>
-          <Text typography="t5" color="gray900">
+          <Text typography="t5" color="gray900" bold>
             {itemData.productName}
           </Text>
         </div>

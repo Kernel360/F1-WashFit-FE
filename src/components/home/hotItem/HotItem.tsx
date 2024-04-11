@@ -34,19 +34,20 @@ function HotItem() {
   return (
     <>
       <WashFilterGroup setFilter={setFilter} />
-      <Spacing size={16} />
+      <Spacing size={24} />
       <Flex align="center">
         <Text typography="t4" bold>
           지금 HOT한 제품
         </Text>
         <Caption />
       </Flex>
+      <Spacing size={24} />
       <div className={cx('productArticleContainer')}>
         {HotItemList?.map((item, index) => {
           return <HotItemArticle key={index} itemData={item} />;
         })}
       </div>
-
+      <Spacing size={32} />
       <div className={cx('refreshButtonContainer')}>
         <div className={cx('refreshButton')}>
           <Refresh />
