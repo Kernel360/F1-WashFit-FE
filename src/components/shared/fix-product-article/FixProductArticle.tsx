@@ -89,10 +89,10 @@ function FixProductArticle({
           </div>
         </div>
         <div className={cx('infoBox')}>
-          <Text className={cx('ellipsis')} typography="t8" color="primary500">
+          <Text className={cx('ellipsis')} typography="t7" color="primary500">
             {itemData.companyName}
           </Text>
-          <Text className={cx('ellipsis')} typography="t7" color="gray900" bold>
+          <Text className={cx('ellipsis')} typography="t6" color="gray900" bold>
             {itemData.productName}
           </Text>
           {/* <div>
