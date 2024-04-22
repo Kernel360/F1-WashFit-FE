@@ -72,6 +72,7 @@ function Home() {
         </div>
 
         {/* <Spacing size={20} /> */}
+        <div className={cx('grayBar')} />
 
         <div className={cx('recommendListContainer')}>
           <Text typography="t4" bold>
