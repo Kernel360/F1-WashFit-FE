@@ -45,7 +45,9 @@
         "*.ts",
         "*.tsx"
       ],
-      "rules": {}
+      "rules": {
+          "max-len": ["error", { "code": 2000 }]
+      }
     },
     {
       "files": [
