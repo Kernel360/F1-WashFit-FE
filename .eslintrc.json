@@ -119,42 +119,43 @@
         "ts": "never",
         "tsx": "never"
       }
-    ], // import 구문에서 파일 확장자를 생략해야합니다. 패키지를 import할 때는 이 규칙을 무시합니다.
-    "import/order": [ // import 순서를 지정합니다.
-      "error",
-      {
-        "groups": [ // 먼저 해당 groups의 순서를 갖습니다.
-          "type",
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index",
-          "unknown"
-        ],
-        "pathGroups": [ // 기본 groups 외 특정 순서를 지정할 수 있습니다.
-          {
-            "pattern": "react*",
-            "group": "external",
-            "position": "before"
-          },
-          {
-            "pattern": "@/public/images/*",
-            "group": "unknown",
-            "position": "after"
-          }
-        ],
-        "pathGroupsExcludedImportTypes": [
-          "type"
-        ], // type 종류는 pathGroups를 적용하지 않습니다.
-        "newlines-between": "always", // import grouping 간에 한 줄을 추가합니다.
-        "alphabetize": { // 같은 grouping 내에선 알파벳 순서를 따릅니다.
-          "order": "asc",
-          "caseInsensitive": true
-        }
-      }
-    ],
+    ], 
+    // // import 구문에서 파일 확장자를 생략해야합니다. 패키지를 import할 때는 이 규칙을 무시합니다.
+    // "import/order": [ // import 순서를 지정합니다.
+    //   "error",
+    //   {
+    //     "groups": [ // 먼저 해당 groups의 순서를 갖습니다.
+    //       "type",
+    //       "builtin",
+    //       "external",
+    //       "internal",
+    //       "parent",
+    //       "sibling",
+    //       "index",
+    //       "unknown"
+    //     ],
+    //     "pathGroups": [ // 기본 groups 외 특정 순서를 지정할 수 있습니다.
+    //       {
+    //         "pattern": "react*",
+    //         "group": "external",
+    //         "position": "before"
+    //       },
+    //       {
+    //         "pattern": "@/public/images/*",
+    //         "group": "unknown",
+    //         "position": "after"
+    //       }
+    //     ],
+    //     "pathGroupsExcludedImportTypes": [
+    //       "type"
+    //     ], // type 종류는 pathGroups를 적용하지 않습니다.
+    //     "newlines-between": "always", // import grouping 간에 한 줄을 추가합니다.
+    //     "alphabetize": { // 같은 grouping 내에선 알파벳 순서를 따릅니다.
+    //       "order": "asc",
+    //       "caseInsensitive": true
+    //     }
+    //   }
+    // ],
     "import/no-extraneous-dependencies": [ // 아래 devDependencies 내 파일들은 해당 룰에 영향을 받지 않습니다.
       "error",
       {

@@ -1,10 +1,13 @@
 /** @type {import('next').NextConfig} */
-const path = require('path')
+const path = require('path');
 
 module.exports = {
   output: 'standalone',
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
+  },
+  images: {
+    domains: ['i.ytimg.com', 'yt3.ggpht.com'],
   },
   // async rewrites() {
   //   return [
@@ -17,17 +20,17 @@ module.exports = {
   webpack: (config, context) => {
     if (context?.isServer) {
       if (Array.isArray(config.resolve.alias)) {
-        config.resolve.alias.push({ name: "msw/browser", alias: false })
+        config.resolve.alias.push({ name: 'msw/browser', alias: false });
       } else {
-        config.resolve.alias["msw/browser"] = false
+        config.resolve.alias['msw/browser'] = false;
       }
     } else {
       if (Array.isArray(config.resolve.alias)) {
-        config.resolve.alias.push({ name: "msw/node", alias: false })
+        config.resolve.alias.push({ name: 'msw/node', alias: false });
       } else {
-        config.resolve.alias["msw/node"] = false
+        config.resolve.alias['msw/node'] = false;
       }
     }
-    return config
+    return config;
   },
-}
+};
