@@ -21,7 +21,7 @@ import styles from './page.module.scss';
 
 const cx = classNames.bind(styles);
 
-export const CHANNEL_LIST = {
+const CHANNEL_LIST = {
   DetailWizard: 'UCJM63e_MydEL2o6dMuJ_teQ',
   ShineFreak: 'UCoqiH2Ce3qc8wr_t2GvIWvw',
   autogrm: 'UCKUHhKTlNTHRlwbjoFDKOfA',
