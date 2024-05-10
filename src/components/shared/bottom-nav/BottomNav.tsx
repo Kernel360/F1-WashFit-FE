@@ -1,9 +1,13 @@
 'use client';
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import classNames from 'classnames/bind';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+import Board from '@/components/icons/Board';
+import FilledBoard from '@/components/icons/FilledBoard';
+import FilledChannel from '@/components/icons/FilledChannel';
 import Channel from '@components/icons/Channel';
 import Favorite from '@components/icons/Favorite';
 import FilledFavorite from '@components/icons/FilledFavorite';
@@ -28,31 +32,63 @@ function BottomNav() {
         <li>
           <Link href="/map">
             <Map color={filteredPathName.startsWith('map') ? 'primary500' : 'black'} />
-            <Text typography="t8" fontWeight="200" color={filteredPathName.startsWith('map') ? 'primary500' : 'black'}>지도</Text>
+            <Text
+              typography="t7"
+              fontWeight="200"
+              color={filteredPathName.startsWith('map') ? 'primary500' : 'black'}
+            >
+              지도
+            </Text>
           </Link>
         </li>
         <li>
           <Link href="/favorite">
             {filteredPathName.startsWith('favorite') ? <FilledFavorite /> : <Favorite />}
-            <Text typography="t8" fontWeight="200" color={filteredPathName.startsWith('favorite') ? 'primary500' : 'black'}>즐겨찾기</Text>
+            <Text
+              typography="t7"
+              fontWeight="200"
+              color={filteredPathName.startsWith('favorite') ? 'primary500' : 'black'}
+            >
+              즐겨찾기
+            </Text>
           </Link>
         </li>
         <li>
           <Link href="/">
             {filteredPathName === '' ? <FilledHome /> : <Home />}
-            <Text typography="t8" fontWeight="200" color={filteredPathName === '' ? 'primary500' : 'black'}>홈</Text>
+            <Text
+              typography="t7"
+              fontWeight="200"
+              color={filteredPathName === '' ? 'primary500' : 'black'}
+            >
+              홈
+            </Text>
           </Link>
         </li>
         <li>
           <Link href="/channel">
-            <Channel color={filteredPathName.startsWith('channel') ? 'primary500' : 'black'} />
-            <Text typography="t8" fontWeight="200" color={filteredPathName.startsWith('channel') ? 'primary500' : 'black'}>채널</Text>
+            {filteredPathName === 'channel' ? <FilledChannel /> : <Channel />}
+            {/* <Channel color={filteredPathName.startsWith('channel') ? 'primary500' : 'black'} /> */}
+            <Text
+              typography="t7"
+              fontWeight="200"
+              color={filteredPathName.startsWith('channel') ? 'primary500' : 'black'}
+            >
+              채널
+            </Text>
           </Link>
         </li>
         <li>
           <Link href="/my-page">
-            <Profile color={filteredPathName.startsWith('my-page') ? 'primary500' : 'black'} />
-            <Text typography="t8" fontWeight="200" color={filteredPathName.startsWith('my-page') ? 'primary500' : 'black'}>프로필</Text>
+            {filteredPathName === 'my-page' ? <FilledBoard /> : <Board />}
+            {/* <Profile color={filteredPathName.startsWith('my-page') ? 'primary500' : 'black'} /> */}
+            <Text
+              typography="t7"
+              fontWeight="200"
+              color={filteredPathName.startsWith('my-page') ? 'primary500' : 'black'}
+            >
+              프로필
+            </Text>
           </Link>
         </li>
       </ul>
