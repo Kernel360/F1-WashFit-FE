@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 
-import Inquire from '@/components/icons/Inquire';
+// import Inquire from '@/components/icons/Inquire';
 import BackArrow from '@components/icons/BackArrow';
 // import Inquire from '@components/icons/Inquire';
 import Logo from '@components/icons/Logo';
@@ -30,7 +30,7 @@ function LeftIcon({
             href="https://docs.google.com/forms/d/e/1FAIpQLSd96McWLLj3bR-3OEEIx656x3I_9-u7ifjwViQKlveIRb5QiA/viewform"
             target="_blank"
           >
-            <Inquire />
+            {/* <Inquire /> */}
           </Link>
         </li>
       </Flex>

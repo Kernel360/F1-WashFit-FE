@@ -51,13 +51,6 @@ const HomeSearchBar = forwardRef<HTMLInputElement, SearchBarProps>(
         } else {
           console.error('Invalid file');
         }
-        // const file = FileRef?.current?.files?.[0];
-        // if (file instanceof File) {
-        //   const text = await NodeImg({ file });
-        //   console.log(text);
-        // }
-
-        // console.log(typeof FileRef?.current?.files?.[0]);
       } catch (error) {
         console.error(error);
         alert('이미지를 불러오는데 실패했습니다.');
