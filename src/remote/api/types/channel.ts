@@ -1,38 +1,38 @@
 export interface IVideoList {
-  kind: string
-  etag: string
-  nextPageToken: string
-  regionCode: string
+  kind: string;
+  etag: string;
+  nextPageToken: string;
+  regionCode: string;
   pageInfo: {
-    totalResults: number
-    resultsPerPage: number
-  }
-  items: IVideo[]
+    totalResults: number;
+    resultsPerPage: number;
+  };
+  items: IVideo[];
 }
 
 export interface IVideo {
-  kind: string
-  etag: string
+  kind: string;
+  etag: string;
   id: {
-    kind: string
-    videoId: string
-  }
-  snippet: IVideoInfo
+    kind: string;
+    videoId: string;
+  };
+  snippet: IVideoInfo;
 }
 
 export interface IVideoInfo {
-  publishedAt: string
-  channelId: string
-  title: string
-  description: string
+  publishedAt: string;
+  channelId: string;
+  title: string;
+  description: string;
   thumbnails: {
-    default: IThumbnail
-    medium: IThumbnail
-    high: IThumbnail
-  }
-  channelTitle: string
-  liveBroadcastContent: string
-  publishTime: string
+    default: IThumbnail;
+    medium: IThumbnail;
+    high: IThumbnail;
+  };
+  channelTitle: string;
+  liveBroadcastContent: string;
+  publishTime: string;
 }
 
 export interface IThumbnail {

@@ -1,16 +1,32 @@
 .headerTitleWrapper {
+    display: flex;
     box-sizing: border-box;
-    padding: 23px var(--default-padding) 12px;
+    flex-direction: row;
+    padding: 23px var(--default-padding) 2px;
+
+    .left {
+        margin: 7px 10px 0 0;
+    }
 }
 
 .mainContainer {
+    position: relative;
     margin-bottom: 76px;
+
+    .headerFix {
+        position: sticky;
+        z-index: 100;
+        top: 0;
+        right: 0;
+        left: 0;
+        background-color: white;
+    }
 
     .channelList {
         display: flex;
         box-sizing: border-box;
         margin: 12px 0;
-        padding: 0 var(--default-padding);
+        padding: 0 4px;
         overflow: auto;
         white-space: nowrap;
         gap: 5px;
@@ -19,18 +35,45 @@
             display: none;
         }
 
+        .channelImage {
+            display: block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .imageNone {
+            display: none;
+        }
+
         .channelButton {
             padding: 5px 10px;
+            padding-bottom: 10px;
             transition: 0.15s all ease-out;
-            border: 1px solid var(--primary200);
-            border-radius: 15px;
-            color: var(--primary200);
-            font-size: 12px;
+
+            // border: 1px solid var(--primary200);
+            // border-radius: 15px;
+            color: var(--gray500);
+            font-size: 16px;
 
             &.selected {
-                border-color: var(--primary400);
-                background-color: var(--primary400);
-                color: var(--white);
+                position: relative;
+
+                // border-bottom: 2px solid var(--primary500);
+                &::after {
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 50%; // 가운데 정렬
+                    width: 80%; // 테두리의 길이를 조정
+                    height: 2px;
+                    transform: translateX(-50%); // 가운데 정렬
+                    background-color: var(--primary500);
+                }
+
+                // border-color: var(--primary400);
+                // background-color: var(--primary400);
+                color: var(--primary500);
             }
         }
     }
